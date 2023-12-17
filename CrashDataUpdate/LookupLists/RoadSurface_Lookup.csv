@@ -1,0 +1,11 @@
+Factors Roadway,Road_Surface,State
+DRY,Dry,NV
+WET,Wet,NV
+WATER,Wet,NV
+ICE,Snowy or Icy,NV
+SNOW,Snowy or Icy,NV
+SLUSH,Snowy or Icy,NV
+OTHER,Other,NV
+NA,Not stated,NV
+UNKNOWN,Unknown,NV
+Not stated,Not stated,NV
