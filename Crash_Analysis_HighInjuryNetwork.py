@@ -312,6 +312,7 @@ arcpy.management.CalculateField(
     enforce_domains="NO_ENFORCE_DOMAINS"
 )
 print("Crash_Rate_Total calculation complete.")
+
 # add fields for HIN totals
 arcpy.AddField_management(output_feature_class, 'ped_HIN_0', "SHORT")
 arcpy.AddField_management(output_feature_class, 'ped_HIN_05', "SHORT")
@@ -323,6 +324,7 @@ arcpy.AddField_management(output_feature_class, 'car_HIN_0', "SHORT")
 arcpy.AddField_management(output_feature_class, 'car_HIN_tenth', "SHORT")
 arcpy.AddField_management(output_feature_class, 'car_HIN_05', "SHORT")
 print("HIN fields added.")
+
 # totals of victims per mile/mode
 #Convert feature class to dataframe
 crash_df = pd.DataFrame.spatial.from_featureclass(output_feature_class)
@@ -339,7 +341,7 @@ crash_df['Victims_Per_Mile'] = crash_df['Total_Victims']/crash_df['Miles']
 crash_df['Car_Victims_Per_Mile']  =crash_df['Total_Car']/crash_df['Miles']
 crash_df['Bike_Victims_Per_Mile'] =crash_df['Total_Bicyclist']/crash_df['Miles']
 crash_df['Ped_Victims_Per_Mile']  =crash_df['Total_Ped']/crash_df['Miles']
-print("Pandas...")
+print("Pandas to get HIN segments...")
 
 # run for different segment lenghth thresholds and for mode types
 Ped_HIN_0_ID      = identify_HIN_segments(crash_df, 0, 'Pedestrian_Involved_Numeric', 'UniqueID','Crash_Rate_Ped')
