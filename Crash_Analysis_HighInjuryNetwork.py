@@ -1,0 +1,336 @@
+"""Crash_Analysis_HighInjuryNetwork.py
+    Created data:
+    Last Updated:
+
+
+"""
+# import packages
+import arcpy
+from arcgis.features import FeatureLayer
+import pandas as pd
+
+# set overwrite to true
+arcpy.env.overwriteOutput = True
+
+# enterprise Geodatabase connection
+sdeBase = "F:\GIS\DB_CONNECT\Vector.sde"
+
+# set workspace - Need to modify this to be universal
+arcpy.env.workspace = "F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis\Crash Analysis.gdb"
+workspace           = r"F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis\Crash Analysis.gdb"
+workspace_folder    = r"F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis"
+
+# in memory output file path
+memory_workspace = "memory" + "\\"
+
+# street network
+streetNetwork = "Tahoe_OSM_Streets"
+crashData = "Tahoe_Crash"
+
+# crash data
+#This probably isn't what we need - need to find the feature service to in memory feature class
+service_url = 'https://maps.trpa.org/server/rest/services/LTInfo_Monitoring/MapServer/108'
+
+feature_layer = FeatureLayer(service_url)
+query_result = feature_layer.query()
+# Convert the query result to a list of dictionaries
+feature_list = query_result.features
+
+# # Create a pandas DataFrame from the list of dictionaries
+# tahoeCrash_data = pd.DataFrame([feature.attributes for feature in feature_list])
+# tahoeCrash_data.info()
+
+# FUNCTIONS 
+def crash_severity_numeric(field1_value, field2_value, field3_value):
+    if field1_value == 'Fatal':
+        return 5
+    elif field1_value == 'Severe injury':
+        return 3
+    elif field2_value == 'Y':
+        return 2
+    elif field3_value == 'Y':
+        return 2
+    else:
+        return 1  # Default value for other cases
+
+def assign_value(row, threshold):
+    if row['Miles'] > threshold:
+        return 'above_threshold'
+    else:
+        return 'below_threshold'
+
+def identify_HIN_segments(df, segment_threshold, victim_field, unique_id_field, rank_field):
+    df['threshold_status']=df.apply(assign_value, args=(segment_threshold,), axis = 1)
+    df_sorted = df.sort_values(by=rank_field, ignore_index = True, ascending = False)
+    total_victims = df_sorted[victim_field].sum()
+    df_sorted = df_sorted.loc[df_sorted['threshold_status']=='above_threshold']
+    df_sorted['Cumulative_Vics'] = df_sorted[victim_field].cumsum()
+    df_HIN = df_sorted[df_sorted['Cumulative_Vics']<= (.65 * total_victims)]
+    HIN_IDs = df_HIN[unique_id_field]
+    return HIN_IDs
+# 
+def addHIN(fc, idList, field_name):
+    # Update the new field based on presence in the list of Object IDs
+    with arcpy.da.UpdateCursor(fc, ['UniqueID', field_name]) as cursor:
+        for row in cursor:
+            value = row[0]
+            if value in idList.values:
+                row[1] = 1
+            else:
+                row[1] = 0   
+            cursor.updateRow(row)
+
+### TRANSFORM DATA ###
+
+# Use CalculateField_management to apply the function to the new field
+expression = "crash_severity_numeric(!Crash_Severity!, !Bicycle_Involved!, !Pedestrian_Involved!)"  # Replace 'Field1' with your source field name
+code_block = """def crash_severity_numeric(field1_value, field2_value, field3_value):
+    if field1_value == 'Fatal':
+        return 5
+    elif field1_value == 'Severe injury':
+        return 3
+    elif field2_value == 'Y':
+        return 2
+    elif field3_value == 'Y':
+        return 2
+    else:
+        return 1 """  # Define the function here
+
+arcpy.CalculateField_management("Tahoe_Crash", "Crash_Severity_Numeric", expression, "PYTHON3", code_block)
+print("Calculation complete.")
+
+arcpy.AddField_management("Tahoe_Crash", 'Bicycle_Involved_Numeric', "LONG")
+expression = "crash_severity_numeric(!Bicycle_Involved!)"  # Replace 'Field1' with your source field name
+code_block = """def crash_severity_numeric(field1_value):
+    if field1_value == 'Y':
+        return 1
+    else:
+        return 0 """  # Define the function here
+
+arcpy.CalculateField_management("Tahoe_Crash", "Bicycle_Involved_Numeric", expression, "PYTHON3", code_block)
+print("Calculation complete.")
+
+arcpy.AddField_management("Tahoe_Crash", 'Pedestrian_Involved_Numeric', "LONG")
+expression = "crash_severity_numeric(!Pedestrian_Involved!)"  # Replace 'Field1' with your source field name
+code_block = """def crash_severity_numeric(field1_value):
+    if field1_value == 'Y':
+        return 1
+    else:
+        return 0 """  # Define the function here
+
+arcpy.CalculateField_management("Tahoe_Crash", "Pedestrian_Involved_Numeric", expression, "PYTHON3", code_block)
+print("Calculation complete.")
+
+# Snap Tahoe Crash feature class to Streets network
+arcpy.edit.Snap(
+    in_features="Tahoe_Crash",
+    snap_environment="Tahoe_OSM_Streets EDGE '0.25 Miles'"
+)
+
+# inputs/outputs for spatial join and field calcs
+target_feature_class = "Tahoe_OSM_Streets"
+join_feature_class = "Tahoe_Crash"
+output_feature_class = "Tahoe_OSM_Streets_Crashes"
+
+# List of input and join field names
+input_field_names = ["name","maxspeed", "Shape_Length", "UniqueID", "CrashRate", "Miles", "FatalityRate"]
+join_field_names = ["Num_Killed", "Num_Injured", "Num_Ped_Killed", "Num_Ped_Injured", 
+    "Num_Bicyclist_Killed", "Num_Bicyclist_Injured", 
+    "Crash_Severity_Numeric", "Crash_Rate_Weighted",
+    "Bicycle_Involved_Numeric", "Pedestrian_Involved_Numeric"]
+
+# List of fields to be joined using SUM
+fields_to_sum = ["Num_Killed", "Num_Injured", "Num_Ped_Killed", "Num_Ped_Injured", 
+                 "Num_Bicyclist_Killed", "Num_Bicyclist_Injured", "Crash_Severity_Numeric",
+                "Bicycle_Involved_Numeric", "Pedestrian_Involved_Numeric"]
+
+# Create a field map object
+field_mappings = arcpy.FieldMappings()
+
+# Get the field info for the target feature class
+target_field_info = arcpy.ListFields(target_feature_class)
+
+# Add fields from the target feature class to the field mappings
+for field in target_field_info:
+    if field.name in input_field_names:
+        input_field_map = arcpy.FieldMap()
+        input_field_map.addInputField(target_feature_class, field.name)
+        
+        # Set the merge rule to SUM for selected fields
+        if field.name in fields_to_sum:
+            input_field_map.mergeRule = "SUM"
+        
+        field_mappings.addFieldMap(input_field_map)
+
+# Get the field info for the join feature class
+join_field_info = arcpy.ListFields(join_feature_class)
+
+# Add fields from the join feature class to the field mappings
+for field in join_field_info:
+    if field.name in join_field_names:
+        join_field_map = arcpy.FieldMap()
+        join_field_map.addInputField(join_feature_class, field.name)
+        
+        # Set the merge rule to SUM for selected fields
+        if field.name in fields_to_sum:
+            join_field_map.mergeRule = "SUM"
+        
+        field_mappings.addFieldMap(join_field_map)
+
+# Add a field map for the number_of_records field (count of a specific field)
+num_records_field_map = arcpy.FieldMap()
+num_records_field_map.addInputField(join_feature_class, "County")
+num_records_output_field = num_records_field_map.outputField
+num_records_output_field.name = "Number_Of_Crashes"  # Change to your desired field name
+num_records_output_field.aliasName = "Number Of Crashes"
+num_records_output_field.type = "LONG"  # Change to appropriate data type
+num_records_field_map.outputField = num_records_output_field
+num_records_field_map.mergeRule = "COUNT"
+field_mappings.addFieldMap(num_records_field_map)
+
+# Perform the spatial join using the specified field mappings
+arcpy.analysis.SpatialJoin(target_feature_class, 
+    join_feature_class, 
+    output_feature_class,
+    join_operation="JOIN_ONE_TO_ONE",
+    join_type="KEEP_ALL",
+    field_mapping = field_mappings,
+    match_option="INTERSECT",
+    search_radius=None,
+    distance_field_name="")
+
+arcpy.management.CalculateField(
+    in_table= output_feature_class,
+    field="Miles",
+    expression="!Shape_Length! *  0.000621371",
+    expression_type="PYTHON3",
+    code_block="",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Crash_Severity_Numeric",
+    expression="0 if !Crash_Severity_Numeric! == None else !Crash_Severity_Numeric!",
+    expression_type="PYTHON3",
+    code_block="",
+    field_type="FLOAT",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Pedestrian_Involved_Numeric",
+    expression="0 if !Pedestrian_Involved_Numeric! == None else !Pedestrian_Involved_Numeric!",
+    expression_type="PYTHON3",
+    code_block="",
+    field_type="FLOAT",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Bicycle_Involved_Numeric",
+    expression="0 if !Bicycle_Involved_Numeric! == None else !Bicycle_Involved_Numeric!",
+    expression_type="PYTHON3",
+    code_block="",
+    field_type="FLOAT",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Number_Of_Crashes",
+    expression="0 if !Number_Of_Crashes! == None else !Number_Of_Crashes!",
+    expression_type="PYTHON3",
+    code_block="",
+    field_type="FLOAT",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Crash_Rate_Weighted",
+    expression="!Crash_Severity_Numeric! / (!Miles!*8)",
+    expression_type="PYTHON3",
+    code_block="",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Crash_Rate_Ped",
+    expression="!Pedestrian_Involved_Numeric! / (!Miles!*8)",
+    expression_type="PYTHON3",
+    code_block="",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Crash_Rate_Bike",
+    expression="!Bicycle_Involved_Numeric! / (!Miles!*8)",
+    expression_type="PYTHON3",
+    code_block="",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+arcpy.management.CalculateField(
+    in_table=output_feature_class,
+    field="Crash_Rate_Total",
+    expression="!Number_Of_Crashes! / (!Miles!*8)",
+    expression_type="PYTHON3",
+    code_block="",
+    enforce_domains="NO_ENFORCE_DOMAINS"
+)
+
+# add fields for HIN totals
+arcpy.AddField_management(output_feature_class, 'ped_HIN_0', "SHORT")
+arcpy.AddField_management(output_feature_class, 'ped_HIN_05', "SHORT")
+arcpy.AddField_management(output_feature_class, 'ped_HIN_tenth', "SHORT")
+arcpy.AddField_management(output_feature_class, 'bike_HIN_0', "SHORT")
+arcpy.AddField_management(output_feature_class, 'bike_HIN_tenth', "SHORT")
+arcpy.AddField_management(output_feature_class, 'bike_HIN_05', "SHORT")
+arcpy.AddField_management(output_feature_class, 'car_HIN_0', "SHORT")
+arcpy.AddField_management(output_feature_class, 'car_HIN_tenth', "SHORT")
+arcpy.AddField_management(output_feature_class, 'car_HIN_05', "SHORT")
+
+# totals of victims per mile/mode
+#Convert feature class to dataframe
+crash_df = pd.DataFrame.spatial.from_featureclass(output_feature_class)
+
+Summary_Fields = ['Num_Killed', 'Num_Injured', 'Num_Ped_Killed','Num_Ped_Injured', 
+                  'Num_Bicyclist_Killed', 'Num_Bicyclist_Injured']
+
+crash_df[Summary_Fields]= crash_df[Summary_Fields].fillna(0)
+crash_df['Total_Victims'] = crash_df['Num_Killed'] + crash_df['Num_Injured']
+crash_df['Total_Ped']= crash_df['Num_Ped_Killed'] +crash_df['Num_Ped_Injured']
+crash_df['Total_Bicyclist']= crash_df['Num_Bicyclist_Killed'] + crash_df['Num_Bicyclist_Injured']
+crash_df['Total_Car'] = crash_df['Total_Victims'] - (crash_df['Total_Ped'] + crash_df['Total_Bicyclist'])
+crash_df['Victims_Per_Mile'] = crash_df['Total_Victims']/crash_df['Miles']
+crash_df['Car_Victims_Per_Mile']  =crash_df['Total_Car']/crash_df['Miles']
+crash_df['Bike_Victims_Per_Mile'] =crash_df['Total_Bicyclist']/crash_df['Miles']
+crash_df['Ped_Victims_Per_Mile']  =crash_df['Total_Ped']/crash_df['Miles']
+
+# run for different segment lenghth thresholds and for mode types
+Ped_HIN_0_ID      = identify_HIN_segments(crash_df, 0, 'Pedestrian_Involved_Numeric', 'UniqueID','Crash_Rate_Ped')
+Ped_HIN_05_ID     = identify_HIN_segments(crash_df, 0.05, 'Pedestrian_Involved_Numeric', 'UniqueID','Crash_Rate_Ped')
+Ped_HIN_tenth_ID  = identify_HIN_segments(crash_df, 0.1, 'Pedestrian_Involved_Numeric', 'UniqueID','Crash_Rate_Ped')
+Bike_HIN_0_ID     = identify_HIN_segments(crash_df, 0, 'Bicycle_Involved_Numeric', 'UniqueID','Crash_Rate_Bike')
+Bike_HIN_05_ID    = identify_HIN_segments(crash_df, 0.05, 'Bicycle_Involved_Numeric', 'UniqueID','Crash_Rate_Bike')
+Bike_HIN_tenth_ID = identify_HIN_segments(crash_df, 0.1, 'Bicycle_Involved_Numeric', 'UniqueID','Crash_Rate_Bike')
+Car_HIN_0_ID      = identify_HIN_segments(crash_df, 0, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
+Car_HIN_tenth_ID  = identify_HIN_segments(crash_df, 0.1, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
+Car_HIN_05_ID     = identify_HIN_segments(crash_df, 0.05, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
+# add all the HINs
+addHIN(output_feature_class, Ped_HIN_0_ID, "ped_HIN_0")
+addHIN(output_feature_class, Ped_HIN_05_ID, "ped_HIN_05")
+addHIN(output_feature_class, Ped_HIN_tenth_ID, "ped_HIN_tenth")
+addHIN(output_feature_class, Bike_HIN_0_ID, "bike_HIN_0")
+addHIN(output_feature_class, Bike_HIN_05_ID, "bike_HIN_05")
+addHIN(output_feature_class, Bike_HIN_tenth_ID, "bike_HIN_tenth")
+addHIN(output_feature_class, Car_HIN_0_ID, "car_HIN_0")
+addHIN(output_feature_class, Car_HIN_05_ID, "car_HIN_05")
+addHIN(output_feature_class, Car_HIN_tenth_ID, "car_HIN_tenth")
+
+print("Done")
