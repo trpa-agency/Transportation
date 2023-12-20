@@ -23,7 +23,9 @@ Repository to hold all scripts related to transportation data
 
 ### Next Steps…
 
+- Complete 
     - Better streets network. 
+- To Do 
     - Method for dealing with overweighting single accidents 
     - County level analysis
     - Method to create standard segment lengths
@@ -31,14 +33,14 @@ Repository to hold all scripts related to transportation data
 
 ### Works Cited
 
-    [ESRI Crash Analysis Workflow] (https://desktop.arcgis.com/fr/analytics/case-studies/analyzing-crashes-2-pro-workflow.htm)
+[ESRI Crash Analysis Workflow] (https://desktop.arcgis.com/fr/analytics/case-studies/analyzing-crashes-2-pro-workflow.htm)
 
-    [SCAG HIN Methods] (https://scag.ca.gov/sites/main/files/file-attachments/scag-hin-methodology-072022.pdf?1658855532)
+[SCAG HIN Methods] (https://scag.ca.gov/sites/main/files/file-attachments/scag-hin-methodology-072022.pdf?1658855532)
 
 ### Local Project Information
 
-    - Network Path: F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis
-    - Web Map: https://trpa.maps.arcgis.com/home/item.html?id=ddfe6635070e4063bb411d12225ad45f
-    - ArcGIS Pro Project: "F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis\Crash Analysis.aprx"
-    - Python Notebook: "F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis\CrashAnalysis.ipynb"
+- Network Path: F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis
+- Web Map: https://trpa.maps.arcgis.com/home/item.html?id=ddfe6635070e4063bb411d12225ad45f
+- ArcGIS Pro Project: "F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis\Crash Analysis.aprx"
+- Python Notebook: "F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis\CrashAnalysis.ipynb"
 
