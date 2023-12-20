@@ -31,9 +31,9 @@ Repository to hold all scripts related to transportation data
 
 ### Works Cited
 
-    > [ESRI Crash Analysis Workflow] (https://desktop.arcgis.com/fr/analytics/case-studies/analyzing-crashes-2-pro-workflow.htm)
+    [ESRI Crash Analysis Workflow] (https://desktop.arcgis.com/fr/analytics/case-studies/analyzing-crashes-2-pro-workflow.htm)
 
-    > [SCAG HIN Methods] (https://scag.ca.gov/sites/main/files/file-attachments/scag-hin-methodology-072022.pdf?1658855532)
+    [SCAG HIN Methods] (https://scag.ca.gov/sites/main/files/file-attachments/scag-hin-methodology-072022.pdf?1658855532)
 
 ### Local Project Information
 
