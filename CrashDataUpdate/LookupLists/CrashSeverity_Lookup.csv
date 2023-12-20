@@ -1,0 +1,8 @@
+CrashSeverity,Crash_Severity,State
+U,Unknown,NV
+O,Property damage only,NV
+C,Complaint of pain,NV
+B,Other Visible injury,NV
+N,Not Reported,NV
+K,Fatal,NV
+A,Severe Injury,NV

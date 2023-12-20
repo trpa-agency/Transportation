@@ -1,0 +1,10 @@
+Crash Type,Crash_Type,State
+ANGLE,Angle-broadside,NV
+BACKING,Backing,NV
+HEAD-ON,Head-on,NV
+NON-COLLISION,Non-collision,NV
+REAR-END,Rear end,NV
+REAR-TO-REAR,Other,NV
+"SIDESWIPE, MEETING",Sideswipe,NV
+"SIDESWIPE, OVERTAKING",Sideswipe,NV
+UNKNOWN,Unknown,NV

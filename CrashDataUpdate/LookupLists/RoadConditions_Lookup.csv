@@ -1,0 +1,15 @@
+HWY Factors,Road_Condition_1,State
+NONE,No Unusual Condition,NV
+UNKNOWN,Unknown,NV
+"WET, ICY, SNOW, SLUSH",Weather,NV
+WEATHER,Weather,NV
+BACKUP,Other,NV
+GLARE,Other,NV
+OTHER,Other,NV
+VISUAL OBSTRUCTION,Other,NV
+ROAD OBSTRUCTION,Obstruction on Roadway,NV
+DEBRIS,Loose Material on Roadway,NV
+WORK ZONE,Construction or Repair Zone,NV
+ANIMAL,Wildlife,NV
+RUTS,"Holes, Deep Ruts",NV
+Not stated,Not Stated,NV

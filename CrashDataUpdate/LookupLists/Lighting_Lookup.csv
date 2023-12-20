@@ -1,0 +1,25 @@
+Lighting_Raw,Lighting_Update,State
+DAYLIGHT,Daylight,NV
+DARK - CONT ROADWAY LIGHTING,Dark - Street Lights,NV
+DARK - SPOT ROADWAY LIGHTING,Dark - Street Lights,NV
+DARK - NO ROADWAY LIGHTING,Dark - No Street Lights,NV
+OTHER,Other,NV
+DUSK,Dusk - Dawn,NV
+DAWN,Dusk - Dawn,NV
+DARK - UNKNOWN ROADWAY LIGHTING,Dark - unknown lighting,NV
+UNKNOWN,Unknown,NV
+"DARK, UNK LIGHTED",Dark - unknown lighting,NV
+"DARK, NOT LIGHTED",Dark - No Street Lights,NV
+"DARK, LIGHTED",Dark - Street Lights,NV
+Daylight,Daylight,NV
+Dark - Cont Roadway Lighting,Dark - Street Lights,NV
+Dark - Spot Roadway Lighting,Dark - Street Lights,NV
+Dark - No Roadway Lighting,Dark - No Street Lights,NV
+Other,Other,NV
+Dusk,Dusk - Dawn,NV
+Dawn,Dusk - Dawn,NV
+Dark - Unknown Roadway Lighting,Dark - unknown lighting,NV
+Unknown,Unknown,NV
+"Dark, Unk Lighted",Dark - unknown lighting,NV
+"Dark, Not Lighted",Dark - No Street Lights,NV
+"Dark, Lighted",Dark - Street Lights,NV
