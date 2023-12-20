@@ -32,10 +32,11 @@ output_feature_class = "Tahoe_OSM_Streets_Crashes"
 # List of input and join field names
 input_field_names = ["UniqueID","name","maxspeed", "Shape_Length",  
                      "CrashRate", "Miles", "FatalityRate"]
+
 join_field_names = ["Num_Killed", "Num_Injured", "Num_Ped_Killed", "Num_Ped_Injured", 
-    "Num_Bicyclist_Killed", "Num_Bicyclist_Injured", 
-    "Crash_Severity_Numeric", "Crash_Rate_Weighted",
-    "Bicycle_Involved_Numeric", "Pedestrian_Involved_Numeric"]
+                    "Num_Bicyclist_Killed", "Num_Bicyclist_Injured", 
+                    "Crash_Severity_Numeric", "Crash_Rate_Weighted",
+                    "Bicycle_Involved_Numeric", "Pedestrian_Involved_Numeric"]
 
 # crash data rest endpoint
 map_service_url = 'https://maps.trpa.org/server/rest/services/LTInfo_Monitoring/MapServer/108'
@@ -47,7 +48,7 @@ feature_layer = FeatureLayer(map_service_url)
 sdf = pd.DataFrame.spatial.from_layer(feature_layer)
 
 # Save the spatially enabled DataFrame to a geodatabase
-sdf.spatial.to_featureclass(location=os.path.join(geodatabase, crashData))
+sdf.spatial.to_featureclass(location=os.path.join(geodatabase, crashData), sanitize_columns= False)
 print("Data has been saved to the geodatabase.")
 
 # Functions
@@ -328,14 +329,12 @@ print("HIN fields added.")
 # totals of victims per mile/mode
 #Convert feature class to dataframe
 crash_df = pd.DataFrame.spatial.from_featureclass(output_feature_class)
-
-Summary_Fields = ['Num_Killed', 'Num_Injured', 'Num_Ped_Killed','Num_Ped_Injured', 
-                  'Num_Bicyclist_Killed', 'Num_Bicyclist_Injured']
+Summary_Fields = ['Num_Killed', 'Num_Injured', 'Num_Ped_Killed','Num_Ped_Injured', 'Num_Bicyclist_Killed', 'Num_Bicyclist_Injured']
 
 crash_df[Summary_Fields]= crash_df[Summary_Fields].fillna(0)
 crash_df['Total_Victims'] = crash_df['Num_Killed'] + crash_df['Num_Injured']
-crash_df['Total_Ped']= crash_df['Num_Ped_Killed'] +crash_df['Num_Ped_Injured']
-crash_df['Total_Bicyclist']= crash_df['Num_Bicyclist_Killed'] + crash_df['Num_Bicyclist_Injured']
+crash_df['Total_Ped'] = crash_df['Num_Ped_Killed'] +crash_df['Num_Ped_Injured']
+crash_df['Total_Bicyclist'] = crash_df['Num_Bicyclist_Killed'] + crash_df['Num_Bicyclist_Injured']
 crash_df['Total_Car'] = crash_df['Total_Victims'] - (crash_df['Total_Ped'] + crash_df['Total_Bicyclist'])
 crash_df['Victims_Per_Mile'] = crash_df['Total_Victims']/crash_df['Miles']
 crash_df['Car_Victims_Per_Mile']  =crash_df['Total_Car']/crash_df['Miles']
@@ -354,6 +353,7 @@ Car_HIN_0_ID      = identify_HIN_segments(crash_df, 0, 'Total_Car', 'UniqueID','
 Car_HIN_tenth_ID  = identify_HIN_segments(crash_df, 0.1, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
 Car_HIN_05_ID     = identify_HIN_segments(crash_df, 0.05, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
 print("HIN...")
+
 # add all the HINs
 addHIN(output_feature_class, Ped_HIN_0_ID, "ped_HIN_0")
 addHIN(output_feature_class, Ped_HIN_05_ID, "ped_HIN_05")
