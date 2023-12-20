@@ -3,9 +3,9 @@
 
 ## Crash_Analysis_HighInjuryNetwork.py
 
-## Summary
+### Summary
 
-### We used the SWITRS and NDOT crash data to produce High Injury Networks (HINs) for car, pedestrian, and bicycle injuries in the Lake Tahoe Basin. We also assigned a weighted crash metric to each segment of the road network based on the number of crashes that occurred on the segment with fatalities, serious injuries and Bike/Pedestrian involved crashes weighted more heavily. That weighted crash value was then used to identify hot spots of crashes on the street network.
+We used the SWITRS and NDOT crash data to produce High Injury Networks (HINs) for car, pedestrian, and bicycle injuries in the Lake Tahoe Basin. We also assigned a weighted crash metric to each segment of the road network based on the number of crashes that occurred on the segment with fatalities, serious injuries and Bike/Pedestrian involved crashes weighted more heavily. That weighted crash value was then used to identify hot spots of crashes on the street network.
 
 - Initial data processing
     - To weight crashes by their severity, each crash in our database was given a “crash severity value” of 5 for a mortality, 3 for a severe injury, 2 for any crash involving a bicyclist or pedestrian and 1 for all other crashes with an injury. Property only crashes were excluded from the analysis because they are not reported for California.
