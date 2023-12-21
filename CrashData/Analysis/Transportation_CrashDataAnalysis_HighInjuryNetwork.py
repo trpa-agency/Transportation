@@ -366,3 +366,75 @@ addHIN(output_feature_class, Car_HIN_05_ID, "car_HIN_05")
 addHIN(output_feature_class, Car_HIN_tenth_ID, "car_HIN_tenth")
 
 print("Done adding HIN")
+
+# create stacked HIN by mode
+# We have a list of ID's for each HIN
+# Create a new feature class and append each of those segments to it with an additional field populated with the field name
+
+existing_fc = "Tahoe_OSM_Streets_Crashes"
+
+# Define the path to the new feature class that will store the unpivoted data
+new_fc_name = "High_Injury_Network_ModeStacked"
+
+# List of fields to unpivot
+fields_to_unpivot = ["ped_HIN_0",
+                    "ped_HIN_05",
+                    "ped_HIN_tenth",
+                    "bike_HIN_0",
+                    "bike_HIN_05",
+                    "bike_HIN_tenth",
+                    "car_HIN_0",
+                    "car_HIN_05",
+                    "car_HIN_tenth"]
+
+
+# List of fields to keep from the original feature class
+fields_to_keep = ["UniqueID",
+                  "name",
+                  "maxspeed",
+                "Miles"
+                ,"Num_Killed"
+                ,"Num_Injured"
+                ,"Num_Ped_Killed"
+                ,"Num_Ped_Injured"
+                ,"Num_Bicyclist_Killed"
+                ,"Num_Bicyclist_Injured"
+                ,"Crash_Severity_Numeric"
+                ,"Crash_Rate_Weighted"
+                ,"Bicycle_Involved_Numeric"
+                ,"Pedestrian_Involved_Numeric"
+                ,"Number_Of_Crashes"
+                ,"Crash_Rate_Ped"
+                ,"Crash_Rate_Bike"
+                ,"Crash_Rate_Total"]
+
+# Get the coordinate system from the existing feature class
+desc = arcpy.Describe(existing_fc)
+spatial_reference = desc.spatialReference
+
+# Create a new polyline feature class to store the unpivoted data
+arcpy.CreateFeatureclass_management(arcpy.env.workspace, new_fc_name, "POLYLINE", spatial_reference=spatial_reference)
+
+# Add fields to the new feature class for the values, field names, and fields to keep
+for field in fields_to_keep:
+    field_info = arcpy.ListFields(existing_fc, field)[0]
+    arcpy.AddField_management(new_fc_name, field, field_info.type, field_info.precision, field_info.scale, field_info.length)
+
+
+arcpy.AddField_management(new_fc_name, "Value", "TEXT")
+arcpy.AddField_management(new_fc_name, "HIN_Type", "TEXT")
+
+
+# Use an insert cursor to add unpivoted features to the new feature class
+with arcpy.da.InsertCursor(new_fc_name, ["SHAPE@", "Value", "HIN_Type", *fields_to_keep]) as cursor:
+    # Use a search cursor to iterate through the existing features
+    with arcpy.da.SearchCursor(existing_fc, ["SHAPE@", *fields_to_unpivot, *fields_to_keep]) as search_cursor:
+        for row in search_cursor:
+            # For each field to unpivot, add a new feature with the value and field name
+            for field_name in fields_to_unpivot:
+                value = str(row[fields_to_unpivot.index(field_name) + 1])  # Get the field value
+                field_name = field_name  # Get the field name
+                if value == '1':
+                    cursor.insertRow((row[0], value, field_name, *row[len(fields_to_unpivot)+1:]))
+
+print("Polyline feature class has been stacked while keeping selected fields.")
