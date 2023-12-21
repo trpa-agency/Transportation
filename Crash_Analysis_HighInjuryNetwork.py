@@ -27,7 +27,7 @@ memory_workspace = "memory" + "\\"
 streetNetwork = "Tahoe_OSM_Streets"
 crashData = "Tahoe_Crash"
 # output fc
-output_feature_class = "Tahoe_OSM_Streets_Crashes"
+output_feature_class = "Tahoe_OSM_Streets_Crashes_test"
 
 # List of input and join field names
 input_field_names = ["UniqueID","name","maxspeed", "Shape_Length",  
@@ -354,6 +354,7 @@ Car_HIN_0_ID      = identify_HIN_segments(crash_df, 0, 'Total_Car', 'UniqueID','
 Car_HIN_tenth_ID  = identify_HIN_segments(crash_df, 0.1, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
 Car_HIN_05_ID     = identify_HIN_segments(crash_df, 0.05, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
 print("HIN...")
+print(len(Ped_HIN_0_ID))
 # add all the HINs
 addHIN(output_feature_class, Ped_HIN_0_ID, "ped_HIN_0")
 addHIN(output_feature_class, Ped_HIN_05_ID, "ped_HIN_05")
