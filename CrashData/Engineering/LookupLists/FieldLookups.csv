@@ -1,0 +1,149 @@
+key,value,State,FieldName
+1,Fatal,CA,Crash_Severity
+2,Severe injury,CA,Crash_Severity
+3,Other visible injury,CA,Crash_Severity
+4,Complaint of pain,CA,Crash_Severity
+0,Property damage only,CA,Crash_Severity
+A,Head-on,CA,Crash_Type
+B,Sideswipe,CA,Crash_Type
+C,Rear end,CA,Crash_Type
+D,Angle-broadside,CA,Crash_Type
+E,Hit object,CA,Crash_Type
+F,Overturned,CA,Crash_Type
+G,Vehicle/pedestrian,CA,Crash_Type
+H,Other,CA,Crash_Type
+A,Daylight,CA,Lighting
+B,Dusk - Dawn,CA,Lighting
+C,Dark - Street Lights,CA,Lighting
+D,Dark - No Street Lights,CA,Lighting
+E,Dark - No Street Lights,CA,Lighting
+-,Unknown,CA,Lighting
+A,Clear,CA,Weather
+B,Cloudy,CA,Weather
+C,Raining,CA,Weather
+D,Snowing,CA,Weather
+E,Fog,CA,Weather
+F,Other,CA,Weather
+G,Windy,CA,Weather
+-,Not Stated,CA,Weather
+0,Unknown,CA,Violation
+1,Driving/Biking Under the Influence,CA,Violation
+2,Impeding Traffic,CA,Violation
+3,Unsafe Speed,CA,Violation
+4,Following Too Closely,CA,Violation
+5,Wrong Side of Road,CA,Violation
+6,Improper Passing,CA,Violation
+7,Unsafe Lane Change,CA,Violation
+8,Improper Turning,CA,Violation
+9,Auotomobile Right of Way,CA,Violation
+10,Pedestrian Right of Way,CA,Violation
+11,Pedestrian Violation,CA,Violation
+12,Traffic Signals and Signs,CA,Violation
+13,Hazardous Parking,CA,Violation
+17,Other Hazardous Violation,CA,Violation
+18,Other Than Driver or Pedestrian,CA,Violation
+21,Unsafe Backing or Starting,CA,Violation
+22,Other Improper Driving,CA,Violation
+-,Not Stated,CA,Violation
+A,Dry,CA,Road_Surface
+B,Wet,CA,Road_Surface
+C,Snowy or Icy,CA,Road_Surface
+D,"Slippery (Muddy, Oily, etc.)",CA,Road_Surface
+-,Not Stated,CA,Road_Surface
+A,"Holes, Deep Ruts",CA,Road_Condition
+B,Loose Material on Roadway,CA,Road_Condition
+C,Obstruction on Roadway,CA,Road_Condition
+D,Construction or Repair Zone,CA,Road_Condition
+E,Reduced Roadway Width,CA,Road_Condition
+F,Flooded,CA,Road_Condition
+G,Other,CA,Road_Condition
+H,No Unusual Condition,CA,Road_Condition
+-,Not Stated,CA,Road_Condition
+A,No Pedestrian Involved,CA,Pedestrian_Action
+B,Crossing in Crosswalk at Intersection,CA,Pedestrian_Action
+C,Crossing in Crosswalk Not at Intersection,CA,Pedestrian_Action
+D,Crossing Not in Crosswalk,CA,Pedestrian_Action
+E,"In Road, Including Shoulder",CA,Pedestrian_Action
+F,Not in Road,CA,Pedestrian_Action
+G,Approaching/Leaving School Bus,CA,Pedestrian_Action
+-,Not Stated,CA,Pedestrian_Action
+F,Felony,CA,Hit_and_Run
+M,Misdemeanor,CA,Hit_and_Run
+N,Not Hit and Run,CA,Hit_and_Run
+A,Non-Collision,CA,Motor_Vehicle_Interacted_With
+B,Pedestrian,CA,Motor_Vehicle_Interacted_With
+C,Other Motor Vehicle,CA,Motor_Vehicle_Interacted_With
+D,Motor Vehicle on Other Roadway,CA,Motor_Vehicle_Interacted_With
+E,Parked Motor Vehicle,CA,Motor_Vehicle_Interacted_With
+F,Train,CA,Motor_Vehicle_Interacted_With
+G,Bicycle,CA,Motor_Vehicle_Interacted_With
+H,Animal,CA,Motor_Vehicle_Interacted_With
+I,Fixed Object,CA,Motor_Vehicle_Interacted_With
+J,Other Object,CA,Motor_Vehicle_Interacted_With
+0,Non-Collision and Additional Object,CA,Motor_Vehicle_Interacted_With
+1,Pedestrian and Additional Object,CA,Motor_Vehicle_Interacted_With
+2,Other Motor Vehicle and Additional Object,CA,Motor_Vehicle_Interacted_With
+3,Motor Vehicle on Other Roadway and Additional Object,CA,Motor_Vehicle_Interacted_With
+4,Parked Motor Vehicle and Additional Object,CA,Motor_Vehicle_Interacted_With
+5,Train and Additional Object,CA,Motor_Vehicle_Interacted_With
+6,Bicycle and Additional Object,CA,Motor_Vehicle_Interacted_With
+7,Animal and Additional Object,CA,Motor_Vehicle_Interacted_With
+8,Fixed Object and Additional Object,CA,Motor_Vehicle_Interacted_With
+9,Other Object and Additional Object,CA,Motor_Vehicle_Interacted_With
+-,Not Stated,CA,Motor_Vehicle_Interacted_With
+ANGLE,Angle-broadside,NV,Crash_Type
+BACKING,Backing,NV,Crash_Type
+HEAD-ON,Head-on,NV,Crash_Type
+NON-COLLISION,Non-collision,NV,Crash_Type
+REAR-END,Rear end,NV,Crash_Type
+REAR-TO-REAR,Other,NV,Crash_Type
+"SIDESWIPE, MEETING",Sideswipe,NV,Crash_Type
+"SIDESWIPE, OVERTAKING",Sideswipe,NV,Crash_Type
+UNKNOWN,Unknown,NV,Crash_Type
+DAYLIGHT,Daylight,NV,Lighting
+DARK - CONT ROADWAY LIGHTING,Dark - Street Lights,NV,Lighting
+DARK - SPOT ROADWAY LIGHTING,Dark - Street Lights,NV,Lighting
+DARK - NO ROADWAY LIGHTING,Dark - No Street Lights,NV,Lighting
+OTHER,Unknown,NV,Lighting
+DUSK,Dusk - Dawn,NV,Lighting
+DAWN,Dusk - Dawn,NV,Lighting
+DARK - UNKNOWN ROADWAY LIGHTING,Dark - No Street Lights,NV,Lighting
+UNKNOWN,Unknown,NV,Lighting
+"DARK, UNK LIGHTED",Dark - No Street Lights,NV,Lighting
+"DARK, NOT LIGHTED",Dark - No Street Lights,NV,Lighting
+"DARK, LIGHTED",Dark - Street Lights,NV,Lighting
+Daylight,Daylight,NV,Lighting
+Dark - Cont Roadway Lighting,Dark - Street Lights,NV,Lighting
+Dark - Spot Roadway Lighting,Dark - Street Lights,NV,Lighting
+Dark - No Roadway Lighting,Dark - No Street Lights,NV,Lighting
+Other,Unknown,NV,Lighting
+Dusk,Dusk - Dawn,NV,Lighting
+Dawn,Dusk - Dawn,NV,Lighting
+Dark - Unknown Roadway Lighting,Dark - No Street Lights,NV,Lighting
+Unknown,Unknown,NV,Lighting
+"Dark, Unk Lighted",Dark - No Street Lights,NV,Lighting
+"Dark, Not Lighted",Dark - No Street Lights,NV,Lighting
+"Dark, Lighted",Dark - Street Lights,NV,Lighting
+DRY,Dry,NV,Road_Surface
+WET,Wet,NV,Road_Surface
+WATER,Wet,NV,Road_Surface
+ICE,Snowy or Icy,NV,Road_Surface
+SNOW,Snowy or Icy,NV,Road_Surface
+SLUSH,Snowy or Icy,NV,Road_Surface
+OTHER,Other,NV,Road_Surface
+UNKNOWN,Unknown,NV,Road_Surface
+Not stated,Not stated,NV,Road_Surface
+NONE,No Unusual Condition,NV,Road_Condition_1
+UNKNOWN,Unknown,NV,Road_Condition_1
+"WET, ICY, SNOW, SLUSH",Weather,NV,Road_Condition_1
+WEATHER,Weather,NV,Road_Condition_1
+BACKUP,Other,NV,Road_Condition_1
+GLARE,Other,NV,Road_Condition_1
+OTHER,Other,NV,Road_Condition_1
+VISUAL OBSTRUCTION,Other,NV,Road_Condition_1
+ROAD OBSTRUCTION,Obstruction on Roadway,NV,Road_Condition_1
+DEBRIS,Loose Material on Roadway,NV,Road_Condition_1
+WORK ZONE,Construction or Repair Zone,NV,Road_Condition_1
+ANIMAL,Wildlife,NV,Road_Condition_1
+RUTS,"Holes, Deep Ruts",NV,Road_Condition_1
+Not stated,Not Stated,NV,Road_Condition_1
