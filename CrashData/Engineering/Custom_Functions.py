@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def renamecolumns(df, column_mapping):
     df = df.rename(columns=column_mapping).drop(columns=[col for col in df.columns if col not in column_mapping])
@@ -55,3 +56,11 @@ def fieldJoinCalc(updateFC, updateFieldsList, sourceFC, sourceFieldsList):
     del valueDict  
     print ("Finished data transfer: " + strftime("%Y-%m-%d %H:%M:%S"))
 #     log.info("Finished data transfer: " + strftime("%Y-%m-%d %H:%M:%S"))
+    
+def update_if_contains_inplace(df, column_to_update, lookup_dictionary, fill_value=np.nan):
+    for key, value in lookup_dictionary.items():
+        df.loc[df[column_to_update].str.contains(key, na=False), column_to_update] = value
+    # Set values to the specified fill_value for keys not found in the dictionary
+    # Default value is null
+    df.loc[~df[column_to_update].isin(lookup_dictionary.keys()), column_to_update] = fill_value
+
