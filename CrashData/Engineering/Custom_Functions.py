@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import arcpy
 
 def renamecolumns(df, column_mapping,drop_columns):
     if drop_columns:
