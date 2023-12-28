@@ -1,0 +1,10 @@
+HIN_Name,Segment_Threshold,Victim_Field,Rank_Field_1,Rank_Field_2
+Ped_HIN_0,0,Pedestrian_Involved_Numeric,Crash_Rate_Ped,Num_Ped_Killed
+Ped_HIN_05,0.05,Pedestrian_Involved_Numeric,Crash_Rate_Ped,Num_Ped_Killed
+Ped_HIN_tenth,0.1,Pedestrian_Involved_Numeric,Crash_Rate_Ped,Num_Ped_Killed
+Bike_HIN_0,0,Bicycle_Involved_Numeric,Crash_Rate_Bike,Num_Bicyclist_Killed
+Bike_HIN_05,0.05,Bicycle_Involved_Numeric,Crash_Rate_Bike,Num_Bicyclist_Killed
+Bike_HIN_tenth,0.1,Bicycle_Involved_Numeric,Crash_Rate_Bike,Num_Bicyclist_Killed
+Car_HIN_0,0,Total_Car,Car_Victims_Per_Mile,Num_Killed
+Car_HIN_tenth,0.05,Total_Car,Car_Victims_Per_Mile,Num_Killed
+Car_HIN_05,0.1,Total_Car,Car_Victims_Per_Mile,Num_Killed
