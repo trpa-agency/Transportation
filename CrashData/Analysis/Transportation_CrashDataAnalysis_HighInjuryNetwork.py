@@ -24,13 +24,13 @@ geodatabase         = r"F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis
 memory_workspace = "memory" + "\\"
 
 # input fcs
-streetNetwork = "Tahoe_OSM_Streets"
+streetNetwork = "Tahoe_OSM_Streets_Split_HalfMileMax"
 crashData = "Tahoe_Crash"
 # output fc
 output_feature_class = "Tahoe_OSM_Streets_Crashes"
 
 # List of input and join field names
-input_field_names = ["UniqueID","name","maxspeed", "Shape_Length",  
+input_field_names = ["UniqueID", "Shape_Length",  
                      "CrashRate", "Miles", "FatalityRate"]
 
 join_field_names = ["Num_Killed", "Num_Injured", "Num_Ped_Killed", "Num_Ped_Injured", 
@@ -277,7 +277,7 @@ print("Number_Of_Crashes Calculation complete.")
 arcpy.management.CalculateField(
     in_table=output_feature_class,
     field="Crash_Rate_Weighted",
-    expression="!Crash_Severity_Numeric! / (!Miles!*8)",
+    expression="int(!Crash_Severity_Numeric!) / (!Miles!*8)",
     expression_type="PYTHON3",
     code_block="",
     enforce_domains="NO_ENFORCE_DOMAINS"
@@ -390,8 +390,6 @@ fields_to_unpivot = ["ped_HIN_0",
 
 # List of fields to keep from the original feature class
 fields_to_keep = ["UniqueID",
-                  "name",
-                  "maxspeed",
                 "Miles"
                 ,"Num_Killed"
                 ,"Num_Injured"
