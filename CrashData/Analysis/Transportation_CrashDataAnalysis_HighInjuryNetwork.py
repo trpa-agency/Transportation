@@ -360,7 +360,7 @@ print("Pandas to get HIN segments...")
 # run for different segment lenghth thresholds and for mode types
 #Bring in csv to dataframe with variable values
 #Iterate through the dataframe and make a new dataframe that contains results
-parameter_df = pd.read_csv('HIN_Parameters.csv')
+parameter_df = pd.read_csv('C:/Users/amcclary/Documents/GitHub/Transportation/CrashData/Analysis/HIN_Parameters.csv')
 result_column_names = ['HIN_IDs','Percent_Included','Threshold_Value_1','Threshold_Value_2']
 HIN_df = pd.concat([parameter_df, parameter_df.apply(lambda row: pd.Series(identify_HIN_segments(crash_df,row['Segment_Threshold'], 
                                                                                                  row['Victim_Field'], 'UniqueID',
