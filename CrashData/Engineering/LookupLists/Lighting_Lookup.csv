@@ -1,25 +1,25 @@
-Lighting_Raw,Lighting_Update,State
-DARK - NO ROADWAY LIGHTING,Dark - No Street Lights,NV
-"DARK, NOT LIGHTED",Dark - No Street Lights,NV
-Dark - No Roadway Lighting,Dark - No Street Lights,NV
-"Dark, Not Lighted",Dark - No Street Lights,NV
-DARK - CONT ROADWAY LIGHTING,Dark - Street Lights,NV
-DARK - SPOT ROADWAY LIGHTING,Dark - Street Lights,NV
-"DARK, LIGHTED",Dark - Street Lights,NV
-Dark - Cont Roadway Lighting,Dark - Street Lights,NV
-Dark - Spot Roadway Lighting,Dark - Street Lights,NV
-"Dark, Lighted",Dark - Street Lights,NV
-DARK - UNKNOWN ROADWAY LIGHTING,Dark - No Street Lights,NV
-"DARK, UNK LIGHTED",Dark - No Street Lights,NV
-Dark - Unknown Roadway Lighting,Dark - No Street Lights,NV
-"Dark, Unk Lighted",Dark - Street Lights,NV
-DAYLIGHT,Daylight,NV
-Daylight,Daylight,NV
-DUSK,Dusk - Dawn,NV
-DAWN,Dusk - Dawn,NV
-Dusk,Dusk - Dawn,NV
-Dawn,Dusk - Dawn,NV
-OTHER,Unknown,NV
-Other,Unknown,NV
-UNKNOWN,Unknown,NV
-Unknown,Unknown,NV
+key,value,State,FieldName
+DARK - NO ROADWAY LIGHTING,Dark - No Street Lights,NV,Lighting
+"DARK, NOT LIGHTED",Dark - No Street Lights,NV,Lighting
+Dark - No Roadway Lighting,Dark - No Street Lights,NV,Lighting
+"Dark, Not Lighted",Dark - No Street Lights,NV,Lighting
+DARK - CONT ROADWAY LIGHTING,Dark - Street Lights,NV,Lighting
+DARK - SPOT ROADWAY LIGHTING,Dark - Street Lights,NV,Lighting
+"DARK, LIGHTED",Dark - Street Lights,NV,Lighting
+Dark - Cont Roadway Lighting,Dark - Street Lights,NV,Lighting
+Dark - Spot Roadway Lighting,Dark - Street Lights,NV,Lighting
+"Dark, Lighted",Dark - Street Lights,NV,Lighting
+DARK - UNKNOWN ROADWAY LIGHTING,Dark - No Street Lights,NV,Lighting
+"DARK, UNK LIGHTED",Dark - No Street Lights,NV,Lighting
+Dark - Unknown Roadway Lighting,Dark - No Street Lights,NV,Lighting
+"Dark, Unk Lighted",Dark - Street Lights,NV,Lighting
+DAYLIGHT,Daylight,NV,Lighting
+Daylight,Daylight,NV,Lighting
+DUSK,Dusk - Dawn,NV,Lighting
+DAWN,Dusk - Dawn,NV,Lighting
+Dusk,Dusk - Dawn,NV,Lighting
+Dawn,Dusk - Dawn,NV,Lighting
+OTHER,Unknown,NV,Lighting
+Other,Unknown,NV,Lighting
+UNKNOWN,Unknown,NV,Lighting
+Unknown,Unknown,NV,Lighting

@@ -1,11 +1,11 @@
-Factors Roadway,Road_Surface,State
-DRY,Dry,NV
-WET,Wet,NV
-WATER,Wet,NV
-ICE,Snowy or Icy,NV
-SNOW,Snowy or Icy,NV
-SLUSH,Snowy or Icy,NV
-OTHER,Other,NV
-NA,Not stated,NV
-UNKNOWN,Unknown,NV
-Not stated,Not stated,NV
+key,value,State,FieldName
+DRY,Dry,NV,Road_Surface
+WET,Wet,NV,Road_Surface
+WATER,Wet,NV,Road_Surface
+ICE,Snowy or Icy,NV,Road_Surface
+SNOW,Snowy or Icy,NV,Road_Surface
+SLUSH,Snowy or Icy,NV,Road_Surface
+OTHER,Other,NV,Road_Surface
+NA,Not stated,NV,Road_Surface
+UNKNOWN,Unknown,NV,Road_Surface
+Not stated,Not stated,NV,Road_Surface
