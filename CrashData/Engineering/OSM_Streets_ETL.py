@@ -1,11 +1,47 @@
 import arcpy
+import overpass
 
 # workspace
 arcpy.env.workspace = r"F:\GIS\PROJECTS\Transportation\Vision Zero\CrashAnalysis\Crash Analysis.gdb"
 
 # get OSM streets for Tahoe
+def get_tahoe_streets():
+    # Define the bounding box for Lake Tahoe
+    bbox = (-120.0726, 38.8030, -119.8782, 39.0959)  # (min_lon, min_lat, max_lon, max_lat)
+
+    # Construct the Overpass QL query to get all streets in the specified bounding box
+    overpass_query = f"""
+        [out:json];
+        way["highway"](bbox:{','.join(map(str, bbox))});
+        (._;>;);
+        out body;
+    """
+
+    # Send the query to the Overpass API
+    api = overpass.API()
+    result = api.get(overpass_query)
+
+    # Extract and print the street names
+    streets = set()
+    for element in result["elements"]:
+        if "tags" in element and "name" in element["tags"]:
+            streets.add(element["tags"]["name"])
+
+    return streets
+
+if __name__ == "__main__":
+    tahoe_streets = get_tahoe_streets()
+    print("Streets in Lake Tahoe:")
+    for street in tahoe_streets:
+        print(street)
 
 # clip to Tahoe boundary
+arcpy.analysis.Clip(
+    in_features="Tahoe_Streets",
+    clip_features="TRPA Boundary",
+    out_feature_class="Tahoe_OSM_Streets",
+    cluster_tolerance=None
+)
 
 # dissolve
 arcpy.management.Dissolve(
