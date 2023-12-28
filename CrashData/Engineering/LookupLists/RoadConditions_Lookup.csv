@@ -1,15 +1,15 @@
-HWY Factors,Road_Condition_1,State
-NONE,No Unusual Condition,NV
-UNKNOWN,Unknown,NV
-"WET, ICY, SNOW, SLUSH",Weather,NV
-WEATHER,Weather,NV
-BACKUP,Other,NV
-GLARE,Other,NV
-OTHER,Other,NV
-VISUAL OBSTRUCTION,Other,NV
-ROAD OBSTRUCTION,Obstruction on Roadway,NV
-DEBRIS,Loose Material on Roadway,NV
-WORK ZONE,Construction or Repair Zone,NV
-ANIMAL,Wildlife,NV
-RUTS,"Holes, Deep Ruts",NV
-Not stated,Not Stated,NV
+key,value,State,FieldName
+NONE,No Unusual Condition,NV,Road_Conditions
+UNKNOWN,Unknown,NV,Road_Conditions
+"WET, ICY, SNOW, SLUSH",Weather,NV,Road_Conditions
+WEATHER,Weather,NV,Road_Conditions
+BACKUP,Other,NV,Road_Conditions
+GLARE,Other,NV,Road_Conditions
+OTHER,Other,NV,Road_Conditions
+VISUAL OBSTRUCTION,Other,NV,Road_Conditions
+ROAD OBSTRUCTION,Obstruction on Roadway,NV,Road_Conditions
+DEBRIS,Loose Material on Roadway,NV,Road_Conditions
+WORK ZONE,Construction or Repair Zone,NV,Road_Conditions
+ANIMAL,Wildlife,NV,Road_Conditions
+RUTS,"Holes, Deep Ruts",NV,Road_Conditions
+Not stated,Not Stated,NV,Road_Conditions

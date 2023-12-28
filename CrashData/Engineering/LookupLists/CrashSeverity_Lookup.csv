@@ -1,8 +1,8 @@
-CrashSeverity,Crash_Severity,State
-U,Unknown,NV
-O,Property damage only,NV
-C,Complaint of pain,NV
-B,Other Visible injury,NV
-N,Unknown,NV
-K,Fatal,NV
-A,Severe Injury,NV
+key,value,State,FieldName
+U,Unknown,NV,Crash_Severity
+O,Property damage only,NV,Crash_Severity
+C,Complaint of pain,NV,Crash_Severity
+B,Other Visible injury,NV,Crash_Severity
+N,Unknown,NV,Crash_Severity
+K,Fatal,NV,Crash_Severity
+A,Severe Injury,NV,Crash_Severity
