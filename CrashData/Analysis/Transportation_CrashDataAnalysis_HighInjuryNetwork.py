@@ -73,16 +73,31 @@ def assign_value(row, threshold):
         return 'below_threshold'
 
 # segments to HIN based on victim threshold
-def identify_HIN_segments(df, segment_threshold, victim_field, unique_id_field, rank_field):
+def identify_HIN_segments(df, segment_threshold, victim_field, unique_id_field, rank_fields):
     df['threshold_status']=df.apply(assign_value, args=(segment_threshold,), axis = 1)
-    df_sorted = df.sort_values(by=rank_field, ignore_index = True, ascending = False)
+    #Sort the rows by the relevant fields (crash rate and numeric crash severity)
+    df_sorted = df.sort_values(by=rank_fields, ignore_index = True, ascending = False)
     total_victims = df_sorted[victim_field].sum()
+    #remove rows that are below the chosen length threshold
     df_sorted = df_sorted.loc[df_sorted['threshold_status']=='above_threshold']
-    df_sorted['Cumulative_Vics'] = df_sorted[victim_field].cumsum()
-    df_HIN = df_sorted[df_sorted['Cumulative_Vics']<= (.65 * total_victims)]
+    #Get the cumulative number of victims
+    df_sorted['Cumulative_Victims'] = df_sorted[victim_field].cumsum()
+    #Group them by the rankings and then return the minimum of the group so if any segment that is exactly tied matches 
+    #they will all be included
+    df_sorted['Grouped_Cumulative_Victims_Min']=df_sorted.groupby(rank_fields)['Cumulative_Victims'].transform('min')
+    #Filter down to just ones to get to .65
+    df_HIN = df_sorted[df_sorted['Grouped_Cumulative_Victims_Min']<= (.65 * total_victims)]
+    #Sum up the totals of the filtered records and divide by total. 
+    #This number would ideally be very close to .65
+    percent_included = df_HIN[victim_field].sum()/total_victims
+    #Get the threshold values for inclusion within the HIN 
+    threshold = df_HIN[rank_fields].min()
+    threshold_1 = threshold[0]
+    threshold_2 = threshold[1]
+    #Get a list of all ids to be included
     HIN_IDs = df_HIN[unique_id_field]
-    return HIN_IDs
 
+    return HIN_IDs, percent_included, threshold_1, threshold_2     
 # coded value fields to capture which segments are in the HIN for each mode
 def addHIN(fc, idList, field_name):
     # Update the new field based on presence in the list of Object IDs
@@ -343,27 +358,20 @@ crash_df['Ped_Victims_Per_Mile']  =crash_df['Total_Ped']/crash_df['Miles']
 print("Pandas to get HIN segments...")
 
 # run for different segment lenghth thresholds and for mode types
-Ped_HIN_0_ID      = identify_HIN_segments(crash_df, 0, 'Pedestrian_Involved_Numeric', 'UniqueID','Crash_Rate_Ped')
-Ped_HIN_05_ID     = identify_HIN_segments(crash_df, 0.05, 'Pedestrian_Involved_Numeric', 'UniqueID','Crash_Rate_Ped')
-Ped_HIN_tenth_ID  = identify_HIN_segments(crash_df, 0.1, 'Pedestrian_Involved_Numeric', 'UniqueID','Crash_Rate_Ped')
-Bike_HIN_0_ID     = identify_HIN_segments(crash_df, 0, 'Bicycle_Involved_Numeric', 'UniqueID','Crash_Rate_Bike')
-Bike_HIN_05_ID    = identify_HIN_segments(crash_df, 0.05, 'Bicycle_Involved_Numeric', 'UniqueID','Crash_Rate_Bike')
-Bike_HIN_tenth_ID = identify_HIN_segments(crash_df, 0.1, 'Bicycle_Involved_Numeric', 'UniqueID','Crash_Rate_Bike')
-Car_HIN_0_ID      = identify_HIN_segments(crash_df, 0, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
-Car_HIN_tenth_ID  = identify_HIN_segments(crash_df, 0.1, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
-Car_HIN_05_ID     = identify_HIN_segments(crash_df, 0.05, 'Total_Car', 'UniqueID','Car_Victims_Per_Mile')
-print("HIN...")
+#Bring in csv to dataframe with variable values
+#Iterate through the dataframe and make a new dataframe that contains results
+parameter_df = pd.read_csv('HIN_Parameters.csv')
+result_column_names = ['HIN_IDs','Percent_Included','Threshold_Value_1','Threshold_Value_2']
+HIN_df = pd.concat([parameter_df, parameter_df.apply(lambda row: pd.Series(identify_HIN_segments(crash_df,row['Segment_Threshold'], 
+                                                                                                 row['Victim_Field'], 'UniqueID',
+                                                                                                 [row['Rank_Field_1'],row['Rank_Field_2']])), axis=1)], axis=1)
+# Rename the result columns
+HIN_df.columns = list(parameter_df.columns) + result_column_names
 
-# add all the HINs
-addHIN(output_feature_class, Ped_HIN_0_ID, "ped_HIN_0")
-addHIN(output_feature_class, Ped_HIN_05_ID, "ped_HIN_05")
-addHIN(output_feature_class, Ped_HIN_tenth_ID, "ped_HIN_tenth")
-addHIN(output_feature_class, Bike_HIN_0_ID, "bike_HIN_0")
-addHIN(output_feature_class, Bike_HIN_05_ID, "bike_HIN_05")
-addHIN(output_feature_class, Bike_HIN_tenth_ID, "bike_HIN_tenth")
-addHIN(output_feature_class, Car_HIN_0_ID, "car_HIN_0")
-addHIN(output_feature_class, Car_HIN_05_ID, "car_HIN_05")
-addHIN(output_feature_class, Car_HIN_tenth_ID, "car_HIN_tenth")
+#Use the results dataframe to add the HIN fields to the crash feature class
+HIN_df.apply(lambda row:pd.Series(addHIN(output_feature_class,row['HIN_IDs'],row['HIN_Name'])),axis=1)
+results_df = HIN_df.drop('HIN_IDs', axis=1)
+results_df.to_csv('results.csv')
 
 print("Done adding HIN")
 
