@@ -8,3 +8,11 @@ REAR-TO-REAR,Other,Crash_Type,NV
 "SIDESWIPE, MEETING",Sideswipe,Crash_Type,NV
 "SIDESWIPE, OVERTAKING",Sideswipe,Crash_Type,NV
 UNKNOWN,Unknown,Crash_Type,NV
+angle,Angle-broadside,Crash_Type,NV
+HEAD ON,Head-on,Crash_Type,NV
+REAR END,Rear end,Crash_Type,NV
+REAR TO REAR,Other,Crash_Type,NV
+Rear To Side,Other,Crash_Type,NV
+SIDESWIPE - MEETING,Sideswipe,Crash_Type,NV
+SIDESWIPE - OVERTAKING,Sideswipe,Crash_Type,NV
+Sideswip - Overtaking,Sideswipe,Crash_Type,NV
