@@ -362,6 +362,8 @@ print("Pandas to get HIN segments...")
 #Iterate through the dataframe and make a new dataframe that contains results
 parameter_df = pd.read_csv('C:/Users/amcclary/Documents/GitHub/Transportation/CrashData/Analysis/HIN_Parameters.csv')
 result_column_names = ['HIN_IDs','Percent_Included','Threshold_Value_1','Threshold_Value_2']
+#This combines the dataframe with the input variables with the results returned for those input variables from the identify_hin_segements function
+#One of these results is the the list of HIN IDs that will be used to populate the HIN fields
 HIN_df = pd.concat([parameter_df, parameter_df.apply(lambda row: pd.Series(identify_HIN_segments(crash_df,row['Segment_Threshold'], 
                                                                                                  row['Victim_Field'], 'UniqueID',
                                                                                                  [row['Rank_Field_1'],row['Rank_Field_2']])), axis=1)], axis=1)
