@@ -124,6 +124,7 @@ Unknown,Unknown,NV,Lighting
 "Dark, Unk Lighted",Dark - No Street Lights,NV,Lighting
 "Dark, Not Lighted",Dark - No Street Lights,NV,Lighting
 "Dark, Lighted",Dark - Street Lights,NV,Lighting
+Dusk-dawn,Dusk - Dawn,NV,Lighting
 DRY,Dry,NV,Road_Surface
 WET,Wet,NV,Road_Surface
 WATER,Wet,NV,Road_Surface
@@ -147,3 +148,8 @@ WORK ZONE,Construction or Repair Zone,NV,Road_Condition_1
 ANIMAL,Wildlife,NV,Road_Condition_1
 RUTS,"Holes, Deep Ruts",NV,Road_Condition_1
 Not stated,Not Stated,NV,Road_Condition_1
+Not stated,Unknown,NV,Lighting
+Dark - street lights,Dark - Street Lights,NV,Lighting
+Dark - no street lights,Dark - No Street Lights,NV,Lighting
+Dusk-Dawn,Dusk - Dawn,NV,Lighting
+Dark - unknown lighting,Dark - Street Lights,NV,Lighting

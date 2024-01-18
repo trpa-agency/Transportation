@@ -2,7 +2,7 @@ key,value,State,FieldName
 U,Unknown,NV,Crash_Severity
 O,Property damage only,NV,Crash_Severity
 C,Complaint of pain,NV,Crash_Severity
-B,Other Visible injury,NV,Crash_Severity
+B,Other visible injury,NV,Crash_Severity
 N,Unknown,NV,Crash_Severity
 K,Fatal,NV,Crash_Severity
-A,Severe Injury,NV,Crash_Severity
+A,Severe injury,NV,Crash_Severity
