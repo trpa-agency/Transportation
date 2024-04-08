@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+author: "Reid Haefer"
+date: "3/8/2019"
+output: html_document
+---
+
+```{r}
+library(pacman)
+p_load(tidyverse, leaflet, sf, htmlwidgets)
+```
+
+```{r}
+com <- st_read("model_taz", "commercial") %>% st_transform(crs=4326)
+res <- st_read("model_taz", "residential") %>% st_transform(crs=4326)
+roads <- st_read("model_taz", "major_roads") %>% st_transform(crs=4326)
+taz <- st_read("model_taz", "taz_sde") %>% st_transform(crs=4326)
+bg <- st_read("model_taz", "block_group") %>% st_transform(crs=4326)
+```
+
+```{r}
+m<-leaflet()%>% addProviderTiles("Stamen.TonerLite") %>% 
+  #addPolylines(roads) %>%
+ addPolygons(data=res, stroke=F, fillColor = "#15BD04", fillOpacity = 1, group="res") %>% 
+  addPolygons(data=com, stroke=F, fillColor = "#02B6FF", fillOpacity = 1, group="com") %>%
+ addPolygons(data=taz, fill=F, color="red",group="taz") %>%
+  addPolygons(data=bg, fill=F, color="yellow", group="bg") %>%
+  addLegend(color="#02B6FF", group="com", labels="Commercial") %>%
+  addLegend(color="#15BD04", group="res", labels="Residential") %>%
+  addLegend(color="red", group="taz", labels="TAZs") %>%
+  addLegend(color="yellow", group="bg", labels="Block Groups")
+saveWidget(m, file="taz.html",selfcontained = FALSE)
+```
+

@@ -1,0 +1,172 @@
+---
+title: "Tahoe Model - 2018 Base Year"
+author: "TRPA Staff"
+date: "11/4/2019"
+output: word_document
+---
+
+```{r warning=F, message=F, echo=F, results = 'hide'}
+library(pacman)
+p_load(tmap, sf, geojsonio,tidyverse)
+taz<-st_read("model_taz","taz_sde") %>%
+      st_transform(crs=4326)
+
+streets <- geojson_read("https://opendata.arcgis.com/datasets/8753e4259d7b464ead6a4b5be99f2346_2.geojson", what="sp") %>%
+  st_as_sf() %>%
+  st_transform(crs=4326)
+```
+
+# Introduction
+
+This document outlines the methodology for updating elements of the Tahoe Model as part of developing the 2018 base year for the 2020 Regional Transportation Plan. The core elements of the 2018 base year update include zonal input files, roadway network, and sub-model updates. 
+
+## Zonal Input Methodology
+
+In travel demand modeling, the existing socioeconomic and land use conditions are summarized into smaller zones referred to as Transportation Analysis Zones (TAZ). In the Tahoe model, the region is divided into 282 TAZs. This document provides a high level summary of the data collected and analyzed to inform the 2018 Tahoe model base year. Unless otherwise noted, all data referenced below are summarized by TAZ. During the summer and fall of 2019, TRPA staff collected and analyzed a variety of datasets to develop the zonal input files that will be used as the basis for the 2018 Tahoe Model base year.
+
+## Transportation Analysis Zone Updates
+
+The existing transportation analysis zones (TAZ) were analyzed and assessed to determine any potential areas for improvement. Except some minor geospatial realignments, it was determined that their existing size, quantity, and land use composition satisfied all necessary modeling characteristics.
+
+```{r warning=F, message=F, echo=F}
+tmap_mode("plot")
+tm_shape(taz) + tm_polygons()
+```
+
+### Employment
+
+The model classifies employment into five typess: _retail_, _recreation_, _service_, _gaming_, and _other_.
+
+The base year employment dataset was sourced from official Quarterly Census of Employment and Wages (QCEW) reported data, which was purchased from the California Economic Development Department (EDD) and provided by the Nevada Department of Employment Training and Rehabilitation (DETR). 
+
+For the EDD provided data, the average number of monthly employeers at each business were aggregated for each TAZ-employment type category. The data was averaged for June, August, and September of 2018 to align with the model time period.
+
+Total regionwide employment was used for the Nevada portion of Tahoe because business level data was not available. The total employment for the Nevada portion of Tahoe was distributed to TAZ and employment type categories based upon the distribution from the 2014 base year. The Nevada dataset consisted of average employment in Q4 2018 and Q1 2019 data, which generally aligns with the model time period.
+
+__Employment Totals__
+
+* Nevada - 11,108
+* California - 17,512
+* Total - 28,620
+
+### School Enrollment
+
+Individual school level enrollment was acquired from the California and Nevada departments of education for all public and private schools in the region. The individual school enrollments were aggregated by TAZ and broken down by school type (elementary, middle, and high school and the two colleges). Enrollment was averaged for the spring and fall quarters of 2018 to align with the model time period.
+
+__Total Enrollment by Category__
+
+* Elementary School - 3,119
+* Middle School - 1,613
+* High School - 2,045
+* College - 1,890
+* Total - 8,667
+
+### Residential Units
+
+The total number of residential units were determined using parcel-level TRPA tracking data, enhanced by a variety of other datasets (assessors records, LIDAR, Zillow, etc)
+
+_occupied units_ = _(total residential units)_ X _(census occupancy rates)_
+
+_unoccupied units_ = _(total residential units)_ - _(occupied units)_
+
+_total residents_ = _(occupied units)_ X _(average household size)_
+
+__Residential Unit Totals__
+
+* Residential Units - 47,645
+* Occupied Residential Units - 21,260
+* Unoccupied Residential Units - 26,385
+
+### Residential Population
+
+The U.S. Census-based American Community Survey (ACS) 2012-2017 5-year estimated that the resident population of the region had declined to 51,631. The decline was a result of both the percent of occupied units and number of persons per household. Occupancy status, income, and household size statistics were also sourced from the ACS are then applied to the TRPA residential unit dataset to determine the number of persons and occupied and unoccupied residential units by income level. The proportion of occupied units and number of persons per household were adjusted in accordance with ACS trends to ensure the total persons aligned with the 2012-2017 ACS 5-year population estimate for the entire region.
+
+### Seasonal Units and VHRs
+
+The unoccupied residential units calculated above are then categorized as seasonal resident, VHR, or other unoccupied. The census (ACS 2012-2017 5-year estimate) estimates the percentage of all unoccupied units that are categorized as _Seasonal/Recreational/Occasional Units_.  The number of VHRs was provided by each jurisdiction for the summer of 2018. The number of reported VHRs was substracted from the total number of the _Seasonal/Recreational/Occasional Units_ to estimate the number of seasonal or other unoccupied units.
+
+_total seasonal units_ = _(total unoccupied units)_ - _(VHRs + other unoccupied units)_
+
+Occupancy rates were determined by analyzing observed Short-Term Rental transient occupancy tax (TOT) reporting statistics from local jurisdictions. No observed occupancy rate data was available for seasonable units, so it was assumed that the VHR occupancy rate was the same as the seasonal rate. The occupancy rate data consisted of an average of monthly or quarterly rates from June thru September. The number of occupied VHRs and seasonal units were determined by multiplying the total number of units of each by the occupancy rate.
+
+_VHR occupancy rates_ = _(rooms occupied)_ / _(rooms available)_
+
+_seasonal occupancy rates_ = _VHR occupancy rates_
+
+__Seasonal/VHR Totals__
+
+* Unoccupied Residential Units - 26,385
+* VHRs - 6,019
+* Seasonal Units - 17,427
+* Other Unoccupied Units - 2,939
+
+### Overnight Lodging Units
+
+The location and number of visitor overnight lodging units is based upon TRPA's internal accounting of tourist accomodation units (TAU) and was enhanced using additional data and research. Units are aggregated by TAZ and lodging unit category (casino, resort, hotel/motel, & campground).
+
+The number of occupied overnight lodging units was determined by multiplying the total number of units by the reported occupancy rate. The occupancy rates were calculated using TOT reported rooms occupied divided by rooms available for the model time period. This data was collected at various levels of granularity depending on the jurisdiction. For campgrounds, occupancy rates were determined using an average of the occupancy reported by campground operators.
+
+* Placer County - Occupancy per unit type for each of Placer County's five TOT reporting areas in Tahoe, aggregated by TAZ
+* City of South Lake Tahoe - Occupancy per unit type for all reporting businesses, aggregated by TAZ
+* El Dorado County - Business level data was not available, so the rates for CSLT were applied to the El Dorado County TAZs that contained lodging units, aggregated by TAZ
+* Douglas County - Occupancy per casino and non-casino units, aggregated by TAZ
+* Washoe County - Occupancy for all units within the Tahoe portion of Washoe County, aggregated by TAZ
+
+_lodging occupancy rates_ = _rooms occupied_ / _rooms available_
+
+_occupied lodging units_ = _total lodging Units_ X _lodging unit occupancy rates_
+
+__Lodging Unit Totals__
+
+* Total Lodging Units - 11,107
+* Occupied Lodging Units - 6,765
+  + Hotel/Motel - 2,132
+  + Resort - 2,214
+  + Casino - 2,419
+* Campground Sites - 2,104
+
+### Recreation Attractiveness
+
+
+```{r warning=F, message=F, echo=F,out.width= "65%", out.extra='style="float:right; padding:10px"'}
+vis<-read_csv("rec_attractiveness/86195_Recreation_Attractiveness2/Home Work/86195_Recreation_Attractiveness2_tourist_summary_all.csv")
+#percentile <- ecdf(vis$`Average Daily Zone Traffic (StL Index)`)
+rec_attract<-taz %>% left_join(vis, by=c("TAZ"="Zone Name")) %>%
+  filter(!is.na(`Average Daily Zone Traffic (StL Index)`)) %>%
+  rename(beach=`Average Daily Zone Traffic (StL Index)`) %>%
+  data.frame() %>%
+  select(TAZ,beach)
+tmap_mode("plot")
+taz %>% left_join(rec_attract, by="TAZ") %>% filter(!is.na(beach)) %>% select(TAZ, beach) %>% tm_shape() + tm_polygons(col="beach", alpha = .7)
+```
+
+Recreation attractiveness was assessed using Streetlight Data's activity analysis module. Using location-based service (LBS) information, Streetlight Data provides an accurate estimate of the relative activity in areas throughout the region. The Streetlight Index is a relative number; it represents the relative activity of all zones considered recreational and influences which areas residents and visitors travel to for recreation.
+
+__Highest-Activity Recreation Zones__
+
+1. Heavenly Village Area
+2. Lakeside Beach Area
+3. Ski Run Marina Area
+4. Lake View Commons Area
+5. Rabe Meadow/Nevada Beach Area
+
+## Roadway Network Updates
+
+The regional roadway network was refined with updated speeds, lanes, and capacity information using Open Street Map (OSM) resources and staff research.
+
+```{r warning=F, message=F, echo=F}
+tmap_mode("plot")
+tm_shape(streets) + tm_lines()
+```
+
+## Other Model Updates
+
+### Visitor Behavior
+
+Visitor patterns were updated using the 2018 TRPA Summer Travel Survey.
+
+### External Worker Sub-Model
+
+### External Station Composition
+
+### External Trip Characteristics
