@@ -1,0 +1,336 @@
+APN,BATHROOMS,BEDROOMS,COUNTY_x,COUNTY_LANDUSE_DESCRIPTION_x,EXISTING_LANDUSE_x,JURISDICTION_x,LOCATION_TO_TOWNCENTER_x,Max_Occupancy,OWNERSHIP_TYPE_x,REGIONAL_LANDUSE_x,Rental_Type,WITHIN_BONUSUNIT_BNDY_x,WITHIN_TRPA_BNDY_x,YEAR_BUILT_x,ZONING_DESCRIPTION_x,Residential_Units,TouristAccommodation_Units,CommercialFloorArea_SqFt,YEAR
+123-281-02,2,3,WA,Condominium or Townhouse,Condominium,WA,Town Center,8,Private,Tourist,VHR,1,1,1999,Crystal Bay Tourist,0,0,0,2022
+123-293-01,3.5,3,WA,Condominium or Townhouse,Condominium,WA,Town Center,4,Private,Tourist,VHR,1,1,2018,Crystal Bay Tourist,0,0,0,2022
+123-294-05,2.5,2,WA,Condominium or Townhouse,Condominium,WA,Town Center,4,Private,Tourist,VHR,1,1,2018,Crystal Bay Tourist,0,0,0,2022
+123-295-01,4.5,4,WA,Condominium or Townhouse,Condominium,WA,Town Center,8,Private,Tourist,VHR,1,1,2018,Crystal Bay Tourist,0,0,0,2022
+123-295-02,3.5,3,WA,Condominium or Townhouse,Condominium,WA,Town Center,4,Private,Tourist,VHR,1,1,2018,Crystal Bay Tourist,0,0,0,2022
+123-295-04,2.5,2,WA,Condominium or Townhouse,Condominium,WA,Town Center,4,Private,Tourist,VHR,1,1,2018,Crystal Bay Tourist,0,0,0,2022
+123-295-06,4.5,4,WA,Condominium or Townhouse,Condominium,WA,Town Center,4,Private,Tourist,VHR,1,1,2018,Crystal Bay Tourist,0,0,0,2022
+124-860-06,2.5,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,5,Private,Residential,VHR,1,1,2018,Incline Village Residential,0,0,0,2022
+124-860-07,2.5,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,5,Private,Residential,VHR,1,1,2018,Incline Village Residential,0,0,0,2022
+126-152-22,2.5,3,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,8,Private,Residential,VHR,1,1,1971,Mt. Shadows,0,0,0,2022
+126-161-01,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1980,Mt. Shadows,0,0,0,2022
+126-161-12,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1980,Mt. Shadows,0,0,0,2022
+126-162-08,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,8,Private,Residential,VHR,1,1,1980,Mt. Shadows,0,0,0,2022
+126-163-11,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,5,Private,Residential,VHR,1,1,1980,Mt. Shadows,0,0,0,2022
+127-071-21,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1982,Incline Village Residential,0,0,0,2022
+127-071-29,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1982,Incline Village Residential,0,0,0,2022
+127-072-17,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1982,Incline Village Residential,0,0,0,2022
+127-073-01,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1991,Incline Village Residential,0,0,0,2022
+127-073-04,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1991,Incline Village Residential,0,0,0,2022
+127-073-18,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1985,Incline Village Residential,0,0,0,2022
+127-073-26,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1985,Incline Village Residential,0,0,0,2022
+127-074-25,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1985,Incline Village Residential,0,0,0,2022
+127-074-26,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1985,Incline Village Residential,0,0,0,2022
+127-075-03,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1994,Incline Village Residential,0,0,0,2022
+127-075-09,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1994,Incline Village Residential,0,0,0,2022
+127-075-12,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1994,Incline Village Residential,0,0,0,2022
+127-075-16,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1994,Incline Village Residential,0,0,0,2022
+127-075-19,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1993,Incline Village Residential,0,0,0,2022
+127-075-32,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,8,Private,Residential,VHR,1,1,1992,Incline Village Residential,0,0,0,2022
+127-076-16,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1993,Incline Village Residential,0,0,0,2022
+127-076-17,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1993,Incline Village Residential,0,0,0,2022
+127-077-04,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,8,Private,Residential,VHR,1,1,1990,Incline Village Residential,0,0,0,2022
+127-077-06,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1990,Incline Village Residential,0,0,0,2022
+127-077-08,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1990,Incline Village Residential,0,0,0,2022
+127-077-11,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1990,Incline Village Residential,0,0,0,2022
+127-077-22,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1989,Incline Village Residential,0,0,0,2022
+127-077-27,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1989,Incline Village Residential,0,0,0,2022
+127-077-29,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1989,Incline Village Residential,0,0,0,2022
+127-077-31,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1989,Incline Village Residential,0,0,0,2022
+127-290-35,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1971,Incline Village Residential,0,0,0,2022
+127-320-09,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,5,Private,Residential,VHR,1,1,1974,Incline Village Residential,0,0,0,2022
+127-480-03,4,4,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,10,Private,Residential,VHR,1,1,1980,Incline Village Residential,0,0,0,2022
+127-480-04,4,4,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,10,Private,Residential,VHR,1,1,1980,Incline Village Residential,0,0,0,2022
+127-490-05,4,4,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,10,Private,Residential,VHR,1,1,1980,Incline Village Residential,0,0,0,2022
+127-490-06,4,4,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,8,Private,Residential,VHR,1,1,1980,Incline Village Residential,0,0,0,2022
+127-490-08,4,4,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1980,Incline Village Residential,0,0,0,2022
+129-100-02,2.5,3,WA,Condominium or Townhouse,Condominium,WA,Outside Buffer,9,Private,Residential,VHR,0,1,1981,Incline Village #3,0,0,0,2022
+129-180-03,3,3,WA,Condominium or Townhouse,Condominium,WA,Outside Buffer,5,Private,Residential,VHR,0,1,1981,Incline Village #3,0,0,0,2022
+129-292-11,3.5,4,WA,Condominium or Townhouse,Condominium,WA,Outside Buffer,10,Private,Residential,VHR,1,1,2007,Incline Village #3,0,0,0,2022
+129-600-02,3,2,WA,Condominium or Townhouse,Condominium,WA,Outside Buffer,7,Private,Residential,VHR,0,1,1979,Incline Village #3,0,0,0,2022
+130-180-09,0,0,WA,"General Commercial: retail, mixed, parking, school",Commercial,WA,Town Center,6,Private,Tourist,VHR,1,1,1974,Incline Village Tourist,0,0,0,2022
+130-180-64,0,0,WA,"General Commercial: retail, mixed, parking, school",Commercial,WA,Town Center,4,Private,Tourist,VHR,1,1,1974,Incline Village Tourist,0,0,0,2022
+130-192-06,2.5,3,WA,Condominium or Townhouse,Condominium,WA,Town Center,10,Private,Tourist,VHR,1,1,1979,Incline Village Tourist,0,0,0,2022
+130-192-09,2,3,WA,Condominium or Townhouse,Condominium,WA,Town Center,8,Private,Tourist,VHR,1,1,1979,Incline Village Tourist,0,0,0,2022
+131-170-01,1,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1965,Fairway Special Area #1,0,0,0,2022
+131-170-05,1,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1965,Fairway Special Area #1,0,0,0,2022
+132-051-12,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,4,Private,Residential,VHR,1,1,1978,Incline Village Residential,0,0,0,2022
+132-052-06,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1978,Incline Village Residential,0,0,0,2022
+132-052-08,1,1,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,1978,Incline Village Residential,0,0,0,2022
+132-232-13,8,7,WA,"General Commercial: retail, mixed, parking, school",Commercial,WA,Town Center,8,Private,Mixed-Use,VHR,1,1,1984,Incline Village Commercial,0,0,4049,2022
+132-232-13,8,7,WA,"General Commercial: retail, mixed, parking, school",Commercial,WA,Town Center,5,Private,Mixed-Use,VHR,1,1,1984,Incline Village Commercial,0,0,4049,2022
+132-380-02,2,2,WA,Condominium or Townhouse,Condominium,WA,Quarter Mile Buffer,6,Private,Residential,VHR,1,1,1964,Incline Village Residential,0,0,0,2022
+1418-34-113-012,0,0,DG,Single Family Residence,Single Family Residential,DG,Outside Buffer,8,Private,Residential,VHR,0,1,2021,Lincoln,0,0,0,2022
+1418-34-110-054,0,0,DG,Single Family Residence,Single Family Residential,DG,Outside Buffer,10,Private,Residential,VHR,0,1,2005,Lincoln,0,0,0,2022
+1318-15-710-003,0,0,DG,Single Family Residence,Single Family Residential,DG,Outside Buffer,10,Private,Residential,VHR,1,1,2005,Round Hill Residential,0,0,0,2022
+1318-10-415-024,0,0,DG,Single Family Residence,Single Family Residential,DG,Outside Buffer,8,Private,Residential,VHR,0,1,2010,Marla Bay/Zephyr Heights,0,0,0,2022
+1319-30-710-016,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-710-010,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-615-006,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,8,Private,Residential,VHR,1,1,1977,Tahoe Village,0,0,0,2022
+1319-30-615-003,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,4,Private,Residential,VHR,1,1,1977,Tahoe Village,0,0,0,2022
+1319-30-622-004,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Recreation,VHR,1,1,1978,Heavenly Valley Nevada,0,0,0,2022
+1319-30-710-014,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,1,1980,,0,0,0,2022
+1319-30-710-007,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Recreation,VHR,1,1,1980,Heavenly Valley Nevada,0,0,0,2022
+1319-30-614-004,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,1979,Tahoe Village,0,0,0,2022
+1319-30-539-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-514-014,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,4,Private,Residential,VHR,1,1,1980,Tahoe Village,0,0,0,2022
+1319-30-614-002,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,9,Private,Residential,VHR,1,1,1979,Tahoe Village,0,0,0,2022
+1319-30-540-007,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-540-005,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,2,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-540-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-540-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-640-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-30-514-001,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,4,Private,Residential,VHR,1,1,1980,Tahoe Village,0,0,0,2022
+1319-30-626-001,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,1977,Tahoe Village,0,0,0,2022
+1319-30-621-006,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Recreation,VHR,1,1,1979,Heavenly Valley Nevada,0,0,0,2022
+1319-30-620-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-30-621-004,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Recreation,VHR,1,1,1979,Heavenly Valley Nevada,0,0,0,2022
+1319-30-613-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-30-613-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-30-611-007,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,1980,Tahoe Village,0,0,0,2022
+1319-30-611-001,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,8,Private,Residential,VHR,1,1,1980,Tahoe Village,0,0,0,2022
+1319-30-641-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-30-641-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-30-642-008,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-642-007,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-642-006,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-642-005,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-642-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-642-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-624-001,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,10,Private,Residential,VHR,1,1,1977,Tahoe Village,0,0,0,2022
+1319-30-540-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-514-008,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,4,Private,Residential,VHR,1,1,1980,Tahoe Village,0,0,0,2022
+1319-30-514-005,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,1980,Tahoe Village,0,0,0,2022
+1319-30-514-004,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,4,Private,Residential,VHR,1,1,1980,Tahoe Village,0,0,0,2022
+1319-30-532-012,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-30-532-009,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-30-532-006,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,2,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-30-628-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-628-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-634-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,10,Private,,VHR,0,0,1979,,0,0,0,2022
+1319-30-638-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1981,,0,0,0,2022
+1319-30-638-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1981,,0,0,0,2022
+1319-30-628-006,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,2,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-628-021,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-628-017,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-628-008,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-526-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,10,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-522-004,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,8,Private,Residential,VHR,1,1,1985,Tahoe Village,0,0,0,2022
+1319-30-522-002,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,8,Private,Residential,VHR,1,1,1985,Tahoe Village,0,0,0,2022
+1319-30-628-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-628-013,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-526-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,10,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-526-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-523-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1975,,0,0,0,2022
+1319-30-520-028,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,1982,Tahoe Village,0,0,0,2022
+1319-30-518-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1979,,0,0,0,2022
+1319-30-516-043,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-718-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-716-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1979,,0,0,0,2022
+1319-30-716-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1979,,0,0,0,2022
+1319-30-715-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-714-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-714-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1987,,0,0,0,2022
+1319-30-635-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-635-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-636-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-636-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-633-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-628-024,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-628-011,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-530-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1975,,0,0,0,2022
+1319-30-530-002,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1975,,0,0,0,2022
+1319-30-530-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1975,,0,0,0,2022
+1319-30-530-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1975,,0,0,0,2022
+1319-30-529-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1974,,0,0,0,2022
+1319-30-524-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1975,,0,0,0,2022
+1319-30-520-007,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,4,Private,Residential,VHR,1,1,1982,Tahoe Village,0,0,0,2022
+1319-30-517-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-516-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1973,,0,0,0,2022
+1319-30-516-029,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1973,,0,0,0,2022
+1319-30-516-031,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1973,,0,0,0,2022
+1319-30-516-036,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,10,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-30-627-019,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1979,,0,0,0,2022
+1319-30-627-013,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-712-007,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-30-719-009,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1981,,0,0,0,2022
+1319-30-719-007,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1981,,0,0,0,2022
+1319-30-719-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1981,,0,0,0,2022
+1319-19-720-017,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1982,,0,0,0,2022
+1319-19-720-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1982,,0,0,0,2022
+1319-19-720-008,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-19-213-003,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,4,Private,Residential,VHR,1,1,1969,Upper Kingsbury,0,0,0,2022
+1319-19-718-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1979,,0,0,0,2022
+1319-19-710-027,0,0,DG,Duplex,Multi-Family Residential,DG,,8,Private,,VHR,0,1,1973,,0,0,0,2022
+1319-19-710-027,0,0,DG,Duplex,Multi-Family Residential,DG,,8,Private,,VHR,0,1,1973,,0,0,0,2022
+1319-19-611-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-19-611-012,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-19-611-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-19-611-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,6,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-19-612-001,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,4,Private,,VHR,0,0,1977,,0,0,0,2022
+1319-30-529-004,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1974,,0,0,0,2022
+1318-23-315-042,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Quarter Mile Buffer,3,Private,Residential,VHR,1,1,2020,Lake Village Special Area #1,0,0,0,2022
+1319-30-516-048,N/A,N/A,DG,Single Family Residence,Single Family Residential,DG,,9,Private,,VHR,0,0,1978,,0,0,0,2022
+1319-30-619-003,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1980,,0,0,0,2022
+1319-19-802-012,N/A,N/A,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,,8,Private,,VHR,0,0,1976,,0,0,0,2022
+1319-19-810-016,0,0,DG,Single Family Residence,Single Family Residential,DG,Outside Buffer,10,Private,Residential,VHR,1,1,2008,Upper Kingsbury,0,0,0,2022
+1318-22-311-017,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,10,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+1318-22-311-019,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+1318-22-312-002,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+1318-22-312-003,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2020,Oliver Park,0,0,0,2022
+1318-22-312-005,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+1318-22-312-006,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+1318-22-312-007,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+1318-22-312-013,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+1318-22-312-016,0,0,DG,Individual Residential Unit - Townhouse or Row House,Single Family Residential,DG,Outside Buffer,6,Private,Residential,VHR,1,1,2019,Oliver Park,0,0,0,2022
+015-062-013,N/A,3,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,8,Private,Residential,VHR,1,1,2008,Tahoma Residential,0,0,0,2022
+028-320-004,N/A,6,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,CSLT,Outside Buffer,6,Private,Residential,Hosted Rental,1,1,1980,Lakeview Heights,0,0,0,2022
+026-073-026,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,CSLT,Quarter Mile Buffer,6,Private,Residential,Hosted Rental,1,1,2019,Al Tahoe Special Area #1,0,0,0,2022
+025-432-020,N/A,5,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,12,Private,Residential,VHR,0,1,2018,Montgomery Estates,0,0,0,2022
+025-721-009,N/A,5,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,12,Private,Residential,VHR,0,1,2021,Montgomery Estates,0,0,0,2022
+025-803-009,N/A,5,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,12,Private,Residential,VHR,0,1,2018,Montgomery Estates,0,0,0,2022
+080-163-011,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2020,Golden Bear,0,0,0,2022
+025-831-032,N/A,6,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,14,Private,Residential,VHR,0,1,2020,Montgomery Estates,0,0,0,2022
+025-821-017,N/A,5,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,12,Private,Residential,VHR,0,1,2018,Montgomery Estates,0,0,0,2022
+033-854-006,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2017,Tahoe Paradise Washoan,0,0,0,2022
+033-684-002,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2008,Tahoe Paradise Washoan,0,0,0,2022
+033-678-013,N/A,6,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,14,Private,Residential,VHR,0,1,2020,Tahoe Paradise Washoan,0,0,0,2022
+081-042-001,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2019,Tahoe Paradise Meadowvale,0,0,0,2022
+033-302-003,N/A,3,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,8,Private,Residential,VHR,0,1,2018,Tahoe Paradise Meadowvale,0,0,0,2022
+081-072-009,N/A,3,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,8,Private,Residential,VHR,0,1,2020,Tahoe Paradise Meadowvale,0,0,0,2022
+033-372-003,N/A,5,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,12,Private,Residential,VHR,0,1,2011,Tahoe Paradise - Upper Truckee,0,0,0,2022
+081-091-011,N/A,4,EL,VAC RES VACANT RES. LAND <=2.5 AC. 1-3 UNITS,Vacant,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2018,Tahoe Paradise Meadowvale,0,0,0,2022
+033-422-029,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2019,Tahoe Paradise - Upper Truckee,0,0,0,2022
+034-772-001,N/A,3,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,8,Private,Residential,VHR,1,1,2019,Tahoe Paradise Meadowvale,0,0,0,2022
+034-254-014,N/A,3,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Quarter Mile Buffer,8,Private,Residential,VHR,1,1,2017,Meyers Residential,0,0,0,2022
+034-266-007,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Quarter Mile Buffer,10,Private,Residential,VHR,1,1,2018,Meyers Residential,0,0,0,2022
+034-382-006,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Quarter Mile Buffer,9,Private,Residential,VHR,1,1,2019,Meyers Residential,0,0,0,2022
+034-112-017,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Quarter Mile Buffer,10,Private,Residential,VHR,1,1,2018,Tahoe Paradise - Mandan,0,0,0,2022
+034-334-004,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Quarter Mile Buffer,10,Private,Residential,VHR,1,1,2015,Tahoe Paradise - Mandan,0,0,0,2022
+035-245-011,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2007,Christmas Valley,0,0,0,2022
+025-312-021,N/A,4,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,10,Private,Residential,VHR,0,1,2019,Black Bart,0,0,0,2022
+022-343-027,N/A,5,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,CSLT,Outside Buffer,,Private,Residential,VHR,0,1,2019,Tahoe Keys,0,0,0,2022
+026-139-045,N/A,2,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,CSLT,Quarter Mile Buffer,,Private,Residential,VHR,1,1,2019,Al Tahoe,0,0,0,2022
+026-139-045,N/A,2,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,CSLT,Quarter Mile Buffer,4,Private,Residential,Hosted Rental,1,1,2019,Al Tahoe,0,0,0,2022
+080-162-021,N/A,0,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,8,Private,Residential,VHR,0,1,1980,Golden Bear,0,0,0,2022
+015-351-016,N/A,2,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,EL,Outside Buffer,6,Private,Residential,VHR,1,1,1965,Tahoma Residential,0,0,0,2022
+025-701-030,N/A,3,EL,DEV RES SINGLE FAM. RES. <=2.5 AC.(INC. MAN. HMS,Single Family Residential,CSLT,Outside Buffer,4,Private,Residential,Hosted Rental,1,1,1964,Bijou,0,0,0,2022
+094-490-018,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Residential - Lake Forest,0,0,0,2022
+094-490-051,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1973,Placer County Tahoe Basin Area Plan - Residential - Lake Forest,0,0,0,2022
+094-490-054,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1985,Placer County Tahoe Basin Area Plan - Residential - Lake Forest,0,0,0,2022
+094-480-020,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1973,Placer County Tahoe Basin Area Plan - Residential - Lake Forest,0,0,0,2022
+117-080-013,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-020,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-005,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-019,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-004,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-220-038,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1980,Placer County Tahoe Basin Area Plan - Mixed-Use Residential,0,0,0,2022
+117-080-018,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-014,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-015,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-033,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-035,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-037,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-060,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-058,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-041,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-057,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-054,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-053,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1994,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-052,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-051,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,989,2022
+117-080-049,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-048,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-210-031,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1973,Placer County Tahoe Basin Area Plan - Mixed-Use Residential,0,0,0,2022
+090-072-032,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,2016,Placer County Tahoe Basin Area Plan - Mixed-Use Lakeside Town Center,0,0,0,2022
+117-220-019,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1973,Placer County Tahoe Basin Area Plan - Mixed-Use Residential,0,0,0,2022
+117-210-026,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1973,Placer County Tahoe Basin Area Plan - Mixed-Use Residential,0,0,0,2022
+117-080-028,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-029,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-021,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-025,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-024,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,64,0,2022
+117-080-022,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-012,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-011,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+095-510-040,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1967,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-041,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1967,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-042,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1967,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-030,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-020,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-007,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-031,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-029,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-019,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-017,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-010,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+090-400-004,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,1971,Placer County Tahoe Basin Area Plan - Residential - Brockway,0,0,0,2022
+117-210-022,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1973,Placer County Tahoe Basin Area Plan - Mixed-Use Residential,0,0,0,2022
+117-210-010,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1973,Placer County Tahoe Basin Area Plan - Mixed-Use Residential,0,0,0,2022
+117-210-008,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1990,Placer County Tahoe Basin Area Plan - Mixed-Use Residential,0,0,0,2022
+117-080-009,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+117-080-006,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1979,Placer County Tahoe Basin Area Plan - Mixed-Use Community Center West,0,0,0,2022
+111-080-020,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Residential - Kingswood East,0,0,0,2022
+111-080-007,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Residential - Kingswood East,0,0,0,2022
+111-080-006,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Residential - Kingswood East,0,0,0,2022
+111-070-034,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Residential,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Residential - Kingswood East,0,0,0,2022
+095-510-035,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1967,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-036,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1967,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-038,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1967,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-028,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-025,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-016,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-013,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-027,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-024,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1990,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-015,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-026,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-023,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-014,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+095-510-011,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1974,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,0,2022
+090-400-017,N/A,N/A,PL,"SINGLE FAM RES, CONDO",Condominium,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,1971,Placer County Tahoe Basin Area Plan - Residential - Brockway,0,0,0,2022
+098-114-010,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2011,Placer County Tahoe Basin Area Plan - Residential - Chambers Landing,0,0,0,2022
+098-210-035,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2018,Placer County Tahoe Basin Area Plan - Residential - Tahoma Residential,0,0,0,2022
+098-033-003,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2007,Placer County Tahoe Basin Area Plan - Residential - Chambers Landing,0,0,0,2022
+084-023-005,N/A,N/A,PL,"VACANT, SUBDIVIDED RESIDENTIAL",Open Space,PL,Outside Buffer,,Federal,Residential,VHR,1,1,N/A,Placer County Tahoe Basin Area Plan - Residential - Timberland,0,0,0,2022
+097-130-041,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Tourist,VHR,1,1,2010,Placer County Tahoe Basin Area Plan - Mixed-Use Homewood Village Center,0,0,1722,2022
+085-202-007,N/A,N/A,PL,"2 SINGLE FAM RES, DUPLEX",Multi-Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,1984,Placer County Tahoe Basin Area Plan - Residential - Tahoe Pines,0,0,0,2022
+093-092-018,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,0,1,2018,Placer County Tahoe Basin Area Plan - Residential - Dollar Point,0,0,0,2022
+095-481-020,N/A,N/A,PL,"RESIDENTIAL, AUXILIARY IMP",Commercial,PL,Outside Buffer,,Private,Tourist,VHR,1,1,2005,Placer County Tahoe Basin Area Plan - Tourist Planned Development - Granlibakken,0,0,11734,2022
+094-500-022,N/A,N/A,PL,COMMON AREA,Condominium Common Area,PL,Town Center,,Private,Mixed-Use,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood Tourist,0,0,0,2022
+094-500-022,N/A,N/A,PL,COMMON AREA,Condominium Common Area,PL,Town Center,,Private,Mixed-Use,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood Tourist,0,0,0,2022
+094-500-022,N/A,N/A,PL,COMMON AREA,Condominium Common Area,PL,Town Center,,Private,Mixed-Use,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood Tourist,0,0,0,2022
+094-500-022,N/A,N/A,PL,COMMON AREA,Condominium Common Area,PL,Town Center,,Private,Mixed-Use,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood Tourist,0,0,0,2022
+094-500-022,N/A,N/A,PL,COMMON AREA,Condominium Common Area,PL,Town Center,,Private,Mixed-Use,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood Tourist,0,0,0,2022
+094-500-022,N/A,N/A,PL,COMMON AREA,Condominium Common Area,PL,Town Center,,Private,Mixed-Use,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood Tourist,0,0,0,2022
+083-182-004,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Residential - Taven Heights,0,0,0,2022
+092-084-011,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2019,Placer County Tahoe Basin Area Plan - Residential - Cedar Flat,0,0,0,2022
+094-150-005,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1961,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood,0,0,3068,2022
+115-040-045,N/A,N/A,PL,"2 SINGLE FAM RES, DUPLEX",Multi-Family Residential,PL,Outside Buffer,,Private,Tourist,VHR,1,1,1985,Placer County Tahoe Basin Area Plan - Mixed-Use Neighborhood Center,0,0,1573,2022
+115-060-011,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,1980,Placer County Tahoe Basin Area Plan - Residential - Carnelian Bay Subdivision,0,0,0,2022
+090-380-010,N/A,N/A,PL,COMMON AREA,Condominium Common Area,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,0,Placer County Tahoe Basin Area Plan - Residential - Brockway,0,0,0,2022
+116-210-025,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2018,Placer County Tahoe Basin Area Plan - Residential - Flick Point/Agate Bay,0,0,0,2022
+090-181-095,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,2010,Placer County Tahoe Basin Area Plan - Residential - Kings Beach Residential,0,0,0,2022
+090-124-038,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,2007,Placer County Tahoe Basin Area Plan - Residential - Kings Beach Residential,0,0,0,2022
+090-134-057,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,1934,Placer County Tahoe Basin Area Plan - Residential - Brockway,0,0,0,2022
+116-030-059,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2020,Placer County Tahoe Basin Area Plan - Residential - Flick Point/Agate Bay,0,0,0,2022
+090-115-017,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,1955,Placer County Tahoe Basin Area Plan - Residential - Kings Beach Residential,0,0,0,2022
+090-072-003,N/A,N/A,PL,COMMERCIAL STORE,Commercial,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1960,Placer County Tahoe Basin Area Plan - Mixed-Use Lakeside Town Center,0,0,3738,2022
+090-124-036,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,2007,Placer County Tahoe Basin Area Plan - Residential - Kings Beach Residential,0,0,0,2022
+117-090-059,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2005,Placer County Tahoe Basin Area Plan - Residential - Tahoe Vista Subdivision,0,0,0,2022
+117-100-034,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2008,Placer County Tahoe Basin Area Plan - Residential - Tahoe Vista Subdivision,0,0,0,2022
+117-110-037,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2007,Placer County Tahoe Basin Area Plan - Residential - Tahoe Vista Subdivision,0,0,0,2022
+091-183-009,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2013,Placer County Tahoe Basin Area Plan - Residential - Cedar Flat,0,0,0,2022
+090-030-045,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2018,Placer County Tahoe Basin Area Plan - Residential - Brockway,0,0,0,2022
+112-070-012,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2020,Placer County Tahoe Basin Area Plan - Residential - Tahoe Estates,0,0,0,2022
+090-064-015,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Quarter Mile Buffer,,Private,Residential,VHR,1,1,2022,Placer County Tahoe Basin Area Plan - Residential - Kings Beach Residential,0,0,0,2022
+090-072-029,N/A,N/A,PL,"HOTELS, MOTELS, RESORTS",Tourist Accommodation,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1968,Placer County Tahoe Basin Area Plan - Mixed-Use Lakeside Town Center,0,24,0,2022
+090-072-029,N/A,N/A,PL,"HOTELS, MOTELS, RESORTS",Tourist Accommodation,PL,Town Center,,Private,Mixed-Use,VHR,1,1,1968,Placer County Tahoe Basin Area Plan - Mixed-Use Lakeside Town Center,0,24,0,2022
+112-060-006,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Tourist,VHR,1,1,2020,Placer County Tahoe Basin Area Plan - Residential - Tahoe Vista Residential,0,0,0,2022
+112-270-058,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,0,1,2008,Placer County Tahoe Basin Area Plan - Residential - Kingswood West,0,0,0,2022
+112-280-034,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,0,1,2018,Placer County Tahoe Basin Area Plan - Residential - Kingswood West,0,0,0,2022
+112-260-012,N/A,N/A,PL,"VACANT, SUBDIVIDED RESIDENTIAL",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,0,1,2022,Placer County Tahoe Basin Area Plan - Residential - Kingswood West,0,0,0,2022
+111-270-037,N/A,N/A,PL,"SINGLE FAM RES, HALF PLEX",Single Family Residential,PL,Outside Buffer,,Private,Residential,VHR,1,1,2012,Placer County Tahoe Basin Area Plan - Residential - Kingswood East,0,0,0,2022
+097-130-030,,,PL,,Multi-Family Residential,PL,Further than Quarter Mile from Town Center,,Private,Tourist,VHR,1,1,,Placer County Tahoe Basin Area Plan - Mixed-Use Homewood Village Center,0,0,0,2022
+097-130-030,,,PL,,Multi-Family Residential,PL,Further than Quarter Mile from Town Center,,Private,Tourist,VHR,1,1,,Placer County Tahoe Basin Area Plan - Mixed-Use Homewood Village Center,0,0,0,2022
