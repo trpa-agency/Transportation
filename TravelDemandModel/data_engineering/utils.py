@@ -167,3 +167,64 @@ def merge_dataframes_inner(left_df, right_df, left_key, right_key):
 def merge_dataframes_outer(left_df, right_df, left_key, right_key):
     merged_df = pd.merge(left_df, right_df, how='outer', left_on=left_key, right_on=right_key)
     return merged_df
+
+#Function to crosswalk Block group to TAZ based on shared residential units
+
+def make_taz_crosswalk(parcel_fc, taz_fc, geography_fc):
+        # Define in-memory feature class names
+    geo_feature_class = r"in_memory\geo"
+    taz_feature_class = r"in_memory\taz_geo"
+
+    # Perform first spatial join - order doesn't matter
+    arcpy.analysis.SpatialJoin(
+        target_features=parcel_fc,
+        join_features=taz_fc,
+        out_feature_class=taz_feature_class,
+        join_operation="JOIN_ONE_TO_MANY",
+        join_type="KEEP_ALL",
+        match_option="HAVE_THEIR_CENTER_IN"
+    )
+
+    # Perform second spatial join
+    arcpy.analysis.SpatialJoin(
+        target_features=taz_feature_class,
+        join_features=geography_fc,
+        out_feature_class=geo_feature_class,
+        join_operation="JOIN_ONE_TO_MANY",
+        join_type="KEEP_ALL",
+        match_option="HAVE_THEIR_CENTER_IN"
+    )
+
+    # Convert the final joined feature class to a Spatially enabled DataFrame
+    sdf_taz_geo = pd.DataFrame.spatial.from_featureclass(geo_feature_class)
+
+    # Select and rename necessary columns
+    sdf_taz_geo = sdf_taz_geo[['APN', 'GEOID', 'TRPAID', 'TAZ_1', 'Residential_Units',
+                            'TouristAccommodation_Units', 'CommercialFloorArea_SqFt']]
+    sdf_taz_geo = sdf_taz_geo.rename(columns={'TAZ_1': 'TAZ'})
+
+    # Group by and aggregate data
+    df_parcels_grouped = sdf_taz_geo.groupby(['TAZ', 'TRPAID']).agg({'Residential_Units': 'sum',
+                                                                    'TouristAccommodation_Units': 'sum',
+                                                                    'CommercialFloorArea_SqFt': 'sum'}).reset_index()
+
+    # Calculate totals and proportions
+    df_parcels_grouped['Total_Res_Units'] = df_parcels_grouped.groupby('TAZ')['Residential_Units'].transform('sum')
+    df_parcels_grouped['Total_TA_Units'] = df_parcels_grouped.groupby('TAZ')['TouristAccommodation_Units'].transform('sum')
+    df_parcels_grouped['Total_CommercialFloorArea_SqFt'] = df_parcels_grouped.groupby('TAZ')['CommercialFloorArea_SqFt'].transform('sum')
+    
+    # Calculate proportions with checks for zero totals
+    df_parcels_grouped['Residential_Units_Proportion'] = df_parcels_grouped.apply(
+        lambda row: row['Residential_Units'] / row['Total_Res_Units'] if row['Total_Res_Units'] != 0 else 0, axis=1
+    )
+    df_parcels_grouped['TouristAccommodation_Units_Proportion'] = df_parcels_grouped.apply(
+        lambda row: row['TouristAccommodation_Units'] / row['Total_TA_Units'] if row['Total_TA_Units'] != 0 else 0, axis=1
+    )
+    df_parcels_grouped['CommercialFloorArea_SqFt_Proportion'] = df_parcels_grouped.apply(
+        lambda row: row['CommercialFloorArea_SqFt'] / row['Total_CommercialFloorArea_SqFt'] if row['Total_CommercialFloorArea_SqFt'] != 0 else 0, axis=1
+    )
+
+ 
+    # Fill NaN values with 0
+    df_parcels_grouped.fillna(0, inplace=True)
+    return df_parcels_grouped
