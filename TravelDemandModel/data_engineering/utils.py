@@ -168,8 +168,7 @@ def merge_dataframes_outer(left_df, right_df, left_key, right_key):
     merged_df = pd.merge(left_df, right_df, how='outer', left_on=left_key, right_on=right_key)
     return merged_df
 
-#Function to crosswalk Block group to TAZ based on shared residential units
-
+# TAZ Crosswalk function
 def make_taz_crosswalk(parcel_fc, taz_fc, geography_fc):
         # Define in-memory feature class names
     geo_feature_class = r"in_memory\geo"
