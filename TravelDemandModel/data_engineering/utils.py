@@ -171,8 +171,8 @@ def merge_dataframes_outer(left_df, right_df, left_key, right_key):
 # TAZ Crosswalk function
 def make_taz_crosswalk(parcel_fc, taz_fc, geography_fc):
         # Define in-memory feature class names
-    geo_feature_class = r"in_memory\geo"
-    taz_feature_class = r"in_memory\taz_geo"
+    geo_feature_class = r"memory\geo"
+    taz_feature_class = r"memory\taz_geo"
 
     # Perform first spatial join - order doesn't matter
     arcpy.analysis.SpatialJoin(
