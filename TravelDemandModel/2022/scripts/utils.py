@@ -1,7 +1,7 @@
 ## A set of utility functions to help with the data processing and analysis
 from pathlib import Path
 import pandas as pd
-import plotly.express as px
+#import plotly.express as px
 from arcgis.features import FeatureLayer, GeoAccessor, GeoSeriesAccessor
 import arcpy
 import pytz
