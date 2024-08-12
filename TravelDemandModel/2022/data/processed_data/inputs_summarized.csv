@@ -1,18 +1,18 @@
 category,RTP_20_base_year_2018,RTP_17_base_year_2014,RTP_24_base_year_2022
 lodging occupancy rate,0.61,0.64,0.48
 campground occupancy rate,,0.78,0.59
-house(VHR) rate,0.38,0.44,0.71
-seasonal rate,0.38,0.44,0.71
+house(VHR) rate,0.38,0.44,0.45
+seasonal rate,0.38,0.44,0.45
 lodging unit,11107.0,10575.0,11610.0
 campground,2104.0,2465.0,1964.0
 percentHouseSeasonal,0.71,0.79,0.71
 school enrollment,8667.0,9652.0,9089.0
 employment,28053.5,26367.0,0.0
-residential unit,47645.0,47540.0,48799.0
-total persons,50773.0,56241.0,52570.38
+residential unit,47645.0,47540.0,48800.0
+total persons,50773.0,56241.0,52570.83
 census occupancy rate,0.45,0.48,0.47
-low income res unit,6076.0,7418.0,9810.1
+low income res unit,6076.0,7418.0,9810.17
 medium income res unit,9059.0,10218.0,4736.14
-high income res unit,6115.0,5350.0,8505.4
-total occupied unit,21260.0,22993.0,23051.63
+high income res unit,6115.0,5350.0,8505.61
+total occupied unit,21260.0,22993.0,23051.91
 persons per occupied unit,2.3,2.35,2.28
