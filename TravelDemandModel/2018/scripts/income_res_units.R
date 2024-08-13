@@ -11,7 +11,7 @@ county <- geojson_read("https://opendata.arcgis.com/datasets/85a2e8e4bf994742a58
 
 taz<-st_read("model_taz","taz_sde") %>%
   st_transform(crs=4326)
-
+#Brings in 2017 ACS data?
 acs_var <- load_variables(2017, "acs5", cache = TRUE)
 
 var <- data.frame(variable=c("B19001_002","B19001_003","B19001_004","B19001_005","B19001_006","B19001_007","B19001_008","B19001_009", "B19001_010","B19001_011","B19001_012","B19001_013","B19001_014","B19001_015","B19001_016","B19001_017"), 
@@ -34,7 +34,7 @@ ed_acs <- get_acs(geography = "block group", year=2017,
                   state = "CA",county="El Dorado", geometry = T) %>%
   mutate(county="el dorado")
 
-
+#Adding up the income categories by block group
 all<- rbind(dg_acs, wa_acs, pla_acs, ed_acs) %>%
   left_join(data.frame(block_group), by="GEOID") %>%
   filter(!is.na(NAME.y)) %>%
@@ -53,7 +53,7 @@ income<-all %>%
 st_transform(crs=4326)
   #mutate(freq = n / sum(n)) %>%
  # st_transform(crs=st_crs(taz))
-
+#Join the income data to the TAZs based on the largest overlap
 income_taz<-st_join(st_buffer(taz %>% select(TAZ),0), st_buffer(income,0), largest=TRUE)
 colnames(income_taz) <- c("TAZ", "TAZ1","GEOID", "high income", "low income", "medium income","geometry")
 income_taz <- income_taz %>%
