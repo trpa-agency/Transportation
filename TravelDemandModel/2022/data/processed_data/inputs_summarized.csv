@@ -5,7 +5,7 @@ house(VHR) rate,0.38,0.44,0.45
 seasonal rate,0.38,0.44,0.45
 lodging unit,11107.0,10575.0,11610.0
 campground,2104.0,2465.0,1964.0
-percentHouseSeasonal,0.71,0.79,0.39
+percentHouseSeasonal,0.71,0.79,0.74
 school enrollment,8667.0,9652.0,9089.0
 employment,28053.5,26367.0,0.0
 residential unit,47645.0,47540.0,48800.0
