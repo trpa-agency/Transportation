@@ -1,18 +1,21 @@
-"","category","RTP_20_base_year_2018","RTP_17_base_year_2014"
-"1","lodging occupancy rate",0.61,0.64
-"2","campground occupancy rate",NA,0.78
-"3","house(VHR) rate",0.38,0.44
-"4","seasonal rate",0.38,0.44
-"5","lodging unit",11107,10575
-"6","campground",2104,2465
-"7","percentHouseSeasonal",0.71,0.79
-"8","school enrollment",8667,9652
-"9","employment",28053.5,26367
-"10","residential unit",47645,47540
-"11","total persons",50773,56241
-"12","census occupancy rate",0.45,0.48
-"13","low income res unit",6076,7418
-"14","medium income res unit",9059,10218
-"15","high income res unit",6115,5350
-"16","total occupied unit",21260,22993
-"17","persons per occupied unit",2.3,2.35
+,category,RTP_20_base_year_2018,RTP_17_base_year_2014
+1,lodging occupancy rate,0.61,0.64
+2,campground occupancy rate,NA,0.78
+3,house(VHR) rate,0.38,0.44
+4,seasonal rate,0.38,0.44
+5,lodging unit,11107,10575
+6,campground,2104,2465
+7,percentHouseSeasonal,0.71,0.79
+8,school enrollment,8667,9652
+9,employment,28053.5,26367
+10,residential unit,47645,47540
+11,total persons,50773,56241
+12,census occupancy rate,0.45,0.48
+13,low income res unit,6076,7418
+14,medium income res unit,9059,10218
+15,high income res unit,6115,5350
+16,total occupied unit,21260,22993
+17,persons per occupied unit,2.3,2.35
+18,total vhrs,0,0
+19,vacant units,0,0
+20,total seasonal units,0,0
