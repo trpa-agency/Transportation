@@ -1,1 +1,6 @@
-﻿APN,Units
+﻿Zone,Units,Forecast_Year,Zone_Type
+EL,50,2035,County
+WA,50,2050,County
+TVAP,5,2035,Area Plan
+South Y,10,2035,Town Center
+N/A,300,2050,Within a Quarter Mile of Town Center
