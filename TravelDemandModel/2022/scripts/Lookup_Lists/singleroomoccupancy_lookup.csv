@@ -1,37 +1,29 @@
-﻿APN,Jurisdiction,Current_Use,Units,Address,Source,Name,
-029-052-013,CSLT,Tourist Accommodation Unit (TAU),4,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Mellow Mountain Hostel 4081 Cedar Ave.,CSLT Single Room Occupancy Program
-029-052-009,CSLT,Tourist Accommodation Unit (TAU),31,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Stateline Lodge 913 Friday Ave.,CSLT Single Room Occupancy Program
-029-041-047,CSLT,Tourist Accommodation Unit (TAU),23,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",The Shamrock 4122 Pine Blvd.,CSLT Single Room Occupancy Program
-026-084-006,CSLT,Tourist Accommodation Unit (TAU),15,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Tahoe Pines Motel 920 Alameda Ave.,CSLT Single Room Occupancy Program
-029-352-010,CSLT,Tourist Accommodation Unit (TAU),20,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Elizabeth Lodge 3918 Pioneer Trail,CSLT Single Room Occupancy Program
-031-085-021,CSLT,Tourist Accommodation Unit (TAU),26,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Sierra Pines 1040 Martin Ave.,CSLT Single Room Occupancy Program
-031-254-031,CSLT,Tourist Accommodation Unit (TAU),14,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Gerken’s Property 895 Rubicon Trail,CSLT Single Room Occupancy Program
-023-211-022,CSLT,Tourist Accommodation Unit (TAU),20,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",El Nido Motel 2215 Lake Tahoe Blvd.,CSLT Single Room Occupancy Program
-029-610-018,CSLT,Tourist Accommodation Unit (TAU),12,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Tahoe Country Inn 4085 Pine Blvd.,CSLT Single Room Occupancy Program
-023-211-041,CSLT,Tourist Accommodation Unit (TAU),18,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Matterhorn Inn 2187 Lake Tahoe Blvd.,CSLT Single Room Occupancy Program
-023-132-004,CSLT,Tourist Accommodation Unit (TAU),11,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",The Mountain Resort 580 & 590 Emerald Bay Rd.,CSLT Single Room Occupancy Program
-029-051-016,CSLT,Tourist Accommodation Unit (TAU),5,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",947 Poplar Apts. 947 Poplar St.,CSLT Single Room Occupancy Program
-029-065-003,CSLT,Tourist Accommodation Unit (TAU),19,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Ski Haus 977 Park Ave.,CSLT Single Room Occupancy Program
-029-064-004,CSLT,Tourist Accommodation Unit (TAU),5,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Paradice Motel 953 Park Ave.,CSLT Single Room Occupancy Program
-032-221-001,CSLT,Tourist Accommodation Unit (TAU),13,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Emerald Bay Inn 1313 Emerald Bay Rd.,CSLT Single Room Occupancy Program
-029-371-016,CSLT,Tourist Accommodation Unit (TAU),23,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",South Shore Inn 3900 Pioneer Tr.,CSLT Single Room Occupancy Program
-029-064-006,CSLT,Tourist Accommodation Unit (TAU),13,,"""C:\Users\kkasman\Downloads\SINGLEROOMOCCUPANCY_LIST_20180323.xlsx""",Mark Twain 947 Park Ave.,CSLT Single Room Occupancy Program
-029-051-016,,,,947 Poplar-Poplar Apts.,,,
-,,,,,,,
-029-041-057,,,,4113 Manzanita – The Pine Frost,,,
-,,,,,,,
-031-062-001,,,,2440 Lake Tahoe Blvd. – The Nickelodeon,,,
-,,,,,,,
-031-085-021,,,,1040 Martin Ave.-Sierra Pines,,,
-,,,,,,,
-029-162-002,,,,3901 Pioneer -The National 9,,,
-,,,,,,,
-032-221-001,,,,1313 EBR – Emerald Bay Res.,,,
-,,,,,,,
-029-052-013,,,,4081 Cedar – Mellow Mnt,,,
-,,,,,,,
-029-064-004,,,,953 Park – Paradise Motel,,,
-,,,,,,,
-023-211-041,,,,2187 LTB – Matterhorn,,,
-,,,,,,,
-029-371-016,,,,3900 Pioneer – South Shore Inn,,,
+﻿APN,SRO_Units,Name_Address
+029-052-013,4,Mellow Mountain Hostel 4081 Cedar Ave.
+029-052-009,31,Stateline Lodge 913 Friday Ave.
+029-041-047,23,The Shamrock 4122 Pine Blvd.
+026-084-006,15,Tahoe Pines Motel 920 Alameda Ave.
+029-352-010,20,Elizabeth Lodge 3918 Pioneer Trail
+031-085-021,26,Sierra Pines 1040 Martin Ave.
+031-254-031,14,Gerken’s Property 895 Rubicon Trail
+023-211-022,20,El Nido Motel 2215 Lake Tahoe Blvd.
+029-610-018,12,Tahoe Country Inn 4085 Pine Blvd.
+023-211-041,18,Matterhorn Inn 2187 Lake Tahoe Blvd.
+023-132-004,11,The Mountain Resort 580 & 590 Emerald Bay Rd.
+029-051-016,5,947 Poplar Apts. 947 Poplar St.
+029-065-003,19,Ski Haus 977 Park Ave.
+029-064-004,5,Paradice Motel 953 Park Ave.
+032-221-001,13,Emerald Bay Inn 1313 Emerald Bay Rd.
+029-371-016,23,South Shore Inn 3900 Pioneer Tr.
+029-064-006,13,Mark Twain 947 Park Ave.
+029-041-057,18,4113 Manzanita – The Pine Frost
+031-062-001,,2440 Lake Tahoe Blvd. – The Nickelodeon
+029-162-002,,3901 Pioneer -The National 9
+029-161-005,16,
+098-200-024,,
+029-041-009,,
+023-161-005,3,
+029-610-003,22,
+026-114-026,,
+031-062-002,,
+029-351-020,4,
