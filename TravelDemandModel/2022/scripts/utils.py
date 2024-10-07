@@ -7,6 +7,48 @@ import arcpy
 import pytz
 from datetime import datetime
 from time import strftime 
+# external connection packages
+from sqlalchemy.engine import URL
+from sqlalchemy import create_engine
+import os
+
+# check if field exists in data frame and final_schema and if not add it
+def check_field(df, fields):
+    for field in fields:
+        if field not in df.columns:
+            df[field] = np.nan
+    return df
+
+def get_conn(db):
+    # Get database user and password from environment variables on machine running script
+    db_user             = os.environ.get('DB_USER')
+    db_password         = os.environ.get('DB_PASSWORD')
+
+    # driver is the ODBC driver for SQL Server
+    driver              = 'ODBC Driver 17 for SQL Server'
+    # server names are
+    sql_12              = 'sql12'
+    sql_14              = 'sql14'
+    # make it case insensitive
+    db = db.lower()
+    # make sql database connection with pyodbc
+    if db   == 'sde_tabular':
+        connection_string = f"DRIVER={driver};SERVER={sql_12};DATABASE={db};UID={db_user};PWD={db_password}"
+        connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+        engine = create_engine(connection_url)
+    elif db == 'tahoebmpsde':
+        connection_string = f"DRIVER={driver};SERVER={sql_14};DATABASE={db};UID={db_user};PWD={db_password}"
+        connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+        engine = create_engine(connection_url)
+    elif db == 'sde':
+        connection_string = f"DRIVER={driver};SERVER={sql_12};DATABASE={db};UID={db_user};PWD={db_password}"
+        connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+        engine = create_engine(connection_url)
+    # else return None
+    else:
+        engine = None
+    # connection file to use in pd.read_sql
+    return engine
 
 # Reads in csv file
 def read_file(path_file):

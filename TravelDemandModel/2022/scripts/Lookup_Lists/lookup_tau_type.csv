@@ -1,54 +1,218 @@
-﻿APN,TAU_Type,Name
-1318-27-002-002,Casino,Harvey's Casino
-1318-27-002-005,Casino,Harrah's Casino
-1318-27-001-009,Casino,Golden Nugget Casino
-1318-27-001-021,Casino,Bally's Casino
-123-031-01,Casino,Cal Neva Casino
-123-042-01,Casino,Crystal Bay Motel
-123-052-04,Casino,Tahoe Biltmore Hotel Casino
-123-042-15,Casino,Crystal Bay Casino
-127-280-02,Resort,Hyatt Resort
-127-010-09,Resort,Hyatt Resort
-029-480-004,Resort,Marriot Timber Lodge
-027-090-025,Resort,Beach Retreat
-027-690-004,Resort,Hilton Resort
-029-441-018,Resort,Forest Suites Resort
-029-602-013,Resort,The Landing Resort
-027-020-017,Resort,Tahoe Lakeshore Lodge 
-117-140-006,Resort,Edgelake Beach Club
-090-072-009,Resort,Ferrari's Crown Resort
-117-072-003,Resort,Tahoe Sands Resorts
-117-071-012,Resort,Tahoe Sands Resorts
-117-071-005,Resort,Tahoe Sands Resorts
-117-072-004,Resort,Tahoe Sands Resorts
-117-071-028,Resort,Tahoe Vista Lodge & Cabins
-029-053-13,Resort,Bluelake Inn
-1318-27-001-016,Resort,Edgewood
-1319-30-720-001,Resort,The Ridge Tahoe
-029-480-04,Resort,Marriot Timber Lodge
-1318-27-001-007,Casino,Montbleu Casino
-029-190-32,Resort,Lake Tahoe Resort Hotel
-027-690-04,Resort,Lake Tahoe Vacation Resort
-029-490-04,Resort,Marriott-Grand Residence Tahoe
-027-090-25,Resort,Beach Retreat
-029-083-22,Resort,Hotel Becket
-095-481-011,Resort,Granlibakken Resort
-1318-27-001-015,Resort,Edgewood Tahoe
-1318-22-002-011,Casino,Lakeside Inn & Casino
-029-441-18,Resort,Forest Suites Resort
-027-170-02,Resort,Hotel Azure
-131-200-00,Resort,Club Tahoe Resort
-029-602-13,Resort,The Landing Resort
-032-130-08,Resort,Camp Richardson
-127-510-01,Resort,Hyatt High Sierra
-029-052-19,Resort,Big Pines Mountain House
-027-020-17,Resort,Tahoe Lakeshore Lodge 
-029-052-18,Resort,Gondola Residence Lodge
-117-072-013,Resort,Mourelatos Lakeshore Resort
-1318-10-000-002,Resort,Zephyr Cove Resort
-026-043-15,Resort,Beachcomber Inn
-016-041-10,Resort,Meeks Bay Resort
-117-240-022,Resort,Tonopalo Residence Club
-029-052-03,Resort,Big Pines Mountain House
-029-053-08,Resort,Bluelake Inn
-123-052-02,Casino,Tahoe Biltmore Hotel
+﻿APN,TAU_Type,Name,Units,,,,,,,
+1318-27-002-002,Casino,Harvey's Casino,740,,,,,,,
+1318-27-002-005,Casino,Harrah's Casino,512,,,,,,,
+1318-27-001-009,Casino,Golden Nugget Casino,539,,,,,,,
+1318-27-001-021,Casino,Bally's Casino,438,,,,,,,
+123-031-01,Casino,Cal Neva Casino,186,,,,,,,
+123-042-01,Hotel/Motel,Crystal Bay Motel,19,,,,,,,
+123-052-04,Casino,Tahoe Biltmore Hotel Casino,95,,,,,,,
+123-042-15,Casino,Crystal Bay Casino,10,,,,,,,
+127-280-02,Casino,Hyatt Resort,48,,,,,,,
+127-010-09,Casino,Hyatt Resort,416,,,,,,,
+029-480-004,Resort,Marriot Timber Lodge,449,,,,,,,
+027-090-025,Resort,Beach Retreat,261,,,,,,,
+027-690-004,Resort,Hilton Resort,364,,,,,,,
+029-441-018,Resort,Forest Suites Resort,110,,,,,,,
+029-602-013,Resort,The Landing Resort,82,,,,,,,
+027-020-017,Resort,Tahoe Lakeshore Lodge ,50,,,,,,,
+117-140-006,Hotel/Motel,Edgelake Beach Club,31,,,,,,,
+090-072-009,Resort,Ferrari's Crown Resort,71,,,,,,,
+117-072-003,Hotel/Motel,Tahoe Sands Resorts,26,,,,,,,
+117-071-012,Hotel/Motel,Tahoe Sands Resorts,14,,,,,,,
+117-071-005,Hotel/Motel,Tahoe Sands Resorts,13,,,,,,,
+117-072-004,Hotel/Motel,Tahoe Sands Resorts,8,,,,,,,
+029-053-013,Resort,Bluelake Inn,62,,,,,,,
+1318-27-001-016,Resort,Edgewood,154,,,,,,,
+1319-30-720-001,Resort,The Ridge Tahoe,604,,,,,,,
+029-190-032,Resort,Lake Tahoe Resort Hotel,400,,,,,,,
+029-490-004,Resort,Marriott-Grand Residence Tahoe,332,,,,,,,
+095-481-011,Resort,Granlibakken Resort,165,,,,,,,
+027-170-002,Resort,Hotel Azure,65,,,,,,,
+131-200-00,Resort,Club Tahoe Resort,93,,,,,,,
+032-130-008,Resort,Camp Richardson,71,,,,,,,
+127-510-01,Resort,Hyatt High Sierra,60,,,,,,,
+029-052-019,Resort,Big Pines Mountain House,57,,,,,,,
+029-052-018,Resort,Gondola Residence Lodge,34,,,,,,,
+117-072-013,Resort,Mourelatos Lakeshore Resort,32,,,,,,,
+1318-10-000-002,Resort,Zephyr Cove Resort,32,,,,,,,
+026-043-015,Resort,Beachcomber Inn,22,,,,,,,
+016-041-010,Resort,Meeks Bay Resort,22,,,,,,,
+117-240-022,Resort,Tonopalo Residence Club,19,,,,,,,
+029-052-003,Resort,Big Pines Mountain House,17,,,,,,,
+029-053-008,Resort,Bluelake Inn,6,,,,,,,
+127-030-38,Hotel/Motel,,16,,,,,,,
+1418-10-802-006,Hotel/Motel,,6,,,,,,,
+1318-26-101-006,Hotel/Motel,,64,,,,,,,
+1319-30-710-000,Hotel/Motel,,18,,,,,,,
+1319-30-639-000,Hotel/Motel,,23,,,,,,,
+1319-19-801-002,Hotel/Motel,,50,,,,,,,
+029-610-003,Hotel/Motel,,22,,,,,,,
+029-041-002,Hotel/Motel,,20,,,,,,,
+029-051-020,Hotel/Motel,,57,,,,,,,
+029-610-025,Hotel/Motel,,39,,,,,,,
+029-041-047,Hotel/Motel,,23,,,,,,,
+029-051-008,Hotel/Motel,,24,,,,,,,
+029-041-060,Hotel/Motel,,38,,,,,,,
+029-051-010,Hotel/Motel,,21,,,,,,,
+029-041-052,Hotel/Motel,,37,,,,,,,
+029-610-018,Hotel/Motel,,12,,,,,,,
+029-052-002,Hotel/Motel,,12,,,,,,,
+029-610-024,Hotel/Motel,,100,,,,,,,
+029-052-013,Hotel/Motel,,19,,,,,,,
+029-052-009,Hotel/Motel,,30,,,,,,,
+029-041-030,Hotel/Motel,,62,,,,,,,
+029-081-017,Hotel/Motel,,22,,,,,,,
+029-083-020,Hotel/Motel,,58,,,,,,,
+029-095-007,Hotel/Motel,,24,,,,,,,
+029-351-020,Hotel/Motel,,24,,,,,,,
+029-352-010,Hotel/Motel,,20,,,,,,,
+029-161-005,Hotel/Motel,,21,,,,,,,
+029-164-001,Hotel/Motel,,16,,,,,,,
+029-161-025,Hotel/Motel,,45,,,,,,,
+029-163-013,Hotel/Motel,,92,,,,,,,
+029-150-010,Hotel/Motel,,28,,,,,,,
+027-082-025,Hotel/Motel,,11,,,,,,,
+027-071-029,Hotel/Motel,,54,,,,,,,
+027-322-020,Hotel/Motel,,9,,,,,,,
+026-084-006,Hotel/Motel,,15,,,,,,,
+028-081-008,Hotel/Motel,,12,,,,,,,
+026-114-026,Hotel/Motel,,26,,,,,,,
+031-257-007,Hotel/Motel,,64,,,,,,,
+031-241-016,Hotel/Motel,,18,,,,,,,
+031-072-001,Hotel/Motel,,8,,,,,,,
+031-290-039,Hotel/Motel,,143,,,,,,,
+023-132-023,Hotel/Motel,,16,,,,,,,
+023-211-035,Hotel/Motel,,18,,,,,,,
+023-211-041,Hotel/Motel,,18,,,,,,,
+032-141-027,Hotel/Motel,,10,,,,,,,
+032-151-002,Hotel/Motel,,14,,,,,,,
+032-201-007,Hotel/Motel,,19,,,,,,,
+023-111-046,Hotel/Motel,,30,,,,,,,
+032-201-023,Hotel/Motel,,16,,,,,,,
+098-200-027,Hotel/Motel,,16,,,,,,,
+083-107-009,Hotel/Motel,,22,,,,,,,
+097-153-001,Hotel/Motel,,4,,,,,,,
+097-130-042,Hotel/Motel,,1,,,,,,,
+097-130-040,Hotel/Motel,,1,,,,,,,
+094-110-009,Hotel/Motel,,44,,,,,,,
+094-070-010,Hotel/Motel,,46,,,,,,,
+093-020-016,Hotel/Motel,,21,,,,,,,
+094-080-005,Hotel/Motel,,8,,,,,,,
+090-071-017,Hotel/Motel,,6,,,,,,,
+090-121-019,Hotel/Motel,,8,,,,,,,
+115-040-050,Hotel/Motel,,8,,,,,,,
+117-110-019,Hotel/Motel,,8,,,,,,,
+090-142-026,Hotel/Motel,,18,,,,,,,
+090-074-008,Hotel/Motel,,13,,,,,,,
+117-071-008,Hotel/Motel,,8,,,,,,,
+117-071-013,Hotel/Motel,,19,,,,,,,
+117-071-015,Hotel/Motel,,21,,,,,,,
+117-071-006,Hotel/Motel,,31,,,,,,,
+117-100-023,Hotel/Motel,,21,,,,,,,
+117-072-007,Hotel/Motel,,9,,,,,,,
+090-222-012,Hotel/Motel,,6,,,,,,,
+117-140-008,Hotel/Motel,,24,,,,,,,
+032-191-015,Hotel/Motel,,15,,,,,,,
+098-210-024,Hotel/Motel,,14,,,,,,,
+098-200-024,Hotel/Motel,,9,,,,,,,
+084-140-028,Hotel/Motel,,23,,,,,,,
+090-071-005,Hotel/Motel,,16,,,,,,,
+117-130-016,Hotel/Motel,,7,,,,,,,
+117-080-065,Hotel/Motel,,64,,,,,,,
+126-280-00,Hotel/Motel,,21,,,,,,,
+029-041-041,Hotel/Motel,,36,,,,,,,
+029-041-020,Hotel/Motel,,19,,,,,,,
+029-064-004,Hotel/Motel,,14,,,,,,,
+029-081-002,Hotel/Motel,,8,,,,,,,
+029-351-001,Hotel/Motel,,15,,,,,,,
+029-162-002,Hotel/Motel,,32,,,,,,,
+027-083-008,Hotel/Motel,,120,,,,,,,
+027-020-010,Hotel/Motel,,60,,,,,,,
+028-231-001,Hotel/Motel,,160,,,,,,,
+023-111-037,Hotel/Motel,,10,,,,,,,
+029-041-061,Hotel/Motel,,20,,,,,,,
+029-051-021,Hotel/Motel,,73,,,,,,,
+029-083-023,Hotel/Motel,,116,,,,,,,
+097-130-038,Hotel/Motel,,1,,,,,,,
+090-071-033,Hotel/Motel,,14,,,,,,,
+090-072-029,Hotel/Motel,,25,,,,,,,
+130-163-31,Hotel/Motel,,38,,,,,,,
+1319-30-301-003,Hotel/Motel,,35,,,,,,,
+015-331-004,Hotel/Motel,,7,,,,,,,
+015-331-005,Hotel/Motel,,12,,,,,,,
+029-610-021,Hotel/Motel,,43,,,,,,,
+029-041-009,Hotel/Motel,,5,,,,,,,
+029-051-019,Hotel/Motel,,41,,,,,,,
+029-052-001,Hotel/Motel,,30,,,,,,,
+029-063-002,Hotel/Motel,,103,,,,,,,
+029-064-006,Hotel/Motel,,21,,,,,,,
+029-162-007,Hotel/Motel,,36,,,,,,,
+029-150-007,Hotel/Motel,,34,,,,,,,
+027-350-001,Hotel/Motel,,36,,,,,,,
+027-350-020,Hotel/Motel,,44,,,,,,,
+031-254-031,Hotel/Motel,,14,,,,,,,
+023-141-006,Hotel/Motel,,21,,,,,,,
+023-161-006,Hotel/Motel,,17,,,,,,,
+023-251-030,Hotel/Motel,,21,,,,,,,
+097-121-011,Hotel/Motel,,16,,,,,,,
+097-140-031,Hotel/Motel,,5,,,,,,,
+094-130-004,Hotel/Motel,,24,,,,,,,
+090-142-007,Hotel/Motel,,6,,,,,,,
+090-221-002,Hotel/Motel,,11,,,,,,,
+117-130-010,Hotel/Motel,,7,,,,,,,
+1318-27-002-001,Hotel/Motel,,9,,,,,,,
+1319-30-514-000,Hotel/Motel,,24,,,,,,,
+1318-15-816-000,Hotel/Motel,,110,,,,,,,
+1318-22-002-113,Hotel/Motel,Lakeside Inn ,124,,,,,,,
+029-051-001,Hotel/Motel,,38,,,,,,,
+029-081-018,Hotel/Motel,,18,,,,,,,
+029-065-003,Hotel/Motel,,19,,,,,,,
+027-123-023,Hotel/Motel,,24,,,,,,,
+031-062-001,Hotel/Motel,,15,,,,,,,
+032-221-003,Hotel/Motel,,12,,,,,,,
+027-040-033,Hotel/Motel,,140,,,,,,,
+097-083-013,Hotel/Motel,,9,,,,,,,
+097-130-031,Hotel/Motel,,8,,,,,,,
+117-110-070,Hotel/Motel,,12,,,,,,,
+117-071-029,Hotel/Motel,,8,,,,,,,
+090-065-010,Hotel/Motel,,6,,,,,,,
+117-071-004,Hotel/Motel,,20,,,,,,,
+090-072-028,Hotel/Motel,,25,,,,,,,
+1319-30-629-000,Hotel/Motel,,18,,,,,,,
+1318-10-416-062,Hotel/Motel,,5,,,,,,,
+029-041-056,Hotel/Motel,,17,,,,,,,
+029-041-055,Hotel/Motel,,145,,,,,,,
+029-041-018,Hotel/Motel,,5,,,,,,,
+029-065-001,Hotel/Motel,,32,,,,,,,
+029-082-017,Hotel/Motel,,16,,,,,,,
+029-161-023,Hotel/Motel,,21,,,,,,,
+029-381-049,Hotel/Motel,,45,,,,,,,
+027-350-006,Hotel/Motel,,32,,,,,,,
+027-350-016,Hotel/Motel,,28,,,,,,,
+025-580-007,Hotel/Motel,,8,,,,,,,
+031-241-017,Hotel/Motel,,10,,,,,,,
+031-062-002,Hotel/Motel,,15,,,,,,,
+023-132-004,Hotel/Motel,,11,,,,,,,
+023-211-022,Hotel/Motel,,20,,,,,,,
+032-191-005,Hotel/Motel,,12,,,,,,,
+032-201-018,Hotel/Motel,,15,,,,,,,
+032-221-001,Hotel/Motel,,13,,,,,,,
+097-130-039,Hotel/Motel,,1,,,,,,,
+097-130-037,Hotel/Motel,,1,,,,,,,
+094-090-001,Hotel/Motel,,34,,,,,,,
+090-304-012,Hotel/Motel,,93,,,,,,,
+090-142-023,Hotel/Motel,,22,,,,,,,
+117-071-042,Hotel/Motel,,1,,,,,,,
+1319-30-616-000,Hotel/Motel,,29,,,,,,,
+1319-30-542-011,Hotel/Motel,,24,,,,,,,
+029-041-057,Hotel/Motel,,30,,,,,,,
+029-041-017,Hotel/Motel,,20,,,,,,,
+029-065-004,Hotel/Motel,,22,,,,,,,
+029-095-010,Hotel/Motel,,65,,,,,,,
+029-371-016,Hotel/Motel,,23,,,,,,,
+029-160-003,Hotel/Motel,,74,,,,,,,
+027-350-024,Hotel/Motel,,29,,,,,,,
+027-322-019,Hotel/Motel,,12,,,,,,,
+031-085-021,Hotel/Motel,,28,,,,,,,
+023-161-005,Hotel/Motel,,21,,,,,,,
+,,,,,,,,,,
