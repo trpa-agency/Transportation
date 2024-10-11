@@ -11,7 +11,7 @@ Total Overnight Visitor Units,Seasonal Units,"19,073","1,344",7.0,"20,417",base 
 Total Overnight Visitor Units,Campground Spots,"1,964",53,2.7,"2,017",one known campground coming. 53 sites will be built near Nevada Beach.
 Total Overnight Visitor Units,Total Lodging Units,"11,268",683,6.1,"11,951",from known projects list and removed/closed
 Occupied Overnight Visitor Units,Occupied Short Term Rentals,"1,941",221,11.4,"2,161",rate used from model input summary
-Occupied Overnight Visitor Units,Occupied Seasonal Units,"8,583",605,7.0,"9,188",rate used from model input summary
+Occupied Overnight Visitor Units,Occupied Seasonal Units,"8,583",-824,-9.6,"7,759",rate used from model input summary
 Occupied Overnight Visitor Units,Occupied Camping Spots,"1,159",127,11.0,"1,286",rate used from model input summary  40 sites added to account for DL Bliss partial closure in 2022. 56 added to account for Campground by the Lake partial closure in 2022.
 Occupied Overnight Visitor Units,Occupied Lodging Units,"5,409",328,6.1,"5,736",rate used from model input summary
 Other Key Data Points,Commercial Floor Area,"6,486,960","161,373",2.5,"6,648,333",base from model input summary and total unit change from forecast assumptions spreadsheet
