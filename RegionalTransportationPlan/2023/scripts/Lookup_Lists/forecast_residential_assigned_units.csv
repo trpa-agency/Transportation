@@ -1,162 +1,177 @@
-﻿APN,Unit Change,Type,Source,HH Income Category,Occpancy Rate,Jurisdiction,Unit_Pool
-014-242-008,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-015-263-012,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-015-370-22,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-016-091-008,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
+﻿APN,Unit Change,Type,Source,HH Income Category,Occupancy_Rate,Jurisdiction,Unit_Pool
+014-242-008,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+015-263-012,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+015-370-028,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+016-091-008,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
 021-201-016,-3,Known Banking in 2023-2024,Single-Family Residential Unit of Use (SFRUU),,,TRPA,General
-022-182-045,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-023-151-030,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-023-152-006,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-023-182-026,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-023-182-028,3,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-023-231-003,70,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-023-271-010,8,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-023-571-005,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-023-633-008,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-023-655-012,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-023-741-001,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-025-041-023,40,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,100%,CSLT,Bonus Unit
-025-041-023,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,CSLT,Bonus Unit
-025-263-008,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-025-282-018,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-025-354-008,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-025-375-032,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-037-001,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-061-006,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-077-017,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-092-026,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-026-094-026,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-095-008,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-104-005,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-122-031,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-122-036,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-026-124-018,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-026-152-002,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,100%,TRPA,Bonus Unit
-027-111-004,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-027-144-016,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-027-233-034,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-027-234-005,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-027-351-007,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-027-351-008,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
+022-182-045,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+023-151-030,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+023-152-006,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+023-182-026,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+023-182-028,3,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+023-231-003,70,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+023-271-010,8,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+023-571-005,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+023-633-008,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+023-655-012,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+023-741-001,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+025-041-023,40,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,1.00,CSLT,Bonus Unit
+025-041-023,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,CSLT,Bonus Unit
+025-263-008,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+025-282-018,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+025-354-008,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+025-375-032,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-037-001,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-061-006,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-077-017,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-092-026,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+026-094-026,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-095-008,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-104-005,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-122-036,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-122-036,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+026-124-018,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+026-152-002,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,1.00,TRPA,Bonus Unit
+027-111-004,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+027-144-016,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+027-233-034,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+027-234-005,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+027-351-007,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+027-351-008,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
 027-355-008,-1,Known Banking in 2023-2024,Single-Family Residential Unit of Use (SFRUU),,,TRPA,General
-028-141-039,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-028-221-030,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-029-095-029,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-029-170-001,75,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Affordable,100%,TRPA,Bonus Unit
-029-181-010,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-029-181-019,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-029-181-020,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-029-181-021,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-031-075-027,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-031-093-021,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-031-093-026,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-031-094-017,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-031-122-012,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-031-123-020,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-031-172-011,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-031-181-005,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-031-252-004,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-031-256-002,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-031-290-012,20,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-032-141-011,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-032-221-002,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-032-261-006,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
+028-141-039,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+028-221-030,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+029-095-029,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+029-170-001,75,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Affordable,1.00,TRPA,Bonus Unit
+029-181-010,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+029-181-019,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+029-181-020,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+029-181-021,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+031-075-027,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+031-093-021,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+031-093-026,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+031-094-017,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+031-122-012,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+031-123-020,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+031-172-011,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+031-181-005,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+031-252-004,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+031-256-002,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+031-290-012,20,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+032-141-011,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+032-221-002,2,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+032-261-006,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
 032-272-003,-1,Known Banking in 2023-2024,Single-Family Residential Unit of Use (SFRUU),,,TRPA,General
-032-279-009,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-032-291-028,208,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,100%,TRPA,Bonus Unit
-032-291-031,37,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,100%,TRPA,Bonus Unit
-033-343-014,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-033-441-003,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-033-441-028,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-034-381-007,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-034-382-005,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-036-423-001,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-080-114-010,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-081-102-010,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-083-172-009,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-083-350-027,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-083-350-036,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-084-032-009,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-085-050-032,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-085-250-008,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-090-092-050,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-090-115-037,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,100%,TRPA,Bonus Unit
-090-133-021,74,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-090-142-002,1,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-090-152-060,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-090-221-028,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-090-221-029,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-090-272-017,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-092-010-051,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-092-090-056,2,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-092-190-034,1,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-093-130-026,24,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-093-160-079,60,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-093-160-079,80,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Affordable,100%,TRPA,Bonus Unit
-094-052-011,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-094-070-006,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-094-122-023,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-097-060-038,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-098-167-019,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-098-191-018,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-111-100-028,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-111-280-017,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-115-010-019,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-117-071-044,4,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-117-100-088,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-123-031-06,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-123-032-12,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-123-041-18,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-123-131-11,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-123-133-25,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-123-250-08,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-124-860-01,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-124-860-02,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-124-860-03,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-125-010-20,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
+032-279-009,1,Known Project - permitted not completed,Residential Allocation,High,0.35,CSLT,General
+032-291-028,208,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,1.00,TRPA,Bonus Unit
+032-291-031,37,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,1.00,TRPA,Bonus Unit
+033-343-014,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+033-441-003,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+033-441-028,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+034-381-007,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+034-382-005,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+036-423-001,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+080-114-010,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+081-102-010,1,Known Project - permitted not completed,Residential Allocation,High,0.35,EL,General
+083-172-009,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+083-350-027,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+083-350-036,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+084-032-009,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+085-050-032,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+085-250-008,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+090-092-050,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+090-115-037,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Affordable,1.00,TRPA,Bonus Unit
+090-133-021,74,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+090-142-002,1,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+090-152-060,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+090-221-028,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+090-221-029,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+090-272-017,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+092-010-051,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+092-090-056,2,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+092-190-034,1,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+093-130-026,24,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+093-160-079,60,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+093-160-079,80,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,Affordable,1.00,TRPA,Bonus Unit
+094-052-011,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+094-070-006,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+094-122-023,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+097-060-038,2,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+098-167-019,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+098-191-018,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+111-100-028,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+111-280-017,1,Known Project - permitted not completed,Residential Allocation,High,0.35,PL,General
+115-010-019,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+117-071-044,4,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+117-100-088,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+123-032-28,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+123-041-25,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+123-131-11,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+123-133-25,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+123-250-08,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+124-860-07,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+124-860-06,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+124-860-05,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+125-010-20,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
 126-251-20,-1,Known Banking in 2023-2024,Single-Family Residential Unit of Use (SFRUU),,,TRPA,General
-130-083-06,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-130-241-45,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-15-611-059,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-22-001-008,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-201-002,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-212-068,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-212-069,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-212-071,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-212-072,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-212-073,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-212-074,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-301-001,3,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-814-001,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1318-23-814-009,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
+130-083-06,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+130-241-45,1,Known Project - permitted not completed,Residential Allocation,High,0.35,WA,General
+1318-15-611-059,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-22-001-013,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-201-002,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-212-068,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-212-069,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-212-071,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-212-072,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-212-073,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-212-074,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-315-016,3,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-814-001,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1318-23-814-009,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
 1319-18-412-013,-1,Known Banking in 2023-2024,Single-Family Residential Unit of Use (SFRUU),,,TRPA,General
-132-231-09,2,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-132-231-09,2,Known Project - Permitted Not Completed,Residential Bonus Unit,Medium,100%,TRPA,Bonus Unit
-1418-10-802-004,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1418-27-210-033,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1418-27-210-035,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1418-27-210-037,2,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1418-34-111-040,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-1418-34-601-001,1,Known Project - permitted not completed,Residential Allocation,High,35%,TRPA,General
-027-321-013,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-032-241-019,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-083-085-014,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-032-162-002,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-029-101-018,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-031-181-015,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-031-094-002,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-032-151-009,2,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-027-364-015,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-023-512-007,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,100%,TRPA,ADU
-090-232-027,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-098-060-013,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,100%,TRPA,Bonus Unit
-112-290-028,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,100%,TRPA,ADU
-090-133-021,100,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,PL,General
-123-052-02,43,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,TRPA,General
-094-090-065,29,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,PL,General
-1318-27-001-010,40,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,TRPA,General
-097-140-056,8,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,PL,General
-097-050-058,13,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,High,35%,TRPA,Bonus Unit
-097-050-058,50,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,PL,General
-097-060-042,51,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,PL,General
-1318-22-310-014,91,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,35%,DG,General
+132-231-09,2,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+132-231-09,2,Known Project - Permitted Not Completed,Residential Bonus Unit,Medium,1.00,TRPA,Bonus Unit
+1418-10-802-004,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1418-27-210-033,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1418-27-210-035,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1418-27-210-037,2,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1418-34-111-012,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+1418-34-601-001,1,Known Project - permitted not completed,Residential Allocation,High,0.35,DG,General
+027-321-013,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+032-241-019,1,Known Project - Permitted Not Completed,ADU - Converted Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+083-085-014,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+032-162-002,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+029-101-018,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+031-181-015,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+031-094-002,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+032-151-009,2,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+027-364-015,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+023-512-007,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Medium,1.00,TRPA,ADU
+090-232-027,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+098-060-013,1,Known Project - Permitted Not Completed,Residential Bonus Unit,Achievable,1.00,TRPA,Bonus Unit
+112-290-028,1,Known Project - Permitted Not Completed,ADU - Banked Single-Family Residential Unit of Use (SFRUU),Low,1.00,TRPA,ADU
+090-133-021,36,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,PL,General
+123-052-02,43,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,TRPA,General
+094-090-065,29,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,PL,General
+1318-27-001-010,40,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,TRPA,General
+097-140-056,8,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,PL,General
+097-050-058,13,Known Project - Reserved Units for Applications in Review,Residential Bonus Unit,High,0.35,TRPA,Bonus Unit
+097-050-058,50,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,PL,General
+097-060-042,51,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,PL,General
+1318-22-310-014,91,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,DG,General
+125-161-41,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+126-081-15,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+126-510-01,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+126-084-07,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+123-032-23,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+125-541-13,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+125-083-35,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+126-082-68,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+123-041-25,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+123-032-02,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+125-502-09,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+130-312-13,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+132-232-01,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+124-921-17,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+124-921-17,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
+123-143-04,1,Known Project - Reserved Units for Applications in Review,Residential Allocation,High,0.35,WA,General
