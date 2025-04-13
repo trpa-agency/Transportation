@@ -1,0 +1,1326 @@
+EventType,EventId,TimeAtSite,DetectionArea,Direction,CameraId,Object1Class,Object2Class,Movement,LocationId,LocationName
+STPV,67d4e4836d8af9001215f613,2025-03-14T19:22:52.270,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67d4e6b5f166c9001285d23f,2025-03-14T19:32:14.090,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67e272294755cf001287e26f,2025-03-25T02:06:42.060,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67eafb45a90d2100125d8514,2025-03-31T13:29:50.682,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67eb84bb9c04260012e17943,2025-03-31T23:16:20.275,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67ebb9be74f1d70012ded2c0,2025-04-01T03:01:38.610,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67f40786f08f220011350749,2025-04-07T10:12:30.613,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67f40933b2ac120012e6297c,2025-04-07T10:19:39.969,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67f40937132d770013564a83,2025-04-07T10:19:43.875,West Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67f40bb7f08f220011350a77,2025-04-07T10:30:24.139,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67f40cbd42521b0012a477d7,2025-04-07T10:34:46.283,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67f40d18f08f220011350b84,2025-04-07T10:36:17.404,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67f41943e8204b00120aa1a8,2025-04-07T11:28:11.580,West Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d380ecc5fcf20011e1d59b,2025-03-13T18:05:48.011,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d3816a54bd550011cc65e6,2025-03-13T18:07:54.283,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d3e720c5fcf20011e2165e,2025-03-14T01:21:52.199,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d4e2b4e879a5001263eb72,2025-03-14T19:15:16.672,West Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d55c31e98ffa001260c97f,2025-03-15T03:53:37.087,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d8d56be98ffa0012632135,2025-03-17T19:07:38.746,East Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d8da77441dac001245b19a,2025-03-17T19:29:10.998,East Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d94df6441dac001245fa1e,2025-03-18T03:41:58.062,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d94e6c441dac001245fa68,2025-03-18T03:43:56.135,East Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67d9ded3800dab001248eed0,2025-03-18T14:00:03.437,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67da2d971ae98d0011787c77,2025-03-18T19:36:07.711,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67da2d9f93717a0012b4885a,2025-03-18T19:36:14.920,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67db212c93717a0012b52c46,2025-03-19T12:55:24.143,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67db344430bc190012018c04,2025-03-19T14:16:52.049,South Leg,South,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67db85cea90d21001252b8a4,2025-03-19T20:04:46.062,East Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67dcedd0cfeb8c00129587f6,2025-03-20T21:40:48.299,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67dcfc2aa90d21001253c097,2025-03-20T22:42:02.773,East Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67de73f26f9f07001263dd84,2025-03-22T01:25:22.189,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e05a333610b90012912218,2025-03-23T12:00:02.939,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e068213610b90012912bf1,2025-03-23T12:59:29.417,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e06e3b31138300129b8ccf,2025-03-23T13:25:30.699,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e18b9c31138300129c4a3a,2025-03-24T09:43:08.106,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e2ee456f9f07001266d79d,2025-03-25T10:56:20.951,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e2f337cfeb8c0012998e38,2025-03-25T11:17:27.147,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e30e6b4755cf0012884770,2025-03-25T13:13:31.292,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e4e9d73610b900129431c1,2025-03-26T23:01:59.352,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e64f229c04260012dda61f,2025-03-28T00:26:25.963,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67e6b9e79c04260012ddf1ca,2025-03-28T08:01:44.083,South Leg,South,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67eb76b8a90d2100125de181,2025-03-31T22:16:40.215,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67eb9abd9c04260012e187bd,2025-04-01T00:50:20.975,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67ebb6c8feea71001214bde3,2025-04-01T02:50:00.792,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67ebb9be26ae0d001245b80f,2025-04-01T03:01:38.610,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67ebb9bea0673d0011d6a3bd,2025-04-01T03:01:56.640,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67ebb9befeea71001214bff6,2025-04-01T03:02:14.967,West Leg,West,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67edebfda0673d0011d843bb,2025-04-02T19:01:33.689,West Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67edfdddf08f220011308a33,2025-04-02T20:17:48.899,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67ee5c17feea71001216ac01,2025-04-03T02:59:51.365,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67f03716e8204b001207b994,2025-04-04T12:46:30.234,East Leg,East,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67f06c01b2ac120012e37b7d,2025-04-04T16:32:16.714,South Leg,North,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+WWD,67f06c04f08f220011325b53,2025-04-04T16:32:20.522,South Leg,North,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67d869ad441dac0012455faf,2025-03-17T11:27:56.893,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67d86a0a441dac0012455ff7,2025-03-17T11:29:30.729,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1f5086f9f070012663917,2025-03-24T17:12:55.504,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1f86ea90d21001257201b,2025-03-24T17:27:25.969,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1fb20cfeb8c001298ef81,2025-03-24T17:38:56.810,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1fbd73610b90012923f84,2025-03-24T17:41:59.255,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1fc1c4755cf00128797b6,2025-03-24T17:43:07.856,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1fd8331138300129c9db0,2025-03-24T17:49:07.429,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1fe9b31138300129c9e79,2025-03-24T17:53:47.407,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e1ff004755cf00128799b9,2025-03-24T17:55:28.452,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e202246f9f07001266425b,2025-03-24T18:08:52.009,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67e8746a26ae0d0012435b5b,2025-03-29T15:30:02.371,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+IC,67eafdb4a90d2100125d871d,2025-03-31T13:40:20.639,Intersection Center,,0,,,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d37226c68be000131da226,2025-03-13T17:02:43.687,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d372856cd59300125f641a,2025-03-13T17:04:18.124,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d373a9ca47d60012ad701f,2025-03-13T17:09:10.313,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d377406cd59300125f6756,2025-03-13T17:24:29.852,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d377d254bd550011cc5f42,2025-03-13T17:26:53.157,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d378a8ef437500128540e1,2025-03-13T17:30:29.149,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d37cd6c5fcf20011e1d2c7,2025-03-13T17:48:19.497,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d3d3cd6cd59300125fa303,2025-03-13T23:59:22.110,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d4686ce98ffa0012600b12,2025-03-14T10:33:29.519,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d4f0426d8af9001215fe44,2025-03-14T20:13:03.632,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d4fb67441dac0012431c9e,2025-03-14T21:00:37.260,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d597cc6d8af900121667c7,2025-03-15T08:07:54.066,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d59f68441dac001243847d,2025-03-15T08:40:21.950,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5b3f9441dac00124392f1,2025-03-15T10:08:07.584,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5c5c8e98ffa0012611128,2025-03-15T11:24:06.657,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5c8b26d8af90012168a6b,2025-03-15T11:36:33.581,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5c8d66d8af90012168a84,2025-03-15T11:37:06.842,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5cb5de879a500126484db,2025-03-15T11:47:54.925,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5ce2be879a50012648729,2025-03-15T11:59:53.209,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5cfbd441dac001243a754,2025-03-15T12:06:34.135,West Leg,,0,Truck,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5d433e879a50012648bc6,2025-03-15T12:25:35.478,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5e1e66d8af90012169d2e,2025-03-15T13:24:01.616,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d5f608e98ffa001261354e,2025-03-15T14:49:57.892,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d608846d8af9001216b967,2025-03-15T16:08:47.073,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d619284553e3001272a47a,2025-03-15T17:19:49.810,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d619aa4553e3001272a4cc,2025-03-15T17:21:58.585,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d61a614553e3001272a551,2025-03-15T17:25:03.120,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d61f0f6d8af9001216c8e9,2025-03-15T17:44:59.827,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d620f9f166c9001286a6b5,2025-03-15T17:53:11.013,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d631a1e879a5001264ce46,2025-03-15T19:04:14.522,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d644cf441dac001243f977,2025-03-15T20:26:05.143,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d6e7964553e30012732801,2025-03-16T08:00:35.808,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d6f04f4553e30012732e08,2025-03-16T08:37:47.132,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d6f24f4553e30012732f7e,2025-03-16T08:46:19.188,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d70967e879a5001265594c,2025-03-16T10:24:53.830,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d70d17f166c90012873f03,2025-03-16T10:40:36.483,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d714bee98ffa001261f16d,2025-03-16T11:13:15.967,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d71541f166c900128744e0,2025-03-16T11:15:25.848,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d71ddee98ffa001261f84c,2025-03-16T11:52:11.372,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d72a704553e3001273584a,2025-03-16T12:45:46.428,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d72a7ff166c90012875445,2025-03-16T12:46:04.259,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d72bfc6d8af90012177937,2025-03-16T12:52:24.967,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d7336de98ffa001262078a,2025-03-16T13:24:10.767,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d736016d8af90012178037,2025-03-16T13:35:10.160,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d738e14553e30012736299,2025-03-16T13:47:27.167,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d73a9ae98ffa0012620c90,2025-03-16T13:54:47.958,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d744a6e879a50012658428,2025-03-16T14:37:39.531,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d758e4e98ffa00126221af,2025-03-16T16:03:58.317,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d768354553e30012738316,2025-03-16T17:09:21.880,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d768874553e30012738348,2025-03-16T17:10:42.895,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d76c986d8af9001217a5d0,2025-03-16T17:28:03.804,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d771c44553e30012738983,2025-03-16T17:50:09.305,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d777ac6d8af9001217ad2e,2025-03-16T18:15:19.830,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d79a1b441dac001244d91c,2025-03-16T20:42:15.785,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67d9c07e93717a0012b43575,2025-03-18T11:50:36.191,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dae38d30bc190012014fca,2025-03-19T08:32:26.386,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67daea40800dab001249a3f5,2025-03-19T09:01:00.676,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67daf59d800dab001249ac27,2025-03-19T09:49:30.515,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67daf69b93717a0012b50c9a,2025-03-19T09:53:44.366,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67daf7f01ae98d00117901d1,2025-03-19T09:59:24.805,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dafd681ae98d00117905ce,2025-03-19T10:22:45.313,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dafd81a90d2100125253fb,2025-03-19T10:23:11.948,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dafe5093717a0012b5125d,2025-03-19T10:26:36.941,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67daffcfa90d210012525599,2025-03-19T10:33:00.785,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db023830bc1900120165c8,2025-03-19T10:43:17.351,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db0aac800dab001249bb98,2025-03-19T11:19:21.542,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db0eef1ae98d00117912da,2025-03-19T11:37:32.023,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db13e71ae98d001179167c,2025-03-19T11:58:44.024,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db18b330bc19001201764a,2025-03-19T12:19:13.268,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db19c3800dab001249c6d9,2025-03-19T12:23:44.543,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db1a4c426e3a0012e66782,2025-03-19T12:26:00.838,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db1be91ae98d0011791c7c,2025-03-19T12:32:54.268,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db2309426e3a0012e66e17,2025-03-19T13:03:18.265,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db274530bc190012018181,2025-03-19T13:21:21.503,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db2f09800dab001249d7cb,2025-03-19T13:54:30.742,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db32f4426e3a0012e67b28,2025-03-19T14:11:14.775,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db353230bc190012018ccb,2025-03-19T14:20:47.975,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db38fe30bc190012018fb9,2025-03-19T14:36:59.535,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db3d01a90d21001252849e,2025-03-19T14:54:07.138,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db543ea90d21001252963f,2025-03-19T16:33:15.708,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db58ce426e3a0012e69802,2025-03-19T16:52:43.307,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db66681ae98d001179559c,2025-03-19T17:50:45.722,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db6a8a426e3a0012e6a4be,2025-03-19T18:08:23.738,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67db6ab4a90d21001252a647,2025-03-19T18:09:05.697,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc238fa90d21001253207c,2025-03-20T07:17:45.466,West Leg,,0,Truck,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc2ca2800dab00124a8521,2025-03-20T07:56:31.064,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc2d7d30bc190012023697,2025-03-20T08:00:10.860,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc340430bc190012023b66,2025-03-20T08:28:01.089,West Leg,,0,Truck,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc39b130bc190012023fca,2025-03-20T08:52:14.041,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc3a49800dab00124a8f28,2025-03-20T08:54:46.835,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc3bdc800dab00124a9056,2025-03-20T09:01:29.583,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc552acfeb8c001295163b,2025-03-20T10:49:26.995,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc5591a90d210012534681,2025-03-20T10:51:10.831,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc587c4755cf001283c193,2025-03-20T11:03:37.701,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc5c8b4755cf001283c485,2025-03-20T11:20:56.662,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc5d994755cf001283c555,2025-03-20T11:25:27.005,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc6169a90d210012534f91,2025-03-20T11:41:42.627,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc61a2cfeb8c0012951fad,2025-03-20T11:42:39.102,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc61b73610b900128e6c5a,2025-03-20T11:43:00.331,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc641d6f9f070012626ebe,2025-03-20T11:53:14.345,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc682f4755cf001283cd82,2025-03-20T12:10:36.643,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc6a55311383001298d1ab,2025-03-20T12:19:46.904,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc790a311383001298dccf,2025-03-20T13:22:31.668,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc7a0e311383001298dd96,2025-03-20T13:26:51.420,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc8feaa90d21001253735c,2025-03-20T15:00:06.129,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc9aa4311383001298f685,2025-03-20T15:45:53.074,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dc9f2e6f9f070012629c26,2025-03-20T16:05:16.213,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dca3fd4755cf001283fb16,2025-03-20T16:25:46.097,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dca623a90d21001253843a,2025-03-20T16:34:55.021,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dca994cfeb8c00129556de,2025-03-20T16:49:37.611,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dcdbdf6f9f07001262c8bb,2025-03-20T20:24:12.674,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dd7cc56f9f0700126331b4,2025-03-21T07:50:43.102,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dd8d74a90d21001254201f,2025-03-21T09:01:53.190,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dd92453113830012999eda,2025-03-21T09:22:25.937,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dd9a494755cf001284a1b1,2025-03-21T09:56:38.671,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dd9ac9a90d2100125429e5,2025-03-21T09:58:46.565,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dda2d5311383001299ab20,2025-03-21T10:33:06.666,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddb7d0cfeb8c0012960f20,2025-03-21T12:02:37.102,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddbf54311383001299c085,2025-03-21T12:34:41.209,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddc6e14755cf001284c261,2025-03-21T13:06:53.405,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddc8c1311383001299c76b,2025-03-21T13:14:53.568,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddc928a90d210012544c3f,2025-03-21T13:16:37.006,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddcde74755cf001284c7a6,2025-03-21T13:36:52.415,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddce004755cf001284c7b6,2025-03-21T13:37:17.952,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddcfa06f9f070012636e86,2025-03-21T13:44:12.797,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddd18a3610b900128f6fa6,2025-03-21T13:52:23.554,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddd21e311383001299ce93,2025-03-21T13:54:51.354,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddd51c6f9f0700126372a1,2025-03-21T14:07:37.100,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddda0fcfeb8c001296286c,2025-03-21T14:28:44.705,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dddbc8cfeb8c00129629ba,2025-03-21T14:36:05.197,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dddce8311383001299d69b,2025-03-21T14:40:51.794,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dddd6e3610b900128f7884,2025-03-21T14:43:08.274,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dde3cca90d210012546059,2025-03-21T15:10:17.147,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67dde4e23610b900128f7e24,2025-03-21T15:14:56.115,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddec083610b900128f8389,2025-03-21T15:45:25.589,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddeee24755cf001284e04e,2025-03-21T15:57:35.576,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddef44311383001299e42a,2025-03-21T15:59:13.110,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ddf7d9cfeb8c0012963e85,2025-03-21T16:35:48.270,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de02d3a90d210012547723,2025-03-21T17:22:39.854,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de04e64755cf001284f018,2025-03-21T17:31:31.664,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de07956f9f07001263977e,2025-03-21T17:42:59.185,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de08486f9f070012639804,2025-03-21T17:45:57.933,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de09cb311383001299f75a,2025-03-21T17:52:23.966,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de0ace3610b900128f998a,2025-03-21T17:56:43.513,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de0b673610b900128f99f7,2025-03-21T17:59:16.827,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de0c113610b900128f9a66,2025-03-21T18:02:06.141,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de0ce0a90d210012547e4b,2025-03-21T18:05:34.217,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de1229cfeb8c00129650ee,2025-03-21T18:28:05.721,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de1427a90d210012548361,2025-03-21T18:36:36.115,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de15a14755cf001284fb9e,2025-03-21T18:42:53.932,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de174e31138300129a00bc,2025-03-21T18:50:03.606,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de19144755cf001284fdef,2025-03-21T18:57:37.238,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67de6b3d4755cf00128532c3,2025-03-22T00:48:11.140,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e8ee529c04260012df980a,2025-03-30T00:10:06.297,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e95b47a0673d0011d4ed2f,2025-03-30T07:54:59.061,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e977c09c04260012dff86c,2025-03-30T09:56:28.284,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e97be69c04260012dffb89,2025-03-30T10:14:09.485,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e985a29c04260012e002ed,2025-03-30T10:55:42.155,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e98957feea710012132b14,2025-03-30T11:11:31.697,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e98f65a90d2100125c7d72,2025-03-30T11:37:21.222,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9958b26ae0d0012442b08,2025-03-30T12:03:35.107,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e99ab874f1d70012dd4b15,2025-03-30T12:25:40.749,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e99c3e9c04260012e013ec,2025-03-30T12:32:09.069,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9a31fa0673d0011d52383,2025-03-30T13:01:31.093,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9ad4ea0673d0011d52b30,2025-03-30T13:44:59.498,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9c177a0673d0011d53a97,2025-03-30T15:11:00.283,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9c4d1a0673d0011d53d24,2025-03-30T15:25:18.514,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9cb2526ae0d0012445405,2025-03-30T15:52:17.826,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9d299a90d2100125cb034,2025-03-30T16:24:05.744,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9d97326ae0d0012445ebe,2025-03-30T16:53:19.132,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9db1da0673d0011d54dea,2025-03-30T17:00:25.584,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9dde9feea710012136ac4,2025-03-30T17:12:20.917,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9e28e9c04260012e04974,2025-03-30T17:32:10.471,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9ee7174f1d70012dd8a0d,2025-03-30T18:22:54.167,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67e9f0d6a90d2100125cc674,2025-03-30T18:33:05.673,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eb0d38a90d2100125d9371,2025-03-31T14:46:28.259,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eb3c369c04260012e1455f,2025-03-31T18:06:58.269,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eb4716feea710012147185,2025-03-31T18:53:22.966,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ec963526ae0d0012465fd1,2025-04-01T18:43:13.811,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eca02426ae0d0012466744,2025-04-01T19:25:36.652,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed48e926ae0d001246dbd9,2025-04-02T07:25:41.391,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed5828feea71001215ef68,2025-04-02T08:30:44.334,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed5de626ae0d001246ebf2,2025-04-02T08:55:14.916,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed66089c04260012e2d60c,2025-04-02T09:29:56.734,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed6bb7a0673d0011d7e18c,2025-04-02T09:54:11.579,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed6f9e42521b00129f8a4a,2025-04-02T10:10:50.701,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed7bd5f08f220011302768,2025-04-02T11:02:57.143,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed7d5142521b00129f94ca,2025-04-02T11:09:16.948,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed811f132d770013516bac,2025-04-02T11:25:31.514,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed83fefeea7100121610ba,2025-04-02T11:37:46.419,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed8676feea710012161298,2025-04-02T11:48:18.351,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed8a91f08f220011303272,2025-04-02T12:05:48.922,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed92bfa0673d0011d7ff5d,2025-04-02T12:40:43.855,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed92e0a0673d0011d7ff74,2025-04-02T12:41:15.896,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ed967af08f220011303b7a,2025-04-02T12:56:37.533,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eda51af08f2200113046db,2025-04-02T13:59:01.359,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eda5f974f1d70012e03d82,2025-04-02T14:02:44.546,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67edab33132d770013518c96,2025-04-02T14:25:03.991,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67edb133132d770013519141,2025-04-02T14:50:38.816,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67edbfe7a0673d0011d822c8,2025-04-02T15:53:22.902,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67edc20df08f220011305dd8,2025-04-02T16:02:29.521,Intersection Center,,0,Truck,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67edc562feea71001216435a,2025-04-02T16:16:47.041,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67edc83ca0673d0011d82939,2025-04-02T16:28:53.703,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67edea7074f1d70012e0716f,2025-04-02T18:54:52.371,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ee1d8cf08f220011309ffb,2025-04-02T22:32:56.225,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ee89c874f1d70012e0df0f,2025-04-03T06:14:44.821,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ee9822feea71001216d73e,2025-04-03T07:15:45.824,West Leg,,0,Passenger Vehicle,Truck,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eea84ff08f22001131012d,2025-04-03T08:24:59.038,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eebe44f08f2200113112c1,2025-04-03T09:58:39.965,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eec84a132d770013525a24,2025-04-03T10:41:24.988,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eed88e132d770013526729,2025-04-03T11:50:50.075,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eedff042521b0012a099bd,2025-04-03T12:22:19.656,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eee14de8204b001206b950,2025-04-03T12:28:09.316,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eee42b4e9b8300126fc60e,2025-04-03T12:40:23.785,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eee42c4e9b8300126fc610,2025-04-03T12:40:23.785,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eee7fa132d7700135273aa,2025-04-03T12:56:37.549,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eeeceaf08f220011313827,2025-04-03T13:17:42.005,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eeee56f08f220011313955,2025-04-03T13:23:46.083,West Leg,,0,Passenger Vehicle,Truck,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eef6eab2ac120012e25fe0,2025-04-03T14:00:22.282,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eefa564e9b8300126fd7fa,2025-04-03T14:14:58.062,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eefc4cf08f2200113144a3,2025-04-03T14:23:18.109,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67eefe70f08f220011314655,2025-04-03T14:32:27.529,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef05d4f08f220011314c69,2025-04-03T15:04:00.118,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef0de3e8204b001206dda4,2025-04-03T15:38:22.233,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef10ccf08f220011315537,2025-04-03T15:50:48.018,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef10cd42521b0012a0c165,2025-04-03T15:50:49.919,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef170ce8204b001206e4e4,2025-04-03T16:17:28.704,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef1bafe8204b001206e8a4,2025-04-03T16:37:15.444,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef1c21f08f220011315e2b,2025-04-03T16:39:07.497,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef1e03b2ac120012e27f4f,2025-04-03T16:47:10.431,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef27dcf08f220011316720,2025-04-03T17:29:12.469,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef289d4e9b8300126ffce0,2025-04-03T17:32:25.329,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef28ad42521b0012a0d41b,2025-04-03T17:32:40.547,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef31ad132d77001352ae77,2025-04-03T18:11:04.622,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef35a8e8204b001206fc7d,2025-04-03T18:28:03.771,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef3c0942521b0012a0e2a4,2025-04-03T18:55:18.055,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef3d1f132d77001352b6e5,2025-04-03T18:59:52.114,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef3f66e8204b00120703c5,2025-04-03T19:09:38.106,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67ef4753e8204b00120709ba,2025-04-03T19:43:28.517,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67efd5c3132d7700135320cf,2025-04-04T05:51:09.832,West Leg,,0,Passenger Vehicle,Truck,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67efd5c7132d7700135320d3,2025-04-04T05:51:14.939,Intersection Center,,0,Truck,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67efe83142521b0012a15b3d,2025-04-04T07:09:49.937,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67efedce132d7700135332f4,2025-04-04T07:33:46.108,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67effaee4e9b8300127092c9,2025-04-04T08:29:46.276,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67efffd242521b0012a16dc1,2025-04-04T08:50:37.917,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0004d4e9b8300127096fd,2025-04-04T08:52:41.391,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f007d1e8204b00120792eb,2025-04-04T09:24:46.105,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f00ce1132d770013534b76,2025-04-04T09:46:21.003,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f012b44e9b83001270a60c,2025-04-04T10:11:11.373,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f01a004e9b83001270abd5,2025-04-04T10:42:21.316,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f01b37e8204b001207a299,2025-04-04T10:47:32.331,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f01bde4e9b83001270ad52,2025-04-04T10:50:17.553,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f01df8132d77001353593f,2025-04-04T10:59:16.766,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0208442521b0012a18866,2025-04-04T11:10:02.426,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0228c42521b0012a18a0c,2025-04-04T11:18:48.129,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0236e132d770013535dba,2025-04-04T11:22:35.123,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f02825e8204b001207ad16,2025-04-04T11:42:39.902,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f02906132d770013536257,2025-04-04T11:46:23.711,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f029454e9b83001270b870,2025-04-04T11:47:29.594,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f02b5de8204b001207afad,2025-04-04T11:56:21.605,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f02bc0e8204b001207b001,2025-04-04T11:58:04.439,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f02c52b2ac120012e3454b,2025-04-04T12:00:29.625,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f02cad42521b0012a1927a,2025-04-04T12:02:02.153,West Leg,,0,Passenger Vehicle,Truck,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f030c9b2ac120012e348f1,2025-04-04T12:19:32.930,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0345242521b0012a198d9,2025-04-04T12:34:37.911,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f03630f08f220011322d29,2025-04-04T12:42:32.024,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f03775b2ac120012e34e91,2025-04-04T12:47:56.651,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f039ab132d770013537001,2025-04-04T12:57:27.496,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f04182f08f2200113236da,2025-04-04T13:30:54.437,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0435142521b0012a1a564,2025-04-04T13:38:36.440,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f044d1b2ac120012e359be,2025-04-04T13:45:00.646,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0466bf08f220011323b0f,2025-04-04T13:51:51.136,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f04a46f08f220011323e50,2025-04-04T14:08:16.621,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f04ced42521b0012a1ad64,2025-04-04T14:19:37.325,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f052024e9b83001270da89,2025-04-04T14:41:18.968,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f058d042521b0012a1b7b4,2025-04-04T15:10:19.492,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f058d5132d770013538a77,2025-04-04T15:10:23.998,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f05a1f4e9b83001270e1b2,2025-04-04T15:15:55.625,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f05acbf08f220011324c7b,2025-04-04T15:18:46.952,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f06106132d770013539183,2025-04-04T15:45:22.952,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f06bfcf08f220011325b4a,2025-04-04T16:32:07.902,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f06c3ee8204b001207e6a6,2025-04-04T16:33:13.190,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f06ca0f08f220011325bd8,2025-04-04T16:34:52.012,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f07ad8132d77001353a743,2025-04-04T17:35:31.602,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f07c3f4e9b83001270fe70,2025-04-04T17:41:30.803,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f08083e8204b001207f79a,2025-04-04T17:59:43.746,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f083c4e8204b001207fa4c,2025-04-04T18:13:36.535,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f087534e9b83001271076c,2025-04-04T18:28:47.222,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0898e132d77001353b32a,2025-04-04T18:38:18.026,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f08998b2ac120012e393c9,2025-04-04T18:38:29.039,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f08c75e8204b001208013d,2025-04-04T18:50:40.474,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f08d44132d77001353b630,2025-04-04T18:54:08.153,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0902c132d77001353b880,2025-04-04T19:06:32.732,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f094c84e9b8300127111f7,2025-04-04T19:26:11.894,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f0a3c7132d77001353c775,2025-04-04T20:30:11.744,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f13306e8204b0012087722,2025-04-05T06:41:21.602,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f13a8d4e9b830012718686,2025-04-05T07:13:30.043,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f142a24e9b830012718cc4,2025-04-05T07:47:57.852,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1451942521b0012a2663e,2025-04-05T07:58:29.375,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1479a42521b0012a26846,2025-04-05T08:09:10.022,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f14be542521b0012a26bc5,2025-04-05T08:27:29.057,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f14f8a42521b0012a26e83,2025-04-05T08:43:00.804,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f153ee42521b0012a27205,2025-04-05T09:01:43.970,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f15f4a132d770013544e15,2025-04-05T09:50:13.286,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f15f7ae8204b0012089989,2025-04-05T09:51:02.149,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f160d442521b0012a27c23,2025-04-05T09:56:48.392,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f161374e9b83001271a4b3,2025-04-05T09:58:27.831,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f16464e8204b0012089d9d,2025-04-05T10:11:57.977,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f166adb2ac120012e433f2,2025-04-05T10:21:44.325,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1670942521b0012a2813b,2025-04-05T10:23:17.539,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f167ae4e9b83001271a9d2,2025-04-05T10:26:01.554,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f16ba5b2ac120012e43822,2025-04-05T10:42:56.219,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f16d754e9b83001271ae76,2025-04-05T10:50:41.323,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f170224e9b83001271b0a9,2025-04-05T11:02:07.118,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f170524e9b83001271b0d2,2025-04-05T11:02:53.687,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1765c4e9b83001271b5e9,2025-04-05T11:28:38.121,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f176f04e9b83001271b670,2025-04-05T11:31:07.304,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f177364e9b83001271b6b1,2025-04-05T11:32:18.195,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f17790f08f2200113321be,2025-04-05T11:33:47.616,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f178b04e9b83001271b7f6,2025-04-05T11:38:32.601,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f180404e9b83001271be64,2025-04-05T12:10:51.510,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f182fcf08f220011332b78,2025-04-05T12:22:32.517,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1831842521b0012a298ac,2025-04-05T12:22:58.961,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f18379132d770013546c2b,2025-04-05T12:24:36.290,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1837bf08f220011332be4,2025-04-05T12:24:39.495,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f183e8f08f220011332c48,2025-04-05T12:26:28.438,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f18717f08f220011332f02,2025-04-05T12:40:02.301,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f18820e8204b001208bb86,2025-04-05T12:44:27.447,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f18bb4132d770013547355,2025-04-05T12:59:44.056,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f18bc14e9b83001271c854,2025-04-05T12:59:58.271,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f191d2132d7700135478b1,2025-04-05T13:25:50.656,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1963f132d770013547c5a,2025-04-05T13:44:42.957,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1978a42521b0012a2a9d2,2025-04-05T13:50:13.493,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f198bc42521b0012a2aac7,2025-04-05T13:55:19.199,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f19f6e132d7700135483ef,2025-04-05T14:23:53.394,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1a4294e9b83001271dcda,2025-04-05T14:44:02.921,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1b342f08f2200113353ae,2025-04-05T15:48:29.140,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1b69e4e9b83001271ebfd,2025-04-05T16:02:50.506,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1be15f08f220011335c61,2025-04-05T16:34:40.992,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1c5e5e8204b001208ee2f,2025-04-05T17:08:00.242,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1c5eb42521b0012a2cf43,2025-04-05T17:08:08.252,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1d677f08f220011337014,2025-04-05T18:18:42.438,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1d7c84e9b8300127206a6,2025-04-05T18:24:20.376,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f1f44b42521b0012a2f46b,2025-04-05T20:25:59.546,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+NM-VV,67f3ed2242521b0012a46046,2025-04-07T08:19:59.158,West Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67d4e42a441dac0012430cf6,2025-03-14T19:21:30.355,East Leg,,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67d732794553e30012735e09,2025-03-16T13:20:09.742,South Leg,,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67db343d800dab001249dbdd,2025-03-19T14:16:45.240,East Leg,,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67dcbda56f9f07001262b28b,2025-03-20T18:15:17.703,West Leg,West,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67de73eba90d21001254c0ca,2025-03-22T01:25:15.681,West Leg,West,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67e1c55aa90d21001256fa5c,2025-03-24T13:49:30.442,South Leg,,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67e2ee4b31138300129d36f1,2025-03-25T10:56:27.559,East Leg,,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+TV,67eb3090a0673d0011d64515,2025-03-31T17:17:20.686,South Leg,,0,,,LT_UT,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+STPV,67e723279c04260012de4564,2025-03-28T15:30:55.851,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67d4f4d06d8af90012160154,2025-03-14T20:32:32.434,North Leg,South,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67d54519e879a50012642a95,2025-03-15T02:15:05.274,North Leg,North,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67d57098e98ffa001260d60a,2025-03-15T05:20:40.351,North Leg,North,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67da1a55426e3a0012e5bb43,2025-03-18T18:13:57.491,North Leg,South,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67da1a5aa90d21001251be08,2025-03-18T18:14:01.896,North Leg,South,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67df10f7cfeb8c001296f859,2025-03-22T12:35:19.753,North Leg,South,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67df61966f9f07001264803d,2025-03-22T18:19:05.110,North Leg,North,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67e455d94755cf00128920e6,2025-03-26T12:30:33.226,North Leg,South,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67e50f71a90d210012592ed1,2025-03-27T01:42:25.245,North Leg,North,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+WWD,67e5b6c3feea7100121057d9,2025-03-27T13:36:19.428,North Leg,North,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d3b686c68be000131dcfb5,2025-03-13T21:54:30.749,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d4c9be6d8af9001215e2af,2025-03-14T17:28:46.735,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d4c9c26d8af9001215e2b1,2025-03-14T17:28:50.239,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d4c9c74553e3001271c0c4,2025-03-14T17:28:50.339,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d74935441dac001244a403,2025-03-16T14:57:09.045,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d74a9ee98ffa00126217b5,2025-03-16T15:03:10.614,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d74a9ff166c90012876acb,2025-03-16T15:03:11.715,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d74aa0e879a50012658858,2025-03-16T15:03:12.616,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d75dad6d8af90012179bb9,2025-03-16T16:24:29.022,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d79f24e98ffa0012624f7d,2025-03-16T21:03:48.724,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d7a5cef166c9001287a5e8,2025-03-16T21:32:14.755,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d846974553e3001274110d,2025-03-17T08:58:15.014,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d9204a441dac001245de48,2025-03-18T00:27:06.030,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d92056441dac001245de53,2025-03-18T00:27:18.650,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67d9dda4a90d2100125190ac,2025-03-18T13:54:59.997,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67da147830bc19001200c71e,2025-03-18T17:48:56.008,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67da29d41ae98d00117879d6,2025-03-18T19:20:04.053,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67db499c1ae98d00117940a6,2025-03-19T15:47:56.470,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67db499c93717a0012b54cc3,2025-03-19T15:47:56.670,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67db499d30bc190012019cfa,2025-03-19T15:47:56.670,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67db499da90d210012528e4f,2025-03-19T15:47:57.671,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67db5682800dab001249f62c,2025-03-19T16:42:58.032,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67dc61d0a90d210012534fd8,2025-03-20T11:43:28.159,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67dc818fcfeb8c0012953865,2025-03-20T13:58:55.798,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67dcb06da90d210012538bff,2025-03-20T17:18:53.000,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67dcfb3c4755cf00128438be,2025-03-20T22:38:04.479,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67de13ba311383001299fe4d,2025-03-21T18:34:49.890,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67de1ce03610b900128fa60c,2025-03-21T19:13:52.204,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67de39f93610b900128fb978,2025-03-21T21:18:01.534,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67defd22a90d210012551b6b,2025-03-22T11:10:42.637,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67df42e03610b90012906b5e,2025-03-22T16:08:15.875,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67df638d3610b90012908203,2025-03-22T18:27:41.276,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67df86f0a90d210012557c3d,2025-03-22T20:58:40.421,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67df8bb1cfeb8c0012974dbc,2025-03-22T21:18:57.478,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67df8bb231138300129afa40,2025-03-22T21:18:57.978,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67df8bb3cfeb8c0012974dbe,2025-03-22T21:18:59.080,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67df8bb36f9f070012649c44,2025-03-22T21:18:59.681,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67dfa5cacfeb8c0012975e8f,2025-03-22T23:10:18.527,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e082516f9f070012653db3,2025-03-23T14:51:12.900,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e0a83731138300129bb55a,2025-03-23T17:32:55.842,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e1859a3610b9001291e933,2025-03-24T09:17:30.493,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e1a7833610b900129201ae,2025-03-24T11:42:11.230,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e1d7e46f9f0700126623f4,2025-03-24T15:08:36.102,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e1de0aa90d210012570cf9,2025-03-24T15:34:50.630,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e201ff3610b900129243d7,2025-03-24T18:08:15.348,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e202303610b900129243f3,2025-03-24T18:09:04.714,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e202f831138300129ca173,2025-03-24T18:12:24.767,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e202fa6f9f0700126642f2,2025-03-24T18:12:26.169,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e202faa90d21001257275f,2025-03-24T18:12:26.369,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e211726f9f070012664cbd,2025-03-24T19:14:10.305,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e2183dcfeb8c001299036c,2025-03-24T19:43:09.337,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e24931a90d210012575518,2025-03-24T23:12:01.274,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e2d441a90d21001257ab7e,2025-03-25T09:05:21.648,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e30bea31138300129d4b0a,2025-03-25T13:02:50.135,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e313976f9f07001266f15f,2025-03-25T13:35:35.446,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e3304d6f9f070012670579,2025-03-25T15:38:05.187,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e3576231138300129d7fa8,2025-03-25T18:24:50.355,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e372a13610b900129332eb,2025-03-25T20:21:05.161,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e44f603610b9001293c357,2025-03-26T12:02:55.923,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e46b99a06e6f0013c81329,2025-03-26T14:03:20.955,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e46b9ca90d21001258bce7,2025-03-26T14:03:24.459,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e48682a06e6f0013c828c0,2025-03-26T15:58:10.551,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e48759cfeb8c00129aa047,2025-03-26T16:01:44.930,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e4890acfeb8c00129aa198,2025-03-26T16:08:57.791,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e4a4153610b90012940338,2025-03-26T18:04:21.345,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e4a5dfcfeb8c00129ab6fb,2025-03-26T18:11:59.226,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e4ac2a31138300129e66ce,2025-03-26T18:38:50.006,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e4ac2aa06e6f0013c84426,2025-03-26T18:38:50.006,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e4b8c04755cf0012896b18,2025-03-26T19:32:32.107,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e5b8979c04260012dd3651,2025-03-27T13:44:07.719,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e5d78f26ae0d0012416bad,2025-03-27T15:56:15.873,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e5e664a0673d0011d26436,2025-03-27T16:59:32.474,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e6db4126ae0d001242271e,2025-03-28T10:24:16.996,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e701e374f1d70012db617d,2025-03-28T13:09:07.634,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e723b8feea71001211695a,2025-03-28T15:33:28.447,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e76f5c74f1d70012dbb883,2025-03-28T20:56:11.720,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e77997a0673d0011d39131,2025-03-28T21:39:51.354,Intersection Center,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e779d326ae0d001242a3f3,2025-03-28T21:40:51.539,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e779d4feea71001211ac35,2025-03-28T21:40:52.140,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e788a99c04260012de923a,2025-03-28T22:44:09.574,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e83fb79c04260012df1585,2025-03-29T11:45:11.699,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67e875f2a90d2100125bb335,2025-03-29T15:36:33.953,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eacd87a0673d0011d5f8ce,2025-03-31T10:14:47.258,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eacd89a0673d0011d5f8d1,2025-03-31T10:14:48.860,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eb14fca0673d0011d6303c,2025-03-31T15:19:40.669,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eb1b7ca0673d0011d63508,2025-03-31T15:47:24.591,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ec843374f1d70012df6d33,2025-04-01T17:26:26.919,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ec8435f08f2200112f7719,2025-04-01T17:26:29.623,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ec843f9c04260012e2363b,2025-04-01T17:26:29.723,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ece44226ae0d00124695b5,2025-04-02T00:16:18.459,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ed7033a0673d0011d7e508,2025-04-02T10:13:23.035,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ed7b99feea710012160a2b,2025-04-02T11:02:01.615,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ed85daf08f220011302ef8,2025-04-02T11:45:46.097,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67ee9d10f08f22001130f87f,2025-04-03T07:37:04.084,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eed43ce8204b001206ae99,2025-04-03T11:32:28.193,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eed700f08f22001131268f,2025-04-03T11:44:16.901,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eedb994e9b8300126fbf3c,2025-04-03T12:03:53.188,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eee824f08f220011313448,2025-04-03T12:57:24.337,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eef9df4e9b8300126fd799,2025-04-03T14:13:03.204,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67eefb98e8204b001206cebe,2025-04-03T14:20:24.375,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67efd580f08f22001131e061,2025-04-04T05:50:08.761,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67f02693132d77001353605e,2025-04-04T11:36:03.054,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67f068e3e8204b001207e3cd,2025-04-04T16:18:59.405,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67f068e44e9b83001270ee3a,2025-04-04T16:19:00.306,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+IC,67f081e7132d77001353ad04,2025-04-04T18:05:43.196,North Leg,,0,,,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67d5bdd9441dac0012439a0b,2025-03-15T10:50:00.353,Intersection Center,,0,Bicycle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67d61479f166c90012869e46,2025-03-15T16:59:49.898,North Leg,,0,Passenger Vehicle,Pedestrian,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67db452aa90d210012528ad7,2025-03-19T15:28:55.695,North Leg,,0,Passenger Vehicle,Pedestrian,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67dc9a8ecfeb8c0012954b8e,2025-03-20T15:45:31.275,North Leg,,0,Passenger Vehicle,Pedestrian,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67e1c0736f9f070012661247,2025-03-24T13:28:32.876,West Leg,,0,Bicycle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67e1e75d4755cf00128788f8,2025-03-24T16:14:33.201,North Leg,,0,Passenger Vehicle,Bicycle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67e44a3ea06e6f0013c7fa3a,2025-03-26T11:40:59.084,North Leg,,0,Passenger Vehicle,Pedestrian,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67e58c8ba0673d0011d21cb0,2025-03-27T10:36:09.043,North Leg,,0,Pedestrian,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67e5993574f1d70012da5510,2025-03-27T11:30:10.163,North Leg,,0,Passenger Vehicle,Pedestrian,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VRU,67e719bfa90d2100125aafc7,2025-03-28T14:50:52.900,West Leg,,0,Bicycle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VV,67d62dff441dac001243ea26,2025-03-15T18:48:44.260,North Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VV,67d70ae2e879a50012655a54,2025-03-16T10:31:12.077,North Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VV,67d739efe98ffa0012620c1a,2025-03-16T13:51:56.569,North Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VV,67d890d96d8af90012186513,2025-03-17T14:15:02.860,North Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VV,67d8c098e98ffa00126312ba,2025-03-17T17:38:45.943,North Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+NM-VV,67db11e1426e3a0012e66146,2025-03-19T11:50:06.703,North Leg,,0,Passenger Vehicle,Passenger Vehicle,,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+STPV,67e98a4b74f1d70012dd3e9a,2025-03-30T11:15:32.356,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+STPV,67f2bdb9e8204b001209a2de,2025-04-06T10:45:22.726,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+STPV,67f80e97c8ea73001239024e,2025-04-10T11:31:44.311,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67d461db6d8af90012157db1,2025-03-14T10:05:31.722,South Leg,North,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67d463ce6d8af90012157f08,2025-03-14T10:13:50.367,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67d464116d8af90012157f36,2025-03-14T10:14:57.453,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67d4d6bde879a5001263e309,2025-03-14T18:24:13.099,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67d5a00d4553e30012724d00,2025-03-15T08:43:09.585,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67d5b0fae98ffa001261020f,2025-03-15T09:55:22.735,South Leg,North,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67dadd8730bc190012014b83,2025-03-19T08:06:47.392,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67db451e93717a0012b54946,2025-03-19T15:28:46.463,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67db4c871ae98d00117942bf,2025-03-19T16:00:23.415,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67db698193717a0012b56447,2025-03-19T18:04:00.986,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67dc22671ae98d001179d173,2025-03-20T07:12:54.675,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67dc38a3426e3a0012e72eed,2025-03-20T08:47:47.436,South Leg,North,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67dc99c96f9f07001262981d,2025-03-20T15:42:17.414,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67dd78333113830012998c6c,2025-03-21T07:31:15.494,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67ddc3134755cf001284bf97,2025-03-21T12:50:43.743,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67ddc8d2cfeb8c0012961bb0,2025-03-21T13:15:14.233,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67de0339cfeb8c00129646a4,2025-03-21T17:24:25.794,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67dedd7131138300129a802f,2025-03-22T08:55:29.440,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67df22913610b9001290541a,2025-03-22T13:50:25.272,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67df67cfa90d21001255677c,2025-03-22T18:45:51.272,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e096d84755cf001286a603,2025-03-23T16:18:48.771,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e176e86f9f07001265dcfc,2025-03-24T08:14:48.732,South Leg,North,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e1f1baa90d210012571b63,2025-03-24T16:58:50.894,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e1f8306f9f070012663b56,2025-03-24T17:26:24.491,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e1fcf731138300129c9d4f,2025-03-24T17:46:47.489,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e200ae3610b900129242da,2025-03-24T18:02:38.099,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e203323610b900129244ab,2025-03-24T18:13:22.220,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e21a033610b90012925418,2025-03-24T19:50:43.480,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e2ecd5cfeb8c0012998a1b,2025-03-25T10:50:13.536,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e2f56fa90d21001257c17a,2025-03-25T11:26:55.268,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e331a5a90d21001257ebd2,2025-03-25T15:43:49.161,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e349fa3610b90012931838,2025-03-25T17:27:38.333,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e34a7931138300129d7684,2025-03-25T17:29:45.192,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e41d95a06e6f0013c7d98d,2025-03-26T08:30:29.715,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e572e9cfeb8c00129b40aa,2025-03-27T08:46:49.414,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e5c047a90d21001259aff8,2025-03-27T14:16:55.591,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e5cd32feea710012106ac5,2025-03-27T15:12:02.616,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e5e53ea0673d0011d2635b,2025-03-27T16:54:38.536,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e72cb89c04260012de4d79,2025-03-28T16:11:52.694,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e74e9274f1d70012dba052,2025-03-28T18:36:18.380,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e75d12a0673d0011d37c25,2025-03-28T19:38:10.469,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e987619c04260012e0043a,2025-03-30T11:03:13.426,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e98a2ffeea710012132bac,2025-03-30T11:15:11.528,South Leg,North,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67e9f99b26ae0d001244761f,2025-03-30T19:10:35.030,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67eab8ae9c04260012e0dfa2,2025-03-31T08:45:50.779,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67eb0932feea710012144294,2025-03-31T14:29:21.805,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67eb330874f1d70012de756f,2025-03-31T17:27:52.394,South Leg,North,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67eb3dc626ae0d0012456226,2025-03-31T18:13:42.329,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67f02181e8204b001207a799,2025-04-04T11:14:25.840,South Leg,South,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67d9dd81426e3a0012e58e5e,2025-03-18T13:54:25.066,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67db14f0426e3a0012e6638b,2025-03-19T12:03:11.939,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67db14f4a90d210012526509,2025-03-19T12:03:16.044,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67db14f793717a0012b52328,2025-03-19T12:03:19.848,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67dc9e0fcfeb8c0012954e33,2025-03-20T16:00:31.262,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67dc9fc44755cf001283f802,2025-03-20T16:07:48.623,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67dcac5a4755cf001284012a,2025-03-20T17:01:29.993,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e033046f9f0700126505de,2025-03-23T09:12:51.956,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e03c4e4755cf00128665c9,2025-03-23T09:52:30.655,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e03c51a90d21001255eff0,2025-03-23T09:52:33.358,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e066706f9f0700126529e1,2025-03-23T12:52:16.682,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e06f0fcfeb8c001297e1f9,2025-03-23T13:29:03.480,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e06f38cfeb8c001297e216,2025-03-23T13:29:44.861,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e06f3a4755cf0012868997,2025-03-23T13:29:46.363,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e06f6b4755cf00128689c1,2025-03-23T13:30:35.334,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e079d86f9f07001265378e,2025-03-23T14:15:04.042,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e079d93610b90012913892,2025-03-23T14:15:05.644,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e17c38cfeb8c0012989351,2025-03-24T08:37:28.269,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e1b87631138300129c6af5,2025-03-24T12:54:29.963,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e1bfb731138300129c7077,2025-03-24T13:25:27.060,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e1de70a90d210012570d46,2025-03-24T15:36:32.252,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e20ba44755cf001287a257,2025-03-24T18:49:24.277,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e2e7076f9f07001266d326,2025-03-25T10:25:27.026,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e2efd1cfeb8c0012998bfc,2025-03-25T11:02:56.913,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e2efe4a90d21001257bd53,2025-03-25T11:03:16.137,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e346a64755cf0012886e9f,2025-03-25T17:13:26.943,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e346a9a90d21001257fa31,2025-03-25T17:13:29.647,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e34fde31138300129d7a14,2025-03-25T17:52:46.166,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e4234bcfeb8c00129a5460,2025-03-26T08:54:51.699,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e57a7131138300129ef1ca,2025-03-27T09:18:57.892,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e57fa6a90d210012597cdf,2025-03-27T09:41:09.982,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e57fa64755cf001289f123,2025-03-27T09:41:10.884,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e58e3ca90d2100125988cb,2025-03-27T10:43:24.515,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e6d94ffeea710012112cea,2025-03-28T10:15:59.728,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e6d954a0673d0011d312c4,2025-03-28T10:16:04.334,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e7192efeea7100121160d8,2025-03-28T14:48:30.676,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e810e29c04260012def17f,2025-03-29T08:25:22.655,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e81c3826ae0d0012431623,2025-03-29T09:13:44.153,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e81cd4a90d2100125b6d6f,2025-03-29T09:16:20.248,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e8351a74f1d70012dc451b,2025-03-29T10:59:54.751,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e840aefeea710012123b85,2025-03-29T11:49:18.307,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e840b1a90d2100125b8933,2025-03-29T11:49:20.710,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e842a174f1d70012dc4fca,2025-03-29T11:57:37.754,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e88bf6feea7100121275a8,2025-03-29T17:10:30.254,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e88ea6a90d2100125bc60d,2025-03-29T17:21:57.912,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67e990a874f1d70012dd4375,2025-03-30T11:42:48.244,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67eae86474f1d70012de3b81,2025-03-31T12:09:24.634,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67ec2a5974f1d70012df24e3,2025-04-01T11:03:05.326,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67eeb215f08f2200113108c8,2025-04-03T09:06:45.287,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67eeb21842521b0012a074c6,2025-04-03T09:06:48.591,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67eed688b2ac120012e245d6,2025-04-03T11:42:16.642,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67eedffde8204b001206b844,2025-04-03T12:22:37.413,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67ef104ff08f2200113154cf,2025-04-03T15:48:47.251,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67f00454132d7700135344b7,2025-04-04T09:09:56.699,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67f0076542521b0012a173f8,2025-04-04T09:23:01.309,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67f033c7132d770013536b39,2025-04-04T12:32:23.523,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67f03de2e8204b001207bf27,2025-04-04T13:15:29.900,South Leg,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+IC,67f0605af08f22001132514b,2025-04-04T15:42:34.519,Intersection Center,,0,,,,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d45cd0e98ffa0012600246,2025-03-14T09:44:00.080,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d48eca4553e30012717e02,2025-03-14T13:17:14.847,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d4a63de98ffa0012605021,2025-03-14T14:57:17.491,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d4b112f166c9001285aa75,2025-03-14T15:43:30.276,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d4c142f166c9001285b6c9,2025-03-14T16:52:34.865,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d4e0594553e3001271d121,2025-03-14T19:05:13.013,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d593d6f166c90012864096,2025-03-15T07:51:02.000,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d5963b4553e30012724623,2025-03-15T08:01:15.443,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d5e18e4553e30012727ce7,2025-03-15T13:22:38.359,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d5eef86d8af9001216a6d9,2025-03-15T14:19:52.292,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d60619e879a5001264b03b,2025-03-15T15:58:33.584,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d60b3e441dac001243d2a1,2025-03-15T16:20:29.987,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d60c01e879a5001264b45c,2025-03-15T16:23:45.547,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d61175e98ffa001261489a,2025-03-15T16:47:01.270,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d619c26d8af9001216c54f,2025-03-15T17:22:26.476,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d61d926d8af9001216c7d8,2025-03-15T17:38:41.946,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d63340441dac001243edce,2025-03-15T19:11:12.496,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d636d7e879a5001264d1b6,2025-03-15T19:26:31.560,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d6f41de98ffa001261da2a,2025-03-16T08:54:05.503,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d7015b441dac0012447118,2025-03-16T09:50:35.021,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d70c7c6d8af9001217624b,2025-03-16T10:38:03.978,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d71df04553e30012734f7f,2025-03-16T11:52:32.344,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d72c256d8af90012177953,2025-03-16T12:53:09.918,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d730b8e879a5001265760a,2025-03-16T13:12:40.239,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d747d4f166c900128768d9,2025-03-16T14:51:16.738,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d748fb4553e30012736db7,2025-03-16T14:56:11.025,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d748fe6d8af90012178da2,2025-03-16T14:56:14.128,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d74b5cf166c90012876b53,2025-03-16T15:06:20.016,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d751e86d8af900121793b7,2025-03-16T15:34:16.273,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d76951f166c90012877f70,2025-03-16T17:14:09.120,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d77293441dac001244bfb5,2025-03-16T17:53:39.436,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d77429f166c9001287867e,2025-03-16T18:00:25.562,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d77729e98ffa0012623613,2025-03-16T18:13:13.848,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d783376d8af9001217b48d,2025-03-16T19:04:39.434,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d78aa9441dac001244cf7b,2025-03-16T19:36:25.174,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d86481441dac0012455bed,2025-03-17T11:05:53.341,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d8b6bc441dac0012459924,2025-03-17T16:56:44.542,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d9a9852fea8c00125e33e9,2025-03-18T10:12:37.040,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d9bc2b63fd230012cf1f85,2025-03-18T11:32:12.047,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67d9fc50800dab0012490599,2025-03-18T16:05:52.561,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67da015e30bc19001200b933,2025-03-18T16:27:26.526,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67da266c426e3a0012e5c3d3,2025-03-18T19:05:32.795,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67daefa7800dab001249a7cb,2025-03-19T09:24:06.995,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dafaa530bc190012016062,2025-03-19T10:11:01.017,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dafd8d426e3a0012e65259,2025-03-19T10:23:25.771,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db07e9a90d210012525b55,2025-03-19T11:07:37.270,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db14c930bc190012017361,2025-03-19T12:02:33.891,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db14eb426e3a0012e66386,2025-03-19T12:03:06.933,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db21ff93717a0012b52ced,2025-03-19T12:58:55.445,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db27cd800dab001249d1cf,2025-03-19T13:23:41.655,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db28a5426e3a0012e672e9,2025-03-19T13:27:16.844,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db2ef630bc1900120187ee,2025-03-19T13:54:14.438,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db3368426e3a0012e67b89,2025-03-19T14:13:12.809,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db47cc1ae98d0011793f36,2025-03-19T15:40:12.048,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db4a9e93717a0012b54d8e,2025-03-19T15:52:14.783,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db514430bc19001201a2bc,2025-03-19T16:20:35.999,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db6f8d800dab00124a081f,2025-03-19T18:29:48.884,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67db7cc330bc19001201c1aa,2025-03-19T19:26:11.740,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dc3f1830bc1900120243b5,2025-03-20T09:15:20.605,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dc4f744755cf001283bad1,2025-03-20T10:25:08.450,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dc56facfeb8c0012951796,2025-03-20T10:57:13.834,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dc7d274755cf001283dd4e,2025-03-20T13:40:07.236,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dc881acfeb8c0012953d5e,2025-03-20T14:26:49.957,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dca4e23610b900128ea010,2025-03-20T16:29:38.119,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dca9604755cf001283ff0a,2025-03-20T16:48:48.600,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dd79a9a90d210012541215,2025-03-21T07:37:29.473,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dd8ae9a90d210012541e49,2025-03-21T08:51:05.815,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dda2e94755cf001284a800,2025-03-21T10:33:29.123,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddaaa7a90d21001254354a,2025-03-21T11:06:30.951,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddac89a90d21001254369a,2025-03-21T11:14:33.072,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddae7bcfeb8c0012960864,2025-03-21T11:22:51.121,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddb6aa311383001299b9f5,2025-03-21T11:57:46.719,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddba446f9f070012635e70,2025-03-21T12:13:07.911,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddbe36cfeb8c00129613f9,2025-03-21T12:29:58.517,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddd2a06f9f0700126370cb,2025-03-21T13:57:04.153,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67dddc4fa90d210012545aab,2025-03-21T14:38:23.131,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddf7cd4755cf001284e6b7,2025-03-21T16:35:41.657,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddfa2e311383001299ec32,2025-03-21T16:45:50.435,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ddffe26f9f0700126391f2,2025-03-21T17:10:09.904,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67de064f3610b900128f9668,2025-03-21T17:37:35.426,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67de0d8a311383001299f9f4,2025-03-21T18:08:26.084,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67de13634755cf001284fa21,2025-03-21T18:33:23.589,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ded7dca90d2100125500cf,2025-03-22T08:31:40.523,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67deed0f3610b90012902d35,2025-03-22T10:02:07.561,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67def73431138300129a9271,2025-03-22T10:45:24.360,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67def98f3610b90012903658,2025-03-22T10:55:27.318,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df18e53610b90012904d2f,2025-03-22T13:09:09.430,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df18e94755cf001285a6d7,2025-03-22T13:09:12.834,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df2690a90d210012553a00,2025-03-22T14:07:28.448,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df2a4b31138300129ab7b1,2025-03-22T14:23:23.051,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df2aa8cfeb8c0012970b05,2025-03-22T14:24:56.566,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df2bcacfeb8c0012970bdb,2025-03-22T14:29:45.733,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df2e574755cf001285b659,2025-03-22T14:40:39.080,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df2f6d3610b90012905d80,2025-03-22T14:45:17.426,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df422a31138300129ac872,2025-03-22T16:05:13.961,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df422da90d210012554dd3,2025-03-22T16:05:16.965,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df45c6a90d210012555051,2025-03-22T16:20:38.128,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df4c9c4755cf001285cb8e,2025-03-22T16:49:48.271,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df4ec03610b900129073aa,2025-03-22T16:58:56.771,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df57fb6f9f0700126479d1,2025-03-22T17:38:19.591,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df6b503610b90012908755,2025-03-22T19:00:48.529,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df71fccfeb8c0012973cd0,2025-03-22T19:29:16.830,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67df75286f9f070012648d4d,2025-03-22T19:42:48.345,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e015b631138300129b4fc3,2025-03-23T07:07:50.401,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e040156f9f070012650eed,2025-03-23T10:08:37.476,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0454f3610b9001291135a,2025-03-23T10:30:55.154,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e05d414755cf0012867d17,2025-03-23T12:13:05.223,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0600531138300129b82c9,2025-03-23T12:24:53.301,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0788e3610b900129137af,2025-03-23T14:09:34.110,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e07f9031138300129b9918,2025-03-23T14:39:28.478,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0809c31138300129b99d1,2025-03-23T14:43:56.705,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e080d2cfeb8c001297eeb3,2025-03-23T14:44:50.270,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0860e6f9f070012654045,2025-03-23T15:07:09.848,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e096a331138300129ba95e,2025-03-23T16:17:55.703,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e09bc2cfeb8c001298019d,2025-03-23T16:39:46.646,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e09d8fa90d210012563497,2025-03-23T16:47:27.129,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0a6483610b9001291576b,2025-03-23T17:24:40.867,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0a6a33610b900129157a7,2025-03-23T17:26:11.780,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0a8a23610b90012915900,2025-03-23T17:34:41.938,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0aa16a90d210012563d2c,2025-03-23T17:40:54.210,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0bc593610b9001291663c,2025-03-23T18:58:49.363,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0c4dd4755cf001286c505,2025-03-23T19:34:56.632,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e0c7366f9f070012656c98,2025-03-23T19:45:10.614,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e18a4a4755cf00128744e7,2025-03-24T09:37:30.289,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e18aa53610b9001291ecae,2025-03-24T09:39:01.205,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e198f6cfeb8c001298a809,2025-03-24T10:40:06.693,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e19b60a90d21001256db7c,2025-03-24T10:50:23.964,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e19cbacfeb8c001298aab6,2025-03-24T10:56:10.193,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1a663a90d21001256e37d,2025-03-24T11:37:23.863,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1a6f64755cf0012875995,2025-03-24T11:39:50.147,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1ba6f31138300129c6c74,2025-03-24T13:02:55.230,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1c26431138300129c7273,2025-03-24T13:36:52.327,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1c4cf4755cf0012876f54,2025-03-24T13:47:11.216,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1e428a90d210012571167,2025-03-24T16:00:56.635,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1f02bcfeb8c001298e7fe,2025-03-24T16:52:11.574,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1f19831138300129c955d,2025-03-24T16:58:16.450,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1f3c831138300129c96dd,2025-03-24T17:07:36.086,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e1fe1731138300129c9e1a,2025-03-24T17:51:35.251,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e20e1da90d210012572ef2,2025-03-24T18:59:57.681,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e213bd3610b90012924ff7,2025-03-24T19:23:57.293,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e2dfad6f9f07001266ce47,2025-03-25T09:54:04.833,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e2f825a90d21001257c360,2025-03-25T11:38:29.260,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e30f964755cf0012884841,2025-03-25T13:18:30.179,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e318384755cf0012884e4d,2025-03-25T13:55:20.715,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e323b231138300129d5bb7,2025-03-25T14:44:18.119,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e330066f9f070012670549,2025-03-25T15:36:54.740,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e331124755cf0012885fef,2025-03-25T15:41:22.575,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e361e931138300129d8685,2025-03-25T19:09:45.221,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e41a5ccfeb8c00129a4dd6,2025-03-26T08:16:44.143,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e41f06a06e6f0013c7da9b,2025-03-26T08:36:38.786,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e444ab31138300129e1981,2025-03-26T11:17:15.787,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e4515d31138300129e22bb,2025-03-26T12:11:25.215,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e5778d4755cf001289ead4,2025-03-27T09:06:37.750,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e59347feea710012103c39,2025-03-27T11:04:54.917,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e5984326ae0d0012413840,2025-03-27T11:26:11.422,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e5a9bc26ae0d00124145d0,2025-03-27T12:40:44.099,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e5db1274f1d70012da89e3,2025-03-27T16:11:14.549,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e5f0c126ae0d0012417f23,2025-03-27T17:43:45.105,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e5feb99c04260012dd6dfc,2025-03-27T18:43:21.448,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e6cc609c04260012ddffd6,2025-03-28T09:20:48.154,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e6e800a0673d0011d31e74,2025-03-28T11:18:39.940,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e6f635feea710012114432,2025-03-28T12:19:17.259,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e701f79c04260012de2a36,2025-03-28T13:09:27.017,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e704b426ae0d00124247fe,2025-03-28T13:21:08.504,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e70c52feea710012115620,2025-03-28T13:53:38.114,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e714b974f1d70012db7129,2025-03-28T14:29:29.029,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e71d4274f1d70012db7848,2025-03-28T15:05:54.127,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e71f9c9c04260012de4252,2025-03-28T15:15:56.813,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e72031feea71001211668a,2025-03-28T15:18:24.895,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e73c0d74f1d70012db9198,2025-03-28T17:17:17.537,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e742a626ae0d0012427b09,2025-03-28T17:45:26.188,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e7451ffeea7100121184e2,2025-03-28T17:55:59.500,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e825ec74f1d70012dc399f,2025-03-29T09:55:08.397,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e836059c04260012df0e12,2025-03-29T11:03:49.147,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e841db74f1d70012dc4f20,2025-03-29T11:54:19.200,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e8558426ae0d001243439d,2025-03-29T13:18:12.065,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e86a61a90d2100125baa37,2025-03-29T14:47:13.691,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e874409c04260012df3e78,2025-03-29T15:29:20.396,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e8821ffeea710012126e4c,2025-03-29T16:28:31.515,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e88327a90d2100125bbd53,2025-03-29T16:32:55.562,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e8884826ae0d0012436ab3,2025-03-29T16:54:48.842,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e88856feea7100121272f3,2025-03-29T16:55:02.759,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e895d774f1d70012dc9014,2025-03-29T17:52:39.485,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e89921feea710012127fc1,2025-03-29T18:06:40.873,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e97151a0673d0011d4fd92,2025-03-30T09:29:05.348,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e984eaa0673d0011d50c91,2025-03-30T10:52:41.906,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e994849c04260012e00e19,2025-03-30T11:59:16.077,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e9986974f1d70012dd493d,2025-03-30T12:15:53.242,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e9c260feea710012135616,2025-03-30T15:14:56.813,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e9c72ba90d2100125ca7b0,2025-03-30T15:35:23.799,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e9ca7efeea710012135c46,2025-03-30T15:49:34.765,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e9defd74f1d70012dd7ecb,2025-03-30T17:17:01.229,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67e9eb869c04260012e04fe8,2025-03-30T18:10:30.536,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eab44ca0673d0011d5e593,2025-03-31T08:27:08.630,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eac3a09c04260012e0e7d2,2025-03-31T09:32:32.601,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eac6a9a0673d0011d5f39a,2025-03-31T09:45:29.693,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ead64d26ae0d0012451208,2025-03-31T10:52:13.429,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ead9349c04260012e0f8ac,2025-03-31T11:04:36.609,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eae5aca0673d0011d60b87,2025-03-31T11:57:48.744,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eb1d2e74f1d70012de64dd,2025-03-31T15:54:38.460,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eb25ea74f1d70012de6b91,2025-03-31T16:31:54.678,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ec8f2026ae0d0012465a8b,2025-04-01T18:13:04.128,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ec9f34feea710012156e5d,2025-04-01T19:21:40.340,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ec9f659c04260012e24a66,2025-04-01T19:22:29.805,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ed55d89c04260012e2c9cd,2025-04-02T08:20:55.973,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ed5cac74f1d70012e00544,2025-04-02T08:50:04.527,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ed8b7374f1d70012e028de,2025-04-02T12:09:39.610,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eda26fa0673d0011d80b74,2025-04-02T13:47:43.571,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67edb9e4feea710012163a5d,2025-04-02T15:27:48.100,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67edc943132d77001351a3ca,2025-04-02T16:33:23.094,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67edcb4ef08f220011306505,2025-04-02T16:42:06.253,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eeb78df08f220011310d00,2025-04-03T09:30:05.394,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eebc4ef08f2200113110be,2025-04-03T09:50:22.627,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eec4ef132d770013525766,2025-04-03T10:27:11.319,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eeda9ff08f220011312977,2025-04-03T11:59:43.470,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67eef03ab2ac120012e25a80,2025-04-03T13:31:54.585,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ef0bb8e8204b001206dbe7,2025-04-03T15:29:12.148,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ef0ce9e8204b001206dcd3,2025-04-03T15:34:17.441,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ef1503132d77001352986b,2025-04-03T16:08:51.592,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67ef3c5ce8204b001207016e,2025-04-03T18:56:44.599,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f0080142521b0012a17473,2025-04-04T09:25:37.207,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f0082d42521b0012a1749b,2025-04-04T09:26:21.462,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f0107542521b0012a17b5a,2025-04-04T10:01:41.058,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f018a2b2ac120012e3353d,2025-04-04T10:36:34.328,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f02044b2ac120012e33b45,2025-04-04T11:09:08.838,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f037f242521b0012a19bd9,2025-04-04T12:50:10.077,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f0399842521b0012a19d2a,2025-04-04T12:57:11.999,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f045b9f08f220011323a7a,2025-04-04T13:48:56.965,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f0503f4e9b83001270d8f7,2025-04-04T14:33:51.318,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f0511bf08f220011324423,2025-04-04T14:37:31.198,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f054234e9b83001270dc5f,2025-04-04T14:50:27.591,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f05b5c4e9b83001270e2c4,2025-04-04T15:21:16.599,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f06742f08f220011325739,2025-04-04T16:12:02.260,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f069ec4e9b83001270ef09,2025-04-04T16:23:24.426,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f06a04e8204b001207e4bd,2025-04-04T16:23:48.665,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f06f3ab2ac120012e37e2b,2025-04-04T16:46:01.969,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f07989e8204b001207f1e4,2025-04-04T17:30:01.566,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f07d52b2ac120012e389c8,2025-04-04T17:46:09.921,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f080704e9b8300127101be,2025-04-04T17:59:28.646,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f09a5442521b0012a1eda4,2025-04-04T19:49:56.342,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f13e9df08f22001132f4b2,2025-04-05T07:30:53.587,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f14221b2ac120012e4175b,2025-04-05T07:45:53.381,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f16add4e9b83001271ac69,2025-04-05T10:39:41.713,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f16b1e42521b0012a28492,2025-04-05T10:40:46.597,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f17ce7e8204b001208b20e,2025-04-05T11:56:39.622,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1820fb2ac120012e44aef,2025-04-05T12:18:39.202,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f18693b2ac120012e44ed6,2025-04-05T12:37:55.504,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f18bf4f08f22001133332a,2025-04-05T13:00:52.599,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f18e45f08f220011333523,2025-04-05T13:10:45.442,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f19c5c4e9b83001271d643,2025-04-05T14:10:52.037,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1a448f08f220011334751,2025-04-05T14:44:40.809,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1a4aeb2ac120012e46835,2025-04-05T14:46:22.542,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1a9084e9b83001271e0d1,2025-04-05T15:04:56.735,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1a9aa42521b0012a2b884,2025-04-05T15:07:38.038,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1abf742521b0012a2ba5e,2025-04-05T15:17:26.978,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1ac4d132d770013548e69,2025-04-05T15:18:53.689,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1acbce8204b001208da08,2025-04-05T15:20:44.327,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1ad12b2ac120012e46f2d,2025-04-05T15:22:10.330,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1b1e942521b0012a2bf2b,2025-04-05T15:42:49.210,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1b58ce8204b001208e12d,2025-04-05T15:58:20.087,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1b757e8204b001208e29f,2025-04-05T16:05:59.867,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1ba15132d77001354999d,2025-04-05T16:17:41.054,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1c16142521b0012a2cb90,2025-04-05T16:48:49.512,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1c16642521b0012a2cb94,2025-04-05T16:48:54.118,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1c808f08f22001133645d,2025-04-05T17:17:12.501,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f1ddd942521b0012a2e286,2025-04-05T18:50:17.006,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f28d0ab2ac120012e511e0,2025-04-06T07:17:46.640,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f293ae132d7700135536cb,2025-04-06T07:46:05.820,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2bb58132d770013555573,2025-04-06T10:35:19.881,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2c126e8204b001209a59a,2025-04-06T11:00:06.354,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2c7e0b2ac120012e53f5b,2025-04-06T11:28:48.254,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2c925b2ac120012e5405c,2025-04-06T11:34:13.156,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2c9b842521b0012a38d0f,2025-04-06T11:36:40.038,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2def742521b0012a39de1,2025-04-06T13:07:19.763,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2e3ca4e9b83001272caba,2025-04-06T13:27:54.320,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2ea92132d770013557b44,2025-04-06T13:56:50.225,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2ef53132d770013557f19,2025-04-06T14:17:07.579,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2f24d4e9b83001272d652,2025-04-06T14:29:49.450,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2f57ae8204b001209cefe,2025-04-06T14:43:21.993,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2f91ae8204b001209d1d8,2025-04-06T14:58:49.962,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2f956f08f220011344577,2025-04-06T14:59:50.636,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f2fc0d42521b0012a3b4ba,2025-04-06T15:11:24.807,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f30435f08f220011344e06,2025-04-06T15:46:13.386,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f30477e8204b001209dab1,2025-04-06T15:47:19.670,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f30a3f132d770013559451,2025-04-06T16:11:59.765,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f30dd24e9b83001272ebbe,2025-04-06T16:27:14.127,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f30e72132d770013559791,2025-04-06T16:29:54.226,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f31306e8204b001209e5e5,2025-04-06T16:49:26.411,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f3157a42521b0012a3c86d,2025-04-06T16:59:54.614,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f31ed3f08f2200113462fe,2025-04-06T17:39:46.905,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f31fe0132d77001355a55b,2025-04-06T17:44:16.352,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f329b54e9b8300127301dc,2025-04-06T18:26:13.856,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f3361542521b0012a3e1d8,2025-04-06T19:19:01.268,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f3383542521b0012a3e35e,2025-04-06T19:28:05.647,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f3f246e8204b00120a83df,2025-04-07T08:41:58.096,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f3fcc1132d770013564112,2025-04-07T09:26:40.931,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f43004132d77001356682d,2025-04-07T13:05:24.120,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f44a284e9b83001273d1ca,2025-04-07T14:56:56.350,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f44f8b4e9b83001273d607,2025-04-07T15:19:55.806,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f45df1132d770013568c1e,2025-04-07T16:21:21.578,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f46175e8204b00120ada07,2025-04-07T16:36:21.012,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f461b3b2ac120012e66dd0,2025-04-07T16:37:23.596,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f55e3a8b21de00123e8f1e,2025-04-08T10:34:50.070,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f55e43c777850012dc93a1,2025-04-08T10:34:59.181,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f56e059a285b001287893f,2025-04-08T11:42:13.800,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f56e849a285b00128789a5,2025-04-08T11:44:20.765,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f56ed7cf4e780012a36492,2025-04-08T11:45:43.562,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f570969a285b0012878b3d,2025-04-08T11:53:10.723,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f5743cc777850012dca57f,2025-04-08T12:08:44.402,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f59073cf4e780012a3815d,2025-04-08T14:09:06.916,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f5b0598b21de00123ed487,2025-04-08T16:25:13.696,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f5b806bc8b580012121eb4,2025-04-08T16:57:57.993,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f5d121cf4e780012a3b7d6,2025-04-08T18:45:05.079,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f695f5cf4e780012a448a2,2025-04-09T08:44:53.663,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6c0079a285b0012888eb9,2025-04-09T11:44:23.631,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6d154c777850012ddb366,2025-04-09T12:58:12.549,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6d628bc8b58001212f7a5,2025-04-09T13:18:48.119,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6d7a6bc8b58001212f8df,2025-04-09T13:25:10.211,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6dabc8b21de00123fb78b,2025-04-09T13:38:20.499,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6e01a6de9300012ead1f8,2025-04-09T14:01:14.974,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6e0876de9300012ead25c,2025-04-09T14:03:03.110,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6e08a8b21de00123fbc77,2025-04-09T14:03:06.714,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6e6118b21de00123fc149,2025-04-09T14:26:40.983,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6eb819a285b001288b1e9,2025-04-09T14:49:52.741,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6ec3ad320070012b0ef33,2025-04-09T14:52:58.776,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6f800d320070012b0f9b5,2025-04-09T15:43:12.707,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6f83abc8b5800121314dd,2025-04-09T15:44:10.177,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6fb136de9300012eae9c5,2025-04-09T15:56:18.798,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6fba2d320070012b0fcf5,2025-04-09T15:58:42.175,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6fbe56de9300012eaea92,2025-04-09T15:59:49.159,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f6fbedd320070012b0fd4c,2025-04-09T15:59:57.369,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f705b8bc8b5800121320ac,2025-04-09T16:41:44.789,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f7227e9a285b001288dff6,2025-04-09T18:44:30.765,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f800c85f5ed50012c62baa,2025-04-10T10:32:56.263,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f8086e6de9300012ebb268,2025-04-10T11:05:33.803,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f81237d320070012b1cc2c,2025-04-10T11:47:19.606,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f81e526de9300012ebc42f,2025-04-10T12:38:58.133,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f81f6ec8ea730012390fcf,2025-04-10T12:43:42.694,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f8243ac8ea7300123913c0,2025-04-10T13:04:10.329,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f8332b6de9300012ebd5a2,2025-04-10T14:07:55.078,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f834b7c8ea730012392197,2025-04-10T14:14:31.874,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f835b4c8ea73001239226d,2025-04-10T14:18:44.799,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f8389a8626d500126df541,2025-04-10T14:31:06.533,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f8487ac8ea7300123931c1,2025-04-10T15:38:50.354,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f867fe5f5ed50012c67f6d,2025-04-10T17:53:18.037,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f882134c0f0200124aaa9d,2025-04-10T19:44:35.518,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f93af68626d500126eb49b,2025-04-11T08:53:26.149,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f950f1d320070012b2bd9c,2025-04-11T10:27:13.365,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f968d75f5ed50012c73f0f,2025-04-11T12:09:11.200,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f9700ec8ea7300123a0fad,2025-04-11T12:39:58.265,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f9747a6de9300012ecc8e2,2025-04-11T12:58:50.739,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f974f4c8ea7300123a13e0,2025-04-11T13:00:52.097,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f9797f5f5ed50012c74d3f,2025-04-11T13:20:15.492,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f97cfb4c0f0200124b6735,2025-04-11T13:35:07.823,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f97dccd320070012b2e2f2,2025-04-11T13:38:36.288,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f983fb6de9300012ecd5ba,2025-04-11T14:04:59.425,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f989236de9300012ecda18,2025-04-11T14:26:59.305,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f989278626d500126ef532,2025-04-11T14:27:03.411,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67f98b3ec8ea7300123a26b1,2025-04-11T14:35:58.301,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fa80a2ed6e9c0011d39421,2025-04-12T08:02:57.982,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fa813d6de9300012ed9328,2025-04-12T08:05:33.477,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fa8fe4d320070012b3b139,2025-04-12T09:08:04.021,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fa94a4d320070012b3b506,2025-04-12T09:28:20.347,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67faa2545f5ed50012c82eb5,2025-04-12T10:26:44.120,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67faa6a70788db0012411d14,2025-04-12T10:45:11.022,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fab1f0d320070012b3ccbe,2025-04-12T11:33:20.075,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fab2dced6e9c0011d3bca8,2025-04-12T11:37:15.984,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fab543ed6e9c0011d3bead,2025-04-12T11:47:31.770,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67faba9b0788db0012412d38,2025-04-12T12:10:19.213,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fabbe380e902001194961b,2025-04-12T12:15:47.729,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fac1036de9300012edc680,2025-04-12T12:37:39.811,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fac1060788db00124132aa,2025-04-12T12:37:42.614,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fac82b0788db00124138de,2025-04-12T13:08:10.956,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fad6aced6e9c0011d3da49,2025-04-12T14:10:04.492,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fad6bc5f5ed50012c85a03,2025-04-12T14:10:20.612,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fad9cb5f5ed50012c85c9e,2025-04-12T14:23:23.814,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fadd0ced6e9c0011d3df61,2025-04-12T14:37:16.788,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fae55ed320070012b3f6f4,2025-04-12T15:12:46.016,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67fae5c3d320070012b3f743,2025-04-12T15:14:27.746,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67faeb3dd320070012b3fbb9,2025-04-12T15:37:49.319,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+TV,67faf0870788db0012415a34,2025-04-12T16:00:23.539,South Leg,East,0,,,RT,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+WWD,67d77c56441dac001244c606,2025-03-16T18:35:18.274,East Leg,West,0,,,,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+WWD,67dafb4ba90d210012525285,2025-03-19T10:13:47.836,East Leg,West,0,,,,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+STPV,67e3c60731138300129dc2b8,2025-03-26T02:16:47.925,Intersection Center,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67d3772e54bd550011cc5ecf,2025-03-13T17:24:14.742,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67d37e76ef437500128544fe,2025-03-13T17:55:18.783,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67d4dc82e98ffa001260780c,2025-03-14T18:48:50.441,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67d8592e441dac00124553c2,2025-03-17T10:17:34.563,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67d8f769f166c90012888a07,2025-03-17T21:32:41.688,East Leg,East,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67dec4294755cf0012856aa1,2025-03-22T07:07:37.693,East Leg,East,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67e0272d6f9f07001264fdf2,2025-03-23T08:22:21.652,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67e4a2114755cf0012895b24,2025-03-26T17:55:45.404,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67e9655974f1d70012dd22bd,2025-03-30T08:38:01.422,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67ed42ca9c04260012e2bb64,2025-04-02T06:59:37.894,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67ed73e742521b00129f8d8f,2025-04-02T10:28:52.484,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67ee986542521b0012a060e7,2025-04-03T07:17:09.033,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67eefdc1f08f2200113145c7,2025-04-03T14:29:37.316,North Leg,North,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+LCV,67e6100afeea710012109d95,2025-03-27T19:57:14.453,East Leg,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+LCV,67e68fe926ae0d001241ed54,2025-03-28T05:02:48.307,East Leg,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+IC,67ddbfa7a90d21001254451b,2025-03-21T12:36:07.687,East Leg,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+IC,67de0e3c4755cf001284f697,2025-03-21T18:11:23.966,North Leg,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+IC,67e0877f3610b9001291423b,2025-03-23T15:13:19.476,North Leg,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+IC,67e70296a0673d0011d333a2,2025-03-28T13:12:05.966,North Leg,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+IC,67eaaf2f26ae0d001244f3f5,2025-03-31T08:05:19.430,North Leg,,0,,,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+NM-VRU,67e087806f9f070012654143,2025-03-23T15:13:17.072,North Leg,,0,Passenger Vehicle,Bicycle,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+NM-VRU,67f5c1f3cf4e780012a3ab94,2025-04-08T17:40:16.893,North Leg,,0,Pedestrian,Passenger Vehicle,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+NM-VV,67e49eb231138300129e5d55,2025-03-26T17:41:18.961,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+NM-VV,67e7ff19a0673d0011d3ed26,2025-03-29T07:09:26.669,South Leg,,0,Motorcycle,Passenger Vehicle,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+NM-VV,67f6e60fbc8b5800121304a9,2025-04-09T14:26:35.893,Intersection Center,,0,Passenger Vehicle,Passenger Vehicle,,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+TV,67d5a007f166c90012864939,2025-03-15T08:43:03.453,North Leg,North,0,,,UT,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+TV,67db77f9426e3a0012e6ae2f,2025-03-19T19:05:45.030,North Leg,North,0,,,UT,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+TV,67e2d3064755cf0012881fa7,2025-03-25T09:00:06.567,North Leg,North,0,,,UT,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+TV,67e6907f74f1d70012db0953,2025-03-28T05:05:19.205,North Leg,North,0,,,UT,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+TV,67eb188674f1d70012de6136,2025-03-31T15:34:46.645,North Leg,North,0,,,UT,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+TV,67ec652174f1d70012df54a4,2025-04-01T15:13:53.740,North Leg,North,0,,,UT,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+WWD,67d5d2c64553e30012727214,2025-03-15T12:19:34.266,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67d98e4fe5f4d300127370e0,2025-03-18T08:16:31.513,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67d9ef2430bc19001200ab50,2025-03-18T15:09:40.599,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67daec66a90d2100125247b4,2025-03-19T09:10:14.327,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67daeec130bc1900120157d7,2025-03-19T09:20:16.899,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67daef7630bc190012015857,2025-03-19T09:23:18.484,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67e473aea90d21001258c335,2025-03-26T14:37:50.412,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67e97df0a90d2100125c7032,2025-03-30T10:22:56.782,South Leg,South,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+IC,67e845f3a0673d0011d42336,2025-03-29T12:11:47.475,South Leg,,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+IC,67f073c542521b0012a1cece,2025-04-04T17:05:25.752,South Leg,,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+IC,67f6b614d320070012b0c300,2025-04-09T11:01:56.843,South Leg,,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+IC,67f87273c8ea73001239523f,2025-04-10T18:37:54.951,South Leg,,0,,,,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+WWD,67d5d3566d8af900121692a4,2025-03-15T12:21:58.734,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d5efc5f166c9001286835a,2025-03-15T14:23:17.218,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d5f60d4553e30012728bcd,2025-03-15T14:50:05.386,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d5fea6441dac001243c9a6,2025-03-15T15:26:46.389,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6011b6d8af9001216b430,2025-03-15T15:37:14.995,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6088ae98ffa0012614269,2025-03-15T16:08:45.312,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d613d9e98ffa0012614a41,2025-03-15T16:57:12.932,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d61457e98ffa0012614aa3,2025-03-15T16:59:19.395,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6145ae98ffa0012614aa6,2025-03-15T16:59:21.798,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6164cf166c90012869f77,2025-03-15T17:07:40.314,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d62ca7441dac001243e957,2025-03-15T18:43:02.875,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d62f57441dac001243eb1b,2025-03-15T18:54:31.148,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d655dee879a5001264e5a8,2025-03-15T21:38:54.005,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d65795441dac0012440592,2025-03-15T21:46:13.379,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6d6cef166c9001287191d,2025-03-16T06:49:02.473,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6d7bd6d8af90012173dff,2025-03-16T06:53:01.590,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6dc13f166c90012871cae,2025-03-16T07:11:31.377,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6df5ef166c90012871eef,2025-03-16T07:25:33.853,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6f0f1f166c90012872ae3,2025-03-16T08:40:32.749,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6fdf64553e300127337e4,2025-03-16T09:36:06.485,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d6fe20e879a5001265513c,2025-03-16T09:36:48.739,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d70331441dac001244725e,2025-03-16T09:58:25.598,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d70aeaf166c90012873d6e,2025-03-16T10:31:22.232,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d710a54553e3001273459c,2025-03-16T10:55:49.395,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d711ec6d8af90012176651,2025-03-16T11:01:16.800,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d7139f441dac0012447df1,2025-03-16T11:08:31.549,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d7229c441dac00124488d8,2025-03-16T12:12:27.913,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d72b564553e300127358ef,2025-03-16T12:49:41.949,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d72d904553e30012735a7d,2025-03-16T12:59:12.556,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d7324a441dac00124493fa,2025-03-16T13:19:22.510,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d73aed441dac0012449a43,2025-03-16T13:56:13.242,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d73c94441dac0012449b85,2025-03-16T14:03:16.075,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d7484d441dac001244a361,2025-03-16T14:53:17.197,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d74e776d8af90012179145,2025-03-16T15:19:35.344,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d74e79e98ffa0012621a63,2025-03-16T15:19:37.447,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d74ef3441dac001244a7ca,2025-03-16T15:21:39.002,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d75c3c6d8af90012179ab4,2025-03-16T16:18:20.021,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d75dd36d8af90012179bce,2025-03-16T16:25:07.637,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d7655e6d8af9001217a0f4,2025-03-16T16:57:18.036,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d76560e98ffa0012622a2d,2025-03-16T16:57:20.340,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d765626d8af9001217a0f7,2025-03-16T16:57:22.642,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d76564441dac001244b71c,2025-03-16T16:57:24.445,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d766f4e98ffa0012622b46,2025-03-16T17:04:04.037,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d76f1ee879a5001265a0d2,2025-03-16T17:38:54.132,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d76f87e879a5001265a117,2025-03-16T17:40:39.164,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d773bd4553e30012738acf,2025-03-16T17:58:36.938,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d7767bf166c9001287881a,2025-03-16T18:10:19.733,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d787246d8af9001217b705,2025-03-16T19:21:24.737,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d788a7e879a5001265b123,2025-03-16T19:27:51.722,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d78cfc6d8af9001217bacd,2025-03-16T19:46:19.967,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d935494553e3001274b49a,2025-03-18T01:56:41.215,East Leg,West,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9c2b893717a0012b43720,2025-03-18T12:00:08.941,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9d995426e3a0012e58b40,2025-03-18T13:37:41.522,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9e7fda90d2100125198c0,2025-03-18T14:39:09.641,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9eeaa426e3a0012e59bb4,2025-03-18T15:07:38.222,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9eeac93717a0012b45a66,2025-03-18T15:07:40.225,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9eeae426e3a0012e59bb8,2025-03-18T15:07:42.527,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9f04f800dab001248fc7b,2025-03-18T15:14:39.162,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9f52a30bc19001200affb,2025-03-18T15:35:22.011,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9f52b800dab001249001b,2025-03-18T15:35:23.713,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9f57d30bc19001200b042,2025-03-18T15:36:45.415,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9fb9630bc19001200b4d8,2025-03-18T16:02:46.154,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9fda793717a0012b465f1,2025-03-18T16:11:35.809,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67d9fe49426e3a0012e5a736,2025-03-18T16:14:17.919,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67da006a93717a0012b467f7,2025-03-18T16:23:22.910,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67da00f6426e3a0012e5a915,2025-03-18T16:25:42.183,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67da043793717a0012b46ace,2025-03-18T16:39:35.018,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67da0cd230bc19001200c1a5,2025-03-18T17:16:04.373,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67da185b800dab00124919ef,2025-03-18T18:05:31.412,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67da2175426e3a0012e5c023,2025-03-18T18:44:21.554,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67da2b421ae98d0011787ad8,2025-03-18T19:26:10.026,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dac986426e3a0012e62d3f,2025-03-19T06:41:26.548,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dada6b30bc190012014947,2025-03-19T07:53:31.580,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67daf37d30bc190012015b42,2025-03-19T09:40:29.844,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67daf67b30bc190012015d73,2025-03-19T09:53:15.713,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dafb88a90d2100125252b2,2025-03-19T10:14:48.261,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dafe801ae98d001179069c,2025-03-19T10:27:28.340,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db0d0da90d210012525f2a,2025-03-19T11:29:33.855,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db0d8c800dab001249bdb4,2025-03-19T11:31:40.220,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db149693717a0012b522de,2025-03-19T12:01:42.426,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db149630bc190012017334,2025-03-19T12:01:42.827,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db243430bc190012017f06,2025-03-19T13:08:20.415,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db38f493717a0012b53ffd,2025-03-19T14:36:52.784,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db3bc093717a0012b54229,2025-03-19T14:48:48.376,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db3ec6426e3a0012e6844f,2025-03-19T15:01:42.035,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db41451ae98d0011793a2c,2025-03-19T15:12:21.853,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db47b530bc190012019b81,2025-03-19T15:39:48.965,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db49c6a90d210012528e6b,2025-03-19T15:48:38.739,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db4c0593717a0012b54ea4,2025-03-19T15:58:13.384,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db500793717a0012b55198,2025-03-19T16:15:19.294,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67db511830bc19001201a29e,2025-03-19T16:19:52.536,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc24ec1ae98d001179d333,2025-03-20T07:23:40.172,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc2fc1426e3a0012e72839,2025-03-20T08:09:53.216,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc3215a90d210012532b28,2025-03-20T08:19:49.681,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc3269800dab00124a8970,2025-03-20T08:21:13.392,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc3d6b1ae98d001179e540,2025-03-20T09:08:10.965,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc41aa1ae98d001179e86b,2025-03-20T09:26:17.933,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc517ea90d210012534365,2025-03-20T10:33:50.284,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc666c6f9f070012627095,2025-03-20T12:03:08.061,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc666d311383001298cea7,2025-03-20T12:03:09.663,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc66703610b900128e6ffe,2025-03-20T12:03:12.767,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc66743610b900128e7004,2025-03-20T12:03:16.171,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc667fcfeb8c0012952357,2025-03-20T12:03:27.083,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc66916f9f0700126270af,2025-03-20T12:03:45.105,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6695a90d210012535371,2025-03-20T12:03:49.610,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6a343610b900128e72e3,2025-03-20T12:19:16.538,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6a373610b900128e72e9,2025-03-20T12:19:19.341,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6a394755cf001283cf1b,2025-03-20T12:19:21.144,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6a526f9f07001262737e,2025-03-20T12:19:46.192,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6a58cfeb8c0012952666,2025-03-20T12:19:52.500,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6a5b3610b900128e7301,2025-03-20T12:19:54.903,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6a6fcfeb8c0012952677,2025-03-20T12:20:15.830,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6b0c3610b900128e7394,2025-03-20T12:22:51.832,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6b1d311383001298d239,2025-03-20T12:23:09.157,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc6b2acfeb8c00129526fe,2025-03-20T12:23:22.879,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc70496f9f070012627803,2025-03-20T12:45:13.232,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc74f73610b900128e7b45,2025-03-20T13:05:11.071,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc7d88cfeb8c0012953539,2025-03-20T13:41:44.183,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc7d8ecfeb8c001295353f,2025-03-20T13:41:50.290,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc7d94cfeb8c0012953542,2025-03-20T13:41:56.209,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc7d96a90d210012536522,2025-03-20T13:41:58.111,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc81816f9f070012628537,2025-03-20T13:58:41.528,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc820c6f9f0700126285ab,2025-03-20T14:01:00.605,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc86c43610b900128e890d,2025-03-20T14:21:08.840,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc917b311383001298efc3,2025-03-20T15:06:51.049,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc97e7cfeb8c001295497d,2025-03-20T15:34:15.006,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc97ea6f9f0700126296a7,2025-03-20T15:34:18.610,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc98de4755cf001283f2d7,2025-03-20T15:38:22.324,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc99d0a90d210012537af2,2025-03-20T15:42:24.331,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc9b306f9f07001262992e,2025-03-20T15:48:16.386,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc9be3cfeb8c0012954c99,2025-03-20T15:51:14.919,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc9be56f9f0700126299b7,2025-03-20T15:51:17.722,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dc9fa2cfeb8c0012954f75,2025-03-20T16:07:14.456,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dcaa0bcfeb8c001295572d,2025-03-20T16:51:39.457,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dcaa10311383001299020b,2025-03-20T16:51:44.063,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dcbbe63113830012990ee9,2025-03-20T18:07:50.886,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dcbd7e3113830012991014,2025-03-20T18:14:38.723,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dcbfc33610b900128eb3f4,2025-03-20T18:24:19.156,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dcc0ff6f9f07001262b576,2025-03-20T18:29:35.354,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dcc995a90d210012539ec0,2025-03-20T19:06:13.827,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dd688c3610b900128f2356,2025-03-21T06:24:28.092,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dd8081cfeb8c001295e75d,2025-03-21T08:06:41.472,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dd8346a90d2100125418e1,2025-03-21T08:18:30.259,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dd9198a90d210012542338,2025-03-21T09:19:36.425,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dd97f04755cf0012849ff0,2025-03-21T09:46:40.506,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dd997b4755cf001284a10c,2025-03-21T09:53:15.210,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dd9a63311383001299a4b2,2025-03-21T09:57:07.709,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dda05e311383001299a94b,2025-03-21T10:22:38.351,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ddaa09a90d2100125434da,2025-03-21T11:03:52.989,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ddae42311383001299b39b,2025-03-21T11:21:54.159,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ddb5c6cfeb8c0012960da8,2025-03-21T11:53:58.180,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ddc2e44755cf001284bf70,2025-03-21T12:49:56.282,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ddd11e4755cf001284ca22,2025-03-21T13:50:38.473,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dde4aa4755cf001284d8b6,2025-03-21T15:14:02.520,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ddfc156f9f070012638f43,2025-03-21T16:53:57.241,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67de025acfeb8c001296460d,2025-03-21T17:20:42.672,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67de0eeba90d210012547fb7,2025-03-21T18:14:19.290,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67de15bc6f9f07001263a15a,2025-03-21T18:43:23.995,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67deb5163610b90012900672,2025-03-22T06:03:18.338,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67debc8f4755cf0012856583,2025-03-22T06:35:11.262,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67debf4e6f9f070012640d0b,2025-03-22T06:46:54.746,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dec363cfeb8c001296c167,2025-03-22T07:04:18.868,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dec9aea90d21001254f6f7,2025-03-22T07:31:10.093,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67decabea90d21001254f7b1,2025-03-22T07:35:42.133,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ded80f4755cf001285784a,2025-03-22T08:32:30.854,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dee11231138300129a82bc,2025-03-22T09:10:58.194,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dee112a90d210012550723,2025-03-22T09:10:58.794,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dee4f4a90d2100125509f1,2025-03-22T09:27:32.147,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dee89531138300129a8820,2025-03-22T09:43:01.820,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67dee9fecfeb8c001296dc62,2025-03-22T09:49:02.678,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67df12b0cfeb8c001296f99a,2025-03-22T12:42:40.117,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67df142331138300129aa781,2025-03-22T12:48:51.858,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67df14246f9f070012644961,2025-03-22T12:48:52.459,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67df5d233610b90012907d80,2025-03-22T18:00:19.054,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67df6a7acfeb8c00129737a0,2025-03-22T18:57:14.403,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e008bfa90d21001255cd5b,2025-03-23T06:12:31.071,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0104fcfeb8c001297a0a3,2025-03-23T06:44:46.896,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0174ea90d21001255d6ec,2025-03-23T07:14:38.141,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e01b9231138300129b539a,2025-03-23T07:32:50.523,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e01d494755cf0012865098,2025-03-23T07:40:09.069,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0357b4755cf0012866115,2025-03-23T09:23:23.064,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e092b5cfeb8c001297fb4d,2025-03-23T16:01:09.315,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e09ccd6f9f070012655005,2025-03-23T16:44:13.700,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0a8af3610b90012915908,2025-03-23T17:34:55.351,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0b19231138300129bbbcb,2025-03-23T18:12:50.259,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0b4b831138300129bbde7,2025-03-23T18:26:16.172,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0cf23a90d210012565576,2025-03-23T20:18:59.843,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e0d6b531138300129bd3f6,2025-03-23T20:51:17.317,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e146ef4755cf001287163a,2025-03-24T04:50:06.793,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e164ed31138300129c2e64,2025-03-24T06:58:02.982,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e169864755cf0012872dc4,2025-03-24T07:17:42.761,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e16f34a90d21001256bc08,2025-03-24T07:41:56.260,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e176cd6f9f07001265dcec,2025-03-24T08:14:21.765,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1975acfeb8c001298a6d0,2025-03-24T10:33:14.816,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e198e86f9f07001265f580,2025-03-24T10:39:52.723,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1a4b96f9f07001265fdfd,2025-03-24T11:30:17.866,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1a7913610b900129201b5,2025-03-24T11:42:25.785,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1aea131138300129c63ad,2025-03-24T12:12:32.985,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1b4e831138300129c685d,2025-03-24T12:39:20.215,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1c1a73610b9001292152b,2025-03-24T13:33:43.848,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1ca666f9f070012661987,2025-03-24T14:11:02.265,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1d06331138300129c7cdd,2025-03-24T14:36:34.927,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1d4fa4755cf0012877b9a,2025-03-24T14:56:10.736,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1d762a90d210012570824,2025-03-24T15:06:26.702,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1dbc1a90d210012570b49,2025-03-24T15:25:05.923,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1de89a90d210012570d54,2025-03-24T15:36:57.608,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1df856f9f0700126629b8,2025-03-24T15:41:09.432,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1e39ecfeb8c001298deff,2025-03-24T15:58:38.691,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1e3ae3610b90012922e57,2025-03-24T15:58:54.109,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1e50631138300129c8c51,2025-03-24T16:04:37.854,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1ed00cfeb8c001298e5ca,2025-03-24T16:38:39.958,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1ede93610b900129235be,2025-03-24T16:42:33.650,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1eec8a90d210012571921,2025-03-24T16:46:16.433,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1efac3610b90012923719,2025-03-24T16:49:48.901,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1f68431138300129c98bc,2025-03-24T17:19:16.435,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e1f7b94755cf00128794aa,2025-03-24T17:24:25.518,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e208e331138300129ca593,2025-03-24T18:37:39.246,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e21de531138300129cb3d4,2025-03-24T20:07:17.663,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e23a6f4755cf001287c11d,2025-03-24T22:09:03.686,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e5b8169c04260012dd35e8,2025-03-27T13:41:57.897,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e8769fa90d2100125bb3bc,2025-03-29T15:39:27.090,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67e895d826ae0d00124374e1,2025-03-29T17:52:40.143,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ed9779a0673d0011d802e5,2025-04-02T13:00:57.254,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ed977ef08f220011303c36,2025-04-02T13:01:01.960,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ed9793a0673d0011d802fe,2025-04-02T13:01:23.599,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67ef0f30f08f2200113153f9,2025-04-03T15:44:00.563,East Leg,West,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67f2db60b2ac120012e54ef1,2025-04-06T12:52:00.616,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+WWD,67f3fe50132d77001356424b,2025-04-07T09:33:20.042,East Leg,East,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67dc9ab13610b900128e985f,2025-03-20T15:46:08.918,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67e202283610b900129243eb,2025-03-24T18:08:56.294,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67e350513610b90012931c8f,2025-03-25T17:54:41.114,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67e4625fa90d21001258b619,2025-03-26T13:23:59.877,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67f6cfeec777850012ddb245,2025-04-09T12:51:59.890,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67f6ed3d9a285b001288b37b,2025-04-09T14:57:02.595,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67f722559a285b001288dfd9,2025-04-09T18:43:48.837,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67f9877e5f5ed50012c75923,2025-04-11T14:19:58.440,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+IC,67f9974b6de9300012ece5fb,2025-04-11T15:27:23.100,East Leg,,0,,,,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
