@@ -39,9 +39,9 @@ Explore the interactive wireframe that previews how this data will be presented 
 
 A preview of the public-facing page that will host this dashboard on [Tahoe Open Data](https://data-trpa.opendata.arcgis.com/).
 
-[Draft Page on Tahoe Open Data](https://data-trpa.opendata.arcgis.com/pages/4e28787cdf4c4c5784c33f1d9315eefd)
+[Draft Page on Tahoe Open Data](https://data-trpa.opendata.arcgis.com/pages/transportation-patterns?preview=true)
 
-<iframe src="https://data-trpa.opendata.arcgis.com/pages/4e28787cdf4c4c5784c33f1d9315eefd" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://data-trpa.opendata.arcgis.com/pages/transportation-patterns?preview=true" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
 
 ---
 
