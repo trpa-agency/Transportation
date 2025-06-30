@@ -31,7 +31,7 @@ Explore the interactive wireframe that previews how this data will be presented 
 
 [Open Full Wireframe Prototype](https://tahoe-transit-tapestry.lovable.app)
 
-<iframe src="https://tahoe-transit-tapestry.lovable.app" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://tahoe-transit-tapestry.lovable.app" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
 
 ---
 
@@ -41,7 +41,7 @@ A preview of the public-facing page that will host this dashboard on [Tahoe Open
 
 [Draft Page on Tahoe Open Data](https://data-trpa.opendata.arcgis.com/pages/4e28787cdf4c4c5784c33f1d9315eefd)
 
-<iframe src="https://data-trpa.opendata.arcgis.com/pages/4e28787cdf4c4c5784c33f1d9315eefd" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://data-trpa.opendata.arcgis.com/pages/4e28787cdf4c4c5784c33f1d9315eefd" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
 
 ---
 
@@ -51,7 +51,7 @@ We're building this tool with direct input from planners, transportation enginee
 
 [Take the Transportation Dashboard Survey](https://arcg.is/1Kbr0P0)
 
-<iframe src="https://arcg.is/1Kbr0P0" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://arcg.is/1Kbr0P0" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
 
 ---
 
