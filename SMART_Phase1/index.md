@@ -12,7 +12,7 @@ This project explores transportation patterns in Tahoe using traffic camera AI i
 
 Our data engineering pipeline integrates traffic insights from the DERQ INSIGHT API, including vehicle and vulnerable road user counts, speed distributions, and safety events. Data is processed and visualized using Python notebooks.
 
-[View the Data Engineering Notebook](SMART_Phase1\Data_ETL.ipynb)
+[View the Data Engineering Notebook](https://github.com/trpa-agency/Transportation/blob/main/SMART_Phase1/Data_ETL.ipynb)
 
 ---
 
@@ -29,9 +29,9 @@ DERQ provides an array of real-time safety and traffic insights, providing up-to
 
 Explore the interactive wireframe that previews how this data will be presented to end users.
 
-[Open Full Wireframe Prototype](https://lovable.dev/projects/1067d0a8-0b39-41d1-9a3a-d586d0dafd73)
+[Open Full Wireframe Prototype](https://tahoe-transit-tapestry.lovable.app)
 
-<iframe src="https://lovable.dev/projects/1067d0a8-0b39-41d1-9a3a-d586d0dafd73" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://tahoe-transit-tapestry.lovable.app" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
 
 ---
 
