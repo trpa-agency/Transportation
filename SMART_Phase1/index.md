@@ -29,7 +29,7 @@ DERQ provides an array of real-time safety and traffic insights, providing up-to
 
 Explore the interactive wireframe that previews how this data will be presented to end users.
 
-🔗 [Open Full Wireframe Prototype](https://lovable.dev/projects/1067d0a8-0b39-41d1-9a3a-d586d0dafd73)
+[Open Full Wireframe Prototype](https://lovable.dev/projects/1067d0a8-0b39-41d1-9a3a-d586d0dafd73)
 
 <iframe src="https://lovable.dev/projects/1067d0a8-0b39-41d1-9a3a-d586d0dafd73" width="100%" height="600" frameborder="0" loading="lazy"></iframe>
 
