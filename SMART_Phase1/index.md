@@ -6,6 +6,8 @@ Welcome to the metadata for the **Transportation Patterns** page. This space doc
 
 This project explores transportation patterns in Tahoe using traffic camera AI insights from the DERQ platform and local data pipelines. The goal is to support informed decision-making around safety, congestion, and mobility planning.
 
+[User Centered Design Plan/Requirements Documentation](https://tahoeregionalplanning.sharepoint.com/:w:/s/ScienceDataTeam/EeAecpIA3W1Cg_gD8iUH3o0BrUuPg-U334nBHLhNoRUpyQ?e=wgOnos)
+
 ---
 
 ## Data Engineering
@@ -25,6 +27,14 @@ DERQ provides an array of real-time safety and traffic insights, providing up-to
 
 ---
 
+## Other Tahoe Transportation Pages
+
+[LTinfo Transportation Tracker](https://transportation.laketahoeinfo.org/)
+
+[LTinfo Climate Resilience Dashboard Transportation](https://climate.laketahoeinfo.org/Transportation)
+
+---
+
 ## Prototype Wireframe
 
 Explore the interactive wireframe that previews how this data will be presented to end users.
@@ -32,6 +42,16 @@ Explore the interactive wireframe that previews how this data will be presented 
 [Open Full Wireframe Prototype](https://tahoe-transit-tapestry.lovable.app)
 
 <iframe src="https://tahoe-transit-tapestry.lovable.app" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
+
+---
+
+## Draft Dashboard
+
+A preview of the public-facing page that will host this dashboard on [Tahoe Open Data](https://data-trpa.opendata.arcgis.com/).
+
+[Draft Dashboard](https://trpa.maps.arcgis.com/apps/dashboards/4528512a81d8475e90fc0ad713cb2489)
+
+<iframe src="https://trpa.maps.arcgis.com/apps/dashboards/4528512a81d8475e90fc0ad713cb2489" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
 
 ---
 
