@@ -59,9 +59,9 @@ A preview of the public-facing page that will host this dashboard on [Tahoe Open
 
 A preview of the public-facing page that will host this dashboard on [Tahoe Open Data](https://data-trpa.opendata.arcgis.com/).
 
-[Draft Page on Tahoe Open Data](https://data-trpa.opendata.arcgis.com/pages/transportation-patterns?preview=true)
+[Draft Page on Tahoe Open Data](https://www.tahoeopendata.org/pages/transportation-patterns)
 
-<iframe src="https://data-trpa.opendata.arcgis.com/pages/transportation-patterns?preview=true" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
+<iframe src="https://www.tahoeopendata.org/pages/transportation-patterns" width="100%" height="1000" frameborder="0" loading="lazy"></iframe>
 
 ---
 

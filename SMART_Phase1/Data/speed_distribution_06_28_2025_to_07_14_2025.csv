@@ -1,0 +1,103 @@
+speedinterval,approach,count,LocationId,LocationName
+00-04 mph,EB,4818,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+00-04 mph,NB,1099,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+00-04 mph,WB,417,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+05-09 mph,EB,11822,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+05-09 mph,NB,2187,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+05-09 mph,WB,2624,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+10-14 mph,EB,19198,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+10-14 mph,NB,13679,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+10-14 mph,WB,15392,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+15-19 mph,EB,24752,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+15-19 mph,NB,16031,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+15-19 mph,WB,30935,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+20-24 mph,EB,17348,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+20-24 mph,NB,3311,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+20-24 mph,WB,13348,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+25+ mph,EB,6115,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+25+ mph,NB,1026,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+25+ mph,WB,5347,6786b290ddb02855b751179d,Hwy 50 at Meyers (roundabout)
+00-04 mph,SB,1793,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+05-09 mph,SB,3481,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+10-14 mph,SB,3361,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+15-19 mph,SB,855,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+20-24 mph,SB,93,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+25+ mph,SB,16,6786b2b80736acf4a56c5ee5,Hwy 28 at Hwy 267 Kings Beach 
+00-04 mph,NB,8,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+05-09 mph,NB,26,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+10-14 mph,NB,89,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+15-19 mph,NB,143,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+20-24 mph,NB,216,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+25+ mph,NB,648,6786b2e40736acf4a56cd061,Hwy 89 at Hwy 28 
+00-04 mph,EB,20,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+00-04 mph,WB,5,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+05-09 mph,EB,13,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+05-09 mph,WB,5,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+10-14 mph,EB,19,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+10-14 mph,WB,11,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+15-19 mph,EB,16,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+15-19 mph,WB,10,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+20-24 mph,EB,23,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+20-24 mph,WB,10,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+25+ mph,EB,5993,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+25+ mph,WB,34014,6786b324ddb02855b7542ff4,Hwy 89 at Rampart
+00-04 mph,SB,1486,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+00-04 mph,WB,3449,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+05-09 mph,SB,16429,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+05-09 mph,WB,17051,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+10-14 mph,SB,65233,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+10-14 mph,WB,71309,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+15-19 mph,SB,28882,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+15-19 mph,WB,94269,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+20-24 mph,SB,7946,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+20-24 mph,WB,17953,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+25+ mph,SB,13512,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+25+ mph,WB,21541,6786b36fddb02855b754ae82,Hwy 50 at Hwy 89   
+00-04 mph,NB,21,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+05-09 mph,NB,80,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+10-14 mph,NB,850,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+15-19 mph,NB,3288,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+20-24 mph,NB,14532,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+25+ mph,NB,48449,6786b397a925f091b9aa868c,Hwy 267 at Brockway Summit 
+00-04 mph,EB,12,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+00-04 mph,WB,3797,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+05-09 mph,EB,102,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+05-09 mph,WB,7677,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+10-14 mph,EB,322,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+10-14 mph,WB,10848,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+15-19 mph,EB,661,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+15-19 mph,WB,11685,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+20-24 mph,EB,841,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+20-24 mph,WB,11406,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+25+ mph,EB,119445,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+25+ mph,WB,80763,6786b3c30736acf4a570466a,Hwy 50 at Pioneer Trail (Meyers)
+00-04 mph,EB,1372,6786b3e7a925f091b9ace9e4,Hwy 50 at Ski Run Blvd
+05-09 mph,EB,3889,6786b3e7a925f091b9ace9e4,Hwy 50 at Ski Run Blvd
+10-14 mph,EB,5164,6786b3e7a925f091b9ace9e4,Hwy 50 at Ski Run Blvd
+15-19 mph,EB,4964,6786b3e7a925f091b9ace9e4,Hwy 50 at Ski Run Blvd
+20-24 mph,EB,4445,6786b3e7a925f091b9ace9e4,Hwy 50 at Ski Run Blvd
+25+ mph,EB,13620,6786b3e7a925f091b9ace9e4,Hwy 50 at Ski Run Blvd
+00-04 mph,EB,11009,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+00-04 mph,WB,39,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+05-09 mph,EB,49846,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+05-09 mph,WB,410,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+10-14 mph,EB,55676,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+10-14 mph,WB,1994,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+15-19 mph,EB,41048,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+15-19 mph,WB,32889,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+20-24 mph,EB,9292,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+20-24 mph,WB,65522,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+25+ mph,EB,176,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+25+ mph,WB,47606,6786b4451e5528fc4ee7280f,US 50/Pioneer Trail WB
+00-04 mph,EB,930,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+00-04 mph,WB,412,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+05-09 mph,EB,2526,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+05-09 mph,WB,528,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+10-14 mph,EB,5896,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+10-14 mph,WB,395,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+15-19 mph,EB,9683,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+15-19 mph,WB,702,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+20-24 mph,EB,13088,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+20-24 mph,WB,6169,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+25+ mph,EB,63795,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
+25+ mph,WB,53007,6786b4851e5528fc4ee789c3,US 50/Wildwood WB
