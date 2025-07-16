@@ -1,0 +1,664 @@
+,Date,LocationName,counts
+0,2025-03-13,Hwy 267 at Brockway Summit ,1665.0
+1,2025-03-13,Hwy 28 at Hwy 267 Kings Beach ,788.0
+2,2025-03-13,Hwy 50 at Hwy 89   ,1040.0
+3,2025-03-13,Hwy 50 at Meyers (roundabout),1569.0
+4,2025-03-13,Hwy 50 at Pioneer Trail (Meyers),1129.0
+5,2025-03-13,Hwy 89 at Hwy 28 ,6.0
+6,2025-03-13,Hwy 89 at Rampart,220.0
+7,2025-03-14,Hwy 267 at Brockway Summit ,7214.0
+8,2025-03-14,Hwy 28 at Hwy 267 Kings Beach ,2973.0
+9,2025-03-14,Hwy 50 at Hwy 89   ,6712.0
+10,2025-03-14,Hwy 50 at Meyers (roundabout),7836.0
+11,2025-03-14,Hwy 50 at Pioneer Trail (Meyers),4988.0
+12,2025-03-14,Hwy 89 at Hwy 28 ,660.0
+13,2025-03-14,Hwy 89 at Rampart,3.0
+14,2025-03-15,Hwy 267 at Brockway Summit ,8558.0
+15,2025-03-15,Hwy 28 at Hwy 267 Kings Beach ,4133.0
+16,2025-03-15,Hwy 50 at Hwy 89   ,9145.0
+17,2025-03-15,Hwy 50 at Meyers (roundabout),10780.0
+18,2025-03-15,Hwy 50 at Pioneer Trail (Meyers),13460.0
+19,2025-03-15,Hwy 89 at Hwy 28 ,835.0
+20,2025-03-15,Hwy 89 at Rampart,2229.0
+21,2025-03-16,Hwy 267 at Brockway Summit ,7832.0
+22,2025-03-16,Hwy 28 at Hwy 267 Kings Beach ,3442.0
+23,2025-03-16,Hwy 50 at Hwy 89   ,9628.0
+24,2025-03-16,Hwy 50 at Meyers (roundabout),11198.0
+25,2025-03-16,Hwy 50 at Pioneer Trail (Meyers),14658.0
+26,2025-03-16,Hwy 89 at Hwy 28 ,951.0
+27,2025-03-16,Hwy 89 at Rampart,1522.0
+28,2025-03-17,Hwy 267 at Brockway Summit ,5560.0
+29,2025-03-17,Hwy 28 at Hwy 267 Kings Beach ,2462.0
+30,2025-03-17,Hwy 50 at Hwy 89   ,1894.0
+31,2025-03-17,Hwy 50 at Meyers (roundabout),3991.0
+32,2025-03-17,Hwy 50 at Pioneer Trail (Meyers),3396.0
+33,2025-03-17,Hwy 89 at Hwy 28 ,384.0
+34,2025-03-17,Hwy 89 at Rampart,1810.0
+35,2025-03-18,Hwy 267 at Brockway Summit ,7807.0
+36,2025-03-18,Hwy 28 at Hwy 267 Kings Beach ,2058.0
+37,2025-03-18,Hwy 50 at Hwy 89   ,9601.0
+38,2025-03-18,Hwy 50 at Meyers (roundabout),4318.0
+39,2025-03-18,Hwy 50 at Pioneer Trail (Meyers),9089.0
+40,2025-03-18,Hwy 89 at Hwy 28 ,810.0
+41,2025-03-18,Hwy 89 at Rampart,1868.0
+42,2025-03-19,Hwy 267 at Brockway Summit ,7374.0
+43,2025-03-19,Hwy 28 at Hwy 267 Kings Beach ,4526.0
+44,2025-03-19,Hwy 50 at Hwy 89   ,11588.0
+45,2025-03-19,Hwy 50 at Meyers (roundabout),8995.0
+46,2025-03-19,Hwy 50 at Pioneer Trail (Meyers),11491.0
+47,2025-03-19,Hwy 89 at Hwy 28 ,1792.0
+48,2025-03-19,Hwy 89 at Rampart,1332.0
+49,2025-03-20,Hwy 267 at Brockway Summit ,8409.0
+50,2025-03-20,Hwy 28 at Hwy 267 Kings Beach ,4643.0
+51,2025-03-20,Hwy 50 at Hwy 89   ,11735.0
+52,2025-03-20,Hwy 50 at Meyers (roundabout),10403.0
+53,2025-03-20,Hwy 50 at Pioneer Trail (Meyers),9874.0
+54,2025-03-20,Hwy 89 at Hwy 28 ,2509.0
+55,2025-03-20,Hwy 89 at Rampart,1371.0
+56,2025-03-21,Hwy 267 at Brockway Summit ,9624.0
+57,2025-03-21,Hwy 28 at Hwy 267 Kings Beach ,5907.0
+58,2025-03-21,Hwy 50 at Hwy 89   ,12709.0
+59,2025-03-21,Hwy 50 at Meyers (roundabout),12266.0
+60,2025-03-21,Hwy 50 at Pioneer Trail (Meyers),8732.0
+61,2025-03-21,Hwy 89 at Hwy 28 ,2599.0
+62,2025-03-21,Hwy 89 at Rampart,1552.0
+63,2025-03-22,Hwy 267 at Brockway Summit ,8178.0
+64,2025-03-22,Hwy 28 at Hwy 267 Kings Beach ,5137.0
+65,2025-03-22,Hwy 50 at Hwy 89   ,11319.0
+66,2025-03-22,Hwy 50 at Meyers (roundabout),14554.0
+67,2025-03-22,Hwy 50 at Pioneer Trail (Meyers),4131.0
+68,2025-03-22,Hwy 89 at Hwy 28 ,2507.0
+69,2025-03-22,Hwy 89 at Rampart,1481.0
+70,2025-03-23,Hwy 267 at Brockway Summit ,4843.0
+71,2025-03-23,Hwy 28 at Hwy 267 Kings Beach ,2030.0
+72,2025-03-23,Hwy 50 at Hwy 89   ,11686.0
+73,2025-03-23,Hwy 50 at Meyers (roundabout),13957.0
+74,2025-03-23,Hwy 50 at Pioneer Trail (Meyers),5046.0
+75,2025-03-23,Hwy 89 at Hwy 28 ,2200.0
+76,2025-03-23,Hwy 89 at Rampart,1624.0
+77,2025-03-24,Hwy 267 at Brockway Summit ,7806.0
+78,2025-03-24,Hwy 28 at Hwy 267 Kings Beach ,4504.0
+79,2025-03-24,Hwy 50 at Hwy 89   ,12759.0
+80,2025-03-24,Hwy 50 at Meyers (roundabout),8755.0
+81,2025-03-24,Hwy 50 at Pioneer Trail (Meyers),9535.0
+82,2025-03-24,Hwy 89 at Hwy 28 ,2568.0
+83,2025-03-24,Hwy 89 at Rampart,1454.0
+84,2025-03-25,Hwy 267 at Brockway Summit ,6997.0
+85,2025-03-25,Hwy 28 at Hwy 267 Kings Beach ,4730.0
+86,2025-03-25,Hwy 50 at Hwy 89   ,15193.0
+87,2025-03-25,Hwy 50 at Meyers (roundabout),9872.0
+88,2025-03-25,Hwy 50 at Pioneer Trail (Meyers),9362.0
+89,2025-03-25,Hwy 89 at Hwy 28 ,2702.0
+90,2025-03-25,Hwy 89 at Rampart,1288.0
+91,2025-03-26,Hwy 267 at Brockway Summit ,8115.0
+92,2025-03-26,Hwy 28 at Hwy 267 Kings Beach ,4634.0
+93,2025-03-26,Hwy 50 at Hwy 89   ,14827.0
+94,2025-03-26,Hwy 50 at Meyers (roundabout),7701.0
+95,2025-03-26,Hwy 50 at Pioneer Trail (Meyers),10330.0
+96,2025-03-26,Hwy 89 at Hwy 28 ,2659.0
+97,2025-03-26,Hwy 89 at Rampart,1521.0
+98,2025-03-27,Hwy 267 at Brockway Summit ,8110.0
+99,2025-03-27,Hwy 28 at Hwy 267 Kings Beach ,4033.0
+100,2025-03-27,Hwy 50 at Hwy 89   ,12483.0
+101,2025-03-27,Hwy 50 at Meyers (roundabout),6771.0
+102,2025-03-27,Hwy 50 at Pioneer Trail (Meyers),10007.0
+103,2025-03-27,Hwy 89 at Hwy 28 ,2523.0
+104,2025-03-27,Hwy 89 at Rampart,1615.0
+105,2025-03-28,Hwy 267 at Brockway Summit ,8846.0
+106,2025-03-28,Hwy 28 at Hwy 267 Kings Beach ,4999.0
+107,2025-03-28,Hwy 50 at Hwy 89   ,14368.0
+108,2025-03-28,Hwy 50 at Meyers (roundabout),10230.0
+109,2025-03-28,Hwy 50 at Pioneer Trail (Meyers),10509.0
+110,2025-03-28,Hwy 89 at Hwy 28 ,2624.0
+111,2025-03-28,Hwy 89 at Rampart,1808.0
+112,2025-03-29,Hwy 267 at Brockway Summit ,8264.0
+113,2025-03-29,Hwy 28 at Hwy 267 Kings Beach ,4491.0
+114,2025-03-29,Hwy 50 at Hwy 89   ,13915.0
+115,2025-03-29,Hwy 50 at Meyers (roundabout),9343.0
+116,2025-03-29,Hwy 50 at Pioneer Trail (Meyers),5272.0
+117,2025-03-29,Hwy 89 at Hwy 28 ,2664.0
+118,2025-03-29,Hwy 89 at Rampart,1684.0
+119,2025-03-30,Hwy 267 at Brockway Summit ,5876.0
+120,2025-03-30,Hwy 28 at Hwy 267 Kings Beach ,3163.0
+121,2025-03-30,Hwy 50 at Hwy 89   ,11780.0
+122,2025-03-30,Hwy 50 at Meyers (roundabout),9004.0
+123,2025-03-30,Hwy 50 at Pioneer Trail (Meyers),8276.0
+124,2025-03-30,Hwy 89 at Hwy 28 ,1743.0
+125,2025-03-30,Hwy 89 at Rampart,1737.0
+126,2025-03-31,Hwy 267 at Brockway Summit ,4596.0
+127,2025-03-31,Hwy 28 at Hwy 267 Kings Beach ,1655.0
+128,2025-03-31,Hwy 50 at Hwy 89   ,7561.0
+129,2025-03-31,Hwy 50 at Meyers (roundabout),3776.0
+130,2025-03-31,Hwy 50 at Pioneer Trail (Meyers),3515.0
+131,2025-03-31,Hwy 89 at Hwy 28 ,1544.0
+132,2025-03-31,Hwy 89 at Rampart,1491.0
+133,2025-04-01,Hwy 267 at Brockway Summit ,3827.0
+134,2025-04-01,Hwy 28 at Hwy 267 Kings Beach ,1560.0
+135,2025-04-01,Hwy 50 at Hwy 89   ,2758.0
+136,2025-04-01,Hwy 50 at Meyers (roundabout),2027.0
+137,2025-04-01,Hwy 50 at Pioneer Trail (Meyers),178.0
+138,2025-04-01,Hwy 89 at Hwy 28 ,758.0
+139,2025-04-01,Hwy 89 at Rampart,375.0
+140,2025-04-02,Hwy 267 at Brockway Summit ,6862.0
+141,2025-04-02,Hwy 28 at Hwy 267 Kings Beach ,3470.0
+142,2025-04-02,Hwy 50 at Hwy 89   ,11258.0
+143,2025-04-02,Hwy 50 at Meyers (roundabout),6719.0
+144,2025-04-02,Hwy 50 at Pioneer Trail (Meyers),8674.0
+145,2025-04-02,Hwy 89 at Hwy 28 ,996.0
+146,2025-04-03,Hwy 267 at Brockway Summit ,8597.0
+147,2025-04-03,Hwy 28 at Hwy 267 Kings Beach ,4735.0
+148,2025-04-03,Hwy 50 at Hwy 89   ,13880.0
+149,2025-04-03,Hwy 50 at Meyers (roundabout),6217.0
+150,2025-04-03,Hwy 50 at Pioneer Trail (Meyers),10655.0
+151,2025-04-03,Hwy 89 at Hwy 28 ,750.0
+152,2025-04-04,Hwy 267 at Brockway Summit ,9144.0
+153,2025-04-04,Hwy 28 at Hwy 267 Kings Beach ,5569.0
+154,2025-04-04,Hwy 50 at Hwy 89   ,14467.0
+155,2025-04-04,Hwy 50 at Meyers (roundabout),8998.0
+156,2025-04-04,Hwy 50 at Pioneer Trail (Meyers),13323.0
+157,2025-04-04,Hwy 89 at Hwy 28 ,1726.0
+158,2025-04-05,Hwy 267 at Brockway Summit ,8140.0
+159,2025-04-05,Hwy 28 at Hwy 267 Kings Beach ,4596.0
+160,2025-04-05,Hwy 50 at Hwy 89   ,12998.0
+161,2025-04-05,Hwy 50 at Meyers (roundabout),7804.0
+162,2025-04-05,Hwy 50 at Pioneer Trail (Meyers),13279.0
+163,2025-04-05,Hwy 89 at Hwy 28 ,250.0
+164,2025-04-06,Hwy 267 at Brockway Summit ,7552.0
+165,2025-04-06,Hwy 28 at Hwy 267 Kings Beach ,3861.0
+166,2025-04-06,Hwy 50 at Hwy 89   ,12806.0
+167,2025-04-06,Hwy 50 at Meyers (roundabout),8889.0
+168,2025-04-06,Hwy 50 at Pioneer Trail (Meyers),13360.0
+169,2025-04-06,Hwy 89 at Hwy 28 ,328.0
+170,2025-04-07,Hwy 267 at Brockway Summit ,7159.0
+171,2025-04-07,Hwy 28 at Hwy 267 Kings Beach ,3721.0
+172,2025-04-07,Hwy 50 at Hwy 89   ,12886.0
+173,2025-04-07,Hwy 50 at Meyers (roundabout),6619.0
+174,2025-04-07,Hwy 50 at Pioneer Trail (Meyers),9784.0
+175,2025-04-07,Hwy 89 at Hwy 28 ,547.0
+176,2025-04-08,Hwy 267 at Brockway Summit ,7823.0
+177,2025-04-08,Hwy 28 at Hwy 267 Kings Beach ,4478.0
+178,2025-04-08,Hwy 50 at Hwy 89   ,13469.0
+179,2025-04-08,Hwy 50 at Meyers (roundabout),6091.0
+180,2025-04-08,Hwy 50 at Pioneer Trail (Meyers),10045.0
+181,2025-04-08,Hwy 89 at Hwy 28 ,1140.0
+182,2025-04-09,Hwy 267 at Brockway Summit ,7795.0
+183,2025-04-09,Hwy 28 at Hwy 267 Kings Beach ,4508.0
+184,2025-04-09,Hwy 50 at Hwy 89   ,13609.0
+185,2025-04-09,Hwy 50 at Meyers (roundabout),6439.0
+186,2025-04-09,Hwy 50 at Pioneer Trail (Meyers),10203.0
+187,2025-04-09,Hwy 89 at Hwy 28 ,1660.0
+188,2025-04-10,Hwy 267 at Brockway Summit ,8013.0
+189,2025-04-10,Hwy 28 at Hwy 267 Kings Beach ,4731.0
+190,2025-04-10,Hwy 50 at Hwy 89   ,13572.0
+191,2025-04-10,Hwy 50 at Meyers (roundabout),7085.0
+192,2025-04-10,Hwy 50 at Pioneer Trail (Meyers),32.0
+193,2025-04-10,Hwy 89 at Hwy 28 ,2109.0
+194,2025-04-11,Hwy 267 at Brockway Summit ,8686.0
+195,2025-04-11,Hwy 28 at Hwy 267 Kings Beach ,5082.0
+196,2025-04-11,Hwy 50 at Hwy 89   ,14594.0
+197,2025-04-11,Hwy 50 at Meyers (roundabout),10300.0
+198,2025-04-11,Hwy 50 at Pioneer Trail (Meyers),12837.0
+199,2025-04-11,Hwy 89 at Hwy 28 ,2599.0
+200,2025-04-12,Hwy 267 at Brockway Summit ,5718.0
+201,2025-04-12,Hwy 28 at Hwy 267 Kings Beach ,3364.0
+202,2025-04-12,Hwy 50 at Hwy 89   ,10957.0
+203,2025-04-12,Hwy 50 at Meyers (roundabout),6862.0
+204,2025-04-12,Hwy 50 at Pioneer Trail (Meyers),10052.0
+205,2025-04-12,Hwy 89 at Hwy 28 ,1975.0
+206,2025-05-16,Hwy 267 at Brockway Summit ,0.0
+207,2025-05-16,Hwy 28 at Hwy 267 Kings Beach ,0.0
+208,2025-05-16,Hwy 50 at Hwy 89   ,0.0
+209,2025-05-16,Hwy 50 at Meyers (roundabout),0.0
+210,2025-05-16,Hwy 50 at Pioneer Trail (Meyers),0.0
+211,2025-05-16,Hwy 89 at Hwy 28 ,0.0
+212,2025-05-17,Hwy 267 at Brockway Summit ,0.0
+213,2025-05-17,Hwy 28 at Hwy 267 Kings Beach ,0.0
+214,2025-05-17,Hwy 50 at Hwy 89   ,0.0
+215,2025-05-17,Hwy 50 at Meyers (roundabout),0.0
+216,2025-05-17,Hwy 50 at Pioneer Trail (Meyers),0.0
+217,2025-05-17,Hwy 89 at Hwy 28 ,0.0
+218,2025-05-18,Hwy 267 at Brockway Summit ,0.0
+219,2025-05-18,Hwy 28 at Hwy 267 Kings Beach ,0.0
+220,2025-05-18,Hwy 50 at Hwy 89   ,0.0
+221,2025-05-18,Hwy 50 at Meyers (roundabout),0.0
+222,2025-05-18,Hwy 50 at Pioneer Trail (Meyers),0.0
+223,2025-05-18,Hwy 89 at Hwy 28 ,0.0
+224,2025-05-19,Hwy 267 at Brockway Summit ,0.0
+225,2025-05-19,Hwy 28 at Hwy 267 Kings Beach ,0.0
+226,2025-05-19,Hwy 50 at Hwy 89   ,0.0
+227,2025-05-19,Hwy 50 at Meyers (roundabout),0.0
+228,2025-05-19,Hwy 50 at Pioneer Trail (Meyers),0.0
+229,2025-05-19,Hwy 89 at Hwy 28 ,0.0
+230,2025-05-20,Hwy 267 at Brockway Summit ,0.0
+231,2025-05-20,Hwy 28 at Hwy 267 Kings Beach ,0.0
+232,2025-05-20,Hwy 50 at Hwy 89   ,0.0
+233,2025-05-20,Hwy 50 at Meyers (roundabout),0.0
+234,2025-05-20,Hwy 50 at Pioneer Trail (Meyers),0.0
+235,2025-05-20,Hwy 89 at Hwy 28 ,0.0
+236,2025-05-21,Hwy 267 at Brockway Summit ,0.0
+237,2025-05-21,Hwy 28 at Hwy 267 Kings Beach ,0.0
+238,2025-05-21,Hwy 50 at Hwy 89   ,0.0
+239,2025-05-21,Hwy 50 at Meyers (roundabout),0.0
+240,2025-05-21,Hwy 50 at Pioneer Trail (Meyers),0.0
+241,2025-05-21,Hwy 89 at Hwy 28 ,0.0
+242,2025-05-22,Hwy 267 at Brockway Summit ,0.0
+243,2025-05-22,Hwy 28 at Hwy 267 Kings Beach ,0.0
+244,2025-05-22,Hwy 50 at Hwy 89   ,0.0
+245,2025-05-22,Hwy 50 at Meyers (roundabout),0.0
+246,2025-05-22,Hwy 50 at Pioneer Trail (Meyers),0.0
+247,2025-05-22,Hwy 89 at Hwy 28 ,0.0
+248,2025-05-23,Hwy 267 at Brockway Summit ,0.0
+249,2025-05-23,Hwy 28 at Hwy 267 Kings Beach ,0.0
+250,2025-05-23,Hwy 50 at Hwy 89   ,0.0
+251,2025-05-23,Hwy 50 at Meyers (roundabout),0.0
+252,2025-05-23,Hwy 50 at Pioneer Trail (Meyers),0.0
+253,2025-05-23,Hwy 89 at Hwy 28 ,0.0
+254,2025-05-24,Hwy 267 at Brockway Summit ,0.0
+255,2025-05-24,Hwy 28 at Hwy 267 Kings Beach ,0.0
+256,2025-05-24,Hwy 50 at Hwy 89   ,0.0
+257,2025-05-24,Hwy 50 at Meyers (roundabout),0.0
+258,2025-05-24,Hwy 50 at Pioneer Trail (Meyers),0.0
+259,2025-05-24,Hwy 89 at Hwy 28 ,0.0
+260,2025-05-25,Hwy 267 at Brockway Summit ,0.0
+261,2025-05-25,Hwy 28 at Hwy 267 Kings Beach ,0.0
+262,2025-05-25,Hwy 50 at Hwy 89   ,0.0
+263,2025-05-25,Hwy 50 at Meyers (roundabout),0.0
+264,2025-05-25,Hwy 50 at Pioneer Trail (Meyers),0.0
+265,2025-05-25,Hwy 89 at Hwy 28 ,0.0
+266,2025-05-26,Hwy 267 at Brockway Summit ,0.0
+267,2025-05-26,Hwy 28 at Hwy 267 Kings Beach ,0.0
+268,2025-05-26,Hwy 50 at Hwy 89   ,0.0
+269,2025-05-26,Hwy 50 at Meyers (roundabout),0.0
+270,2025-05-26,Hwy 50 at Pioneer Trail (Meyers),0.0
+271,2025-05-26,Hwy 89 at Hwy 28 ,0.0
+272,2025-05-27,Hwy 267 at Brockway Summit ,0.0
+273,2025-05-27,Hwy 28 at Hwy 267 Kings Beach ,0.0
+274,2025-05-27,Hwy 50 at Hwy 89   ,0.0
+275,2025-05-27,Hwy 50 at Meyers (roundabout),0.0
+276,2025-05-27,Hwy 50 at Pioneer Trail (Meyers),0.0
+277,2025-05-27,Hwy 89 at Hwy 28 ,0.0
+278,2025-05-28,Hwy 267 at Brockway Summit ,0.0
+279,2025-05-28,Hwy 28 at Hwy 267 Kings Beach ,0.0
+280,2025-05-28,Hwy 50 at Hwy 89   ,0.0
+281,2025-05-28,Hwy 50 at Meyers (roundabout),0.0
+282,2025-05-28,Hwy 50 at Pioneer Trail (Meyers),0.0
+283,2025-05-28,Hwy 89 at Hwy 28 ,0.0
+284,2025-05-29,Hwy 267 at Brockway Summit ,0.0
+285,2025-05-29,Hwy 28 at Hwy 267 Kings Beach ,0.0
+286,2025-05-29,Hwy 50 at Hwy 89   ,0.0
+287,2025-05-29,Hwy 50 at Meyers (roundabout),0.0
+288,2025-05-29,Hwy 50 at Pioneer Trail (Meyers),0.0
+289,2025-05-29,Hwy 89 at Hwy 28 ,0.0
+290,2025-05-30,Hwy 267 at Brockway Summit ,0.0
+291,2025-05-30,Hwy 28 at Hwy 267 Kings Beach ,0.0
+292,2025-05-30,Hwy 50 at Hwy 89   ,0.0
+293,2025-05-30,Hwy 50 at Meyers (roundabout),0.0
+294,2025-05-30,Hwy 50 at Pioneer Trail (Meyers),0.0
+295,2025-05-30,Hwy 89 at Hwy 28 ,0.0
+296,2025-05-30,Hwy 89 at Rampart,0.0
+297,2025-05-31,Hwy 267 at Brockway Summit ,0.0
+298,2025-05-31,Hwy 28 at Hwy 267 Kings Beach ,0.0
+299,2025-05-31,Hwy 50 at Hwy 89   ,0.0
+300,2025-05-31,Hwy 50 at Meyers (roundabout),0.0
+301,2025-05-31,Hwy 50 at Pioneer Trail (Meyers),0.0
+302,2025-05-31,Hwy 89 at Hwy 28 ,0.0
+303,2025-05-31,Hwy 89 at Rampart,0.0
+304,2025-06-01,Hwy 267 at Brockway Summit ,0.0
+305,2025-06-01,Hwy 28 at Hwy 267 Kings Beach ,0.0
+306,2025-06-01,Hwy 50 at Hwy 89   ,0.0
+307,2025-06-01,Hwy 50 at Meyers (roundabout),0.0
+308,2025-06-01,Hwy 50 at Pioneer Trail (Meyers),0.0
+309,2025-06-01,Hwy 89 at Hwy 28 ,0.0
+310,2025-06-01,Hwy 89 at Rampart,0.0
+311,2025-06-02,Hwy 267 at Brockway Summit ,0.0
+312,2025-06-02,Hwy 28 at Hwy 267 Kings Beach ,0.0
+313,2025-06-02,Hwy 50 at Hwy 89   ,0.0
+314,2025-06-02,Hwy 50 at Meyers (roundabout),0.0
+315,2025-06-02,Hwy 50 at Pioneer Trail (Meyers),0.0
+316,2025-06-02,Hwy 89 at Hwy 28 ,0.0
+317,2025-06-02,Hwy 89 at Rampart,0.0
+318,2025-06-03,Hwy 267 at Brockway Summit ,0.0
+319,2025-06-03,Hwy 28 at Hwy 267 Kings Beach ,0.0
+320,2025-06-03,Hwy 50 at Hwy 89   ,0.0
+321,2025-06-03,Hwy 50 at Meyers (roundabout),0.0
+322,2025-06-03,Hwy 50 at Pioneer Trail (Meyers),0.0
+323,2025-06-03,Hwy 89 at Hwy 28 ,0.0
+324,2025-06-03,Hwy 89 at Rampart,0.0
+325,2025-06-04,Hwy 267 at Brockway Summit ,0.0
+326,2025-06-04,Hwy 28 at Hwy 267 Kings Beach ,0.0
+327,2025-06-04,Hwy 50 at Hwy 89   ,0.0
+328,2025-06-04,Hwy 50 at Meyers (roundabout),0.0
+329,2025-06-04,Hwy 50 at Pioneer Trail (Meyers),0.0
+330,2025-06-04,Hwy 89 at Hwy 28 ,0.0
+331,2025-06-04,Hwy 89 at Rampart,0.0
+332,2025-06-05,Hwy 267 at Brockway Summit ,0.0
+333,2025-06-05,Hwy 28 at Hwy 267 Kings Beach ,0.0
+334,2025-06-05,Hwy 50 at Hwy 89   ,0.0
+335,2025-06-05,Hwy 50 at Meyers (roundabout),0.0
+336,2025-06-05,Hwy 50 at Pioneer Trail (Meyers),0.0
+337,2025-06-05,Hwy 89 at Hwy 28 ,0.0
+338,2025-06-05,Hwy 89 at Rampart,0.0
+339,2025-06-06,Hwy 267 at Brockway Summit ,0.0
+340,2025-06-06,Hwy 28 at Hwy 267 Kings Beach ,0.0
+341,2025-06-06,Hwy 50 at Hwy 89   ,0.0
+342,2025-06-06,Hwy 50 at Meyers (roundabout),0.0
+343,2025-06-06,Hwy 50 at Pioneer Trail (Meyers),0.0
+344,2025-06-06,Hwy 89 at Hwy 28 ,0.0
+345,2025-06-06,Hwy 89 at Rampart,0.0
+346,2025-06-06,US 50/Pioneer Trail WB,0.0
+347,2025-06-06,US 50/Wildwood WB,0.0
+348,2025-06-07,Hwy 267 at Brockway Summit ,0.0
+349,2025-06-07,Hwy 28 at Hwy 267 Kings Beach ,0.0
+350,2025-06-07,Hwy 50 at Hwy 89   ,0.0
+351,2025-06-07,Hwy 50 at Meyers (roundabout),0.0
+352,2025-06-07,Hwy 50 at Pioneer Trail (Meyers),0.0
+353,2025-06-07,Hwy 89 at Hwy 28 ,0.0
+354,2025-06-07,Hwy 89 at Rampart,0.0
+355,2025-06-07,US 50/Pioneer Trail WB,0.0
+356,2025-06-07,US 50/Wildwood WB,0.0
+357,2025-06-08,Hwy 267 at Brockway Summit ,0.0
+358,2025-06-08,Hwy 28 at Hwy 267 Kings Beach ,0.0
+359,2025-06-08,Hwy 50 at Hwy 89   ,0.0
+360,2025-06-08,Hwy 50 at Meyers (roundabout),0.0
+361,2025-06-08,Hwy 50 at Pioneer Trail (Meyers),0.0
+362,2025-06-08,Hwy 89 at Hwy 28 ,0.0
+363,2025-06-08,Hwy 89 at Rampart,0.0
+364,2025-06-08,US 50/Pioneer Trail WB,0.0
+365,2025-06-08,US 50/Wildwood WB,0.0
+366,2025-06-09,Hwy 267 at Brockway Summit ,0.0
+367,2025-06-09,Hwy 28 at Hwy 267 Kings Beach ,0.0
+368,2025-06-09,Hwy 50 at Hwy 89   ,0.0
+369,2025-06-09,Hwy 50 at Meyers (roundabout),0.0
+370,2025-06-09,Hwy 50 at Pioneer Trail (Meyers),0.0
+371,2025-06-09,Hwy 89 at Hwy 28 ,0.0
+372,2025-06-09,Hwy 89 at Rampart,0.0
+373,2025-06-09,US 50/Pioneer Trail WB,0.0
+374,2025-06-09,US 50/Wildwood WB,0.0
+375,2025-06-10,Hwy 267 at Brockway Summit ,0.0
+376,2025-06-10,Hwy 28 at Hwy 267 Kings Beach ,0.0
+377,2025-06-10,Hwy 50 at Hwy 89   ,0.0
+378,2025-06-10,Hwy 50 at Meyers (roundabout),0.0
+379,2025-06-10,Hwy 50 at Pioneer Trail (Meyers),0.0
+380,2025-06-10,Hwy 89 at Hwy 28 ,0.0
+381,2025-06-10,Hwy 89 at Rampart,0.0
+382,2025-06-10,US 50/Pioneer Trail WB,0.0
+383,2025-06-10,US 50/Wildwood WB,0.0
+384,2025-06-11,Hwy 267 at Brockway Summit ,0.0
+385,2025-06-11,Hwy 28 at Hwy 267 Kings Beach ,0.0
+386,2025-06-11,Hwy 50 at Hwy 89   ,0.0
+387,2025-06-11,Hwy 50 at Meyers (roundabout),0.0
+388,2025-06-11,Hwy 50 at Pioneer Trail (Meyers),0.0
+389,2025-06-11,Hwy 89 at Hwy 28 ,0.0
+390,2025-06-11,Hwy 89 at Rampart,0.0
+391,2025-06-11,US 50/Pioneer Trail WB,0.0
+392,2025-06-11,US 50/Wildwood WB,0.0
+393,2025-06-12,Hwy 267 at Brockway Summit ,0.0
+394,2025-06-12,Hwy 28 at Hwy 267 Kings Beach ,0.0
+395,2025-06-12,Hwy 50 at Hwy 89   ,0.0
+396,2025-06-12,Hwy 50 at Meyers (roundabout),0.0
+397,2025-06-12,Hwy 50 at Pioneer Trail (Meyers),0.0
+398,2025-06-12,Hwy 89 at Hwy 28 ,0.0
+399,2025-06-12,Hwy 89 at Rampart,0.0
+400,2025-06-12,US 50/Pioneer Trail WB,0.0
+401,2025-06-12,US 50/Wildwood WB,0.0
+402,2025-06-13,Hwy 267 at Brockway Summit ,0.0
+403,2025-06-13,Hwy 28 at Hwy 267 Kings Beach ,0.0
+404,2025-06-13,Hwy 50 at Hwy 89   ,0.0
+405,2025-06-13,Hwy 50 at Meyers (roundabout),0.0
+406,2025-06-13,Hwy 50 at Pioneer Trail (Meyers),0.0
+407,2025-06-13,Hwy 89 at Hwy 28 ,0.0
+408,2025-06-13,Hwy 89 at Rampart,0.0
+409,2025-06-13,US 50/Pioneer Trail WB,0.0
+410,2025-06-13,US 50/Wildwood WB,0.0
+411,2025-06-14,Hwy 267 at Brockway Summit ,0.0
+412,2025-06-14,Hwy 28 at Hwy 267 Kings Beach ,0.0
+413,2025-06-14,Hwy 50 at Hwy 89   ,0.0
+414,2025-06-14,Hwy 50 at Meyers (roundabout),0.0
+415,2025-06-14,Hwy 50 at Pioneer Trail (Meyers),0.0
+416,2025-06-14,Hwy 89 at Hwy 28 ,0.0
+417,2025-06-14,Hwy 89 at Rampart,0.0
+418,2025-06-14,US 50/Pioneer Trail WB,0.0
+419,2025-06-14,US 50/Wildwood WB,0.0
+420,2025-06-15,Hwy 267 at Brockway Summit ,335.0
+421,2025-06-15,Hwy 28 at Hwy 267 Kings Beach ,532.0
+422,2025-06-15,Hwy 50 at Hwy 89   ,5650.0
+423,2025-06-15,Hwy 50 at Meyers (roundabout),3149.0
+424,2025-06-15,Hwy 50 at Pioneer Trail (Meyers),4135.0
+425,2025-06-15,Hwy 89 at Hwy 28 ,434.0
+426,2025-06-15,Hwy 89 at Rampart,379.0
+427,2025-06-15,US 50/Pioneer Trail WB,3846.0
+428,2025-06-15,US 50/Wildwood WB,5301.0
+429,2025-06-16,Hwy 267 at Brockway Summit ,3032.0
+430,2025-06-16,Hwy 28 at Hwy 267 Kings Beach ,4247.0
+431,2025-06-16,Hwy 50 at Hwy 89   ,22234.0
+432,2025-06-16,Hwy 50 at Meyers (roundabout),7283.0
+433,2025-06-16,Hwy 50 at Pioneer Trail (Meyers),15627.0
+434,2025-06-16,Hwy 89 at Hwy 28 ,20.0
+435,2025-06-16,Hwy 89 at Rampart,2108.0
+436,2025-06-16,US 50/Pioneer Trail WB,14348.0
+437,2025-06-16,US 50/Wildwood WB,20107.0
+438,2025-06-17,Hwy 267 at Brockway Summit ,3198.0
+439,2025-06-17,Hwy 28 at Hwy 267 Kings Beach ,4500.0
+440,2025-06-17,Hwy 50 at Hwy 89   ,22421.0
+441,2025-06-17,Hwy 50 at Meyers (roundabout),8262.0
+442,2025-06-17,Hwy 50 at Pioneer Trail (Meyers),13951.0
+443,2025-06-17,Hwy 89 at Hwy 28 ,12.0
+444,2025-06-17,Hwy 89 at Rampart,1884.0
+445,2025-06-17,US 50/Pioneer Trail WB,14719.0
+446,2025-06-17,US 50/Wildwood WB,21494.0
+447,2025-06-18,Hwy 267 at Brockway Summit ,3460.0
+448,2025-06-18,Hwy 28 at Hwy 267 Kings Beach ,4823.0
+449,2025-06-18,Hwy 50 at Hwy 89   ,22897.0
+450,2025-06-18,Hwy 50 at Meyers (roundabout),9747.0
+451,2025-06-18,Hwy 50 at Pioneer Trail (Meyers),15536.0
+452,2025-06-18,Hwy 89 at Hwy 28 ,2.0
+453,2025-06-18,Hwy 89 at Rampart,2106.0
+454,2025-06-18,US 50/Pioneer Trail WB,18884.0
+455,2025-06-18,US 50/Wildwood WB,25762.0
+456,2025-06-19,Hwy 267 at Brockway Summit ,4252.0
+457,2025-06-19,Hwy 28 at Hwy 267 Kings Beach ,4663.0
+458,2025-06-19,Hwy 50 at Hwy 89   ,23547.0
+459,2025-06-19,Hwy 50 at Meyers (roundabout),13200.0
+460,2025-06-19,Hwy 50 at Pioneer Trail (Meyers),18324.0
+461,2025-06-19,Hwy 89 at Rampart,2550.0
+462,2025-06-19,US 50/Pioneer Trail WB,19900.0
+463,2025-06-19,US 50/Wildwood WB,27771.0
+464,2025-06-20,Hwy 267 at Brockway Summit ,4749.0
+465,2025-06-20,Hwy 28 at Hwy 267 Kings Beach ,5464.0
+466,2025-06-20,Hwy 50 at Hwy 89   ,25034.0
+467,2025-06-20,Hwy 50 at Meyers (roundabout),13843.0
+468,2025-06-20,Hwy 50 at Pioneer Trail (Meyers),18387.0
+469,2025-06-20,Hwy 89 at Hwy 28 ,1.0
+470,2025-06-20,Hwy 89 at Rampart,3381.0
+471,2025-06-20,US 50/Pioneer Trail WB,19613.0
+472,2025-06-20,US 50/Wildwood WB,28540.0
+473,2025-06-21,Hwy 267 at Brockway Summit ,4700.0
+474,2025-06-21,Hwy 28 at Hwy 267 Kings Beach ,5117.0
+475,2025-06-21,Hwy 50 at Hwy 89   ,22735.0
+476,2025-06-21,Hwy 50 at Meyers (roundabout),11958.0
+477,2025-06-21,Hwy 50 at Pioneer Trail (Meyers),16841.0
+478,2025-06-21,Hwy 89 at Hwy 28 ,121.0
+479,2025-06-21,Hwy 89 at Rampart,2502.0
+480,2025-06-21,US 50/Pioneer Trail WB,21745.0
+481,2025-06-21,US 50/Wildwood WB,26992.0
+482,2025-06-22,Hwy 267 at Brockway Summit ,5260.0
+483,2025-06-22,Hwy 28 at Hwy 267 Kings Beach ,4815.0
+484,2025-06-22,Hwy 50 at Hwy 89   ,21394.0
+485,2025-06-22,Hwy 50 at Meyers (roundabout),13367.0
+486,2025-06-22,Hwy 50 at Pioneer Trail (Meyers),17648.0
+487,2025-06-22,Hwy 89 at Rampart,2021.0
+488,2025-06-22,US 50/Pioneer Trail WB,20141.0
+489,2025-06-22,US 50/Wildwood WB,24656.0
+490,2025-06-23,Hwy 267 at Brockway Summit ,3520.0
+491,2025-06-23,Hwy 28 at Hwy 267 Kings Beach ,5409.0
+492,2025-06-23,Hwy 50 at Hwy 89   ,21820.0
+493,2025-06-23,Hwy 50 at Meyers (roundabout),9552.0
+494,2025-06-23,Hwy 50 at Pioneer Trail (Meyers),14318.0
+495,2025-06-23,Hwy 89 at Hwy 28 ,62.0
+496,2025-06-23,Hwy 89 at Rampart,2064.0
+497,2025-06-23,US 50/Pioneer Trail WB,19920.0
+498,2025-06-23,US 50/Wildwood WB,24962.0
+499,2025-06-24,Hwy 267 at Brockway Summit ,3374.0
+500,2025-06-24,Hwy 28 at Hwy 267 Kings Beach ,4845.0
+501,2025-06-24,Hwy 50 at Hwy 89   ,21849.0
+502,2025-06-24,Hwy 50 at Meyers (roundabout),8679.0
+503,2025-06-24,Hwy 50 at Pioneer Trail (Meyers),13783.0
+504,2025-06-24,Hwy 89 at Hwy 28 ,265.0
+505,2025-06-24,Hwy 89 at Rampart,2037.0
+506,2025-06-24,US 50/Pioneer Trail WB,19482.0
+507,2025-06-24,US 50/Wildwood WB,25684.0
+508,2025-06-25,Hwy 267 at Brockway Summit ,3341.0
+509,2025-06-25,Hwy 28 at Hwy 267 Kings Beach ,4898.0
+510,2025-06-25,Hwy 50 at Hwy 89   ,21863.0
+511,2025-06-25,Hwy 50 at Meyers (roundabout),10149.0
+512,2025-06-25,Hwy 50 at Pioneer Trail (Meyers),14495.0
+513,2025-06-25,Hwy 89 at Hwy 28 ,391.0
+514,2025-06-25,Hwy 89 at Rampart,2113.0
+515,2025-06-25,US 50/Pioneer Trail WB,19339.0
+516,2025-06-25,US 50/Wildwood WB,25629.0
+517,2025-06-26,Hwy 267 at Brockway Summit ,3051.0
+518,2025-06-26,Hwy 28 at Hwy 267 Kings Beach ,4601.0
+519,2025-06-26,Hwy 50 at Hwy 89   ,16375.0
+520,2025-06-26,Hwy 50 at Meyers (roundabout),7693.0
+521,2025-06-26,Hwy 50 at Pioneer Trail (Meyers),12485.0
+522,2025-06-26,Hwy 89 at Rampart,2029.0
+523,2025-06-26,US 50/Pioneer Trail WB,14117.0
+524,2025-06-26,US 50/Wildwood WB,18838.0
+525,2025-06-27,Hwy 267 at Brockway Summit ,741.0
+526,2025-06-27,Hwy 28 at Hwy 267 Kings Beach ,715.0
+527,2025-06-27,Hwy 50 at Hwy 89   ,5554.0
+528,2025-06-27,Hwy 50 at Meyers (roundabout),3753.0
+529,2025-06-27,Hwy 50 at Pioneer Trail (Meyers),4410.0
+530,2025-06-27,Hwy 89 at Hwy 28 ,7.0
+531,2025-06-27,Hwy 89 at Rampart,395.0
+532,2025-06-27,US 50/Pioneer Trail WB,5596.0
+533,2025-06-27,US 50/Wildwood WB,8089.0
+534,2025-06-28,Hwy 267 at Brockway Summit ,3660.0
+535,2025-06-28,Hwy 28 at Hwy 267 Kings Beach ,4692.0
+536,2025-06-28,Hwy 50 at Hwy 89   ,23191.0
+537,2025-06-28,Hwy 50 at Meyers (roundabout),11694.0
+538,2025-06-28,Hwy 50 at Pioneer Trail (Meyers),17122.0
+539,2025-06-28,Hwy 89 at Rampart,2152.0
+540,2025-06-28,US 50/Pioneer Trail WB,21148.0
+541,2025-06-28,US 50/Wildwood WB,27748.0
+542,2025-06-29,Hwy 267 at Brockway Summit ,3425.0
+543,2025-06-29,Hwy 28 at Hwy 267 Kings Beach ,4126.0
+544,2025-06-29,Hwy 50 at Hwy 89   ,23119.0
+545,2025-06-29,Hwy 50 at Meyers (roundabout),12555.0
+546,2025-06-29,Hwy 50 at Pioneer Trail (Meyers),18132.0
+547,2025-06-29,Hwy 89 at Hwy 28 ,409.0
+548,2025-06-29,Hwy 89 at Rampart,2211.0
+549,2025-06-29,US 50/Pioneer Trail WB,19525.0
+550,2025-06-29,US 50/Wildwood WB,25626.0
+551,2025-06-30,Hwy 267 at Brockway Summit ,3768.0
+552,2025-06-30,Hwy 50 at Hwy 89   ,22697.0
+553,2025-06-30,Hwy 50 at Meyers (roundabout),11095.0
+554,2025-06-30,Hwy 50 at Pioneer Trail (Meyers),15768.0
+555,2025-06-30,Hwy 89 at Rampart,2277.0
+556,2025-06-30,US 50/Pioneer Trail WB,19629.0
+557,2025-06-30,US 50/Wildwood WB,25633.0
+558,2025-07-01,Hwy 267 at Brockway Summit ,5852.0
+559,2025-07-01,Hwy 50 at Hwy 89   ,22189.0
+560,2025-07-01,Hwy 50 at Meyers (roundabout),10122.0
+561,2025-07-01,Hwy 50 at Pioneer Trail (Meyers),13844.0
+562,2025-07-01,Hwy 89 at Hwy 28 ,157.0
+563,2025-07-01,Hwy 89 at Rampart,2431.0
+564,2025-07-01,US 50/Pioneer Trail WB,21042.0
+565,2025-07-01,US 50/Wildwood WB,26157.0
+566,2025-07-02,Hwy 267 at Brockway Summit ,3750.0
+567,2025-07-02,Hwy 50 at Hwy 89   ,22532.0
+568,2025-07-02,Hwy 50 at Meyers (roundabout),11401.0
+569,2025-07-02,Hwy 50 at Pioneer Trail (Meyers),16497.0
+570,2025-07-02,Hwy 89 at Rampart,2471.0
+571,2025-07-02,US 50/Pioneer Trail WB,21247.0
+572,2025-07-02,US 50/Wildwood WB,18494.0
+573,2025-07-03,Hwy 267 at Brockway Summit ,5442.0
+574,2025-07-03,Hwy 50 at Hwy 89   ,24676.0
+575,2025-07-03,Hwy 50 at Meyers (roundabout),16462.0
+576,2025-07-03,Hwy 50 at Pioneer Trail (Meyers),20553.0
+577,2025-07-03,Hwy 89 at Rampart,3088.0
+578,2025-07-03,US 50/Pioneer Trail WB,21782.0
+579,2025-07-03,US 50/Wildwood WB,4200.0
+580,2025-07-04,Hwy 267 at Brockway Summit ,4801.0
+581,2025-07-04,Hwy 50 at Hwy 89   ,19296.0
+582,2025-07-04,Hwy 50 at Meyers (roundabout),12012.0
+583,2025-07-04,Hwy 50 at Pioneer Trail (Meyers),16608.0
+584,2025-07-04,Hwy 89 at Rampart,2022.0
+585,2025-07-04,US 50/Pioneer Trail WB,17533.0
+586,2025-07-04,US 50/Wildwood WB,3505.0
+587,2025-07-05,Hwy 267 at Brockway Summit ,5285.0
+588,2025-07-05,Hwy 50 at Hwy 89   ,25011.0
+589,2025-07-05,Hwy 50 at Meyers (roundabout),13545.0
+590,2025-07-05,Hwy 50 at Pioneer Trail (Meyers),19155.0
+591,2025-07-05,Hwy 89 at Hwy 28 ,15.0
+592,2025-07-05,Hwy 89 at Rampart,3396.0
+593,2025-07-05,US 50/Pioneer Trail WB,19590.0
+594,2025-07-05,US 50/Wildwood WB,3620.0
+595,2025-07-06,Hwy 267 at Brockway Summit ,3668.0
+596,2025-07-06,Hwy 50 at Hwy 89   ,23477.0
+597,2025-07-06,Hwy 50 at Meyers (roundabout),14222.0
+598,2025-07-06,Hwy 50 at Pioneer Trail (Meyers),19112.0
+599,2025-07-06,Hwy 89 at Hwy 28 ,63.0
+600,2025-07-06,Hwy 89 at Rampart,3000.0
+601,2025-07-06,US 50/Pioneer Trail WB,18625.0
+602,2025-07-06,US 50/Wildwood WB,2232.0
+603,2025-07-07,Hwy 267 at Brockway Summit ,2414.0
+604,2025-07-07,Hwy 28 at Hwy 267 Kings Beach ,68.0
+605,2025-07-07,Hwy 50 at Hwy 89   ,22544.0
+606,2025-07-07,Hwy 50 at Meyers (roundabout),10274.0
+607,2025-07-07,Hwy 50 at Pioneer Trail (Meyers),16542.0
+608,2025-07-07,Hwy 89 at Hwy 28 ,7.0
+609,2025-07-07,Hwy 89 at Rampart,2590.0
+610,2025-07-07,US 50/Pioneer Trail WB,18673.0
+611,2025-07-07,US 50/Wildwood WB,1736.0
+612,2025-07-08,Hwy 267 at Brockway Summit ,3745.0
+613,2025-07-08,Hwy 50 at Hwy 89   ,22170.0
+614,2025-07-08,Hwy 50 at Meyers (roundabout),10342.0
+615,2025-07-08,Hwy 50 at Pioneer Trail (Meyers),14854.0
+616,2025-07-08,Hwy 89 at Rampart,2436.0
+617,2025-07-08,US 50/Pioneer Trail WB,17779.0
+618,2025-07-08,US 50/Wildwood WB,1629.0
+619,2025-07-09,Hwy 267 at Brockway Summit ,2893.0
+620,2025-07-09,Hwy 50 at Hwy 89   ,15894.0
+621,2025-07-09,Hwy 50 at Meyers (roundabout),3100.0
+622,2025-07-09,Hwy 50 at Pioneer Trail (Meyers),11827.0
+623,2025-07-09,Hwy 50 at Ski Run Blvd,5751.0
+624,2025-07-09,Hwy 89 at Hwy 28 ,279.0
+625,2025-07-09,Hwy 89 at Rampart,1741.0
+626,2025-07-09,US 50/Pioneer Trail WB,17592.0
+627,2025-07-09,US 50/Wildwood WB,1488.0
+628,2025-07-10,Hwy 267 at Brockway Summit ,4424.0
+629,2025-07-10,Hwy 50 at Hwy 89   ,22363.0
+630,2025-07-10,Hwy 50 at Meyers (roundabout),11334.0
+631,2025-07-10,Hwy 50 at Pioneer Trail (Meyers),1054.0
+632,2025-07-10,Hwy 50 at Ski Run Blvd,7847.0
+633,2025-07-10,Hwy 89 at Hwy 28 ,23.0
+634,2025-07-10,Hwy 89 at Rampart,2541.0
+635,2025-07-10,US 50/Pioneer Trail WB,18710.0
+636,2025-07-10,US 50/Wildwood WB,1617.0
+637,2025-07-11,Hwy 267 at Brockway Summit ,4723.0
+638,2025-07-11,Hwy 50 at Hwy 89   ,23511.0
+639,2025-07-11,Hwy 50 at Meyers (roundabout),12736.0
+640,2025-07-11,Hwy 50 at Pioneer Trail (Meyers),13864.0
+641,2025-07-11,Hwy 50 at Ski Run Blvd,7910.0
+642,2025-07-11,Hwy 89 at Hwy 28 ,6.0
+643,2025-07-11,Hwy 89 at Rampart,2852.0
+644,2025-07-11,US 50/Pioneer Trail WB,19942.0
+645,2025-07-11,US 50/Wildwood WB,2183.0
+646,2025-07-12,Hwy 267 at Brockway Summit ,4864.0
+647,2025-07-12,Hwy 50 at Hwy 89   ,23407.0
+648,2025-07-12,Hwy 50 at Meyers (roundabout),13560.0
+649,2025-07-12,Hwy 50 at Pioneer Trail (Meyers),17639.0
+650,2025-07-12,Hwy 50 at Ski Run Blvd,7430.0
+651,2025-07-12,Hwy 89 at Hwy 28 ,164.0
+652,2025-07-12,Hwy 89 at Rampart,2519.0
+653,2025-07-12,US 50/Pioneer Trail WB,21533.0
+654,2025-07-12,US 50/Wildwood WB,2144.0
+655,2025-07-13,Hwy 267 at Brockway Summit ,3765.0
+656,2025-07-13,Hwy 50 at Hwy 89   ,17431.0
+657,2025-07-13,Hwy 50 at Meyers (roundabout),11242.0
+658,2025-07-13,Hwy 50 at Pioneer Trail (Meyers),10582.0
+659,2025-07-13,Hwy 50 at Ski Run Blvd,4516.0
+660,2025-07-13,Hwy 89 at Rampart,2017.0
+661,2025-07-13,US 50/Pioneer Trail WB,15704.0
+662,2025-07-13,US 50/Wildwood WB,1052.0
