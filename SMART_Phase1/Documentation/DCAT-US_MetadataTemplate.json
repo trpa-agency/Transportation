@@ -1,0 +1,91 @@
+{
+	"$schema": "https://resources.data.gov/schemas/dcat-us/v1.1/schema/catalog.json",
+    "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
+    "@type": "dcat:Catalog",
+    "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
+	"dataset": [
+		{
+			"@type": "dcat:Dataset",
+			"accessLevel": "public",
+			"bureauCode": [
+				"021:04"
+			],
+			"contactPoint": {
+				"fn": "",
+				"hasEmail": "mailto:"
+				"@type": "vcard:Contact"
+			},
+			"dataQuality": true,
+			"description": "",
+			"distribution": [
+				{
+					"@type": "dcat:Distribution",
+					"accessURL": "",
+					"description": "",
+					"format": "",
+					"mediaType": "text/csv",
+					"title": ""
+				},
+				{
+					"@type": "dcat:Distribution",
+					"accessURL": "",
+					"description": "",
+					"format": "",
+					"mediaType": "text/csv",
+					"title": ""
+				},
+				{
+					"@type": "dcat:Distribution",
+					"accessURL": "",
+					"description": "",
+					"format": "",
+					"mediaType": "text/csv",
+					"title": ""
+				}
+			],
+			"format": "",
+			"identifier": "",
+			"isPartOf": "",
+			"issued": "",
+			"keyword": [],
+			"landingPage": "",
+			"language": [
+				"en-US"
+			],
+			"license": "https://creativecommons.org/publicdomain/zero/1.0/legalcodee",
+			"modified": "",
+			"policyStatement": "This dataset was made public under the requirements enumerated in the U.S. Department of Transportation's 'Plan to Increase Public Access to the Results of Federally-Funded Scientific Research' Version 1.1 << https://doi.org/10.21949/1520559 >> and guidelines suggested by the DOT Public Access website << https://doi.org/10.21949/1503647  >>, in effect and current as of December 03, 2020.",
+			"policyURL": "https://doi.org/10.21949/1520559 , https://doi.org/10.21949/1503647 ",
+			"programCode": [
+				"021:053"
+			],
+			"publisher": {
+				"@type": "org:Organization",
+				"name": "",
+				"subOrganizationOf": {
+					"@type": "org:Organization",
+					"name": "",
+					"subOrganizationOf": {
+						"@type": "org:Organization",
+						"name": "",
+						"subOrganizationOf": {
+							"@type": "org:Organization",
+							"name": "Department of Transportation",
+							"subOrganizationOf": {
+								"@type": "org:Organization",
+								"name": "U.S. Government"
+							}
+						}
+					}
+				}
+			},
+			"references": [
+				""
+			],
+			"rights": "",
+			"spatial": "United States",
+			"title": "",
+			"webService": null
+		}
+	]
+}
