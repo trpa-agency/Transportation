@@ -1,53 +1,49 @@
 file_name,variable,datatype,description
-SMART_Location,OBJECTID,Int64,
-SMART_Location,LocationId,string,
-SMART_Location,LocationName,string,
-SMART_Location,Latitude,Float64,
-SMART_Location,Longitude,Float64,
-SMART_Location,GlobalID,string,
-SMART_Location,created_user,string,
-SMART_Location,created_date,datetime64[ns],
-SMART_Location,last_edited_user,string,
-SMART_Location,last_edited_date,datetime64[ns],
-SMART_Location,Status,string,
-SMART_Location,DateRange,string,
-SMART_Location,SHAPE,geometry,
-SMART_Safety,OBJECTID,Int64,
-SMART_Safety,EventType,string,
-SMART_Safety,EventId,string,
-SMART_Safety,TimeAtSite,datetime64[ns],
-SMART_Safety,DetectionArea,string,
-SMART_Safety,Direction,string,
-SMART_Safety,CameraId,Int32,
-SMART_Safety,Object1Class,string,
-SMART_Safety,Object2Class,string,
-SMART_Safety,Movement,string,
-SMART_Safety,LocationId,string,
-SMART_Safety,LocationName,string,
-SMART_Safety,Camera_Status,string,
-SMART_Speed,OBJECTID,Int64,
-SMART_Speed,speedinterval,string,
-SMART_Speed,approach,string,
-SMART_Speed,counts,Float64,
-SMART_Speed,LocationId,string,
-SMART_Speed,LocationName,string,
-SMART_Traffic,OBJECTID,Int64,
-SMART_Traffic,counts,Float64,
-SMART_Traffic,timeInterval,string,
-SMART_Traffic,approach,string,
-SMART_Traffic,class,string,
-SMART_Traffic,LocationId,string,
-SMART_Traffic,LocationName,string,
-SMART_Traffic,Date,datetime64[ns],
-SMART_VRU,OBJECTID,Int64,
-SMART_VRU,counts,Float64,
-SMART_VRU,timeInterval,string,
-SMART_VRU,approach,string,
-SMART_VRU,class,string,
-SMART_VRU,LocationId,string,
-SMART_VRU,LocationName,string,
-SMART_VRU,Date,datetime64[ns],
-SMART_Daily,OBJECTID,Int64,
-SMART_Daily,LocationName,string,
-SMART_Daily,counts,Float64,
-SMART_Daily,Date,datetime64[ns],
+TTD_SMART_TrafficCameraLocations,OBJECTID,Int64,internal ID of camera location for data relationships
+TTD_SMART_TrafficCameraLocations,LocationId,string,ID of camera location
+TTD_SMART_TrafficCameraLocations,LocationName,string,name of camera location using identifying street or highway names
+TTD_SMART_TrafficCameraLocations,Latitude,Float64,latitude of camera location
+TTD_SMART_TrafficCameraLocations,Longitude,Float64,longitude of camera location
+TTD_SMART_TrafficCameraLocations,GlobalID,string,
+TTD_SMART_TrafficCameraLocations,created_user,string,Name of user that created the record
+TTD_SMART_TrafficCameraLocations,created_date,datetime64[ns],Date and time record was created
+TTD_SMART_TrafficCameraLocations,last_edited_user,string,Name of user that last edited the record
+TTD_SMART_TrafficCameraLocations,last_edited_date,datetime64[ns],Date and time record was last edited
+TTD_SMART_TrafficCameraLocations,Status,string,status of camera location (Permanent or Temporary)
+TTD_SMART_TrafficCameraLocations,DateRange,string,Dates that the location was active
+TTD_SMART_TrafficCameraLocations,SHAPE,geometry,
+TTD_SMART_SafetyInsights,OBJECTID,Int64,internal ID of event for data relationships
+TTD_SMART_SafetyInsights,EventType,string,type of safety event (near miss, traffic violations, etc)
+TTD_SMART_SafetyInsights,EventId,string,ID of safety event
+TTD_SMART_SafetyInsights,TimeAtSite,datetime64[ns],time of safety event in local time zone
+TTD_SMART_SafetyInsights,DetectionArea,string,area that safety event was detected (intersection center, west leg, east leg, south leg, north leg, etc)
+TTD_SMART_SafetyInsights,Direction,string,direction of travel of vehicle involved
+TTD_SMART_SafetyInsights,CameraId,Int32,ID of camera that recorded the safety event
+TTD_SMART_SafetyInsights,Object1Class,string,Involved party for near miss events (e.g, passenger vehicle, truck, pedestrian, bicycle, etc)
+TTD_SMART_SafetyInsights,Object2Class,string,Second involved party for for near miss events (e.g, passenger vehicle, truck, pedestrian, bicycle, etc)
+TTD_SMART_SafetyInsights,Movement,string,Movement of vehicle for turning violation events (UT for u-turn, LT for left turn, RT for right turn)
+TTD_SMART_SafetyInsights,LocationId,string,Id of camera location
+TTD_SMART_SafetyInsights,LocationName,string,name of camera location using identifying street or highway names
+TTD_SMART_SafetyInsights,Camera_Status,string,status of camera location (Permanent or Temporary)
+TTD_SMART_Speed,OBJECTID,Int64,internal ID of speed event for data relationships
+TTD_SMART_Speed,speedinterval,string,recorded speed interval (0-4 mph, 5-9 mph, 10-14 mph, 15-19mph, 20-24mph or 25+mph)
+TTD_SMART_Speed,approach,string,direction of intersection approach where speed was recorded 
+TTD_SMART_Speed,counts,Float64,counts of vehicles recorded in the speed interval
+TTD_SMART_Speed,LocationId,string,ID of camera location
+TTD_SMART_Speed,LocationName,string,name of camera location using identifying street or highway names
+TTD_SMART_VehicleCounts,OBJECTID,Int64,internal ID of traffic count event for data relationships
+TTD_SMART_VehicleCounts,counts,Float64,recorded vehicle counts for the time interval
+TTD_SMART_VehicleCounts,timeInterval,string,time interval of recorded vehicle counts (in 15 min intervals)
+TTD_SMART_VehicleCounts,approach,string,direction of intersection approach where vehicle counts were recorded
+TTD_SMART_VehicleCounts,class,string,class of vehicle recorded (e.g., passenger vehicle, single unit truck, articulated truck, bus, motorcycle, bicycle, pedestrian, etc)
+TTD_SMART_VehicleCounts,LocationId,string,ID of camera location
+TTD_SMART_VehicleCounts,LocationName,string,name of camera location using identifying street or highway names
+TTD_SMART_VehicleCounts,Date,datetime64[ns],date of recorded vehicle counts
+TTD_SMART_VRUCounts,OBJECTID,Int64,internal ID of VRU count event for data relationships
+TTD_SMART_VRUCounts,counts,Float64,total counts of detected vulnerable road users (VRU) during time interval
+TTD_SMART_VRUCounts,timeInterval,string,time interval of recorded VRU counts (in 15 min intervals)
+TTD_SMART_VRUCounts,approach,string,direction of intersection approach where VRU counts were recorded
+TTD_SMART_VRUCounts,class,string,class of VRU recorded (pedestrian or bicycle)
+TTD_SMART_VRUCounts,LocationId,string,ID of camera location
+TTD_SMART_VRUCounts,LocationName,string,name of camera location using identifying street or highway names
+TTD_SMART_VRUCounts,Date,datetime64[ns],date of recorded VRU counts
