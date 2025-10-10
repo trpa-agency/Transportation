@@ -1,3 +1,5 @@
+import pandas as pd
+
 # get feature service as dataframe
 def get_fs_as_df(url: str):
     layer = FeatureLayer(url, gis=GIS()) 
