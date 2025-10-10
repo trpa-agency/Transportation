@@ -158,8 +158,8 @@ The .wmv format is a multimedia format storing videos. These files can be played
 - Data Dictionary/Variable List: DataDictionary  
 
 4. TTD_SMART_VehicleCounts.csv
-- Number of variables (columns): 7
-- Number of cases/rows: 885807
+- Number of variables (columns): 8
+- Number of cases/rows: 450242
 - Each row represents: Recorded vehicle counts during a specified time interval from a specific direction at a specified camera location, classified by vehicle type
 - Data Dictionary/Variable List: DataDictionary 
 
