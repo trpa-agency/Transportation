@@ -1,0 +1,43 @@
+﻿Table,Variable,DType,Definition
+derq_volume_fact_table,volume,int,Count of vehicles
+derq_volume_fact_table,date,date,date
+derq_volume_fact_table,lane,float,"Vehicle lane of travel, counted from right most lane to center"
+derq_volume_fact_table,approach,string,"Vehicle direction of approach (NB, SB, EB, WB)"
+derq_volume_fact_table,movement,string,"Vehicle movement at intersection (Right Turn, Left Turn, Through)"
+derq_volume_fact_table,class,string,"Vehicle or VRU classification (passenger vehicle, motorcycle, bus, etc)"
+derq_volume_fact_table,time,time,Start time of five minute data collection interval
+derq_volume_fact_table,intersection_id,int,Internal intersection ID for data relationships
+derq_event_fact_table,event_id,string,Internal ID to track events
+derq_event_fact_table,event_type,string,"Type of event (nearmiss, traffic violations, etc)"
+derq_event_fact_table,detection_area,string,Where the event occurred in relation to the intersection
+derq_event_fact_table,speed_mph,float,Speed of vehicle involved in event (if a vehicle was involved)
+derq_event_fact_table,nearmiss_type,string,"Impetus for near miss events (cut off, right of way)"
+derq_event_fact_table,pet,float,Post Encroachment Time
+derq_event_fact_table,ttc,float,Time To Collision
+derq_event_fact_table,gap_time,float,Time between lead vehicle/pedestrian passing a point and the following vehicle/pedestrian arriving
+derq_event_fact_table,severity,string,"Event severity (Low, Moderate, Severe)"
+derq_event_fact_table,involved,string,Involved parties (vehicle and/or VRU classifications)
+derq_event_fact_table,direction,string,Direction of travel of primary event party (Cardinal directions)
+derq_event_fact_table,movement,string,"Vehicle movement at intersection (Right Turn, Left Turn, Through)"
+derq_event_fact_table,latitude,float,Latitude of event location
+derq_event_fact_table,longitude,float,Longitude of event location
+derq_event_fact_table,time_in_red,float,"Duration of event, red light violations only"
+derq_event_fact_table,intersection_id,int,Internal intersection ID for data relationships
+derq_event_fact_table,date,date,date
+derq_event_fact_table,time_to_second,datetime,Time of event with default date (1900-01-01) attached
+derq_event_fact_table,time,time,Time of event to the nearest minute
+intersection_dim_table,intersection_id,int,Internal intersection ID for data relationships
+intersection_dim_table,evp,string,Whether or not EVP is enabled for the location
+intersection_dim_table,tsp,string,Whether or not TSP is enabled for the location
+intersection_dim_table,derq,string,Whether or not DERQ data is collected for the location
+intersection_dim_table,address,string,Full location address
+intersection_dim_table,neighborhood,string,Neighborhood of location
+intersection_dim_table,longitude,float,intersection coordinate longitude
+intersection_dim_table,latitude,float,intersection coordinate latitude
+intersection_dim_table,street_1,string,Name of first cross street
+intersection_dim_table,street_2,string,name of second cross street
+intersection_dim_table,signal,string,Name of intersection signal used by Traction and Trafficware
+intersection_dim_table,signal_int,int,ID of intersection signal used by Traction and Trafficware
+intersection_dim_table,tsp_timings,string,Cycle length timing for weekday TSP extensions
+intersection_dim_table,use_for_extend,bool,Use tsp_timings for calculating time saved in TSP extensions
+intersection_dim_table,tsp_timings_weekend,string,Cycle length timing for weekend TSP extensions
