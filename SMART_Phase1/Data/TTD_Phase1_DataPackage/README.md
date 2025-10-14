@@ -1,4 +1,4 @@
-# README for TTD ATMS Data Aggregation Plan 
+# README for Intelligent Sensor Integration on Rural Multi-Modal System with an Urban Recreation Travel Demand, Lake Tahoe Basin, NV and CA
 Strengthening Mobility and Revolutionizing Transportation (SMART) Program, U.S. Department of Transportation (USDOT)
 10.10.2025 
 
