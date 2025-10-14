@@ -1,7 +1,7 @@
 {
   "$schema": "https://resources.data.gov/schemas/dcat-us/v1.1/schema/catalog.json",
   "conformsTo": "https://project-open-data.cio.gov/v1.1/schema",
-  "title": "TTD ATMS Data Aggregation Plan",
+  "title": "Intelligent Sensor Integration on Rural Multi-Modal System with an Urban Recreation Travel Demand, Lake Tahoe Basin, NV and CA",
   "@type": "dcat:Catalog",
   "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
   "dataset": [
