@@ -5,7 +5,7 @@ Strengthening Mobility and Revolutionizing Transportation (SMART) Program, U.S. 
 
 ## Links to Dataset  
 Dataset Archive Link: <https://doi.org/10.21949/1530332>  
-Data Management Plan DOI: <Insert DMPTool DOI Here from Finalize tab>  
+Data Management Plan DOI: <https://dmphub.uc3prd.cdlib.net/dmps/10.48321/D1F82E31EA>  
 
 ## Summary of Dataset  
 
