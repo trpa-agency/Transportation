@@ -70,17 +70,20 @@ from email.mime.text import MIMEText
 import requests
 import pandas as pd
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from dotenv import load_dotenv
 
-# Load credentials from .env file (must be in same directory as this script)
-load_dotenv()
+# Load credentials from .env file in the same directory as this script,
+# regardless of the working directory the script is launched from.
+_ENV_PATH = Path(__file__).parent / ".env"
+load_dotenv(dotenv_path=_ENV_PATH)
 
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
 
 DERQ_API_URL = "https://api-external.cloud.derq.com"
-DERQ_HEADERS = {"x-api-key": os.getenv("derq-api-key")}
+DERQ_HEADERS = {"x-api-key": os.getenv("DERQ_API_KEY")}
 
 ARCGIS_BASE_URL   = "https://maps.trpa.org/server/rest/services/Transportation_SMART/FeatureServer"
 ARCGIS_PORTAL_URL = os.getenv("ARCGIS_PORTAL_URL", "https://maps.trpa.org/portal")
@@ -98,10 +101,11 @@ DRY_RUN = os.getenv("DRY_RUN", "true").lower() != "false"
 # Email / logging config
 # ---------------------------------------------------------------------------
 
-EMAIL_FROM   = os.getenv("EMAIL_FROM",   "info@trpa.gov")
-EMAIL_TO     = os.getenv("EMAIL_TO",     "gis@trpa.gov")
-SMTP_HOST    = os.getenv("SMTP_HOST",    "localhost")
-SMTP_PORT    = int(os.getenv("SMTP_PORT", "25"))
+# All values required in .env — no hardcoded fallbacks
+EMAIL_FROM = os.getenv("EMAIL_FROM")
+EMAIL_TO   = os.getenv("EMAIL_TO")
+SMTP_HOST  = os.getenv("SMTP_HOST")
+SMTP_PORT  = int(os.getenv("SMTP_PORT", "25"))  # 25 is the universal SMTP default
 
 
 # Each dataset: layer number and the field that holds the date/timestamp
@@ -168,7 +172,10 @@ def setup_logging() -> io.StringIO:
 
 def send_email(subject: str, body: str) -> None:
     """
-    Send a plain-text email via the configured SMTP relay (no auth).
+    Send a plain-text email via smtp2go relay using STARTTLS (no login required).
+
+    Matches the existing TRPA email pattern using mail.smtp2go.com:25.
+    Never raises — a failed email is logged but will not crash the ETL run.
 
     Parameters:
         subject : email subject line
@@ -178,10 +185,14 @@ def send_email(subject: str, body: str) -> None:
     msg["From"]    = EMAIL_FROM
     msg["To"]      = EMAIL_TO
     msg["Subject"] = subject
-    msg.attach(MIMEText(body, "plain"))
+    # Send as HTML so the log formatting is preserved in email clients
+    html_body = "<pre style='font-family:monospace;font-size:13px;'>{}</pre>".format(body)
+    msg.attach(MIMEText(html_body, "html"))
 
     try:
         with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=15) as server:
+            server.ehlo()
+            server.starttls()
             server.sendmail(EMAIL_FROM, [EMAIL_TO], msg.as_string())
         logging.info(f"Email sent to {EMAIL_TO} — subject: {subject}")
     except Exception as e:
@@ -513,25 +524,47 @@ def get_chunks_for_all_layers(latest_dates: dict) -> dict:
 # DERQ API helpers
 # ---------------------------------------------------------------------------
 
-def get_derq_locations() -> pd.DataFrame:
+def get_locations_from_arcgis() -> pd.DataFrame:
     """
-    Fetch all DERQ sensor locations for the Tahoe deployment.
+    Fetch sensor locations from the ArcGIS locations layer (FeatureServer/0).
+    This is the authoritative location list, manually maintained in ArcGIS.
+    Avoids hitting the DERQ API for location data on every run.
 
     Returns:
         DataFrame with at least LocationId and LocationName columns.
 
     Raises:
+        ValueError       : if the layer returns no features or is missing fields
         requests.HTTPError : on a non-2xx response
-        ValueError         : if the response body is empty or malformed
     """
-    url = f"{DERQ_API_URL}/locations"
-    response = requests.get(url, headers=DERQ_HEADERS, timeout=30)
+    url = f"{ARCGIS_BASE_URL}/0/query"
+    params = {
+        "f"              : "json",
+        "where"          : "1=1",
+        "outFields"      : "*",
+        "returnGeometry" : "false",
+    }
+    response = requests.get(url, params=params, timeout=30)
     response.raise_for_status()
     data = response.json()
-    locations = data.get("body", [])
-    if not locations:
-        raise ValueError("No locations returned from DERQ API.")
-    return pd.DataFrame(locations)
+
+    if "error" in data:
+        raise ValueError(f"ArcGIS error fetching locations: {data['error'].get('message', data['error'])}")
+
+    features = data.get("features", [])
+    if not features:
+        raise ValueError("No locations found in FeatureServer/0.")
+
+    records = [f["attributes"] for f in features]
+    df = pd.DataFrame(records)
+
+    # Confirm expected fields are present
+    for required in ("LocationId", "LocationName"):
+        if required not in df.columns:
+            raise ValueError(f"Expected field '{required}' not found in locations layer. "
+                             f"Available fields: {list(df.columns)}")
+
+    return df[["LocationId", "LocationName"]]
 
 
 # Retryable HTTP status codes from the DERQ API
@@ -764,9 +797,9 @@ if __name__ == "__main__":
         logging.info("-" * 60)
         logging.info("Step 3: Fetching new data from DERQ API")
         logging.info("-" * 60)
-        logging.info("Fetching DERQ locations...")
+        logging.info("Fetching locations from ArcGIS (layer 0)...")
         try:
-            df_locations = get_derq_locations()
+            df_locations = get_locations_from_arcgis()
             logging.info(f"Found {len(df_locations)} location(s): {list(df_locations['LocationName'])}")
         except Exception as e:
             logging.error(f"ERROR fetching locations: {e}")
