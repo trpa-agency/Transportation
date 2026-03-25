@@ -1,0 +1,69 @@
+Jurdisdiction,Zone_Name,Zone_ID,Area Name,Timeframe,Temporal_Scale,Report_RoomsAvailable,Report_RoomsRented,RoomType,Report_OccRate,TRPA_TAUs,TRPA_OccRate,Notes
+El Dorado County,Rest of El Dorado County,Rest of El Dorado County,Unincorporated El Dorado County,2022-06-01 00:00:00,Monthly,0,0,VHR,0.6195147679324895,0.0,0.0,"Using SLT VHR rate as occupancy rate, ED only reports TOT revenue"
+El Dorado County,Rest of El Dorado County,Rest of El Dorado County,Unincorporated El Dorado County,2022-08-01 00:00:00,Monthly,0,0,VHR,0.5663082437275986,0.0,0.0,"Using SLT VHR rate as occupancy rate, ED only reports TOT revenue"
+El Dorado County,Rest of El Dorado County,Rest of El Dorado County,Unincorporated El Dorado County,2022-09-01 00:00:00,Monthly,0,0,VHR,0.428994708994709,0.0,0.0,"Using SLT VHR rate as occupancy rate, ED only reports TOT revenue"
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone1,Zone 1,2022-06-01 00:00:00,Monthly,105270,42783,HotelMotel,0.40641208321459105,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone2,Zone 2,2022-06-01 00:00:00,Monthly,39690,12890,HotelMotel,0.32476694381456284,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone3,Zone 3,2022-06-01 00:00:00,Monthly,15960,6213,HotelMotel,0.3892857142857143,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone4,Zone 4,2022-06-01 00:00:00,Monthly,11670,1834,HotelMotel,0.15715509854327336,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone5,Zone 5,2022-06-01 00:00:00,Monthly,7290,1737,HotelMotel,0.2382716049382716,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_ALL,Entire City,2022-06-01 00:00:00,Monthly,9480,5873,VHR,0.6195147679324895,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone1,Zone 1,2022-08-01 00:00:00,Monthly,108779,45095,HotelMotel,0.4145561183684351,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone2,Zone 2,2022-08-01 00:00:00,Monthly,36177,14241,HotelMotel,0.3936478978356414,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone3,Zone 3,2022-08-01 00:00:00,Monthly,16492,7261,HotelMotel,0.44027407227746784,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone4,Zone 4,2022-08-01 00:00:00,Monthly,12307,1941,HotelMotel,0.157715121475583,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone5,Zone 5,2022-08-01 00:00:00,Monthly,7533,1551,HotelMotel,0.20589406610911987,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_ALL,Entire City,2022-08-01 00:00:00,Monthly,9765,5530,VHR,0.5663082437275986,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone1,Zone 1,2022-09-01 00:00:00,Monthly,106020,38366,HotelMotel,0.3618751179022826,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone2,Zone 2,2022-09-01 00:00:00,Monthly,35010,12350,HotelMotel,0.3527563553270494,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone3,Zone 3,2022-09-01 00:00:00,Monthly,15960,5231,HotelMotel,0.32775689223057647,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone4,Zone 4,2022-09-01 00:00:00,Monthly,11910,1971,HotelMotel,0.1654911838790932,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_Zone5,Zone 5,2022-09-01 00:00:00,Monthly,7290,1257,HotelMotel,0.17242798353909464,0.0,0.0,
+South Lake Tahoe,City of South Lake Tahoe,CSLT_ALL,Entire City,2022-09-01 00:00:00,Monthly,9450,4054,VHR,0.428994708994709,0.0,0.0,
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,2022-06-01 00:00:00,Monthly,0,11499,HotelMotel,0.0,0.0,0.0,Rooms available not provided
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,2022-08-01 00:00:00,Monthly,0,12854,HotelMotel,0.0,0.0,0.0,Rooms available not provided
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,2022-09-01 00:00:00,Monthly,0,11094,HotelMotel,0.0,0.0,0.0,Rooms available not provided
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,2022-06-01 00:00:00,Monthly,0,12099,VHR,0.0,0.0,0.0,"Combination of ""timeshare"" and ""vacation rental"""
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,2022-08-01 00:00:00,Monthly,0,12611,VHR,0.0,0.0,0.0,"Combination of ""timeshare"" and ""vacation rental"""
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,2022-09-01 00:00:00,Monthly,0,9571,VHR,0.0,0.0,0.0,"Combination of ""timeshare"" and ""vacation rental"""
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,Q2 2022,Quarterly,0,1597,VHR,0.0,0.0,0.0,Homeowner rentals only
+Washoe County,Washoe County,Washoe County,Washoe County Tax District B,Q3 2022,Quarterly,0,2909,VHR,0.0,0.0,0.0,Homeowner rentals only
+Douglas County,Stateline Casino Core,Stateline Casino Core,Casino Core,2022-06-01 00:00:00,Monthly,65375,53052,Casino,0.8115028680688336,0.0,0.0,Sourced from NV Gaming Abstract
+Douglas County,Stateline Casino Core,Stateline Casino Core,Casino Core,2022-08-01 00:00:00,Monthly,68265,55284,Casino,0.8098439903317952,0.0,0.0,Sourced from NV Gaming Abstract
+Douglas County,Stateline Casino Core,Stateline Casino Core,Casino Core,2022-09-01 00:00:00,Monthly,66297,49266,Casino,0.7431105479885968,0.0,0.0,Sourced from NV Gaming Abstract
+Douglas County,Rest of Douglas County,Rest of Douglas County,Non-Casino Douglas County,2022-06-01 00:00:00,Monthly,55769,8307,HotelMotel,0.8115028680688336,0.0,0.0,"Using Gaming Abstract occupancy rate, do not trust county report rate or rented"
+Douglas County,Rest of Douglas County,Rest of Douglas County,Non-Casino Douglas County,2022-08-01 00:00:00,Monthly,74833,23579,HotelMotel,0.8098439903317952,0.0,0.0,"Using Gaming Abstract occupancy rate, do not trust county report rate or rented"
+Douglas County,Rest of Douglas County,Rest of Douglas County,Non-Casino Douglas County,2022-09-01 00:00:00,Monthly,59316,12287,HotelMotel,0.7431105479885968,0.0,0.0,"Using Gaming Abstract occupancy rate, do not trust county report rate or rented"
+Douglas County,Rest of Douglas County,Rest of Douglas County,Non-Casino Douglas County,2022-06-01 00:00:00,Monthly,15239,4256,VHR,0.27928341754708313,0.0,0.0,"County VHR occupancy rate, don't trust available/rented"
+Douglas County,Rest of Douglas County,Rest of Douglas County,Non-Casino Douglas County,2022-08-01 00:00:00,Monthly,5850,3121,VHR,0.5335042735042735,0.0,0.0,"County VHR occupancy rate, don't trust available/rented"
+Douglas County,Rest of Douglas County,Rest of Douglas County,Non-Casino Douglas County,2022-09-01 00:00:00,Monthly,396,209,VHR,0.5277777777777778,0.0,0.0,"County VHR occupancy rate, don't trust available/rented"
+Placer County,Carnelian Bay,Carnelian Bay,Carnelian Bay,Q4 21-22,Quarterly,25387,7997,VHR,0.31500374207271437,0.0,0.0,
+Placer County,Carnelian Bay,Carnelian Bay,Carnelian Bay,Q4 21-22,Quarterly,637,510,HotelMotel,0.8006279434850864,0.0,0.0,
+Placer County,Kings Beach,Kings Beach,Kings Beach,Q4 21-22,Quarterly,15541,5720,VHR,0.3680586834824014,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Kings Beach,Kings Beach,Kings Beach,Q4 21-22,Quarterly,4872,2299,HotelMotel,0.47188013136289,0.0,0.0,
+Placer County,Kings Beach O.P.A.,Kings Beach O.P.A.,Kings Beach O.P.A.,Q4 21-22,Quarterly,19059,5694,VHR,0.2987564929954352,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe City,Tahoe City,Tahoe City,Q4 21-22,Quarterly,14158,5408,VHR,0.3819748552055375,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe City,Tahoe City,Tahoe City,Q4 21-22,Quarterly,9201,5756,HotelMotel,0.6255841756330833,0.0,0.0,
+Placer County,Tahoe City O.P.A.,Tahoe City O.P.A.,Tahoe City O.P.A.,Q4 21-22,Quarterly,21251,6098,VHR,0.2869512022963625,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe City O.P.A.,Tahoe City O.P.A.,Tahoe City O.P.A.,Q4 21-22,Quarterly,1911,995,HotelMotel,0.5206698063840921,0.0,0.0,
+Placer County,Tahoe Miscellaneous,Tahoe Miscellaneous,Tahoe Miscellaneous,Q4 21-22,Quarterly,1884,432,VHR,0.22929936305732485,0.0,0.0,
+Placer County,Tahoe Vista,Tahoe Vista,Tahoe Vista,Q4 21-22,Quarterly,19015,6045,VHR,0.3179069155929529,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe Vista,Tahoe Vista,Tahoe Vista,Q4 21-22,Quarterly,18496,8372,HotelMotel,0.45263840830449825,0.0,0.0,
+Placer County,Tahoe Vista O.P.A.,Tahoe Vista O.P.A.,Tahoe Vista O.P.A.,Q4 21-22,Quarterly,2665,941,VHR,0.35309568480300185,0.0,0.0,
+Placer County,West Shore,West Shore,West Shore,Q4 21-22,Quarterly,43858,14791,VHR,0.337247480505267,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,West Shore,West Shore,West Shore,Q4 21-22,Quarterly,5518,2271,HotelMotel,0.4115621602029721,0.0,0.0,Includes B&Bs
+Placer County,Carnelian Bay,Carnelian Bay,Carnelian Bay,Q1 22-23,Quarterly,28678,13808,VHR,0.48148406443964015,0.0,0.0,
+Placer County,Carnelian Bay,Carnelian Bay,Carnelian Bay,Q1 22-23,Quarterly,1932,1800,HotelMotel,0.9316770186335404,0.0,0.0,
+Placer County,Kings Beach,Kings Beach,Kings Beach,Q1 22-23,Quarterly,18038,8397,VHR,0.46551724137931033,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Kings Beach,Kings Beach,Kings Beach,Q1 22-23,Quarterly,58779,5505,HotelMotel,0.09365589751441841,0.0,0.0,
+Placer County,Kings Beach O.P.A.,Kings Beach O.P.A.,Kings Beach O.P.A.,Q1 22-23,Quarterly,19492,8627,VHR,0.4425918325466858,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe City,Tahoe City,Tahoe City,Q1 22-23,Quarterly,15287,8112,VHR,0.5306469549290247,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe City,Tahoe City,Tahoe City,Q1 22-23,Quarterly,48334,7406,HotelMotel,0.15322547275209997,0.0,0.0,
+Placer County,Tahoe City O.P.A.,Tahoe City O.P.A.,Tahoe City O.P.A.,Q1 22-23,Quarterly,25048,11254,VHR,0.44929734908974767,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe City O.P.A.,Tahoe City O.P.A.,Tahoe City O.P.A.,Q1 22-23,Quarterly,1748,1039,HotelMotel,0.5943935926773455,0.0,0.0,
+Placer County,Tahoe Miscellaneous,Tahoe Miscellaneous,Tahoe Miscellaneous,Q1 22-23,Quarterly,2082,975,VHR,0.46829971181556196,0.0,0.0,
+Placer County,Tahoe Vista,Tahoe Vista,Tahoe Vista,Q1 22-23,Quarterly,24648,9988,VHR,0.40522557611165205,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,Tahoe Vista,Tahoe Vista,Tahoe Vista,Q1 22-23,Quarterly,15100,12702,HotelMotel,0.8411920529801324,0.0,0.0,
+Placer County,Tahoe Vista O.P.A.,Tahoe Vista O.P.A.,Tahoe Vista O.P.A.,Q1 22-23,Quarterly,3079,1541,VHR,0.5004871711594674,0.0,0.0,
+Placer County,West Shore,West Shore,West Shore,Q1 22-23,Quarterly,47948,22176,VHR,0.4625010427963627,0.0,0.0,Includes CondoTels (make sure other reporting matches)
+Placer County,West Shore,West Shore,West Shore,Q1 22-23,Quarterly,6318,4057,HotelMotel,0.642133586578031,0.0,0.0,Inclcudes B&Bs

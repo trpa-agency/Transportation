@@ -1,0 +1,19 @@
+﻿Category,Variable,Base Year 2022,Change by 2050,Percent Change,Forecast 2050,Notes
+Residential Units and Population,Residential Population,"53,842","3,769",7.0,"57,611",use the average percent change from the last 40 years per Ken….not calculated…rough estimate
+Residential Units and Population,Occupied Units,"23,296","2,544",10.9,"25,840",base from model input summary and total unit change from forecast assumptions spreadsheet
+Residential Units and Population,Unoccupied Units,"26,128","1,841",7.0,"27,969",base from model input summary and total unit change from forecast assumptions spreadsheet
+Residential Units and Population,Total Residential Units,"49,424","4,385",8.9,"53,809",base from model input summary and total unit change from forecast assumptions spreadsheet
+Income and Occupied Residential Units,Low Income Units,"9,910","1,199",12.1,"11,109",base from model input summary and total unit change from forecast assumptions spreadsheet
+Income and Occupied Residential Units,Medium Income Units,"4,724",354,7.5,"5,078",base from model input summary and total unit change from forecast assumptions spreadsheet
+Income and Occupied Residential Units,High Income Units,"8,662",991,11.4,"9,653",base from model input summary and total unit change from forecast assumptions spreadsheet
+Total Overnight Visitor Units,Short Term Rentals,"4,313",490,11.4,"4,803","In Placer County, two-thirds of the currently allocated permits are in the Tahoe Basin. They currently permit 3,223 county-wide. They currently allow for 3900, so if we extrapolate out there will be an additional 440 VHR permits in the Placer County portion of the Tahoe Basin. Washoe has no cap, but  we don’t have any reason to believe it will increase. El Dorado is at the cap. CSLT is at the cap. Douglas is currently 50 below the cap, so we will assume these all get used. "
+Total Overnight Visitor Units,Seasonal Units,"19,073","1,344",7.0,"20,417",base number from model input summary and percent of seasonal units is the same as current.
+Total Overnight Visitor Units,Campground Spots,"1,964",53,2.7,"2,017",one known campground coming. 53 sites will be built near Nevada Beach.
+Total Overnight Visitor Units,Total Lodging Units,"11,268",683,6.1,"11,951",from known projects list and removed/closed
+Occupied Overnight Visitor Units,Occupied Short Term Rentals,"1,941",221,11.4,"2,161",rate used from model input summary
+Occupied Overnight Visitor Units,Occupied Seasonal Units,"7,439",-89,-1.2,"7,350",rate used from model input summary
+Occupied Overnight Visitor Units,Occupied Camping Spots,"1,159",127,11.0,"1,286",rate used from model input summary  40 sites added to account for DL Bliss partial closure in 2022. 56 added to account for Campground by the Lake partial closure in 2022.
+Occupied Overnight Visitor Units,Occupied Lodging Units,"5,409",328,6.1,"5,736",rate used from model input summary
+Other Key Data Points,Commercial Floor Area,"6,486,960","161,373",2.5,"6,648,333",base from model input summary and total unit change from forecast assumptions spreadsheet
+Other Key Data Points,Employment,"26,777",803,3.0,"27,580",same as percent change used last time
+Other Key Data Points,School Enrollment ,"9,089",318,3.5,"9,407",use half the rate of population growth per Ken.
