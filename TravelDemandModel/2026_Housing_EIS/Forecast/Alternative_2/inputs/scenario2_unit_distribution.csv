@@ -1,0 +1,26 @@
+"Cultivating Community Forecasts, Alternative 2, Housing Forward: ",,,,,,,,,
+Pool,Number of Units,Town Center,Bonus Unit Boundary,Multi-Family,Single-Family,Anywhere res dev. Is allowed,N/A - Model Automatically Assigns,Assumptions,Source for Assumptions:
+CTC Units,,,,,,,,Same as RTP/SCS,
+,,,,,,,,,
+Tahoe Living Development,,,,,,,,,
+"Additional Bonus Units from CFA, TAU, PAOT Pool Conversion",,,,,,,,,
+"Remaining Unassigned Bonus Units Plus Additional from CFA, TAU, PAOT Conversion",,,,,,,,,
+   Affordable,1527,,1527,,,,,Deed-restricted affordable are almost always state- or federally-funded large projects that would go in town centers with the highest density incentives,
+   Moderate,955, ,955,,,,,Assume all will go within the bonus unit boundary in order to get fee waivers, 
+   Achievable,955, , ,,,955,,"Assume 80% will go within BUB to take advantage of fee waivers and proximity to transit; otherwise, they would just use the ""Affordable by Design"" bonus unit","35% anywhere res dev. Is allowed; 65%, within BUB"
+   Affordable by Design,382,, ,,,382,,, 
+Additional units from JADUs (32 per year from 2027 to 2050)*,792,,,,,792,,,
+,,,,,,,,,
+Remaining Development From 2012 RPU,,,,,,,,,
+Private CFA/TAU conversion,700,, ,,,700,,,"Reasonable to assume all will become MF/Condos (change this if condos act like SF in the model. No need for any of these to be SF, because SF doesn't need to use banked units"
+Banked residential units,399,, ,,,399,,,
+Remaining Bonus Units - Local Jurisdiction Pools (not assigned),238,,,,,238,,,
+Remaining Bonus Units - Local Jurisdiction Pools (assigned),97,,,,,,97,83,
+Remaining Bonus Units from 2012 Regional Plan - not assigned to projects (These have been combined into Row 8),0,,,,,,,,
+Remaining Bonus Units from 2012 Regional Plan - assigned to projects (these will go in their respective TAZs),427,,0,,,,427,"Projects have already specified project type, most are multi-family, some ADUs",
+Remaining allocations from 2012 Regional Plan,1956,,,,,,1956,1) Assume 33% of Allocations are multi-family (100% occupied),"See ""Occupancy Rates"" tab"
+,,,,,,,,2) Remaining 66% - SF,
+"Allow ""Missing Middle"" in more neighborhoods",,,,,,,,,
+,, ,,,,,,,
+,,,,,,,,,
+Total NEW,8428,0,2482,0,0,3466,2480, ,

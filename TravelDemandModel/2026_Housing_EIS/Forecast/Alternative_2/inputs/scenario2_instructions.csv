@@ -1,0 +1,31 @@
+,Instructions
+1. Assign Known Projects,
+Assign using Lookup_Lists\forecast_residential_assigned_units.csv: ,Keep
+"Known Residential Allocations from 2023-2025,",Keep
+"Known Residential Bonus Units from permitted projects,",Keep
+"applications in review, and",Keep
+RBU reservations in LT Info,Keep
+Known Accessory Dwelling permits not completed,Keep
+Remove Known Banking projects that removed units in 2023-2024,Keep
+Calcuate Remaining local jurisdiction pool units less units used for known projects,Keep
+2. Assign Residential Bonus Units within Bonus Unit Boundary,
+Full build out of CTC Asset Lands using jurisdiction bonus unit pools,Keep
+Identify vacant buildable lots within Bonus Unit boundary,Keep
+Assign remaining jurisdiction pool units to available parcels within jurisidiction ,Change - distribute per scenario 2 unit distribution
+3. Assigne remaining Jurisdiction Residential Bonus and General Units,
+"Identify Vacant buildable lots with allowed Multi-family use, calculate allowed density (or up to 4 units per parcel on all parcels)",
+Assign 15% of remaining local jurisdiction Residential Allocation pool units to available multi-family parcels within jurisidiction,Change - assign 100% anywhere residential development is allowed
+Assign 35% of remaining Banked units to available multi-family parcels (use adjusted weighting from existing residential units?),Change - assign 100% anywhere residential development is allowed
+Assign 35% of remaining Converted units to available multi-family parcels (use adjusted weighting from existing residential units?),Change - assign 100% anywhere residential development is allowed
+"Distribute remaining TRPA Bonus Unit Pools (Assign per the chart above - 65% within the Bonus Unit Boundary, 35% anywhere residential development is allowed",Add instruction
+Distribute JADUs (100% anywhere residential development is allowed),Add instruction
+4. Assign remaining TRPA pool units to available parcels throughout region (use adjusted weighting from existing residential units?),Keep
+Evaluate Vacant Buildable Lots with Single-family Residential Allowed Use,Keep
+Identify Vacant buildable lots with allowed Single-family use,Keep
+Identify Accessory Dwelling Uses Allowed (All California Parcels and NV Parcels Greater than 1 Acre),Keep
+Evaluate Underbuilt parcels with Multi-family Residential Allowed Use,Keep
+Identify Underbuilt Residential lots with allowed Multi-family use,Keep
+Evaluate Underbuilt parcels with Accessory Dwelling Uses Allowed (All California Parcels and NV Parcels Greater than 1 Acre),Keep
+Identify parcels that are in Town Centers or within a quarter mile and are top x% of underbuilt parcels.,Keep
+Underbuilt = exclude existing condo and common area land uses. sf mf or mixed use,Keep
+"ADU potential = exclude existing condo or common area land uses, and wait to use any NV parcels>acre.",Keep
