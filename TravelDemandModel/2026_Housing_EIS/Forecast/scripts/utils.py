@@ -252,3 +252,380 @@ def genSankey(df,category_cols=[],value_cols='',title='Sankey Diagram'):
        
     fig = dict(data=[data], layout=layout)
     return fig
+
+# function to forecast units on vacant parcels
+def forecast_residential_units(df, condition, target_sum, reason):
+    # filter to parcels available for development
+    sdfAvailable = df.loc[eval(condition)]
+    running_sum = 0
+    rows_to_fill = []
+    # Loop through the rows and fill the 'new_column'
+    for idx, row in sdfAvailable.iterrows():
+        # Calculate the remaining amount that can be filled
+        remaining_amount = target_sum - running_sum
+        if row['MAX_UNITS'] <= remaining_amount:
+            # If the current row's value fits, add it to the column
+            df.loc[idx, 'FORECASTED_RESIDENTIAL_UNITS'] = row['MAX_UNITS']
+            running_sum += row['MAX_UNITS']
+            if row['MAX_UNITS'] > 0:
+                rows_to_fill.append(idx)
+            if row['MAX_UNITS'] == remaining_amount:
+                break
+        elif remaining_amount > 0:
+            # If it exceeds the remaining amount, fill with the remaining value
+            df.loc[idx, 'FORECASTED_RESIDENTIAL_UNITS'] = remaining_amount
+            running_sum += remaining_amount
+            if row['MAX_UNITS'] > 0:
+                rows_to_fill.append(idx)
+            break
+        else:
+            continue
+    # reason for development
+    df.loc[rows_to_fill, 'FORECAST_REASON'] = reason
+    df_summary = pd.DataFrame({'Reason': [reason], 'Parcels_Available':[len(sdfAvailable)], 'Parcels_Used':[len(rows_to_fill)],
+                                'Total_Forecasted_Units': [running_sum], 'Total_Remaining_Units': [target_sum - running_sum]})   
+    return df, df_summary  
+
+# build a function to forecast residential units for infill parcels
+def forecast_residential_units_infill(df, condition, target_sum, reason):
+    # filter to parcels available for development
+    sdfAvailable = df.loc[eval(condition)]
+    running_sum = 0
+    rows_to_fill = []
+    # Loop through the rows and fill the 'new_column'
+    for idx, row in sdfAvailable.iterrows():
+        # Calculate the remaining amount that can be filled
+        remaining_amount = target_sum - running_sum
+        if row['POTENTIAL_UNITS'] <= remaining_amount:
+            # If the current row's value fits, add it to the column
+            df.loc[idx, 'FORECASTED_RESIDENTIAL_UNITS'] = row['POTENTIAL_UNITS']
+            running_sum += row['POTENTIAL_UNITS']
+            if row['POTENTIAL_UNITS'] > 0:
+                rows_to_fill.append(idx)
+            if row['POTENTIAL_UNITS'] == remaining_amount:
+                break
+        elif remaining_amount > 0:
+            # If it exceeds the remaining amount, fill with the remaining value
+            df.loc[idx, 'FORECASTED_RESIDENTIAL_UNITS'] = remaining_amount
+            running_sum += remaining_amount
+            if row['POTENTIAL_UNITS'] > 0:
+                rows_to_fill.append(idx)
+            break
+        else:
+            continue
+    # reason for development
+    df.loc[rows_to_fill, 'FORECAST_REASON'] = reason
+    df_summary = pd.DataFrame({'Reason': [reason], 'Parcels_Available':[len(sdfAvailable)], 'Parcels_Used':[len(rows_to_fill)],
+                                'Total_Forecasted_Units': [running_sum], 'Total_Remaining_Units': [target_sum - running_sum]})   
+    return df, df_summary
+
+# function to get the target sum
+def get_target_sum(df, Jurisdiction, Unit_Pool, zoning_type):
+    if zoning_type == 'MF':
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_MF'].values[0]
+    elif zoning_type == 'SF':
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_SF'].values[0]
+    elif zoning_type == 'Infill':
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_Infill'].values[0]
+    return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted'].values[0]
+
+# function to check parcels meeting criteria
+def check_parcel_condition(df, condition):
+    sdfAvailable = df.loc[eval(condition)]
+    # summarize parcel count, total potential units, and total existing units
+    df_summary = pd.DataFrame({'Parcels_Available':[len(sdfAvailable)], 
+                               'Total_Max_Units':[sdfAvailable['MAX_UNITS'].sum()],
+                               'Total_Potential_Units':[sdfAvailable['POTENTIAL_UNITS'].sum()],
+                               'Total_Existing_Units':[sdfAvailable['Residential_Units'].sum(),]}
+                               )
+    return df_summary
+def get_parcel_conditions():
+    ##------------------------------------ Conditional Statements for Forecasting Residential Unit Development------------------------------ ##
+    # vacant buildable criteria
+    vacant_buildable_criteria        = "(df['EXISTING_LANDUSE'] == 'Vacant') & (df['OWNERSHIP_TYPE'] == 'Private') & (df['RETIRED'] == 'No') & (df['IPES_SCORE'] > 0)"
+    placer_vacant_buildable_criteria = "(df['EXISTING_LANDUSE'] == 'Vacant') & (df['OWNERSHIP_TYPE'] == 'Private') & (df['RETIRED'] == 'No') & (df['IPES_SCORE'] > 726)" 
+
+    # Within TRPA Boundary as condition for all
+    trpa_boundary_criteria = "(df['WITHIN_TRPA_BNDY'] == 1)"
+    bonus_unit_criteria    = "(df['WITHIN_BONUSUNIT_BNDY'] == 'Yes')"
+    no_zoning_criteria     = "(df['HOUSING_ZONING'] != 'NA')"
+    sf_only_criteria       = "(df['HOUSING_ZONING'] == 'SF_only')"
+    mf_only_criteria       = "(df['HOUSING_ZONING'] == 'MF_only')"
+    sf_mf_criteria         = "(df['HOUSING_ZONING'].isin(['SF/MF', 'MF_only']))"
+    adu_criteria           = "(df['ADU_ALLOWED'] == 'Yes') & (df['Residential_Units']>0)"
+    towncenter_condition   = "(~df['TOWN_CENTER'].isna())"
+    top_10_condition       = "(df['TOP_TEN_POTENTIAL_UNITS'] == 'Yes')"
+    condo_size_condition   = "(df['PARCEL_ACRES'] >= 0.15)&(~df['EXISTING_LANDUSE'].isin(['Condominium', 'Condomunium Common Area']))"
+    ready_to_forecast      = "(df['FORECAST_REASON'].isna())&(df['OWNERSHIP_TYPE'] == 'Private')"
+
+    # setup f string to change jurisdiction in bonus condition
+    bonus_vacant_condition_template  = ("(df['JURISDICTION'] == '{}') & "  + 
+                                        bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + 
+                                        vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + 
+                                        ready_to_forecast + " & " + condo_size_condition)
+    vacant_condition_template        = ("(df['JURISDICTION'] == '{}') & "  + 
+                                        trpa_boundary_criteria + " & " + 
+                                        vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + 
+                                        ready_to_forecast + " & " + condo_size_condition)
+    placer_vacant_condition_template = ("(df['JURISDICTION'] == '{}') & " + 
+                                        trpa_boundary_criteria + " & " + placer_vacant_buildable_criteria + " & " + 
+                                        sf_mf_criteria + " & " + 
+                                        ready_to_forecast + " & " + condo_size_condition)
+    infill_condition_template        = ("(df['JURISDICTION'] == '{}') & "  + 
+                                        trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + 
+                                        sf_mf_criteria + " & " + 
+                                        ready_to_forecast + " & " + top_10_condition)
+    adu_condition_template           = ("(df['JURISDICTION'] == '{}') & "  + 
+                                        trpa_boundary_criteria + " & " + adu_criteria + " & " + 
+                                        ready_to_forecast)
+    towncenter_condition_template    = ("(df['JURISDICTION'] == '{}') & "  + 
+                                        trpa_boundary_criteria + " & " + towncenter_condition + " & " + 
+                                        ready_to_forecast)
+
+    # list of jurisdictions
+    jurisdictions = ['CSLT', 'DG', 'PL', 'WA','TRPA']
+    # loop through jurisdictions in bonus_condition
+    for j in jurisdictions:
+        condition = bonus_vacant_condition_template.format(j)
+    ##------------------------------------ Conditional Statements for Forecasting Residential Unit Development------------------------------ ##
+    # vacant buildable criteria
+    vacant_buildable_criteria        = "(df['EXISTING_LANDUSE'] == 'Vacant') & (df['OWNERSHIP_TYPE'] == 'Private') & (df['RETIRED'] == 'No') & (df['IPES_SCORE'] > 0)"
+    placer_vacant_buildable_criteria = "(df['EXISTING_LANDUSE'] == 'Vacant') & (df['OWNERSHIP_TYPE'] == 'Private') & (df['RETIRED'] == 'No') & (df['IPES_SCORE'] > 726)" 
+
+    # Within TRPA Boundary as condition for all
+    trpa_boundary_criteria = "(df['WITHIN_TRPA_BNDY'] == 1)"
+    bonus_unit_criteria    = "(df['WITHIN_BONUSUNIT_BNDY'] == 'Yes')"
+    no_zoning_criteria     = "(df['HOUSING_ZONING'] != 'NA')"
+    sf_only_criteria       = "(df['HOUSING_ZONING'] == 'SF_only')"
+    mf_only_criteria       = "(df['HOUSING_ZONING'] == 'MF_only')"
+    sf_mf_criteria         = "(df['HOUSING_ZONING'].isin(['SF/MF', 'MF_only']))"
+    adu_criteria           = "(df['ADU_ALLOWED'] == 'Yes') & (df['Residential_Units']>0)"
+    towncenter_condition   = "(~df['TOWN_CENTER'].isna())"
+    top_10_condition       = "(df['TOP_TEN_POTENTIAL_UNITS'] == 'Yes')"
+    condo_size_condition   = "(df['PARCEL_ACRES'] >= 0.15)&(~df['EXISTING_LANDUSE'].isin(['Condominium', 'Condomunium Common Area']))"
+    ready_to_forecast      = "(df['FORECAST_REASON'].isna())&(df['OWNERSHIP_TYPE'] == 'Private')"
+
+    ##------------------------------------------------- Jurisdiction Specific Conditions ---------------------------------------------------- ##
+
+    # jurisdiction bonus unit conditions
+    CSLT_Bonus_SF_condition       = "(df['JURISDICTION'] == 'CSLT')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    CSLT_Bonus_MF_condition       = "(df['JURISDICTION'] == 'CSLT')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    CSLT_Bonus_infill_condition   = "(df['JURISDICTION'] == 'CSLT')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+
+    DG_Bonus_SF_condition         = "(df['JURISDICTION'] == 'DG')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    DG_Bonus_MF_condition         = "(df['JURISDICTION'] == 'DG')" + " & " + bonus_unit_criteria + " & " +  trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    DG_Bonus_infill_condition     = "(df['JURISDICTION'] == 'DG')" + " & " + bonus_unit_criteria + " & " +  trpa_boundary_criteria +  " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    PL_Bonus_SF_condition         = "(df['JURISDICTION'] == 'PL')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + placer_vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    PL_Bonus_MF_condition         = "(df['JURISDICTION'] == 'PL')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + placer_vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    PL_Bonus_infill_condition     = "(df['JURISDICTION'] == 'PL')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+
+    WA_Bonus_MF_condition         = "(df['JURISDICTION'] == 'WA')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    WA_Bonus_SF_condition         = "(df['JURISDICTION'] == 'WA')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    WA_Bonus_infill_condition     = "(df['JURISDICTION'] == 'WA')" + " & " + bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+
+    # jurisdiction general conditions
+    CSLT_MF_condition             = "(df['JURISDICTION'] == 'CSLT') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    CSLT_SF_condition             = "(df['JURISDICTION'] == 'CSLT') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    CSLT_infill_condition         = "(df['JURISDICTION'] == 'CSLT') & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    DG_MF_condition               = "(df['JURISDICTION'] == 'DG') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    DG_SF_condition               = "(df['JURISDICTION'] == 'DG') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    DG_infill_condition           = "(df['JURISDICTION'] == 'DG') & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    EL_MF_condition               = "(df['JURISDICTION'] == 'EL') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition  
+    EL_SF_condition               = "(df['JURISDICTION'] == 'EL') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    EL_infill_condition           = "(df['JURISDICTION'] == 'EL') & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    PL_MF_condition               = "(df['JURISDICTION'] == 'PL') & " + trpa_boundary_criteria + " & " + placer_vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    PL_SF_condition               = "(df['JURISDICTION'] == 'PL') & " + trpa_boundary_criteria + " & " + placer_vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    PL_infill_condition           = "(df['JURISDICTION'] == 'PL') & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    WA_MF_condition               = "(df['JURISDICTION'] == 'WA') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    WA_SF_condition               = "(df['JURISDICTION'] == 'WA') & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    WA_infill_condition           = "(df['JURISDICTION'] == 'WA') & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    # TRPA pool conditions
+    # bonus unit conditions
+    TRPA_Bonus_MF_condition       = bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    TRPA_Bonus_SF_condition       = bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    TRPA_Bonus_infill_condition   = bonus_unit_criteria + " & " + trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    # general conditions
+    TRPA_MF_condition             = trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    TRPA_SF_condition             = trpa_boundary_criteria + " & " + vacant_buildable_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+    TRPA_infill_condition         = trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast+ " & " + condo_size_condition
+
+    # Town Center Pool Conditions
+    TC_MF_condition               = trpa_boundary_criteria + " & " + towncenter_condition + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TC_SF_condition               = trpa_boundary_criteria + " & " + towncenter_condition + " & " + vacant_buildable_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TC_infill_condition           = trpa_boundary_criteria + " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    # ADU Pool Conditions
+    TRPA_ADU_condition            = trpa_boundary_criteria + " & " + adu_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+
+    # Scenario 2 Conditions
+    # These will all be set to 0 in the main input files
+    TRPA_Affordable_condition       = trpa_boundary_criteria + " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Moderate_condition         = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_Bonus_condition         = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_General_condition       = trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Affordable_by_Design_condition       = trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    conditions = {
+                    'CSLT_Bonus_SF'      : CSLT_Bonus_SF_condition, 
+                    'CSLT_Bonus_MF'      : CSLT_Bonus_MF_condition, 
+                    'CSLT_Bonus_Infill'  : CSLT_Bonus_infill_condition,
+                    'DG_Bonus_SF'        : DG_Bonus_SF_condition,
+                    'DG_Bonus_MF'        : DG_Bonus_MF_condition,
+                    'DG_Bonus_Infill'    : DG_Bonus_infill_condition,
+                    'PL_Bonus_SF'        : PL_Bonus_SF_condition,
+                    'PL_Bonus_MF'        : PL_Bonus_MF_condition,
+                    'PL_Bonus_Infill'    : PL_Bonus_infill_condition,
+                    'WA_Bonus_SF'        : WA_Bonus_SF_condition,
+                    'WA_Bonus_MF'        : WA_Bonus_MF_condition,
+                    'WA_Bonus_Infil'     : WA_Bonus_infill_condition,
+                    'CSLT_General_MF'    : CSLT_MF_condition,
+                    'CSLT_General_SF'    : CSLT_SF_condition,
+                    'CSLT_General_Infill': CSLT_infill_condition,
+                    'DG_General_MF'      : DG_MF_condition,
+                    'DG_General_SF'      : DG_SF_condition,
+                    'DG_General_Infill'  : DG_infill_condition,
+                    'EL_General_MF'      : EL_MF_condition,
+                    'EL_General_SF'      : EL_SF_condition,
+                    'EL_General_Infill'  : EL_infill_condition,
+                    'PL_General_MF'      : PL_MF_condition,
+                    'PL_General_SF'      : PL_SF_condition,
+                    'PL_General_Infill'  : PL_infill_condition,
+                    'WA_General_MF'      : WA_MF_condition,
+                    'WA_General_SF'      : WA_SF_condition,
+                    'WA_General_Infill'  : WA_infill_condition,
+                    'TRPA_Bonus_MF'      : TRPA_Bonus_MF_condition,
+                    'TRPA_Bonus_SF'      : TRPA_Bonus_SF_condition,
+                    'TRPA_Bonus_Infill'  : TRPA_Bonus_infill_condition,
+                    'TRPA_General_MF'    : TRPA_MF_condition,
+                    'TRPA_General_SF'    : TRPA_SF_condition,
+                    'TRPA_General_Infill': TRPA_infill_condition,
+                    'TRPA_ADU'           : adu_criteria,
+                    'TC_MF'              : TC_MF_condition,
+                    'TC_SF'              : TC_SF_condition,
+                    'TC_Infill'          : TC_infill_condition,
+                    'TRPA_Affordable'    : TRPA_Affordable_condition,
+                    'TRPA_Moderate'      : TRPA_Moderate_condition,
+                    'TRPA_Achievable_Bonus' : TRPA_Achievable_Bonus_condition,
+                    'TRPA_Achievable_General' : TRPA_Achievable_General_condition,
+                    'TRPA_Affordable_by_Design' : TRPA_Affordable_by_Design_condition
+                    }
+    return conditions
+# get SQL connection
+def get_conn(db):
+    # Get database user and password from environment variables on machine running script
+    db_user             = os.environ.get('DB_USER')
+    db_password         = os.environ.get('DB_PASSWORD')
+    # driver is the ODBC driver for SQL Server
+    driver              = 'ODBC Driver 17 for SQL Server'
+    # server names are
+    sql_12              = 'sql12'
+    sql_14              = 'sql14'
+    # make it case insensitive
+    db = db.lower()
+    # make sql database connection with pyodbc
+    if db   == 'sde_tabular':
+        connection_string = f"DRIVER={driver};SERVER={sql_12};DATABASE={db};UID={db_user};PWD={db_password}"
+        connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+        engine = create_engine(connection_url)
+    elif db == 'tahoebmpsde':
+        connection_string = f"DRIVER={driver};SERVER={sql_14};DATABASE={db};UID={db_user};PWD={db_password}"
+        connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+        engine = create_engine(connection_url)
+    elif db == 'sde':
+        connection_string = f"DRIVER={driver};SERVER={sql_12};DATABASE={db};UID={db_user};PWD={db_password}"
+        connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+        engine = create_engine(connection_url)
+    # else return None
+    else:
+        engine = None
+    # connection file to use in pd.read_sql
+    return engine
+
+# save to pickle
+def to_pickle(data, filename):
+    with open(filename, 'wb') as f:
+        pickle.dump(data, f)
+    print(f'{filename} pickled')
+
+# save to pickle and feature class
+def to_pickle_fc(data, filename):
+    data.spatial.to_featureclass(filename)
+    with open(filename, 'wb') as f:
+        pickle.dump(data, f)
+    print(f'{filename} pickled and saved as feature class')
+
+# get a pickled file as a dataframe
+def from_pickle(filename):
+    with open(filename, 'rb') as f:
+        data = pickle.load(f)
+    print(f'{filename} unpickled')
+    return data
+def get_commercial_zones(df):
+    columns_to_keep = ['Zoning_ID', 'Category', 'Density']
+    # filter Use_Type to Multiple Family Dwelling
+    df = df.loc[df['Category'] == 'Commercial']
+    return df[columns_to_keep]
+
+def get_tourist_zones(df):
+    columns_to_keep = ['Zoning_ID', 'Category', 'Density']
+    # filter Use_Type to Multiple Family Dwelling
+    df = df.loc[df['Category'] == 'Tourist Accommodation']
+    return df[columns_to_keep]
+
+# function to get where Zoningin_ID Use_Type = Multi-Family and Density
+def get_mf_zones(df):
+    columns_to_keep = ['Zoning_ID', 'Use_Type', 'Density']
+    # filter Use_Type to Multiple Family Dwelling
+    df = df.loc[df['Use_Type'] == 'Multiple Family Dwelling']
+    return df[columns_to_keep]
+
+# function to get where Zoningin_ID Use_Type = Multi-Family and Density
+def get_sf_zones(df):
+    columns_to_keep = ['Zoning_ID', 'Use_Type', 'Density']
+    # filter Use_Type to Multiple Family Dwelling
+    df = df.loc[df['Use_Type'] == 'Single Family Dwelling']
+    return df[columns_to_keep]
+
+def get_mf_only_zones(df):
+    columns_to_keep = ['Zoning_ID', 'Use_Type', 'Density']
+    # filter Use_Type to Single Family Dwelling and not Multiple Family Dwelling
+    dfMF = get_mf_zones(df)
+    dfSF = get_sf_zones(df)
+    # get Zoning_ID that are in both dataframes
+    df = dfMF.loc[~dfMF['Zoning_ID'].isin(dfSF['Zoning_ID'])]
+    return df[columns_to_keep]
+
+def get_sf_only_zones(df):
+    columns_to_keep = ['Zoning_ID', 'Use_Type', 'Density']
+    # filter Use_Type to Single Family Dwelling and not Multiple Family Dwelling
+    dfMF = get_mf_zones(df)
+    dfSF = get_sf_zones(df)
+    df = dfSF.loc[~dfSF['Zoning_ID'].isin(dfMF['Zoning_ID'])]
+    return df[columns_to_keep]
+
+def get_sf_mf_zones(df):
+    columns_to_keep = ['Zoning_ID', 'Use_Type', 'Density']
+    # get SF and MF zones
+    dfSF = get_sf_zones(df)
+    dfMF = get_mf_zones(df)
+    # add the two dataframes together
+    df = pd.concat([dfSF, dfMF])
+    # only keep duplicate Zoning_ID
+    df = df[df.duplicated(subset=['Zoning_ID'], keep=False)]
+    return df[columns_to_keep]
+
+def get_recieving_zones(df):
+    columns_to_keep = ['Zoning_ID', 'SPECIAL_DESIGNATION']
+    # filter transfer recieving
+    df = df.loc[df['SPECIAL_DESIGNATION'] == 'Receive']
+    return df[columns_to_keep]
+
+def get_sending_zones(df):
+    columns_to_keep = ['Zoning_ID', 'SPECIAL_DESIGNATION']
+    df = df.loc[df['SPECIAL_DESIGNATION'] == 'Transfer']
+    return df[columns_to_keep]
