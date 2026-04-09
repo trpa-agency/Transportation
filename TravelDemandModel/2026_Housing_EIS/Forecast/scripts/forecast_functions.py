@@ -420,6 +420,23 @@ def forecast_commercial_floor_area(sdfParcels, cfa_assigned_lookup='Lookup_Lists
 # Exports
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def adjust_school_enrollment(dfTAZ_Summary_2035, dfTAZ_Summary_2050, dfSocio, dfSchool):
+    """Scale school enrollment proportionally to population change for 2035 and 2050."""
+    df_2035_clean = clean_taz_summary(dfTAZ_Summary_2035)
+    df_2050_clean = clean_taz_summary(dfTAZ_Summary_2050)
+
+    base_population = dfSocio['People'].sum()
+    school_adj_2035 = (df_2035_clean['People'].sum() / base_population) / 2
+    school_adj_2050 = (df_2050_clean['People'].sum() / base_population) / 2
+
+    dfSchool_2035 = dfSchool.copy()
+    dfSchool_2050 = dfSchool.copy()
+    dfSchool_2035['Enrollment'] = dfSchool_2035['Enrollment'] * school_adj_2035
+    dfSchool_2050['Enrollment'] = dfSchool_2050['Enrollment'] * school_adj_2050
+
+    return dfSchool_2035, dfSchool_2050
+
+
 def export_forecast(sdfParcels, data_dir, gdb, parcel_pickle_part2):
     """Export parcel forecast to pickle, CSV, GDB feature class, and TAZ summary CSV."""
     sdfParcels.to_pickle(parcel_pickle_part2)
