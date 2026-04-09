@@ -268,13 +268,7 @@ def build_taz_summary(sdfParcels, dfSocio):
             (df_taz['total_residential_units']   + df_taz['FORECASTED_RESIDENTIAL_UNITS'])
         )
 
-        # Zero out People where there are no occupied units
-        pop_fix = (df_taz["People"] > 0) & (df_taz['TOTAL_FORECASTED_UNITS_OCCUPIED'] == 0)
-        if pop_fix.sum() > 0:
-            print(f"  Population zeroed for {pop_fix.sum()} parcels with 0 occupied units")
-            df_taz.loc[pop_fix, "People"] = 0
-        else:
-            print("  Population fix: no parcels affected")
+
 
         # Round at TAZ level
         for col in ["OccupiedUnits", "HighUnits", "MediumUnits", "LowUnits"]:
