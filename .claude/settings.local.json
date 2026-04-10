@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:www.nvroads.com)"
+      "WebFetch(domain:www.nvroads.com)",
+      "Bash(python -c ':*)"
     ]
   }
 }
