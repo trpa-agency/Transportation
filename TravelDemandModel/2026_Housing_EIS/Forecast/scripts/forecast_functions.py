@@ -402,9 +402,9 @@ def adjust_school_enrollment(df_taz_2035, df_taz_2050, dfSocio, dfSchool):
 
     base_population = dfSocio['total_persons'].sum()
     print(f"Base population: {base_population}")
-    school_adj_2035 = (df_taz_2035['total_persons'].sum() / base_population) / 2
+    school_adj_2035 = (((df_taz_2035['total_persons'].sum() - base_population)/base_population) / 2)
     print(f"2035 population: {df_taz_2035['total_persons'].sum()}, adjustment factor: {school_adj_2035}")
-    school_adj_2050 = (df_taz_2050['total_persons'].sum() / base_population) / 2
+    school_adj_2050 = (((df_taz_2050['total_persons'].sum() - base_population)/base_population) / 2)
     print(f"2050 population: {df_taz_2050['total_persons'].sum()}, adjustment factor: {school_adj_2050}")
 
     dfSchool_2035 = dfSchool.copy()
@@ -412,9 +412,9 @@ def adjust_school_enrollment(df_taz_2035, df_taz_2050, dfSocio, dfSchool):
     enrollment_fields = ['elementary_school_enrollment', 'middle_school_enrollment',
        'high_school_enrollment', 'college_enrollment']
     for field in enrollment_fields:
-        dfSchool_2035[field] = df_taz_2035[field] + (dfSchool_2035[field] * school_adj_2035)
+        dfSchool_2035[field] = dfSchool_2035[field] + (dfSchool_2035[field] * school_adj_2035)
         dfSchool_2035[field] = dfSchool_2035[field].round(0).astype(int)
-        dfSchool_2050[field] = df_taz_2050[field] + (dfSchool_2050[field] * school_adj_2050)
+        dfSchool_2050[field] = dfSchool_2050[field] + (dfSchool_2050[field] * school_adj_2050)
         dfSchool_2050[field] = dfSchool_2050[field].round(0).astype(int)
     return dfSchool_2035, dfSchool_2050
 
