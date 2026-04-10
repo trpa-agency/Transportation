@@ -81,12 +81,31 @@ def forecast_trpa_pools(sdfParcels, dfPool, conditions, df_built_parcels):
         ('TRPA_General_SF',    'TRPA', 'General',    'SF',     'TRPA General Units SF',    forecast_residential_units),
         ('TRPA_General_Infill','TRPA', 'General',    'Infill', 'TRPA General Units Infill', forecast_residential_units_infill),
         ('TRPA_ADU',           'TRPA', 'ADU',         'ADU',    'TRPA ADU Units',            forecast_residential_units),
+        ('TRPA_Affordable_MF',      'TRPA', 'Affordable',   'MF',     'TRPA Affordable Units MF',  forecast_residential_units),
+        ('TRPA_Affordable_SF',      'TRPA', 'Affordable',   'SF',     'TRPA Affordable Units SF',  forecast_residential_units),
+        ('TRPA_Affordable_Infill',  'TRPA', 'Affordable',   'Infill', 'TRPA Affordable Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Moderate_MF',      'TRPA', 'Moderate',   'MF',     'TRPA Moderate Units MF',  forecast_residential_units),
+        ('TRPA_Moderate_SF',      'TRPA', 'Moderate',   'SF',     'TRPA Moderate Units SF',  forecast_residential_units),
+        ('TRPA_Moderate_Infill',  'TRPA', 'Moderate',   'Infill', 'TRPA Moderate Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Achievable_Bonus_Unit_MF',      'TRPA', 'Achievable Bonus Unit',   'MF',     'TRPA Achievable Bonus Units MF',  forecast_residential_units),
+        ('TRPA_Achievable_Bonus_Unit_SF',      'TRPA', 'Achievable Bonus Unit',   'SF',     'TRPA Achievable Bonus Units SF',  forecast_residential_units),
+        ('TRPA_Achievable_Bonus_Unit_Infill',  'TRPA', 'Achievable Bonus Unit',   'Infill', 'TRPA Achievable Bonus Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Affordable_BD_MF',      'TRPA', 'Affordable by Design',   'MF',     'TRPA Affordable BD Units MF',  forecast_residential_units),
+        ('TRPA_Affordable_BD_SF',      'TRPA', 'Affordable by Design',   'SF',     'TRPA Affordable BD Units SF',  forecast_residential_units),
+        ('TRPA_Affordable_BD_Infill',  'TRPA', 'Affordable by Design',   'Infill', 'TRPA Affordable BD Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Achievable_Gen_MF',      'TRPA', 'Achievable General',   'MF',     'TRPA Achievable General Units MF',  forecast_residential_units),
+        ('TRPA_Achievable_Gen_SF',      'TRPA', 'Achievable General',   'SF',     'TRPA Achievable General Units SF',  forecast_residential_units),
+        ('TRPA_Achievable_Gen_Infill',  'TRPA', 'Achievable General',   'Infill', 'TRPA Achievable General Units Infill',  forecast_residential_units_infill),
+        ('TRPA_JADU',           'TRPA', 'JADU',         'JADU',    'TRPA JADU Units',            forecast_residential_units)
     ]
 
     for condition_key, jurisdiction, pool, unit_type, label, fn in trpa_assignments:
         target_sum             = get_target_sum(dfPool, jurisdiction, pool, unit_type)
-        sdfParcels, df_summary = fn(sdfParcels, conditions[condition_key], target_sum, label)
-        df_built_parcels       = pd.concat([df_built_parcels, df_summary], ignore_index=True)
+        if target_sum == 0:
+            continue
+        else:
+            sdfParcels, df_summary = fn(sdfParcels, conditions[condition_key], target_sum, label)
+            df_built_parcels       = pd.concat([df_built_parcels, df_summary], ignore_index=True)
 
     return sdfParcels, df_built_parcels
 
