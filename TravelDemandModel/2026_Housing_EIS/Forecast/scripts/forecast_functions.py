@@ -81,12 +81,32 @@ def forecast_trpa_pools(sdfParcels, dfPool, conditions, df_built_parcels):
         ('TRPA_General_SF',    'TRPA', 'General',    'SF',     'TRPA General Units SF',    forecast_residential_units),
         ('TRPA_General_Infill','TRPA', 'General',    'Infill', 'TRPA General Units Infill', forecast_residential_units_infill),
         ('TRPA_ADU',           'TRPA', 'ADU',         'ADU',    'TRPA ADU Units',            forecast_residential_units),
+        ('TRPA_Affordable_MF',      'TRPA', 'Affordable',   'MF',     'TRPA Affordable Units MF',  forecast_residential_units),
+        ('TRPA_Affordable_SF',      'TRPA', 'Affordable',   'SF',     'TRPA Affordable Units SF',  forecast_residential_units),
+        ('TRPA_Affordable_Infill',  'TRPA', 'Affordable',   'Infill', 'TRPA Affordable Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Moderate_MF',      'TRPA', 'Moderate',   'MF',     'TRPA Moderate Units MF',  forecast_residential_units),
+        ('TRPA_Moderate_SF',      'TRPA', 'Moderate',   'SF',     'TRPA Moderate Units SF',  forecast_residential_units),
+        ('TRPA_Moderate_Infill',  'TRPA', 'Moderate',   'Infill', 'TRPA Moderate Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Achievable_Bonus_MF',      'TRPA', 'Achievable Bonus',   'MF',     'TRPA Achievable Bonus Units MF',  forecast_residential_units),
+        ('TRPA_Achievable_Bonus_SF',      'TRPA', 'Achievable Bonus',   'SF',     'TRPA Achievable Bonus Units SF',  forecast_residential_units),
+        ('TRPA_Achievable_Bonus_Infill',  'TRPA', 'Achievable Bonus',   'Infill', 'TRPA Achievable Bonus Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Affordable_BD_MF',      'TRPA', 'Affordable by Design',   'MF',     'TRPA Affordable BD Units MF',  forecast_residential_units),
+        ('TRPA_Affordable_BD_SF',      'TRPA', 'Affordable by Design',   'SF',     'TRPA Affordable BD Units SF',  forecast_residential_units),
+        ('TRPA_Affordable_BD_Infill',  'TRPA', 'Affordable by Design',   'Infill', 'TRPA Affordable BD Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Achievable_Gen_MF',      'TRPA', 'Achievable General',   'MF',     'TRPA Achievable General Units MF',  forecast_residential_units),
+        ('TRPA_Achievable_Gen_SF',      'TRPA', 'Achievable General',   'SF',     'TRPA Achievable General Units SF',  forecast_residential_units),
+        ('TRPA_Achievable_Gen_Infill',  'TRPA', 'Achievable General',   'Infill', 'TRPA Achievable General Units Infill',  forecast_residential_units_infill),
+        ('TRPA_JADU',           'TRPA', 'JADU',         'JADU',    'TRPA JADU Units',            forecast_residential_units)
     ]
 
     for condition_key, jurisdiction, pool, unit_type, label, fn in trpa_assignments:
         target_sum             = get_target_sum(dfPool, jurisdiction, pool, unit_type)
-        sdfParcels, df_summary = fn(sdfParcels, conditions[condition_key], target_sum, label)
-        df_built_parcels       = pd.concat([df_built_parcels, df_summary], ignore_index=True)
+        print(f'TRPA pool assignment - {label} - target units to assign = {target_sum}')
+        if target_sum == 0:
+            continue
+        else:
+            sdfParcels, df_summary = fn(sdfParcels, conditions[condition_key], target_sum, label)
+            df_built_parcels       = pd.concat([df_built_parcels, df_summary], ignore_index=True)
 
     return sdfParcels, df_built_parcels
 
@@ -461,4 +481,30 @@ def clean_taz_summary(df_taz, taz_field_mapping):
         print(f"  TAZ population zeroed for {pop_fix_taz.sum()} TAZs with 0 occupied units")
         df_taz.loc[pop_fix_taz, "total_persons"] = 0
 
+    return df_taz
+def adjust_taz_population(df_taz, target_population):
+    # Use the weighted sum as the true current population base so that the
+    # factor is consistent with the equation: total_persons = total_occ_units * persons_per_occ_unit
+    current_population = (df_taz["total_occ_units"] * df_taz["persons_per_occ_unit"]).sum()
+    print(f"Current total population (weighted): {current_population}")
+
+    adjustment_factor = target_population / current_population
+    print(f"Adjustment factor: {adjustment_factor:.4f}")
+
+    df_taz['persons_per_occ_unit'] = df_taz['persons_per_occ_unit'] * adjustment_factor
+    df_taz["total_persons"] = (df_taz["total_occ_units"] * df_taz["persons_per_occ_unit"]).round(0).astype(int)
+    print(f"Adjusted total population: {df_taz['total_persons'].sum()}")
+    return df_taz
+def adjust_taz_persons_per_occ_unit(df_taz, persons_per_occ_unit_df):
+    """Adjust the TAZ persons per occupied unit values from the input persons_per_occ_unit
+    table (TAZ / persons_per_occ_unit) to the TAZ summary table so that total_persons
+    = total_occ_units * persons_per_occ_unit is consistent with the input table.
+    """
+    df_taz = df_taz.merge(persons_per_occ_unit_df, on='TAZ', how='left', suffixes=('', '_target'))
+    missing_taz = df_taz['persons_per_occ_unit_target'].isna().sum()
+    if missing_taz > 0:
+        print(f"  Warning: {missing_taz} TAZs in the forecast TAZ table missing persons_per_occ_unit from the input table")
+    df_taz['persons_per_occ_unit'] = df_taz['persons_per_occ_unit_target']
+    df_taz["total_persons"] = (df_taz["total_occ_units"] * df_taz["persons_per_occ_unit"]).round(0).astype(int)
+    df_taz.drop(columns=['persons_per_occ_unit_target'], inplace=True)
     return df_taz
