@@ -251,15 +251,15 @@ Comparison of key outputs between the 2022 RTP base year run and the 2026 Housin
 | TAU rooms — Casino | 2,984 | 2,703 | −281 | TAZ 395/397 closed; TAZ 396 new |
 | Campground sites | 1,964 | 1,964 | 0 | ✓ Matches after campground fixes |
 | percentHouseSeasonal (sum) | 195.2 | 178.2 | −17.0 | Updated ACS seasonal vacancy rates |
-| TAZ count | 282 | 281 | −1 | One TAZ dropped (no parcel data) |
+| TAZ count | 282 | 282 | 0 | TAZ 355 added to `REQUIRED_OVERNIGHT_TAZS` (all-zero row, no parcel data) |
 
 ### SocioEcon_Summer.csv
 
 | Metric | 2022 RTP | 2026 Housing EIS | Change | Notes |
 |---|---|---|---|---|
-| Residential units (total) | 49,390 | 49,950 | +560 | New development in parcel layer |
-| Occupied units (total) | 23,296 | 23,655 | +359 | Updated ACS occupancy rates |
-| Total persons | 53,842 | 55,031 | +1,189 | Units + household size update |
+| Residential units (total) | 49,390 | 49,950 | +560 | New development in parcel layer (`development_2022_2025.csv`) |
+| Occupied units (total) | 23,296 | 23,655 | +359 | Driven by +560 units; census rates frozen to 2022 (Gotcha #11) |
+| Total persons | 53,842 | 55,031 | +1,189 | +2.2%; development units + frozen 2022 household size |
 | emp_retail | 0 | 3,711 | — | Now populated (was placeholder) |
 | emp_srvc | 0 | 7,503 | — | Now populated (was placeholder) |
 | emp_rec | 0 | 2,248 | — | Now populated (was placeholder) |
@@ -274,8 +274,8 @@ Comparison of key outputs between the 2022 RTP base year run and the 2026 Housin
 | Elementary enrollment | 2,879 | 2,879 | 0 | Unchanged — same school year |
 | Middle enrollment | 1,240 | 1,240 | 0 | Unchanged |
 | High school enrollment | 2,172 | 2,172 | 0 | Unchanged |
-| College enrollment | 2,798 | 2,798 | 0 | Unchanged |
-| TAZ count | 282 | 296 | +14 | Phantom TAZs added (all zeros) |
+| College enrollment | 2,798 | 3,018 | +220 | TAZ 1 (+171) and TAZ 2 (+49) hardcoded — see Gotcha #12 |
+| TAZ count | 282 | 296 | +14 | Phantom TAZs added (TAZs 1, 2 have college enrollment) |
 
 ### VisitorOccupancyRates_Summer.csv
 
@@ -291,10 +291,10 @@ Rates are per-TAZ fractions (0–1); the meaningful comparisons are TAZ count an
 | Casino — avg rate | 0.514 | 0.541 | +0.027 | Remaining casino zone rate slightly higher |
 | Campground — TAZs with rate | 16 | 16 | 0 | ✓ Unchanged (copied from 2022) |
 | House/Seasonal — TAZs with rate | 169 | 182 | +13 | See note below |
-| House/Seasonal — avg rate | 0.464 | 0.487 | +0.023 | See note below |
+| House/Seasonal — avg rate | 0.464 | 0.464 | 0 | Patched to match 2022 — see Gotcha #10 |
 | Unique hotelmotel rate values | 18 | 16 | — | ✓ Zone lookup working (was 3 before fix) |
 
-**House/seasonal rate note:** The +13 TAZs and higher average reflect two separate causes: (1) 14 TAZs newly have VHR-registered parcels that did not in the prior run; (2) 41 South Lake Tahoe TAZs (CSLT area) that showed the default fallback rate (0.4223) in the 2022 output are now correctly assigned the CSLT_ALL zone rate (0.5258). The 2022 values for those TAZs were likely incorrect due to a VHR zone lookup failure in that run.
+**House/seasonal rate note:** The corrected zone lookup (CSLT_ALL override) produces a higher average rate (~0.487) than the 2022 run because 31 CSLT TAZs that incorrectly received the basin-wide default (0.4223) in 2022 now get the correct CSLT-wide VHR rate (0.5258). However, because these inputs are a 2025 forecast run on a model calibrated to the 2022 values, the house/seasonal rates are patched back to the 2022 per-TAZ values in Stage 8 (see Gotcha #10). The average shown above reflects the patched output. The +13 TAZ count change is real and retained: 14 TAZs newly have registered VHR parcels that did not appear in the 2022 run.
 
 ---
 
@@ -304,7 +304,7 @@ Rates are per-TAZ fractions (0–1); the meaningful comparisons are TAZ count an
 - **Spatial reference** for all ArcPy operations: NAD 1983 UTM Zone 10N.
 - **Block group filtering** to 2020 vintage and 16-character TRPAID ensures correct census joins.
 - **VHR double-counting prevention:** VHR units are subtracted from seasonal estimates before the seasonal rate is applied.
-- **CSLT VHR override:** All CSLT VHR parcels use the combined `CSLT_ALL` occupancy zone for averaging.
+- **CSLT VHR override:** All CSLT VHR parcels use the combined `CSLT_ALL` occupancy zone for averaging. `CSLT_Zone1–5` have HotelMotel entries only — there is no per-zone VHR measurement for CSLT. The combined zone produces the correct rate (0.5258); however, this rate is patched back to 2022 values in Stage 8 for calibration compatibility (see Gotcha #10).
 - **ArcPy schema lock avoidance:** A custom `arcpy_spatial_join_attr()` function writes unique-UUID feature classes to scratchGDB to prevent file lock conflicts.
 - **Bayview Campground exclusion:** Explicitly dropped from campground occupancy rate calculations (same as 2022).
 - **Campground metric — Total_Sites (capacity):** The `campground` column in `OvernightVisitorZonalData` uses `Total_Sites` (total available sites), consistent with the 2022 run. `SitesSold` (occupied = Total_Sites × Occupancy_Rate) is computed internally but is not used for the capacity output.
@@ -400,6 +400,88 @@ df_vhr = df_occ_src[df_occ_src["RoomType"] == "VHR"] \
 The `OCC_RATES_URL` service fetch in Cell 10 was also removed as it is no longer used.
 
 **Resolved:** Re-ran Stages 3–8 from the `parcel_spatial_joins.parquet` checkpoint. Unique hotelmotel rate values increased from 3 back to 16, confirming zone lookup is working correctly. All output CSVs regenerated.
+
+### 10. house/seasonal rates — CSLT VHR zone lookup bug (2022) and calibration patch
+
+**Root cause (2022 bug):** In `occupancy_rates.csv`, `CSLT_Zone1–5` have HotelMotel entries only — there is no per-zone VHR row for any CSLT sub-zone. In the 2022 run, CSLT VHR parcels were spatially assigned to one of those five zones, failed the VHR rate lookup, fell through IDW (too few known-rate neighbors), and landed on the basin-wide default (`DEFAULT_VHR_OCCUPANCY = 0.4223`). As a result, 31 CSLT TAZs with VHR parcels showed `house = seasonal = 0.4223` in `VisitorOccupancyRates_Summer.csv` — not a measured rate, just the fallback.
+
+**Confirmed by comparison:** Direct TAZ-by-TAZ diff of the two `VisitorOccupancyRates_Summer.csv` files shows exactly 31 CSLT TAZs with `house22 = 0.4223` → `house26 = 0.5258`, plus 14 additional CSLT TAZs that went from `0.0` (no VHR in 2022 registry) to `0.5258` (newly registered VHRs).
+
+**Correct rate:** The `CSLT_ALL` zone in `occupancy_rates.csv` holds the combined VHR measurement across the entire CSLT jurisdiction (0.5258). The Stage 2e override assigns all CSLT VHR parcels to `CSLT_ALL` before the rate lookup, so the zone lookup always finds a match. This is the technically correct rate.
+
+**Why the output is patched to 2022 values:** These 2026 Housing EIS inputs are a 2025 forecast run on top of a model calibrated to the 2022 base year. The calibration process links observed trip counts to the 2022 socioeconomic inputs — including the (incorrect) `house`/`seasonal` rates those CSLT TAZs received. Substituting the corrected rates without re-calibration would alter implied seasonal visitor demand in a way the model coefficients cannot absorb.
+
+**Patch (Stage 8, cells 8c–8c-patch):** The corrected VHR rate computation is retained in the notebook but commented out. A patch cell immediately following loads `house` and `seasonal` from the 2022 `VisitorOccupancyRates_Summer.csv` and uses those values in the merge that produces the output CSV. Running the notebook end-to-end produces `VisitorOccupancyRates_Summer.csv` with 2022-matched house/seasonal rates.
+
+**To revert:** Delete the patch markdown and code cells in section 8c-patch and uncomment the corrected VHR lookup in the cell above them. Do this after re-calibration against the corrected rates.
+
+### 11. Census block-group rates — ACS service schema change and calibration patch
+
+**Root cause:** The `Demographics/MapServer/28` ACS census service changed its schema from **wide format** (one row per block group, one column per ACS variable, e.g. `B25002_002E`, `B25002_003E`) to **long format** (one row per variable per block group, with `variable_code` and `value` columns). Simultaneously, the `year_sample` field used for year filtering was removed from the service.
+
+The 2026 notebook's Stage 5 code issued a server-side filter `year_sample = 2022` — which the service silently ignored because the field no longer exists — and then used `pivot_table(aggfunc="first")` to reconstruct the wide format. Because the year filter was ignored, the pivot picked up records from multiple ACS survey vintages, producing rates that differ from the 2022 base year run.
+
+**Affected variables:**
+- `PrimaryResidence_Rate` (B25002_002E occupied / total units)
+- `SecondaryResidence_Rate` (B25004_006E seasonal-vacant / B25002_003E total-vacant)
+- `PersonsPerUnit` (B25010_001E household size × `HOUSEHOLD_SIZE_ADJUSTMENT`)
+- `HighIncome_Rate`, `MediumIncome_Rate`, `LowIncome_Rate` (income band fractions from income census codes lookup)
+
+**Why it matters for calibration:** The same reasoning as Gotcha #10 applies. These rates feed directly into `OccupiedUnits`, `SeasonalUnits`, `People`, and income-band counts in `SocioEcon_Summer.csv`. Changing them without re-calibrating the model alters implied population and demand in ways the 2022 coefficients cannot absorb.
+
+**Fix — frozen CSV:** Block-group rates were extracted from `parcel_pickle4.pkl` — the 2022 run's final post-VHR-adjustment parcel file (61,259 parcels). This pickle contains the per-parcel rates after Stage 5 of the 2022 run, including the VHR unit subtraction applied to `SecondaryResidence_Rate`. The block-group-level rates were collapsed by `BLOCK_GROUP` (`pivot_table(aggfunc="first")` on already-unique per-parcel constant values) and saved to:
+
+```
+data/raw_data/census_block_group_rates_2022.csv
+```
+
+78 block groups, columns: `BLOCK_GROUP` (16-char TRPAID), `SecondaryResidence_Rate`, `PrimaryResidence_Rate`, `PersonsPerUnit`, `HighIncome_Rate`, `MediumIncome_Rate`, `LowIncome_Rate`. One null row and 2 rows with `SecondaryResidence_Rate = 0` (Beach Club block group manually zeroed in the 2022 run) are present and handled correctly.
+
+**Patch — notebook changes (all cells support Run All):**
+
+| Cell | ID | Change |
+|---|---|---|
+| 10 (Stage 1 fetch) | `b44fe2e7` | `df_census` live fetch commented out. The service returns mixed-year long-format data; Stage 5 no longer needs it. Original fetch lines preserved in comments. |
+| 11 (diagnostic) | `bg-census-diag` | Entire cell commented out. It was used to diagnose the schema change (Gotchas #9 and #11); leaving it active adds two duplicate service fetches per Run All and prints misleading output. |
+| 39 (Stage 5 header) | `15f7fabb` | Inputs line updated: `df_census` → `census_block_group_rates_2022.csv` |
+| 41 (Stage 5a header) | `76c930ef` | Patch markdown cell (`stage5-patch-md`) inserted immediately after, explaining root cause and calibration rationale. |
+| — (new) | `stage5-patch-code` | Patch code cell inserted after the markdown. Reads frozen CSV, constructs `df_occ_bg`, `df_hh`, `df_inc_pivot`. |
+| 42 (5a code) | `99038599` | Commented out. Built `df_occ_bg` from live ACS service; replaced by patch cell above. |
+| 44 (5b code) | `6f8d9017` | Commented out. Built `df_hh` from live ACS service; replaced by patch cell above. |
+| 46 (5c code) | `7129634d` | Commented out. Built `df_inc_pivot` from live ACS service; replaced by patch cell above. |
+| 48 (5d combine) | `418db59a` | VHR adjustment block commented out (`PATCH 5d` note). `SecondaryResidence_Rate` from frozen CSV is already VHR-adjusted; re-running would double-subtract. Parcel merge and unit count derivation unchanged. |
+
+**Run result (confirmed good):** After applying all patches and running both notebooks:
+- Stage 5 patch cell: 77 of 78 block groups matched (1 null row in CSV, expected)
+- 172 parcel rate nulls (125 parcels with no BLOCK_GROUP + ~47 unmatched BGs — same as 2022 behavior)
+- SocioEcon differences vs 2022 are small and entirely attributable to the +560 new residential units from `development_2022_2025.csv`, not census rate changes
+- All Stage 9 seasonal QA checks passed: `percentHouseSeasonal` mean = 0.665 (ref 0.73, pass), seasonal occ rate mean = 0.464 (ref 0.46, pass)
+
+**To revert (after re-calibration):**
+1. In Cell 10, uncomment the `df_census` fetch lines and remove the `PATCHED OUT` comment block.
+2. In Cell 11, uncomment all lines and remove the `PATCHED OUT` header comment.
+3. Delete the `stage5-patch-md` and `stage5-patch-code` cells inserted after Cell 41.
+4. In Cells 42, 44, 46, remove the `PATCHED OUT` header comments and uncomment the original code.
+5. In Cell 48, remove the `PATCH 5d: VHR ADJUSTMENT SKIPPED` comment block and uncomment the VHR adjustment block.
+6. Update Cell 39 Inputs line back to `df_census`.
+
+### 12. Phantom TAZ college enrollment hardcode
+
+**Problem:** TAZs 1 and 2 are phantom zones (no parcel polygons; added to satisfy model network requirements). The spatial school-to-TAZ join assigns zero enrollment to all phantom TAZs because no school point geometries land inside their boundaries. However, TAZ 1 and TAZ 2 have real college enrollment load that must be assigned for the model to correctly account for student-generated trips in those zones.
+
+**Fix (Cell 59, id `0385a172`):** After the phantom TAZ row concat block, a hardcode patch overrides `college_enrollment` for these two TAZs:
+
+| TAZ | college_enrollment |
+|---|---|
+| 1 | 171 |
+| 2 | 49 |
+| All other phantom TAZs | 0 (unchanged) |
+
+All other enrollment types (elementary, middle, high school) for these TAZs remain zero. The values were sourced from reference enrollment data and confirmed against the 2022 run.
+
+**Run result:** College enrollment basin total increased from 2,798 → 3,018 (+220). Total school enrollment basin total: 9,309 (was 9,089 before patch). Shared-TAZ enrollment for all other types remains identical to 2022.
+
+**To revert:** Remove the `_college_overrides` loop block from Cell 59 (marked `PATCH: Phantom TAZ college enrollment hardcodes`).
 
 ---
 

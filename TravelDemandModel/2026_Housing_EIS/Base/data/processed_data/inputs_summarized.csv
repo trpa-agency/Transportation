@@ -5,15 +5,15 @@ house(VHR) rate,0.4752540430672158
 seasonal rate,0.39
 lodging unit,11243.0
 campground,1964.0
-percentHouseSeasonal,0.6597949230102179
-school enrollment,9089.0
+percentHouseSeasonal,0.7343337456417443
+school enrollment,9309.0
 employment,26777.0
 residential unit,49462.0
-total persons,55024.0
-total persons raw,53845.29224148865
+total persons,54672.0
+total persons raw,53499.89664105901
 census occupancy rate,0.47357357357357355
 low income res unit,10125.0
 medium income res unit,4777.0
 high income res unit,8754.0
 total occupied unit,23655.0
-persons per occupied unit,2.326104417670683
+persons per occupied unit,2.3112238427393788
