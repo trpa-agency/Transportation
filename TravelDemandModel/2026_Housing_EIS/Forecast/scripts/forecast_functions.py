@@ -6,8 +6,6 @@ def get_adjusted_future_units(dfPool, zone_proportions):
     def _get_proportions_(jurisdiction, unit_pool):
         return zone_proportions.get((jurisdiction, unit_pool), zone_proportions['default'])
 
-    dfPool['Future_Units'] = dfPool['Future_Units_Adjusted'].fillna(0)
-
     proportions = dfPool.apply(lambda r: _get_proportions_(r['Jurisdiction'], r['Unit_Pool']), axis=1)
     dfPool['Future_Units_MF']     = (dfPool['Future_Units'] * proportions.map(lambda p: p['mf'])).round().astype(int)
     dfPool['Future_Units_SF']     = (dfPool['Future_Units'] * proportions.map(lambda p: p['sf'])).round().astype(int)
@@ -20,7 +18,7 @@ def get_adjusted_future_units(dfPool, zone_proportions):
                             - dfPool['Future_Units_Infill'])
     dfPool['Future_Units_SF'] = dfPool['Future_Units_SF'] + dfPool['Adjustment']
     dfPool.drop(columns=['Adjustment'], inplace=True)
-    dfPool
+    return dfPool
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Forecast Jurisdiction Pools
@@ -97,7 +95,7 @@ def forecast_trpa_pools(sdfParcels, dfPool, conditions, df_built_parcels):
 # Assign the Remainders
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def assign_remainders(sdfParcels, conditions, df_built_parcels, adu_target=4385):
+def assign_remainders(sdfParcels, conditions, df_built_parcels, adu_target=4319):
     """Assign remainder units as infill and fill the ADU pool to target."""
     df_remaining = df_built_parcels.loc[df_built_parcels.Total_Remaining_Units > 0].copy()
     df_remaining['Jurisdiction'] = df_remaining['Reason'].str.split(' ').str[0]
@@ -118,6 +116,7 @@ def assign_remainders(sdfParcels, conditions, df_built_parcels, adu_target=4385)
         df_built_parcels       = pd.concat([df_built_parcels, df_summary], ignore_index=True)
 
     # ADU assignment to eligible residential parcels
+    TRPA_ADU_condition = conditions['TRPA_ADU']
     target_sum = adu_target - sdfParcels.FORECASTED_RESIDENTIAL_UNITS.sum()
     sdfParcels, df_summary = forecast_residential_units(sdfParcels, TRPA_ADU_condition, target_sum, 'TRPA ADU Units')
     df_built_parcels = pd.concat([df_built_parcels, df_summary], ignore_index=True)
@@ -133,8 +132,8 @@ def check_forecast_results(sdfParcels, dfPool):
     """Compare forecasted units against pool targets; returns a comparison DataFrame."""
     dfPoolMelt = dfPool.melt(
         id_vars=['Jurisdiction', 'Unit_Pool'],
-        value_vars=['Future_Units_Adjusted_MF', 'Future_Units_Adjusted_SF', 'Future_Units_Adjusted_Infill'])
-    dfPoolMelt['variable'] = dfPoolMelt['variable'].str.replace('Future_Units_Adjusted_', '')
+        value_vars=['Future_Units_MF', 'Future_Units_SF', 'Future_Units_Infill'])
+    dfPoolMelt['variable'] = dfPoolMelt['variable'].str.replace('Future_Units_', '')
     dfPoolMelt['Unit_Pool'] = dfPoolMelt['Jurisdiction'] + ' ' + dfPoolMelt['Unit_Pool']
     dfPoolMelt.rename(columns={'variable': 'Reason', 'value': 'Units'}, inplace=True)
 
@@ -159,15 +158,19 @@ def assign_development_year(sdfParcels, dfResZoned):
     Development_2035 = (TotalDevelopment * 0.33).astype(int)
     sdfParcels['Development_Year'] = None
 
-    sdfParcels.loc[sdfParcels['FORECAST_REASON'] == 'Assigned', 'Development_Year'] = 2035
+    sdfParcels.loc[
+        (sdfParcels['FORECAST_REASON'] == 'Assigned') & (sdfParcels['FORECASTED_RESIDENTIAL_UNITS'] >= 1),
+        'Development_Year'] = 2035
     RemainingDevelopment_2035 = Development_2035 - sdfParcels.loc[
         sdfParcels['FORECAST_REASON'] == 'Assigned', 'FORECASTED_RESIDENTIAL_UNITS'].sum()
 
     Development_2035_Condition = sdfParcels['FORECASTED_RESIDENTIAL_UNITS'].where(
         sdfParcels['FORECAST_REASON'] != 'Assigned').cumsum()
-    sdfParcels.loc[Development_2035_Condition < RemainingDevelopment_2035, 'Development_Year'] = 2035
     sdfParcels.loc[
-        (sdfParcels['FORECAST_REASON'] != '') & (sdfParcels['Development_Year'].isnull()),
+        (Development_2035_Condition < RemainingDevelopment_2035) & (sdfParcels['FORECASTED_RESIDENTIAL_UNITS'] >= 1),
+        'Development_Year'] = 2035
+    sdfParcels.loc[
+        (sdfParcels['FORECAST_REASON'] != '') & (sdfParcels['Development_Year'].isnull()) & (sdfParcels['FORECASTED_RESIDENTIAL_UNITS'] >= 1),
         'Development_Year'] = 2050
 
     return sdfParcels
@@ -263,42 +266,15 @@ def build_taz_summary(sdfParcels, dfSocio):
         df_taz['TOTAL_FORECASTED_UNITS_MED_INCOME']  = df_taz['FORECASTED_RES_INCOME_MEDIUM_UNITS'] + df_taz['occ_units_med_inc']
         df_taz['TOTAL_FORECASTED_UNITS_HIGH_INCOME'] = df_taz['FORECASTED_RES_INCOME_HIGH_UNITS']   + df_taz['occ_units_high_inc']
         df_taz['TOTAL_FORECASTED_UNITS_OCCUPIED']    = df_taz['FORECASTED_OCCUPIED_UNITS']          + df_taz['total_occ_units']
+        df_taz['TOTAL_FORECASTED_RESIDENTIAL_UNITS'] = df_taz['FORECASTED_RESIDENTIAL_UNITS']       + df_taz['total_residential_units']
+        df_taz['FORECASTED_PERSONS'] = df_taz['FORECASTED_OCCUPIED_UNITS'] * df_taz['persons_per_occ_unit']
+        df_taz['TOTAL_FORECASTED_PERSONS'] = df_taz['FORECASTED_PERSONS'] + df_taz['total_persons']
         df_taz['NEW_OCCUPANCY_RATE'] = (
             (df_taz['FORECASTED_OCCUPIED_UNITS'] + df_taz['total_occ_units']) /
             (df_taz['total_residential_units']   + df_taz['FORECASTED_RESIDENTIAL_UNITS'])
         )
 
-        # Zero out People where there are no occupied units
-        pop_fix = (df_taz["People"] > 0) & (df_taz['TOTAL_FORECASTED_UNITS_OCCUPIED'] == 0)
-        if pop_fix.sum() > 0:
-            print(f"  Population zeroed for {pop_fix.sum()} parcels with 0 occupied units")
-            df_taz.loc[pop_fix, "People"] = 0
-        else:
-            print("  Population fix: no parcels affected")
-
-        # Round at TAZ level
-        for col in ["OccupiedUnits", "HighUnits", "MediumUnits", "LowUnits"]:
-            df_taz[col] = df_taz[col].round(0).astype(int)
-
-        # Income tie-break: if TAZ has occupied units but all income classes rounded to 0
-        income_sum_taz = df_taz["HighUnits"] + df_taz["MediumUnits"] + df_taz["LowUnits"]
-        fix_income_taz = (df_taz["OccupiedUnits"] > 0) & (income_sum_taz == 0)
-        if fix_income_taz.sum() > 0:
-            print(f"  Income fix applied to {fix_income_taz.sum()} TAZs")
-            best_class = df_taz.loc[fix_income_taz, ["HighUnits", "MediumUnits", "LowUnits"]].idxmax(axis=1)
-            for idx, cls in best_class.items():
-                df_taz.loc[idx, cls] = 1
-        else:
-            print("  Income fix: no TAZs affected")
-
-        df_taz["People"] = df_taz["People"].round(0).astype(int)
-
-        # Zero out People where OccupiedUnits == 0 at TAZ level
-        pop_fix_taz = (df_taz["People"] > 0) & (df_taz["OccupiedUnits"] == 0)
-        if pop_fix_taz.sum() > 0:
-            print(f"  TAZ population zeroed for {pop_fix_taz.sum()} TAZs with 0 occupied units")
-            df_taz.loc[pop_fix_taz, "People"] = 0
-
+        
         return df_taz
 
     dfTAZ_Summary_2035 = _merge_socio(dfTAZ_Summary_2035, dfSocio)
@@ -420,6 +396,29 @@ def forecast_commercial_floor_area(sdfParcels, cfa_assigned_lookup='Lookup_Lists
 # Exports
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def adjust_school_enrollment(df_taz_2035, df_taz_2050, dfSocio, dfSchool):
+    """Scale school enrollment proportionally to population change for 2035 and 2050."""
+
+
+    base_population = dfSocio['total_persons'].sum()
+    print(f"Base population: {base_population}")
+    school_adj_2035 = (((df_taz_2035['total_persons'].sum() - base_population)/base_population) / 2)
+    print(f"2035 population: {df_taz_2035['total_persons'].sum()}, adjustment factor: {school_adj_2035}")
+    school_adj_2050 = (((df_taz_2050['total_persons'].sum() - base_population)/base_population) / 2)
+    print(f"2050 population: {df_taz_2050['total_persons'].sum()}, adjustment factor: {school_adj_2050}")
+
+    dfSchool_2035 = dfSchool.copy()
+    dfSchool_2050 = dfSchool.copy()
+    enrollment_fields = ['elementary_school_enrollment', 'middle_school_enrollment',
+       'high_school_enrollment', 'college_enrollment']
+    for field in enrollment_fields:
+        dfSchool_2035[field] = dfSchool_2035[field] + (dfSchool_2035[field] * school_adj_2035)
+        dfSchool_2035[field] = dfSchool_2035[field].round(0).astype(int)
+        dfSchool_2050[field] = dfSchool_2050[field] + (dfSchool_2050[field] * school_adj_2050)
+        dfSchool_2050[field] = dfSchool_2050[field].round(0).astype(int)
+    return dfSchool_2035, dfSchool_2050
+
+
 def export_forecast(sdfParcels, data_dir, gdb, parcel_pickle_part2):
     """Export parcel forecast to pickle, CSV, GDB feature class, and TAZ summary CSV."""
     sdfParcels.to_pickle(parcel_pickle_part2)
@@ -429,3 +428,37 @@ def export_forecast(sdfParcels, data_dir, gdb, parcel_pickle_part2):
     dfTAZ = sdfParcels.groupby('TAZ')[['FORECASTED_RESIDENTIAL_UNITS', 'Residential_Units']].sum().reset_index()
     dfTAZ.to_csv(data_dir / 'TAZ_Units.csv', index=False)
     return dfTAZ
+def clean_taz_summary(df_taz, taz_field_mapping):
+    df_taz = df_taz[list(taz_field_mapping.keys())].rename(columns=taz_field_mapping)
+    # Zero out People where there are no occupied units
+    pop_fix = (df_taz["total_persons"] > 0) & (df_taz['total_occ_units'] == 0)
+    if pop_fix.sum() > 0:
+        print(f"  Population zeroed for {pop_fix.sum()} parcels with 0 occupied units")
+        df_taz.loc[pop_fix, "total_persons"] = 0
+    else:
+        print("  Population fix: no parcels affected")
+
+    # Round at TAZ level
+    for col in ["total_occ_units", "occ_units_high_inc", "occ_units_med_inc", "occ_units_low_inc"]:
+        df_taz[col] = df_taz[col].round(0).astype(int)
+
+    # Income tie-break: if TAZ has occupied units but all income classes rounded to 0
+    income_sum_taz = df_taz["occ_units_high_inc"] + df_taz["occ_units_med_inc"] + df_taz["occ_units_low_inc"]
+    fix_income_taz = (df_taz["total_occ_units"] > 0) & (income_sum_taz == 0)
+    if fix_income_taz.sum() > 0:
+        print(f"  Income fix applied to {fix_income_taz.sum()} TAZs")
+        best_class = df_taz.loc[fix_income_taz, ["occ_units_high_inc", "occ_units_med_inc", "occ_units_low_inc"]].idxmax(axis=1)
+        for idx, cls in best_class.items():
+            df_taz.loc[idx, cls] = 1
+    else:
+        print("  Income fix: no TAZs affected")
+
+    df_taz["total_persons"] = df_taz["total_persons"].round(0).astype(int)
+
+    # Zero out People where OccupiedUnits == 0 at TAZ level
+    pop_fix_taz = (df_taz["total_persons"] > 0) & (df_taz["total_occ_units"] == 0)
+    if pop_fix_taz.sum() > 0:
+        print(f"  TAZ population zeroed for {pop_fix_taz.sum()} TAZs with 0 occupied units")
+        df_taz.loc[pop_fix_taz, "total_persons"] = 0
+
+    return df_taz

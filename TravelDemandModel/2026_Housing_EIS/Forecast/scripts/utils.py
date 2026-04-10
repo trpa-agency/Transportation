@@ -332,12 +332,12 @@ def forecast_residential_units_infill(df, condition, target_sum, reason):
 # function to get the target sum
 def get_target_sum(df, Jurisdiction, Unit_Pool, zoning_type):
     if zoning_type == 'MF':
-        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_MF'].values[0]
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_MF'].values[0]
     elif zoning_type == 'SF':
-        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_SF'].values[0]
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_SF'].values[0]
     elif zoning_type == 'Infill':
-        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_Infill'].values[0]
-    return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted'].values[0]
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Infill'].values[0]
+    return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units'].values[0]
 
 # function to check parcels meeting criteria
 def check_parcel_condition(df, condition):
@@ -514,7 +514,7 @@ def get_parcel_conditions():
                     'TRPA_General_MF'    : TRPA_MF_condition,
                     'TRPA_General_SF'    : TRPA_SF_condition,
                     'TRPA_General_Infill': TRPA_infill_condition,
-                    'TRPA_ADU'           : adu_criteria,
+                    'TRPA_ADU'           : TRPA_ADU_condition,
                     'TC_MF'              : TC_MF_condition,
                     'TC_SF'              : TC_SF_condition,
                     'TC_Infill'          : TC_infill_condition,
@@ -575,6 +575,66 @@ def from_pickle(filename):
         data = pickle.load(f)
     print(f'{filename} unpickled')
     return data
+
+def read_sql_no_geom(query, conn):
+    """pd.read_sql wrapper that skips geometry/geography columns for SDE tables.
+
+    pyodbc raises ProgrammingError (ODBC type -151/-152) when SELECT * includes
+    a geometry or geography column. This rewrites SELECT * to an explicit column
+    list by introspecting INFORMATION_SCHEMA, then runs the query.
+    """
+    import re
+    if not re.search(r'SELECT\s+\*', query, re.IGNORECASE):
+        return pd.read_sql(query, conn)
+    match = re.search(r'FROM\s+([\w\.\[\]]+)', query, re.IGNORECASE)
+    if not match:
+        return pd.read_sql(query, conn)
+    table_ref = match.group(1).replace('[', '').replace(']', '')
+    parts     = table_ref.split('.')
+    schema    = parts[-2] if len(parts) >= 2 else None
+    table     = parts[-1]
+    schema_filter = f"TABLE_SCHEMA = '{schema}' AND " if schema else ''
+    col_query = (
+        f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS "
+        f"WHERE {schema_filter}TABLE_NAME = '{table}' "
+        f"AND DATA_TYPE NOT IN ('geometry', 'geography') "
+        f"ORDER BY ORDINAL_POSITION"
+    )
+    df_cols  = pd.read_sql(col_query, conn)
+    col_list = ', '.join(f'[{c}]' for c in df_cols['COLUMN_NAME'])
+    new_query = re.sub(r'SELECT\s+\*', f'SELECT {col_list}', query, flags=re.IGNORECASE)
+    return pd.read_sql(new_query, conn)
+
+
+def fix_sedf_geometry(sdf, geom_col='SHAPE'):
+    """Ensure an ArcGIS SEDF's geometry column contains ArcGIS Geometry objects.
+
+    When geopandas is imported alongside arcgis, both libraries register an
+    extension dtype named 'geometry'. After .loc[] or .copy(), pandas may
+    reconstruct the SHAPE column using geopandas' extension type, storing
+    shapely objects instead of ArcGIS Geometry and breaking .spatial accessor
+    calls like to_featureclass(). Call this after from_featureclass() and
+    after any .loc[] filtering.
+
+    Usage:
+        sdf = fix_sedf_geometry(pd.DataFrame.spatial.from_featureclass(fc))
+        filtered = fix_sedf_geometry(sdf.loc[sdf['YEAR'] == 2022])
+    """
+    from arcgis.geometry import Geometry
+    if geom_col not in sdf.columns:
+        return sdf
+    result = sdf.copy()
+    def _coerce(g):
+        if g is None:
+            return None
+        if isinstance(g, Geometry):
+            return g
+        if hasattr(g, '__geo_interface__'):   # shapely geometry
+            return Geometry(g.__geo_interface__)
+        return g
+    result[geom_col] = [_coerce(g) for g in result[geom_col].to_numpy(dtype=object)]
+    return result
+
 def get_commercial_zones(df):
     columns_to_keep = ['Zoning_ID', 'Category', 'Density']
     # filter Use_Type to Multiple Family Dwelling
