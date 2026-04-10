@@ -6,8 +6,6 @@ def get_adjusted_future_units(dfPool, zone_proportions):
     def _get_proportions_(jurisdiction, unit_pool):
         return zone_proportions.get((jurisdiction, unit_pool), zone_proportions['default'])
 
-    dfPool['Future_Units'] = dfPool['Future_Units_Adjusted'].fillna(0)
-
     proportions = dfPool.apply(lambda r: _get_proportions_(r['Jurisdiction'], r['Unit_Pool']), axis=1)
     dfPool['Future_Units_MF']     = (dfPool['Future_Units'] * proportions.map(lambda p: p['mf'])).round().astype(int)
     dfPool['Future_Units_SF']     = (dfPool['Future_Units'] * proportions.map(lambda p: p['sf'])).round().astype(int)
@@ -20,7 +18,7 @@ def get_adjusted_future_units(dfPool, zone_proportions):
                             - dfPool['Future_Units_Infill'])
     dfPool['Future_Units_SF'] = dfPool['Future_Units_SF'] + dfPool['Adjustment']
     dfPool.drop(columns=['Adjustment'], inplace=True)
-    dfPool
+    return dfPool
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Forecast Jurisdiction Pools
@@ -118,6 +116,7 @@ def assign_remainders(sdfParcels, conditions, df_built_parcels, adu_target=4385)
         df_built_parcels       = pd.concat([df_built_parcels, df_summary], ignore_index=True)
 
     # ADU assignment to eligible residential parcels
+    TRPA_ADU_condition = conditions['TRPA_ADU']
     target_sum = adu_target - sdfParcels.FORECASTED_RESIDENTIAL_UNITS.sum()
     sdfParcels, df_summary = forecast_residential_units(sdfParcels, TRPA_ADU_condition, target_sum, 'TRPA ADU Units')
     df_built_parcels = pd.concat([df_built_parcels, df_summary], ignore_index=True)
@@ -133,8 +132,8 @@ def check_forecast_results(sdfParcels, dfPool):
     """Compare forecasted units against pool targets; returns a comparison DataFrame."""
     dfPoolMelt = dfPool.melt(
         id_vars=['Jurisdiction', 'Unit_Pool'],
-        value_vars=['Future_Units_Adjusted_MF', 'Future_Units_Adjusted_SF', 'Future_Units_Adjusted_Infill'])
-    dfPoolMelt['variable'] = dfPoolMelt['variable'].str.replace('Future_Units_Adjusted_', '')
+        value_vars=['Future_Units_MF', 'Future_Units_SF', 'Future_Units_Infill'])
+    dfPoolMelt['variable'] = dfPoolMelt['variable'].str.replace('Future_Units_', '')
     dfPoolMelt['Unit_Pool'] = dfPoolMelt['Jurisdiction'] + ' ' + dfPoolMelt['Unit_Pool']
     dfPoolMelt.rename(columns={'variable': 'Reason', 'value': 'Units'}, inplace=True)
 

@@ -332,12 +332,12 @@ def forecast_residential_units_infill(df, condition, target_sum, reason):
 # function to get the target sum
 def get_target_sum(df, Jurisdiction, Unit_Pool, zoning_type):
     if zoning_type == 'MF':
-        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_MF'].values[0]
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_MF'].values[0]
     elif zoning_type == 'SF':
-        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_SF'].values[0]
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_SF'].values[0]
     elif zoning_type == 'Infill':
-        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted_Infill'].values[0]
-    return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Adjusted'].values[0]
+        return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units_Infill'].values[0]
+    return df.loc[(df['Jurisdiction'] == Jurisdiction) & (df['Unit_Pool'] == Unit_Pool), 'Future_Units'].values[0]
 
 # function to check parcels meeting criteria
 def check_parcel_condition(df, condition):
@@ -514,7 +514,7 @@ def get_parcel_conditions():
                     'TRPA_General_MF'    : TRPA_MF_condition,
                     'TRPA_General_SF'    : TRPA_SF_condition,
                     'TRPA_General_Infill': TRPA_infill_condition,
-                    'TRPA_ADU'           : adu_criteria,
+                    'TRPA_ADU'           : TRPA_ADU_condition,
                     'TC_MF'              : TC_MF_condition,
                     'TC_SF'              : TC_SF_condition,
                     'TC_Infill'          : TC_infill_condition,
