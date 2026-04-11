@@ -500,11 +500,16 @@ def adjust_taz_persons_per_occ_unit(df_taz, persons_per_occ_unit_df):
     table (TAZ / persons_per_occ_unit) to the TAZ summary table so that total_persons
     = total_occ_units * persons_per_occ_unit is consistent with the input table.
     """
+    # Normalize TAZ types so the join works regardless of int vs str
+    df_taz['TAZ'] = df_taz['TAZ'].astype(int)
+    persons_per_occ_unit_df = persons_per_occ_unit_df.copy()
+    persons_per_occ_unit_df['TAZ'] = persons_per_occ_unit_df['TAZ'].astype(int)
     df_taz = df_taz.merge(persons_per_occ_unit_df, on='TAZ', how='left', suffixes=('', '_target'))
     missing_taz = df_taz['persons_per_occ_unit_target'].isna().sum()
     if missing_taz > 0:
         print(f"  Warning: {missing_taz} TAZs in the forecast TAZ table missing persons_per_occ_unit from the input table")
-    df_taz['persons_per_occ_unit'] = df_taz['persons_per_occ_unit_target']
+    # Only overwrite where a target value exists; keep existing value for unmatched TAZs
+    df_taz['persons_per_occ_unit'] = df_taz['persons_per_occ_unit_target'].fillna(df_taz['persons_per_occ_unit'])
     df_taz["total_persons"] = (df_taz["total_occ_units"] * df_taz["persons_per_occ_unit"]).round(0).astype(int)
     df_taz.drop(columns=['persons_per_occ_unit_target'], inplace=True)
     return df_taz
