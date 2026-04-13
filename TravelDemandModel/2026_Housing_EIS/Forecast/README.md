@@ -11,6 +11,179 @@ This folder contains the full forecasting workflow for the Lake Tahoe Basin Hous
 
 ---
 
+## Scenarios at a Glance
+
+| Alternative | Name | Total New Units | Key Differentiator |
+| --- | --- | --- | --- |
+| Alternative 1 | No Project (RTP/SCS Baseline) | 4,319 | Replicates the adopted RTP/SCS forecast; no new bonus unit incentives or JADU program |
+| Alternative 2 | Housing Forward | 8,428 | Maximum housing production; full pool conversion, expanded bonus units, JADUs, missing middle |
+| Alternative 3 | Housing Preservation | 4,319 | Same unit total as No Project; achieves housing need through preservation and conversion, not new incentives |
+| Alternative 4 | No Stormwater Change | ~5,150 | Intermediate production; partial pool conversion and limited JADU program, no stormwater coverage incentives |
+
+---
+
+## Scenario Descriptions
+
+### Alternative 1 — No Project (RTP/SCS Baseline)
+
+**Policy intent:** Represents the continuation of existing land use policy with no new housing incentives. This is the baseline against which all other alternatives are measured. Unit assumptions match the 2022 RTP/SCS forecast, updated only for known development activity between 2022 and 2025.
+
+**Unit pool summary:**
+
+| Pool | Units | Where Distributed |
+|---|---|---|
+| Affordable Bonus Units | 211 | Within Bonus Unit Boundary |
+| Moderate Bonus Units | 271 | Within Bonus Unit Boundary |
+| Achievable Bonus Units | 20 | Within Bonus Unit Boundary |
+| Affordable by Design | 0 | — |
+| JADUs | 0 | — |
+| Private CFA/TAU Conversion | 700 | Anywhere residential allowed |
+| Banked Residential Units | 399 | Anywhere residential allowed |
+| Local Jurisdiction BU Pool (unassigned) | 238 | Model assigns |
+| Local Jurisdiction BU Pool (assigned projects) | 427 | Model assigns |
+| Remaining 2012 RP Allocations | 1,956 | Model assigns |
+| **Total New Units** | **4,319** | |
+
+**Key assumptions:**
+
+- No conversion of unused CFA/TAU/PAOT development rights to bonus units
+- No Junior ADU (JADU) program
+- Affordable/Moderate bonus units directed entirely within the Bonus Unit Boundary to capture fee waivers
+- Remaining 2012 Regional Plan allocations: 33% multifamily (100% occupied), 66% single-family
+- ADU pool = 110 units (no Washoe County expansion beyond what the updated ADU condition allows)
+- TRPA Bonus Unit pool = 388; TRPA General pool = 948
+
+**Changes from RTP model run (common to all alternatives):**
+
+1. Known residential unit changes from 2022–2025 pre-incorporated into the input parcel pickle
+2. Zoned unit pools adjusted for construction activity 2022–2025 (per K. Kasman)
+3. Updated known projects list
+4. ADUs now allowed in Washoe County (ADU eligibility condition updated)
+5. 33% of allocations assumed multifamily (100% occupied); remaining 66% single-family
+6. Population in 2035 and 2050 allowed to vary based on persons per household and occupancy rate
+
+---
+
+### Alternative 2 — Housing Forward
+
+**Policy intent:** Emphasizes housing production and preservation outcomes by strengthening incentives for workforce and deed-restricted housing, expanding the scope of bonus unit and fee reforms, and activating new unit categories (JADUs, missing middle) while maintaining required environmental protections and growth limits. Adds approximately 3,316 units above the No Project baseline (net 8,428 total new units).
+
+**Unit pool summary:**
+
+| Pool | Units | Where Distributed |
+|---|---|---|
+| Affordable Bonus Units | 1,527 | Within Bonus Unit Boundary |
+| Moderate Bonus Units | 955 | Within Bonus Unit Boundary |
+| Achievable Bonus Units | 764 | 65% within BUB / 35% anywhere |
+| Affordable by Design | 382 | Anywhere residential allowed |
+| JADUs | 792 | Anywhere residential allowed |
+| Private CFA/TAU Conversion | 700 | Anywhere residential allowed |
+| Banked Residential Units | 399 | Anywhere residential allowed |
+| Local Jurisdiction BU Pool (unassigned) | 238 | Anywhere residential allowed |
+| Local Jurisdiction BU Pool (assigned projects) | 427 | Model assigns |
+| Remaining 2012 RP Allocations | 1,956 | Model assigns |
+| Achievable General Pool | 191 | Anywhere residential allowed |
+| **Total New Units** | **8,428** | |
+
+**Key assumptions:**
+
+- Full conversion of unused CFA/TAU/PAOT development rights to residential bonus units, generating substantially larger Affordable (1,527), Moderate (955), and Achievable (955) pools
+- Active JADU program: 32 units/year from 2027–2050 = 792 JADUs distributed throughout the region
+- Affordable by Design bonus units (382) distributed anywhere residential development is allowed
+- 65% of Achievable Bonus units within Bonus Unit Boundary; 35% anywhere
+- Remaining jurisdictional pool units distributed 100% anywhere residential development is allowed (not constrained to MF parcels)
+- TRPA Bonus Unit pool = 947; TRPA General pool = 1,174; ADU pool = 150
+- Missing middle housing allowed in more neighborhoods
+
+---
+
+### Alternative 3 — Housing Preservation
+
+**Policy intent:** Focuses on achieving housing need through the **preservation and conversion of existing housing** to workforce housing, rather than new production incentives. Requires that a defined percentage of a jurisdiction's housing stock is owned or rented by local workers. Adopts only a subset of proposed policy components — without zoning incentives, bonus unit reforms, coverage incentives, excess coverage mitigation fee changes, or new JADU incentives. No mapping changes from the No Project alternative. Unit total is the same as Alternative 1 (4,319), but with slightly more flexible spatial distribution.
+
+**Unit pool summary:**
+
+| Pool | Units | Where Distributed |
+|---|---|---|
+| Affordable Bonus Units | 211 | Within Bonus Unit Boundary |
+| Moderate Bonus Units | 271 | Within Bonus Unit Boundary |
+| Achievable Bonus Units | 20 | Within Bonus Unit Boundary |
+| Affordable by Design | 0 | — |
+| JADUs | 0 | — |
+| Private CFA/TAU Conversion | 700 | Anywhere residential allowed |
+| Banked Residential Units | 399 | Anywhere residential allowed |
+| Local Jurisdiction BU Pool (unassigned) | 238 | Anywhere residential allowed |
+| Local Jurisdiction BU Pool (assigned projects) | 427 | Model assigns |
+| Remaining 2012 RP Allocations | 1,956 | Model assigns |
+| **Total New Units** | **4,319** | |
+
+**Key assumptions:**
+
+- No conversion of unused development rights pools to bonus units
+- No new JADU incentives
+- No coverage incentives for multifamily or changes to the Excess Coverage Mitigation Fee
+- No new incentives for missing middle housing
+- Bonus unit and general pool sizes match the updated (post-2025) jurisdiction pools but without new Affordable/Moderate/Achievable categories
+- TRPA Bonus Unit pool = 947; TRPA General pool = 1,174; ADU pool = 150
+- Achievable Bonus distribution set within Bonus Unit Boundary (same as No Project)
+- Spatial distribution of remaining pools is slightly more flexible than Alt 1 (1,337 units "anywhere" vs. 1,099), reflecting WTAP passage allowing Washoe County ADUs
+- Sets an explicit target for new occupied residential units (model calibrates to this target)
+
+---
+
+### Alternative 4 — No Stormwater Change
+
+**Policy intent:** Excludes changes to **coverage limits for multifamily housing** and changes to **excess coverage mitigation fees** — focusing incentives in areas with existing area-wide stormwater treatment. Still provides some support for workforce housing through partial conversion of unused development rights to residential bonus units and expanding uses of bonus units. Some zoning incentives apply (e.g., missing middle in more neighborhoods), but more limited scope than Housing Forward. Up to a fourplex allowed in any residential zone within ½ mile of transit, a town center, or within multifamily zones. Jurisdictions may optionally update area plans for Phase 2 height/density/coverage/parking incentives for Tier 3 housing. Unit total falls between the No Project and Housing Forward alternatives.
+
+**Unit pool summary:**
+
+| Pool | Units | Where Distributed |
+|---|---|---|
+| Affordable Bonus Units | 258 | Within Bonus Unit Boundary |
+| Moderate Bonus Units | 161 | Within Bonus Unit Boundary |
+| Achievable Bonus Units | 161 | 65% within BUB / 35% anywhere |
+| Affordable by Design | 64 | Anywhere residential allowed |
+| JADUs | 154 | Anywhere residential allowed |
+| Private CFA/TAU Conversion | 700 | Anywhere residential allowed |
+| Banked Residential Units | 399 | Anywhere residential allowed |
+| Local Jurisdiction BU Pool (unassigned) | 238 | Anywhere residential allowed |
+| Local Jurisdiction BU Pool (assigned projects) | 427 | Model assigns |
+| Remaining 2012 RP Allocations | 1,956 | Model assigns |
+| Achievable General Pool | 32 | Anywhere residential allowed |
+| **Total New Units** | **~5,150** | |
+
+**Key assumptions:**
+
+- Partial conversion of unused CFA/TAU/PAOT development rights — smaller Affordable (258), Moderate (161), and Achievable (161) pools than Housing Forward
+- Limited JADU program: 154 JADUs (roughly 6.5 units/year from 2027–2050) distributed throughout the region
+- No stormwater coverage incentives for multifamily; no changes to Excess Coverage Mitigation Fee
+- Bonus unit and general pool sizes match the updated jurisdiction pools (same as Alt 2/3)
+- TRPA Bonus Unit pool = 947; TRPA General pool = 1,174; ADU pool = 150
+- Fourfold zoning: up to fourplex allowed near transit/town centers even without coverage incentives
+- Tweaks the unit target input CSV relative to No Project to model the partial additional production
+
+---
+
+## Scenario Comparison — Key Differences
+
+| Feature | Alt 1 (No Project) | Alt 2 (Housing Forward) | Alt 3 (Preservation) | Alt 4 (No Stormwater) |
+| --- | --- | --- | --- | --- |
+| CFA/TAU/PAOT Pool Conversion | No | Yes (full) | No | Yes (partial) |
+| JADU Program | No | Yes (792 units) | No | Yes (154 units) |
+| Affordable BU Pool | 211 | 1,527 | 0 new | 258 |
+| Moderate BU Pool | 271 | 955 | 0 new | 161 |
+| Achievable BU Pool | 20 | 764 | 0 new | 161 |
+| Affordable by Design | 0 | 382 | 0 | 64 |
+| Coverage Incentives for MF | N/A | Yes | No | No |
+| Missing Middle Zoning | No | Yes (broad) | No | Yes (limited, near transit) |
+| Preservation/Conversion Requirement | No | No | Yes | No |
+| TRPA Bonus Unit Pool | 388 | 947 | 947 | 947 |
+| TRPA General Pool | 948 | 1,174 | 1,174 | 1,174 |
+| ADU Pool | 110 | 150 | 150 | 150 |
+| **Total New Units** | **4,319** | **8,428** | **4,319** | **~5,150** |
+
+---
+
 ## Folder Structure
 
 ```
@@ -29,20 +202,23 @@ Forecast/
 │   ├── taz_summary_2050.csv/.pickle   # TAZ-level summary — 2050 model year
 │   ├── Parcels_Forecast.csv           # Parcel-level forecast (tabular)
 │   └── TAZ_Units.csv                  # Existing and forecasted residential units by TAZ
-├── Alternative_1/                     # Housing Alternative 1 scenario
+├── Alternative_1/                     # Housing Alternative 1: No Project (RTP/SCS Baseline)
 │   ├── Alternative_1_Forecast.ipynb
 │   ├── utils.py
 │   ├── inputs/                        # Alternative-specific zoned units and scenario distribution CSVs
 │   └── Changes from RTP Model Run.md
-├── Alternative_2/                     # Housing Alternative 2 scenario
+├── Alternative_2/                     # Housing Alternative 2: Housing Forward
 │   ├── Alternative_2_Forecast.ipynb
-│   └── inputs/
-├── Alternative_3/                     # Housing Alternative 3 scenario
+│   ├── inputs/
+│   └── Changes from RTP Model Run.md
+├── Alternative_3/                     # Housing Alternative 3: Housing Preservation
 │   ├── Alternative_3_Forecast.ipynb
-│   └── inputs/
-└── Alternative_4/                     # Housing Alternative 4 scenario
+│   ├── inputs/
+│   └── Changes from RTP Model Run.md
+└── Alternative_4/                     # Housing Alternative 4: No Stormwater Change
     ├── Alternative_4_Forecast.ipynb
-    └── inputs/
+    ├── inputs/
+    └── Changes from RTP Model Run.md
 ```
 
 ---
@@ -136,10 +312,10 @@ flowchart TD
 | `scripts/parcel_engineering.ipynb` | 1A | Spatial joins, parcel classification, unit pool assembly; exports `base_parcel_data.pkl` and `unit_pool_assigned.csv` |
 | `scripts/scenario_forecast_template.ipynb` | 1B | Reference template for building alternative notebooks; loads Phase 1A outputs |
 | `scripts/Base_Forecast.ipynb` | — | Original combined notebook (source for the Phase 1A/1B split); kept for reference |
-| `Alternative_1/Alternative_1_Forecast.ipynb` | 2 | Scenario forecast for Alternative 1 |
-| `Alternative_2/Alternative_2_Forecast.ipynb` | 2 | Scenario forecast for Alternative 2 |
-| `Alternative_3/Alternative_3_Forecast.ipynb` | 2 | Scenario forecast for Alternative 3 |
-| `Alternative_4/Alternative_4_Forecast.ipynb` | 2 | Scenario forecast for Alternative 4 |
+| `Alternative_1/Alternative_1_Forecast.ipynb` | 2 | Scenario forecast for Alternative 1 — No Project |
+| `Alternative_2/Alternative_2_Forecast.ipynb` | 2 | Scenario forecast for Alternative 2 — Housing Forward |
+| `Alternative_3/Alternative_3_Forecast.ipynb` | 2 | Scenario forecast for Alternative 3 — Housing Preservation |
+| `Alternative_4/Alternative_4_Forecast.ipynb` | 2 | Scenario forecast for Alternative 4 — No Stormwater Change |
 
 ---
 
@@ -166,7 +342,7 @@ flowchart TD
 | `forecast_residential_zoned_units.csv` | CSV | Scenario-adjusted zoned unit pool overrides |
 | `known_projects.csv` | CSV | Alternative-specific known projects list |
 | `scenarioN_instructions.csv` | CSV | Narrative description of scenario assumptions |
-| `scenarioN_unit_distribution.csv` | CSV | Per-zone MF / SF / Infill proportion targets |
+| `scenarioN_unit_distribution.csv` | CSV | Per-pool unit counts and spatial distribution targets |
 
 ### Spatial / Database Inputs
 

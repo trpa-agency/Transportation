@@ -480,7 +480,9 @@ def clean_taz_summary(df_taz, taz_field_mapping):
     if pop_fix_taz.sum() > 0:
         print(f"  TAZ population zeroed for {pop_fix_taz.sum()} TAZs with 0 occupied units")
         df_taz.loc[pop_fix_taz, "total_persons"] = 0
-
+    # If occupancy rate is null fill with 0
+    df_taz['census_occ_rate'] = df_taz['census_occ_rate'].fillna(0)
+    df_taz.columns
     return df_taz
 def adjust_taz_population(df_taz, target_population):
     # Use the weighted sum as the true current population base so that the
@@ -512,4 +514,31 @@ def adjust_taz_persons_per_occ_unit(df_taz, persons_per_occ_unit_df):
     df_taz['persons_per_occ_unit'] = df_taz['persons_per_occ_unit_target'].fillna(df_taz['persons_per_occ_unit'])
     df_taz["total_persons"] = (df_taz["total_occ_units"] * df_taz["persons_per_occ_unit"]).round(0).astype(int)
     df_taz.drop(columns=['persons_per_occ_unit_target'], inplace=True)
+    return df_taz
+def update_employment_numbers(df_taz, employment_df):
+    """Update the TAZ level employment numbers from the input employment table (TAZ / employment
+    counts by sector) so that the TAZ summary table has the employment numbers from the
+    input table.
+    """
+    # Normalize TAZ types so the join works regardless of int vs str
+    df_taz['TAZ'] = df_taz['TAZ'].astype(int)
+    employment_df = employment_df.copy()
+    # rename taz as TAZ
+    employment_df.rename(columns={'taz':'TAZ'}, inplace=True)
+    employment_df['TAZ'] = employment_df['TAZ'].astype(int)
+
+    df_taz = df_taz.merge(employment_df, on='TAZ', how='left', suffixes=('', '_target'))
+    missing_taz = df_taz.filter(like='_target').isna().sum().sum()
+    if missing_taz > 0:
+        print(f"  Warning: {missing_taz} employment values missing from the input employment table for TAZs in the forecast TAZ table")
+
+    # overwrite the employment numbers in the TAZ table with the input table values where they exist
+    emp_cols = [c for c in df_taz.columns if c.endswith('_target')]
+    jobs_columns = ['emp_retail','emp_srvc','emp_rec','emp_game','emp_other']
+
+    for col in emp_cols:
+        base_col = col.replace('_target','')
+        if base_col in jobs_columns:
+            df_taz[base_col] = df_taz[col].fillna(df_taz[base_col])
+    df_taz.drop(columns=emp_cols, inplace=True)
     return df_taz
