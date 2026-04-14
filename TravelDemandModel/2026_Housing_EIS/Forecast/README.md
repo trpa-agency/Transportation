@@ -466,3 +466,56 @@ The following changes are common across all alternatives (documented in each `Ch
 | `utils.py` | Project-specific helper functions (`get_parcel_conditions`, `forecast_residential_units`, `forecast_residential_units_infill`, `get_target_sum`, `check_parcel_condition`, etc.) |
 
 > **Environment:** Requires an ArcGIS Pro Python environment with access to the TRPA SDE geodatabase and SQL Server instances (`sql12`, `sql14`). Database credentials are read from the `DB_USER` and `DB_PASSWORD` environment variables.
+
+---
+
+## 2050 Model Results Summary
+
+Summary of 2050 socioeconomic outputs across all four alternatives. Source: `SocioEcon_2050_Summary_ByScenario.xlsx`. Employment is identical across all alternatives (held constant; only residential and population vary by scenario).
+
+### Housing & Population
+
+| Metric | Alt 1 — No Project | Alt 2 — Housing Forward | Alt 3 — Preservation | Alt 4 — No Stormwater |
+| --- | ---: | ---: | ---: | ---: |
+| Total Residential Units | 54,331 | 59,156 | 54,547 | 55,377 |
+| Total Occupied Units | 26,116 | 30,480 | 29,798 | 26,994 |
+| Occupied Units — Low Income | 11,151 | 12,873 | 11,144 | 11,463 |
+| Occupied Units — Middle Income | 5,071 | 6,231 | 7,052 | 5,440 |
+| Occupied Units — High Income | 9,881 | 11,363 | 11,602 | 10,088 |
+| Total Population (persons) | 57,613 | 67,089 | 65,728 | 59,514 |
+
+### Employment
+
+Employment is scenario-neutral — all alternatives use the same 2050 employment forecast.
+
+| Sector | All Alternatives |
+| --- | ---: |
+| Retail | 3,711 |
+| Service | 7,503 |
+| Recreation | 2,248 |
+| Gaming | 2,564 |
+| Other | 10,711 |
+| **Total Employment** | **26,737** |
+
+### Income Distribution of Occupied Units (2050)
+
+| Income Tier | Alt 1 — No Project | Alt 2 — Housing Forward | Alt 3 — Preservation | Alt 4 — No Stormwater |
+| --- | ---: | ---: | ---: | ---: |
+| % Low Income | 42.7% | 42.3% | 37.4% | 42.5% |
+| % Middle Income | 19.4% | 20.5% | 23.7% | 20.2% |
+| % High Income | 37.9% | 37.3% | 38.9% | 37.4% |
+
+> Alt 3 (Preservation) shifts the most toward middle-income occupancy (+4.3 pp vs. Alt 1), driven by its workforce preservation and conversion requirements.
+
+### Difference from No Project Baseline (Alt 1)
+
+| Metric | Alt 2 vs. Alt 1 | Alt 3 vs. Alt 1 | Alt 4 vs. Alt 1 |
+| --- | ---: | ---: | ---: |
+| Total Residential Units | +4,825 (+8.9%) | +216 (+0.4%) | +1,046 (+1.9%) |
+| Total Occupied Units | +4,364 (+16.7%) | +3,682 (+14.1%) | +878 (+3.4%) |
+| Occ. Units — Low Income | +1,722 (+15.4%) | −7 (−0.1%) | +312 (+2.8%) |
+| Occ. Units — Middle Income | +1,160 (+22.9%) | +1,981 (+39.1%) | +369 (+7.3%) |
+| Occ. Units — High Income | +1,482 (+15.0%) | +1,721 (+17.4%) | +207 (+2.1%) |
+| Total Population | +9,476 (+16.4%) | +8,115 (+14.1%) | +1,901 (+3.3%) |
+
+> Alt 2 (Housing Forward) produces the largest absolute gains in population and housing. Alt 3 (Preservation) achieves similar population and occupied-unit growth to Alt 2 despite adding far fewer total units, reflecting a higher average occupancy rate driven by its preservation/conversion mandate.

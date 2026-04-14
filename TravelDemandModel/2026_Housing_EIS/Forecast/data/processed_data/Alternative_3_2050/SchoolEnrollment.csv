@@ -30,12 +30,12 @@ TAZ,elementary_school_enrollment,middle_school_enrollment,high_school_enrollment
 123,0,0,0,0
 124,0,0,0,0
 125,0,0,0,0
-126,462,0,0,0
-127,0,879,0,0
+126,461,0,0,0
+127,0,877,0,0
 128,0,0,0,0
 129,0,0,0,0
 130,0,0,0,0
-131,0,0,0,2774
+131,0,0,0,2768
 132,0,0,0,0
 133,0,0,0,0
 134,0,0,0,0
@@ -51,7 +51,7 @@ TAZ,elementary_school_enrollment,middle_school_enrollment,high_school_enrollment
 144,0,0,0,0
 145,0,0,0,0
 146,0,0,0,0
-147,456,0,0,0
+147,455,0,0,0
 148,0,0,0,0
 149,0,0,0,0
 150,0,0,0,0
@@ -59,7 +59,7 @@ TAZ,elementary_school_enrollment,middle_school_enrollment,high_school_enrollment
 152,0,0,0,0
 153,0,0,0,0
 154,0,0,0,0
-155,0,0,1310,0
+155,0,0,1308,0
 156,0,0,0,0
 157,0,0,0,0
 158,0,0,0,0
@@ -164,7 +164,7 @@ TAZ,elementary_school_enrollment,middle_school_enrollment,high_school_enrollment
 257,0,0,0,0
 258,0,0,0,0
 259,0,0,0,0
-260,322,0,0,0
+260,321,0,0,0
 261,0,0,0,0
 262,0,0,0,0
 263,0,0,0,0
@@ -177,7 +177,7 @@ TAZ,elementary_school_enrollment,middle_school_enrollment,high_school_enrollment
 270,0,0,0,0
 271,0,0,0,0
 272,0,0,0,0
-273,0,329,556,0
+273,0,329,555,0
 274,0,0,0,0
 275,0,0,0,0
 276,0,0,0,0
@@ -259,7 +259,7 @@ TAZ,elementary_school_enrollment,middle_school_enrollment,high_school_enrollment
 359,0,0,0,0
 360,0,0,0,0
 361,0,0,0,0
-362,259,157,0,307
+362,258,157,0,307
 363,0,0,0,0
 364,0,0,0,0
 365,0,0,0,0
@@ -281,7 +281,7 @@ TAZ,elementary_school_enrollment,middle_school_enrollment,high_school_enrollment
 381,0,0,0,0
 382,0,0,0,0
 383,0,0,0,0
-384,0,0,358,0
+384,0,0,357,0
 385,0,0,0,0
 386,0,0,0,0
 387,0,0,0,0
