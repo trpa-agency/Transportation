@@ -1,16 +1,16 @@
 Jurisdiction,Unit_Pool,Future_Units
 CSLT,Bonus Unit,89
-CSLT,General,429
+CSLT,General,395
 DG,Bonus Unit,67
-DG,General,169
-EL,General,319
-PL,General,602
+DG,General,160
+EL,General,281
+PL,General,582
 PL,Bonus Unit,41
-WA,General,212
+WA,General,196
 WA,Bonus Unit,120
-TRPA,General,1174
-TRPA,Bonus Unit,947
-TRPA,ADU,150
+TRPA,General,948
+TRPA,Bonus Unit,388
+TRPA,ADU,110
 TRPA,Affordable,258
 TRPA,Moderate,161
 TRPA,Achievable Bonus,161
