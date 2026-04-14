@@ -4,7 +4,10 @@
       "WebFetch(domain:www.nvroads.com)",
       "Bash(python -c ':*)",
       "Bash(python -c \"import openpyxl; print\\('ok'\\)\")",
-      "Bash(python3 -c ':*)"
+      "Bash(python3 -c ':*)",
+      "Bash(pip install:*)",
+      "Bash(python3 -m pip install flask -q)",
+      "Bash(python3 -c \"import flask; print\\(flask.__version__\\)\")"
     ]
   }
 }
