@@ -721,3 +721,98 @@ def get_sending_zones(df):
     columns_to_keep = ['Zoning_ID', 'SPECIAL_DESIGNATION']
     df = df.loc[df['SPECIAL_DESIGNATION'] == 'Transfer']
     return df[columns_to_keep]
+
+def dominant_spatial_join(fc1, id1_field, fc2, id2_field):
+    """
+    For each feature in fc1, find the feature in fc2 with the largest spatial
+    overlap and return a DataFrame mapping fc1 IDs to dominant fc2 IDs.
+
+    Parameters
+    ----------
+    fc1 : str
+        Path to the first (base) polygon feature class.
+    id1_field : str
+        Name of the ID field in fc1.
+    fc2 : str
+        Path to the second polygon feature class.
+    id2_field : str
+        Name of the ID field in fc2.
+
+    Returns
+    -------
+    pd.DataFrame
+        Two columns — [id1_field, id2_field] — one row per fc1 feature,
+        where id2_field holds the fc2 ID with the greatest area of overlap.
+    """
+    scratch_fc = "memory/dominant_join_tmp"
+
+    if arcpy.Exists(scratch_fc):
+        arcpy.management.Delete(scratch_fc)
+
+    # Intersect: keeps all attributes from both inputs
+    arcpy.analysis.Intersect([fc1, fc2], scratch_fc, join_attributes="ALL")
+
+    # Calculate area of each intersection piece
+    area_field = "INTERSECT_AREA"
+    arcpy.management.CalculateGeometryAttributes(
+        scratch_fc, [[area_field, "AREA"]]
+    )
+
+    # Pull into a dataframe
+    fields = [id1_field, id2_field, area_field]
+    rows = [row for row in arcpy.da.SearchCursor(scratch_fc, fields)]
+    df = pd.DataFrame(rows, columns=fields)
+
+    arcpy.management.Delete(scratch_fc)
+
+    # For each fc1 feature, keep the fc2 feature with the largest overlap
+    idx = df.groupby(id1_field)[area_field].idxmax()
+    return df.loc[idx, [id1_field, id2_field]].reset_index(drop=True)
+
+
+def pct_overlap(tract_fc, tract_id_field, taz_fc, taz_id_field):
+    """
+    For each census tract, calculate what percentage of its area falls within
+    each TAZ it intersects.
+
+    Parameters
+    ----------
+    tract_fc : str
+        Path to the census tract polygon feature class.
+    tract_id_field : str
+        Name of the ID field in the tract feature class.
+    taz_fc : str
+        Path to the TAZ polygon feature class.
+    taz_id_field : str
+        Name of the ID field in the TAZ feature class.
+
+    Returns
+    -------
+    pd.DataFrame
+        Columns: [tract_id_field, taz_id_field, 'pct_in_taz']
+        One row per tract/TAZ intersection, where 'pct_in_taz' is the
+        percentage (0–100) of the tract's total area covered by that TAZ.
+    """
+    scratch_fc = "memory/pct_overlap_tmp"
+
+    if arcpy.Exists(scratch_fc):
+        arcpy.management.Delete(scratch_fc)
+
+    arcpy.analysis.Intersect([tract_fc, taz_fc], scratch_fc, join_attributes="ALL")
+
+    intersect_area_field = "INTERSECT_AREA"
+    arcpy.management.CalculateGeometryAttributes(
+        scratch_fc, [[intersect_area_field, "AREA"]]
+    )
+
+    fields = [tract_id_field, taz_id_field, intersect_area_field]
+    rows = [row for row in arcpy.da.SearchCursor(scratch_fc, fields)]
+    df = pd.DataFrame(rows, columns=fields)
+
+    arcpy.management.Delete(scratch_fc)
+
+    tract_totals = df.groupby(tract_id_field)[intersect_area_field].sum().rename("tract_total_area")
+    df = df.join(tract_totals, on=tract_id_field)
+    df["pct_in_taz"] = (df[intersect_area_field] / df["tract_total_area"] * 100).round(4)
+
+    return df[[tract_id_field, taz_id_field, "pct_in_taz"]]

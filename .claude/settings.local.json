@@ -7,7 +7,9 @@
       "Bash(python3 -c ':*)",
       "Bash(pip install:*)",
       "Bash(python3 -m pip install flask -q)",
-      "Bash(python3 -c \"import flask; print\\(flask.__version__\\)\")"
+      "Bash(python3 -c \"import flask; print\\(flask.__version__\\)\")",
+      "Bash(c:/Users/amcclary/AppData/Local/ESRI/conda/envs/arcgispro-py3-plotly/python.exe -c ' *)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
