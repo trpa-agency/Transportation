@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housing EIS Scenario Generator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 16px 32px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    header h1 { font-size: 20px; font-weight: 600; }
+    header span { font-size: 13px; opacity: .65; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+      padding: 20px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ── Panel ──────────────────────────────────────────────────────────── */
+    .panel {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.1);
+      overflow: hidden;
+    }
+    .panel-header {
+      background: #e8edf2;
+      padding: 10px 16px;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #4a6080;
+      border-bottom: 1px solid #d4dde6;
+    }
+    .panel-body { padding: 16px; }
+
+    /* ── Form elements ──────────────────────────────────────────────────── */
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #2c3e50;
+      font-size: 13px;
+    }
+    .form-group .hint {
+      font-size: 11px;
+      color: #7f8c9a;
+      margin-top: 3px;
+    }
+
+    select, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #c8d4df;
+      border-radius: 5px;
+      font-size: 13px;
+      background: #fafcfe;
+      color: #1a1a2e;
+      transition: border .15s;
+    }
+    select:focus, input:focus {
+      outline: none;
+      border-color: #2980b9;
+      background: #fff;
+    }
+
+    .range-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .range-row input[type="range"] {
+      flex: 1;
+      width: auto;
+      padding: 0;
+      border: none;
+      background: transparent;
+      accent-color: #2980b9;
+    }
+    .range-val {
+      width: 44px;
+      text-align: center;
+      font-weight: 600;
+      color: #2980b9;
+    }
+
+    .split-display {
+      margin-top: 6px;
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+    }
+    .split-badge {
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .split-badge.med  { background: #dbeafe; color: #1d4ed8; }
+    .split-badge.high { background: #fef9c3; color: #92400e; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary { background: #2980b9; color: #fff; width: 100%; justify-content: center; }
+    .btn-primary:hover { background: #2471a3; }
+    .btn-primary:disabled { background: #a0b8cc; cursor: not-allowed; }
+    .btn-download { background: #27ae60; color: #fff; margin-top: 10px; width: 100%; justify-content: center; }
+    .btn-download:hover { background: #1e8449; }
+
+    /* ── Status / log ───────────────────────────────────────────────────── */
+    .status-box {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      line-height: 1.6;
+      display: none;
+    }
+    .status-box.info  { background: #eaf4fb; border-left: 3px solid #2980b9; color: #1a4971; }
+    .status-box.ok    { background: #eafaf1; border-left: 3px solid #27ae60; color: #1a5632; }
+    .status-box.error { background: #fdf2f2; border-left: 3px solid #e74c3c; color: #922b21; }
+
+    /* ── Summary table ──────────────────────────────────────────────────── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .summary-card { }
+    .summary-card h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4a6080;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e8edf2;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      text-align: left;
+      padding: 6px 10px;
+      background: #f4f7fa;
+      color: #4a6080;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      border-bottom: 2px solid #dde4ec;
+    }
+    td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #eef1f5;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f8fafc; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .section-row td {
+      background: #f4f7fa;
+      font-weight: 600;
+      font-size: 11px;
+      color: #5d7a94;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 8px 10px 4px;
+    }
+
+    /* ── Zoned units table ──────────────────────────────────────────────── */
+    #zoned-table-wrap { overflow-x: auto; }
+    #zoned-table-wrap table { min-width: 360px; }
+
+    .zoned-input {
+      width: 80px;
+      padding: 3px 6px;
+      border: 1px solid #c8d4df;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: right;
+      color: #1a3a5c;
+      background: #fafcfe;
+    }
+    .zoned-input:focus {
+      outline: none;
+      border-color: #2980b9;
+      background: #fff;
+    }
+    .zoned-input.modified {
+      border-color: #e67e22;
+      background: #fff8f0;
+      color: #c0392b;
+    }
+    .zoned-total-row td {
+      font-weight: 700;
+      padding-top: 8px;
+      border-top: 2px solid #dde4ec;
+    }
+    #zoned-total-val {
+      font-weight: 700;
+      color: #1a3a5c;
+    }
+    #zoned-total-val.modified { color: #e67e22; }
+    .btn-reset-zoned {
+      background: none;
+      border: 1px solid #c8d4df;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 12px;
+      color: #6b8097;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .btn-reset-zoned:hover { background: #f0f2f5; }
+
+    /* ── Spinner ────────────────────────────────────────────────────────── */
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .placeholder-msg {
+      color: #9aacba;
+      font-style: italic;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Housing EIS Scenario Generator</h1>
+  <span>Phase 2 pipeline — TAZ Summary → SocioEcon output files</span>
+</header>
+
+<div class="layout">
+
+  <!-- ── Left: Controls ─────────────────────────────────────────────────── -->
+  <aside>
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header">Base Data</div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <label>Alternative</label>
+          <select id="sel-alt">
+            <option value="1">Alternative 1</option>
+            <option value="2">Alternative 2</option>
+            <option value="3" selected>Alternative 3</option>
+            <option value="4">Alternative 4</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>TAZ Summary — 2035</label>
+          <select id="sel-file-2035"></select>
+        </div>
+
+        <div class="form-group">
+          <label>TAZ Summary — 2050</label>
+          <select id="sel-file-2050"></select>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header">Occupancy Adjustment</div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <label>Additional Occupied Units</label>
+          <input type="number" id="inp-add-occ" value="3571" min="0" max="20000" step="1">
+          <div class="hint">Added on top of the base TAZ Summary total. Set to 0 to skip.</div>
+        </div>
+
+        <div class="form-group">
+          <label>Med / High Income Split</label>
+          <div class="range-row">
+            <input type="range" id="inp-med-split" min="0" max="100" value="50" step="1">
+            <span class="range-val" id="med-split-val">50%</span>
+          </div>
+          <div class="split-display">
+            <span class="split-badge med">Med: <span id="badge-med">50%</span></span>
+            <span class="split-badge high">High: <span id="badge-high">50%</span></span>
+          </div>
+          <div class="hint">Share of additional occupied units assigned to each income tier.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header">Output</div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <label>Scenario Name</label>
+          <input type="text" id="inp-name" value="Alternative_3_custom">
+          <div class="hint">Used for the output folder names inside the zip.</div>
+        </div>
+
+        <button class="btn btn-primary" id="btn-generate">
+          <span id="btn-label">Generate Scenario Files</span>
+        </button>
+
+        <div class="status-box" id="status-box"></div>
+
+        <button class="btn btn-download" id="btn-download" style="display:none">
+          ⬇ Download ZIP
+        </button>
+
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">Residential Unit Targets — Zoned Units</div>
+      <div class="panel-body">
+        <div id="zoned-table-wrap">
+          <p class="placeholder-msg">Select an alternative to view</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Right: Results ─────────────────────────────────────────────────── -->
+  <main>
+    <div class="panel">
+      <div class="panel-header">Results Summary</div>
+      <div class="panel-body">
+        <div id="results-placeholder" class="placeholder-msg">
+          Configure parameters and click "Generate Scenario Files" to see results.
+        </div>
+        <div id="summary-grid" class="summary-grid" style="display:none">
+          <div class="summary-card">
+            <h3>2035</h3>
+            <div id="table-2035"></div>
+          </div>
+          <div class="summary-card">
+            <h3>2050</h3>
+            <div id="table-2050"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  // ── State ───────────────────────────────────────────────────────────────────
+  let scenarios = {};
+  let lastDownload = null;
+  let zonedOriginal = [];   // [{Jurisdiction, Unit_Pool, Future_Units}] from server
+
+  // ── Init ────────────────────────────────────────────────────────────────────
+  async function init() {
+    const res = await fetch("/api/scenarios");
+    scenarios = await res.json();
+    populateFileSelects(document.getElementById("sel-alt").value);
+    loadZonedUnits(document.getElementById("sel-alt").value);
+  }
+
+  function populateFileSelects(alt) {
+    const files = scenarios[alt] || {};
+    fillSelect("sel-file-2035", files["2035"] || []);
+    fillSelect("sel-file-2050", files["2050"] || []);
+    if (!document.getElementById("inp-name").dataset.edited) {
+      document.getElementById("inp-name").value = `Alternative_${alt}_custom`;
+    }
+  }
+
+  function fillSelect(id, files) {
+    const sel = document.getElementById(id);
+    sel.innerHTML = "";
+    [...files].reverse().forEach((f, i) => {
+      const opt = document.createElement("option");
+      opt.value = f;
+      opt.textContent = f;
+      if (i === 0) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  }
+
+  async function loadZonedUnits(alt) {
+    const wrap = document.getElementById("zoned-table-wrap");
+    wrap.innerHTML = `<p class="placeholder-msg">Loading…</p>`;
+    try {
+      const res = await fetch(`/api/zoned_units/${alt}`);
+      const rows = await res.json();
+      if (rows.error) { wrap.innerHTML = `<p class="placeholder-msg">${rows.error}</p>`; return; }
+      zonedOriginal = rows.map(r => ({ ...r }));
+      renderZonedTable(rows);
+    } catch(e) {
+      wrap.innerHTML = `<p class="placeholder-msg">Error loading data</p>`;
+    }
+  }
+
+  function renderZonedTable(rows) {
+    const wrap = document.getElementById("zoned-table-wrap");
+    const total = rows.reduce((s, r) => s + r.Future_Units, 0);
+
+    let html = `
+      <table id="zoned-table">
+        <thead>
+          <tr>
+            <th>Jurisdiction</th>
+            <th>Unit Pool</th>
+            <th class="num">Future Units</th>
+          </tr>
+        </thead>
+        <tbody>`;
+
+    rows.forEach((r, i) => {
+      html += `
+          <tr data-idx="${i}">
+            <td>${r.Jurisdiction}</td>
+            <td>${r.Unit_Pool}</td>
+            <td class="num">
+              <input class="zoned-input" type="number" min="0" step="1"
+                     value="${r.Future_Units}"
+                     data-original="${r.Future_Units}"
+                     data-idx="${i}">
+            </td>
+          </tr>`;
+    });
+
+    html += `
+        </tbody>
+        <tfoot>
+          <tr class="zoned-total-row">
+            <td colspan="2">Total</td>
+            <td class="num"><span id="zoned-total-val">${total.toLocaleString()}</span></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button class="btn-reset-zoned" id="btn-reset-zoned">Reset to original values</button>`;
+
+    wrap.innerHTML = html;
+
+    // Live total update
+    wrap.querySelectorAll(".zoned-input").forEach(inp => {
+      inp.addEventListener("input", onZonedInput);
+    });
+
+    document.getElementById("btn-reset-zoned").addEventListener("click", resetZoned);
+  }
+
+  function onZonedInput(e) {
+    const inp = e.target;
+    const orig = parseInt(inp.dataset.original);
+    const cur  = parseInt(inp.value) || 0;
+    inp.classList.toggle("modified", cur !== orig);
+    updateZonedTotal();
+  }
+
+  function updateZonedTotal() {
+    const inputs = document.querySelectorAll(".zoned-input");
+    let total = 0;
+    inputs.forEach(inp => total += parseInt(inp.value) || 0);
+    const origTotal = zonedOriginal.reduce((s, r) => s + r.Future_Units, 0);
+    const el = document.getElementById("zoned-total-val");
+    el.textContent = total.toLocaleString();
+    el.classList.toggle("modified", total !== origTotal);
+  }
+
+  function resetZoned() {
+    document.querySelectorAll(".zoned-input").forEach(inp => {
+      inp.value = inp.dataset.original;
+      inp.classList.remove("modified");
+    });
+    updateZonedTotal();
+  }
+
+  function getZonedUnitsPayload() {
+    const rows = [];
+    document.querySelectorAll("#zoned-table tbody tr").forEach((tr, i) => {
+      const orig = zonedOriginal[i];
+      const val  = parseInt(tr.querySelector(".zoned-input").value) || 0;
+      rows.push({ Jurisdiction: orig.Jurisdiction, Unit_Pool: orig.Unit_Pool, Future_Units: val });
+    });
+    return rows;
+  }
+
+  // ── Slider sync ─────────────────────────────────────────────────────────────
+  document.getElementById("inp-med-split").addEventListener("input", function() {
+    const v = parseInt(this.value);
+    document.getElementById("med-split-val").textContent = v + "%";
+    document.getElementById("badge-med").textContent = v + "%";
+    document.getElementById("badge-high").textContent = (100 - v) + "%";
+  });
+
+  // ── Alternative change ───────────────────────────────────────────────────────
+  document.getElementById("sel-alt").addEventListener("change", function() {
+    populateFileSelects(this.value);
+    loadZonedUnits(this.value);
+    hideDownload();
+  });
+
+  document.getElementById("inp-name").addEventListener("input", function() {
+    this.dataset.edited = "1";
+  });
+
+  // ── Generate ─────────────────────────────────────────────────────────────────
+  document.getElementById("btn-generate").addEventListener("click", async function() {
+    const btn = this;
+    const label = document.getElementById("btn-label");
+    label.innerHTML = `<span class="spinner"></span> Generating…`;
+    btn.disabled = true;
+    showStatus("info", "Running pipeline…");
+    hideDownload();
+
+    const params = {
+      alternative:               document.getElementById("sel-alt").value,
+      file_2035:                 document.getElementById("sel-file-2035").value,
+      file_2050:                 document.getElementById("sel-file-2050").value,
+      additional_occupied_units: parseInt(document.getElementById("inp-add-occ").value) || 0,
+      med_split:                 parseInt(document.getElementById("inp-med-split").value) / 100,
+      scenario_name:             document.getElementById("inp-name").value.trim() || "scenario_output",
+      zoned_units:               getZonedUnitsPayload(),
+    };
+
+    try {
+      const res  = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(params),
+      });
+      const data = await res.json();
+
+      if (data.status === "ok") {
+        const zt = data.zoned_totals;
+        let extra = zt.old !== zt.new
+          ? `Zoned units: ${zt.old.toLocaleString()} → <strong>${zt.new.toLocaleString()}</strong><br>`
+          : "";
+        const logLines = data.log.length ? data.log.join("<br>") : "Pipeline completed with no adjustments.";
+        showStatus("ok", extra + logLines);
+        renderSummary(data.summary);
+        lastDownload = data.download;
+        document.getElementById("btn-download").style.display = "flex";
+      } else {
+        showStatus("error", data.error || "Unknown error");
+      }
+    } catch(e) {
+      showStatus("error", "Request failed: " + e.message);
+    } finally {
+      label.textContent = "Generate Scenario Files";
+      btn.disabled = false;
+    }
+  });
+
+  document.getElementById("btn-download").addEventListener("click", function() {
+    if (lastDownload) window.location.href = lastDownload;
+  });
+
+  // ── Helpers ──────────────────────────────────────────────────────────────────
+  function showStatus(type, msg) {
+    const box = document.getElementById("status-box");
+    box.className = `status-box ${type}`;
+    box.innerHTML = msg;
+    box.style.display = "block";
+  }
+
+  function hideDownload() {
+    document.getElementById("btn-download").style.display = "none";
+    lastDownload = null;
+  }
+
+  const LABELS = {
+    total_residential_units: "Residential Units",
+    total_occ_units:         "Occupied Units",
+    occ_units_low_inc:       "Low Income Units",
+    occ_units_med_inc:       "Medium Income Units",
+    occ_units_high_inc:      "High Income Units",
+    total_persons:           "Total Persons",
+    emp_retail:              "Retail Employment",
+    emp_srvc:                "Service Employment",
+    emp_rec:                 "Recreation Employment",
+    emp_game:                "Gaming Employment",
+    emp_other:               "Other Employment",
+  };
+
+  const SECTIONS = {
+    total_residential_units: "Housing",
+    total_occ_units:         null,
+    occ_units_low_inc:       null,
+    occ_units_med_inc:       null,
+    occ_units_high_inc:      null,
+    total_persons:           "Population",
+    emp_retail:              "Employment",
+    emp_srvc:                null,
+    emp_rec:                 null,
+    emp_game:                null,
+    emp_other:               null,
+  };
+
+  function buildTable(data) {
+    let html = `<table><thead><tr><th>Variable</th><th class="num">Total</th></tr></thead><tbody>`;
+    Object.entries(LABELS).forEach(([key, label]) => {
+      if (SECTIONS[key]) {
+        html += `<tr class="section-row"><td colspan="2">${SECTIONS[key]}</td></tr>`;
+      }
+      const val = data[key] != null ? data[key].toLocaleString() : "—";
+      html += `<tr><td>${label}</td><td class="num">${val}</td></tr>`;
+    });
+    html += `</tbody></table>`;
+    return html;
+  }
+
+  function renderSummary(summary) {
+    document.getElementById("results-placeholder").style.display = "none";
+    document.getElementById("table-2035").innerHTML = buildTable(summary["2035"]);
+    document.getElementById("table-2050").innerHTML = buildTable(summary["2050"]);
+    document.getElementById("summary-grid").style.display = "grid";
+  }
+
+  init();
+</script>
+</body>
+</html>
