@@ -4,16 +4,16 @@ CSLT,General,395
 DG,Bonus Unit,67
 DG,General,160
 EL,General,281
-PL,General,41
-PL,Bonus Unit,582
+PL,General,582
+PL,Bonus Unit,41
 WA,General,196
 WA,Bonus Unit,120
 TRPA,General,948
 TRPA,Bonus Unit,388
 TRPA,ADU,110
-TRPA,Affordable,561
-TRPA,Moderate,351
-TRPA,Achievable Bonus,280
-TRPA,Affordable by Design,140
-TRPA,Achievable General,70
-TRPA,JADU,396
+TRPA,Affordable,258
+TRPA,Moderate,161
+TRPA,Achievable Bonus,161
+TRPA,Affordable by Design,64
+TRPA,Achievable General,32
+TRPA,JADU,154
