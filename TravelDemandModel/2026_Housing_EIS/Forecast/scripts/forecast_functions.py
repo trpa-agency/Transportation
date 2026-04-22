@@ -462,18 +462,39 @@ def clean_taz_summary(df_taz, taz_field_mapping):
     for col in ["total_occ_units", "occ_units_high_inc", "occ_units_med_inc", "occ_units_low_inc"]:
         df_taz[col] = df_taz[col].round(0).astype(int)
 
-    # Income tie-break: if TAZ has occupied units but all income classes rounded to 0
-    income_sum_taz = df_taz["occ_units_high_inc"] + df_taz["occ_units_med_inc"] + df_taz["occ_units_low_inc"]
-    fix_income_taz = (df_taz["total_occ_units"] > 0) & (income_sum_taz == 0)
-    if fix_income_taz.sum() > 0:
-        print(f"  Income fix applied to {fix_income_taz.sum()} TAZs")
-        best_class = df_taz.loc[fix_income_taz, ["occ_units_high_inc", "occ_units_med_inc", "occ_units_low_inc"]].idxmax(axis=1)
-        for idx, cls in best_class.items():
-            df_taz.loc[idx, cls] = 1
-    else:
-        print("  Income fix: no TAZs affected")
+        # Ensure income categories sum to total_occ_units
+    income_cols = ["occ_units_high_inc", "occ_units_med_inc", "occ_units_low_inc"]
 
-    df_taz["total_persons"] = df_taz["total_persons"].round(0).astype(int)
+    income_sum_taz = df_taz[income_cols].sum(axis=1)
+    diff = df_taz["total_occ_units"] - income_sum_taz
+
+    fix_needed = diff != 0
+    if fix_needed.sum() > 0:
+        print(f"  Income balancing applied to {fix_needed.sum()} TAZs")
+
+        for idx in df_taz[fix_needed].index:
+            d = diff.loc[idx]
+
+            # If we need to add units
+            if d > 0:
+                # Distribute to the largest existing category (or cycle if all zero)
+                for _ in range(d):
+                    row = df_taz.loc[idx, income_cols]
+                    target_col = row.idxmax() if row.sum() > 0 else income_cols[0]
+                    df_taz.loc[idx, target_col] += 1
+
+            # If we need to remove units
+            elif d < 0:
+                for _ in range(abs(d)):
+                    row = df_taz.loc[idx, income_cols]
+                    # Only subtract from non-zero categories
+                    non_zero = row[row > 0]
+                    if len(non_zero) == 0:
+                        break
+                    target_col = non_zero.idxmax()
+                    df_taz.loc[idx, target_col] -= 1
+    else:
+        print("  Income balancing: no TAZs affected")
 
     # Zero out People where OccupiedUnits == 0 at TAZ level
     pop_fix_taz = (df_taz["total_persons"] > 0) & (df_taz["total_occ_units"] == 0)
