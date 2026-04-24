@@ -59,7 +59,7 @@ EIS_DIR       = FORECAST_DIR.parent  # 2026_Housing_EIS/
 
 # ── EDIT: directory containing scenario config JSONs ──────────────────────────
 # Every *.json file directly in this folder is treated as a scenario config.
-SCENARIO_DIR = FORECAST_DIR / 'configs_04222026'
+SCENARIO_DIR = FORECAST_DIR / 'configs_final_04242026'
 # ──────────────────────────────────────────────────────────────────────────────
 
 
