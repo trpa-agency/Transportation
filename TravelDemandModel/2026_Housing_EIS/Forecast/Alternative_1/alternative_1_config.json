@@ -1,0 +1,25 @@
+{
+    "_notes": "Alternative 1 is the baseline scenario. It targets regional population totals via adjust_taz_population and exports the persons_per_occ_unit lookup CSVs that all other scenarios consume. Run this before running Alts 2-4.",
+    "scenario_name": "Alternative_1_",
+    "res_zoned_lookup": "inputs/forecast_residential_zoned_units.csv",
+    "adjust_for_workfromhome": "yes",
+    "adjust_occupancy": "no",
+    "adjust_taz_population": "yes",
+    "target_population_2035": 55592,
+    "target_population_2050": 57611,
+    "zone_proportions": {
+        "default": {"mf": 0.35, "sf": 0.50, "infill": 0.15}
+    },
+    "occupancy_rates": {
+        "Bonus":   1.00,
+        "CTC":     1.00,
+        "General": 0.35,
+        "ADU":     0.70
+    },
+    "income_proportions": {
+        "Bonus":   {"low": 0.78, "medium": 0.20, "high": 0.02},
+        "General": {"low": 0.01, "medium": 0.02, "high": 0.97},
+        "ADU":     {"low": 0.65, "medium": 0.20, "high": 0.15},
+        "CTC":     {"low": 1.00, "medium": 0.00, "high": 0.00}
+    }
+}

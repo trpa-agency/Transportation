@@ -1,0 +1,30 @@
+{
+    "_comment": "Template config for Scenario_Forecast.ipynb. Copy this file, rename it for your scenario, and update the values below.",
+    "scenario_name": "Alternative_X_reduced_",
+    "res_zoned_lookup": "forecast_residential_zoned_units_altX.csv",
+    "adjust_for_workfromhome": "no",
+    "adjust_occupancy": "no",
+    "adjust_occupancy_additional_units": 855,
+    "zone_proportions": {
+        "_comment": "Keys are either 'default' or 'Jurisdiction|Pool' strings (e.g. 'CSLT|Bonus Unit'). Values must have mf + sf + infill = 1.0.",
+        "default": {"mf": 0.35, "sf": 0.50, "infill": 0.15}
+    },
+    "occupancy_rates": {
+        "_comment": "Keyed by FORECAST_REASON keyword. Values are 0.0–1.0.",
+        "Bonus":      1.00,
+        "CTC":        1.00,
+        "General":    0.35,
+        "ADU":        0.70,
+        "Affordable": 1.00,
+        "Moderate":   1.00
+    },
+    "income_proportions": {
+        "_comment": "Keyed by FORECAST_REASON keyword. low + medium + high must equal 1.0 for each entry.",
+        "Bonus":      {"low": 0.40, "medium": 0.25, "high": 0.35},
+        "General":    {"low": 0.29, "medium": 0.18, "high": 0.53},
+        "ADU":        {"low": 0.65, "medium": 0.20, "high": 0.15},
+        "CTC":        {"low": 1.00, "medium": 0.00, "high": 0.00},
+        "Affordable": {"low": 0.40, "medium": 0.25, "high": 0.35},
+        "Moderate":   {"low": 0.29, "medium": 0.18, "high": 0.53}
+    }
+}
