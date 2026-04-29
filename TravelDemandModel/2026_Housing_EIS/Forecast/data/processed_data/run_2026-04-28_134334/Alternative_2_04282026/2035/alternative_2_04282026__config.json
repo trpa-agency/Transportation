@@ -1,0 +1,58 @@
+{
+    "scenario_name": "Alternative_2_04282026",
+    "adjust_for_occ_unit_emp": "yes",
+    "occ_unit_emp_csv": "taz_towncenter_jobs_alt_2.csv",
+    "occ_unit_emp_target_2035": 66,
+    "occ_unit_emp_target_2050": 176,
+    "adjust_occupancy": "no",
+    "adjust_taz_population": "no",
+    "zone_proportions": {
+        "default": {"mf": 0.35, "sf": 0.50, "infill": 0.15},
+        "Affordable": {"mf": 1.00, "sf": 0, "infill": 0}
+    },
+    "occupancy_rates": {
+        "Bonus":      1.00,
+        "CTC":        1.00,
+        "General":    0.35,
+        "ADU":        0.70,
+        "Affordable": 1.00,
+        "Moderate":   1.00,
+        "Achievable Bonus": 1.00,
+        "Achievable General": 1.00,
+        "Affordable by Design": 1.00,
+        "Achievable TC": 1.00,
+        "Affordable by Design TC": 1.00,
+        "JADU": 1.00
+    },
+    "income_proportions": {
+        "Bonus":      {"low": 0.4, "medium": 0.25, "high": 0.35},
+        "General":    {"low": 0.29, "medium": 0.18, "high": 0.53},
+        "ADU":        {"low": 0.65, "medium": 0.20, "high": 0.15},
+        "CTC":        {"low": 1.00, "medium": 0.00, "high": 0.00},
+        "Affordable": {"low": 0.40, "medium": 0.25, "high": 0.35},
+        "Moderate":   {"low": 0.29, "medium": 0.18, "high": 0.53}
+    },
+    "residential_units": [
+        {"Jurisdiction": "CSLT", "Unit_Pool": "Bonus Unit",           "Future_Units": 89},
+        {"Jurisdiction": "CSLT", "Unit_Pool": "General",              "Future_Units": 395},
+        {"Jurisdiction": "DG",   "Unit_Pool": "Bonus Unit",           "Future_Units": 67},
+        {"Jurisdiction": "DG",   "Unit_Pool": "General",              "Future_Units": 160},
+        {"Jurisdiction": "EL",   "Unit_Pool": "General",              "Future_Units": 281},
+        {"Jurisdiction": "PL",   "Unit_Pool": "General",              "Future_Units": 41},
+        {"Jurisdiction": "PL",   "Unit_Pool": "Bonus Unit",           "Future_Units": 582},
+        {"Jurisdiction": "WA",   "Unit_Pool": "General",              "Future_Units": 196},
+        {"Jurisdiction": "WA",   "Unit_Pool": "Bonus Unit",           "Future_Units": 120},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "General",              "Future_Units": 948},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Bonus Unit",           "Future_Units": 388},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "ADU",                  "Future_Units": 110},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Affordable",           "Future_Units": 456},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Moderate",             "Future_Units": 285},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Achievable Bonus",     "Future_Units": 228},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Achievable General",   "Future_Units": 57},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Achievable TC",        "Future_Units": 100},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Affordable by Design", "Future_Units": 114},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "Affordable by Design TC", "Future_Units": 40},
+        {"Jurisdiction": "TRPA", "Unit_Pool": "JADU",                 "Future_Units": 98}
+
+    ]
+}

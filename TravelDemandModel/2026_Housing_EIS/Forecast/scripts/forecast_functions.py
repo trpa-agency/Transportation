@@ -96,6 +96,12 @@ def forecast_trpa_pools(sdfParcels, dfPool, conditions, df_built_parcels):
         ('TRPA_Achievable_Gen_MF',      'TRPA', 'Achievable General',   'MF',     'TRPA Achievable General Units MF',  forecast_residential_units),
         ('TRPA_Achievable_Gen_SF',      'TRPA', 'Achievable General',   'SF',     'TRPA Achievable General Units SF',  forecast_residential_units),
         ('TRPA_Achievable_Gen_Infill',  'TRPA', 'Achievable General',   'Infill', 'TRPA Achievable General Units Infill',  forecast_residential_units_infill),
+        ('TRPA_Affordable_by_Design_TC_Infill', 'TRPA', 'Affordable by Design TC', 'Infill', 'TRPA Affordable by Design TC Units Infill', forecast_residential_units_infill),
+        ('TRPA_Affordable_by_Design_TC_SF', 'TRPA', 'Affordable by Design TC', 'SF', 'TRPA Affordable by Design TC Units SF', forecast_residential_units),
+        ('TRPA_Affordable_by_Design_TC_MF', 'TRPA', 'Affordable by Design TC', 'MF', 'TRPA Affordable by Design TC Units MF', forecast_residential_units),
+        ('TRPA_Achievable_TC_MF', 'TRPA', 'Achievable TC', 'MF', 'TRPA Achievable TC Units MF', forecast_residential_units),
+        ('TRPA_Achievable_TC_SF', 'TRPA', 'Achievable TC', 'SF', 'TRPA Achievable TC Units SF', forecast_residential_units),
+        ('TRPA_Achievable_TC_Infill', 'TRPA', 'Achievable TC', 'Infill', 'TRPA Achievable TC Units Infill', forecast_residential_units_infill),
         ('TRPA_JADU',           'TRPA', 'JADU',         'JADU',    'TRPA JADU Units',            forecast_residential_units)
     ]
 
@@ -115,7 +121,7 @@ def forecast_trpa_pools(sdfParcels, dfPool, conditions, df_built_parcels):
 # Assign the Remainders
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def assign_remainders(sdfParcels, conditions, df_built_parcels, adu_target=4319):
+def assign_remainders(sdfParcels, conditions, df_built_parcels, target_units):
     """Assign remainder units as infill and fill the ADU pool to target."""
     df_remaining = df_built_parcels.loc[df_built_parcels.Total_Remaining_Units > 0].copy()
     df_remaining['Jurisdiction'] = df_remaining['Reason'].str.split(' ').str[0]
@@ -128,16 +134,36 @@ def assign_remainders(sdfParcels, conditions, df_built_parcels, adu_target=4319)
         ('WA General Units MF',    'WA_General_Infill',  'WA General Units Infill',   forecast_residential_units_infill),
         ('WA General Units SF',    'WA_General_Infill',  'WA General Units Infill',   forecast_residential_units_infill),
         ('TRPA General Units MF',  'TRPA_General_Infill','TRPA General Units Infill', forecast_residential_units_infill),
+        ('TRPA Affordable Units MF',  'TRPA_Affordable_Infill','TRPA Affordable Units Infill', forecast_residential_units_infill),
+        ('TRPA Affordable Units SF',  'TRPA_Affordable_Infill','TRPA Affordable Units Infill', forecast_residential_units_infill),
+        ('TRPA Moderate Units MF',  'TRPA_Moderate_Infill','TRPA Moderate Units Infill', forecast_residential_units_infill),
+        ('TRPA Moderate Units SF',  'TRPA_Moderate_Infill','TRPA Moderate Units Infill', forecast_residential_units_infill),
+        ('TRPA Achievable Bonus Units MF',  'TRPA_Achievable_Bonus_Infill','TRPA Achievable Bonus Units Infill', forecast_residential_units_infill),
+        ('TRPA Achievable Bonus Units SF',  'TRPA_Achievable_Bonus_Infill','TRPA Achievable Bonus Units Infill', forecast_residential_units_infill),
+        ('TRPA Affordable BD Units MF',  'TRPA_Affordable_BD_Infill','TRPA Affordable BD Units Infill', forecast_residential_units_infill),
+        ('TRPA Affordable BD Units SF',  'TRPA_Affordable_BD_Infill','TRPA Affordable BD Units Infill', forecast_residential_units_infill),
+        ('TRPA Achievable General Units MF',  'TRPA_Achievable_Gen_Infill','TRPA Achievable General Units Infill', forecast_residential_units_infill),
+        ('TRPA Achievable General Units SF',  'TRPA_Achievable_Gen_Infill','TRPA Achievable General Units Infill', forecast_residential_units_infill),    
+        ('TRPA Affordable by Design TC Units SF', 'TRPA_Affordable_by_Design_TC_Infill', 'TRPA Affordable by Design TC Units Infill', forecast_residential_units_infill),
+        ('TRPA Affordable by Design TC Units MF', 'TRPA_Affordable_by_Design_TC_Infill', 'TRPA Affordable by Design TC Units Infill', forecast_residential_units_infill),
+        ('TRPA Achievable TC Units MF', 'TRPA_Achievable_TC_Infill', 'TRPA Achievable TC Units Infill', forecast_residential_units_infill),
+        ('TRPA Achievable TC Units SF', 'TRPA_Achievable_TC_Infill', 'TRPA Achievable TC Units Infill', forecast_residential_units_infill),
+
     ]
 
     for remaining_reason, condition_key, label, fn in remainder_assignments:
-        target_sum             = df_remaining.loc[df_remaining.Reason == remaining_reason, 'Total_Remaining_Units'].values[0]
+        matches = df_remaining.loc[df_remaining.Reason == remaining_reason, 'Total_Remaining_Units']
+        if matches.empty:
+            continue
+        target_sum             = matches.values[0]
+        print(f'Remainder assignment - {label} - target units to assign = {target_sum}')
         sdfParcels, df_summary = fn(sdfParcels, conditions[condition_key], target_sum, label)
         df_built_parcels       = pd.concat([df_built_parcels, df_summary], ignore_index=True)
 
     # ADU assignment to eligible residential parcels
     TRPA_ADU_condition = conditions['TRPA_ADU']
-    target_sum = adu_target - sdfParcels.FORECASTED_RESIDENTIAL_UNITS.sum()
+
+    target_sum = target_units - sdfParcels.FORECASTED_RESIDENTIAL_UNITS.sum()
     sdfParcels, df_summary = forecast_residential_units(sdfParcels, TRPA_ADU_condition, target_sum, 'TRPA ADU Units')
     df_built_parcels = pd.concat([df_built_parcels, df_summary], ignore_index=True)
 
@@ -220,6 +246,13 @@ def assign_occupancy_rate(sdfParcels, occupancy_rates, res_assigned_lookup_path=
     for reason_keyword, rate in occupancy_rates.items():
         mask = sdfParcels['FORECAST_REASON'].fillna('').str.contains(reason_keyword)
         sdfParcels.loc[mask, 'FORECASTED_RES_OCCUPANCY_RATE'] = rate
+
+    # Parcels with a FORECAST_REASON that matched no keyword default to 1
+    has_reason = sdfParcels['FORECAST_REASON'].notna() & (sdfParcels['FORECAST_REASON'] != '')
+    no_keyword_match = ~sdfParcels['FORECAST_REASON'].fillna('').apply(
+        lambda r: any(kw in r for kw in occupancy_rates)
+    )
+    sdfParcels.loc[has_reason & no_keyword_match, 'FORECASTED_RES_OCCUPANCY_RATE'] = 1
 
     return sdfParcels, dfResAssigned
 

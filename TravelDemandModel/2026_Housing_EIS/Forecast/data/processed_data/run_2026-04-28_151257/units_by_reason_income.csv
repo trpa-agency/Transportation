@@ -1,0 +1,21 @@
+forecast_reason,Alternative_1_residential,Alternative_1_low_inc,Alternative_1_med_inc,Alternative_1_high_inc,Alternative_2_residential,Alternative_2_low_inc,Alternative_2_med_inc,Alternative_2_high_inc,Alternative_3_residential,Alternative_3_low_inc,Alternative_3_med_inc,Alternative_3_high_inc
+,0,0,0,0,0,0,0,0,0,0,0,0
+Assigned,874,542,32,300,874,542,32,300,874,542,32,300
+CSLT Bonus Units,89,69,17,1,89,35,22,31,89,69,17,1
+CSLT General Units,395,1,2,134,395,1,2,134,395,1,2,134
+DG Bonus Units,37,28,7,0,37,14,9,12,37,28,7,0
+DG General Units,127,0,0,43,127,0,0,43,127,0,0,43
+EL General Units,281,0,1,95,281,0,1,95,281,0,1,95
+PL Bonus Units,447,348,89,8,447,178,111,156,447,348,89,8
+PL General Units,41,0,0,13,41,0,0,13,41,0,0,13
+TRPA ADU Units,308,140,43,32,308,140,43,32,308,140,43,32
+TRPA Achievable Bonus Units,0,0,0,0,228,91,57,79,0,0,0,0
+TRPA Achievable General Units,0,0,0,0,57,0,1,55,0,0,0,0
+TRPA Affordable BD Units,0,0,0,0,114,114,0,0,0,0,0,0
+TRPA Affordable Units,0,0,0,0,456,456,0,0,0,0,0,0
+TRPA Bonus Units,388,302,77,7,388,155,97,135,388,302,77,7
+TRPA General Units,948,3,6,321,948,3,6,321,948,3,6,321
+TRPA JADU Units,0,0,0,0,98,63,19,14,0,0,0,0
+TRPA Moderate Units,0,0,0,0,285,0,285,0,0,0,0,0
+WA Bonus Units,120,93,24,2,120,48,30,42,120,93,24,2
+WA General Units,196,0,1,66,196,0,1,66,196,0,1,66
