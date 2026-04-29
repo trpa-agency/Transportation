@@ -59,7 +59,7 @@ EIS_DIR       = FORECAST_DIR.parent  # 2026_Housing_EIS/
 
 # ── EDIT: directory containing scenario config JSONs ──────────────────────────
 # Every *.json file directly in this folder is treated as a scenario config.
-SCENARIO_DIR = FORECAST_DIR / 'configs_final_04242026'
+SCENARIO_DIR = FORECAST_DIR / 'configs_final'
 # ──────────────────────────────────────────────────────────────────────────────
 
 
@@ -218,7 +218,7 @@ def run_scenario(config_path, shared, run_folder):
         config = json.load(f)
 
     scenario_name           = config['scenario_name']
-    adjust_for_workfromhome = config.get('adjust_for_workfromhome', 'no').strip().lower() == 'yes'
+    adjust_for_occ_unit_emp = config.get('adjust_for_occ_unit_emp', 'no').strip().lower() == 'yes'
     adjust_occupancy        = config.get('adjust_occupancy', 'no').strip().lower() == 'yes'
     adjust_taz_pop          = config.get('adjust_taz_population', 'no').strip().lower() == 'yes'
     zone_proportions        = config['zone_proportions']
@@ -226,17 +226,19 @@ def run_scenario(config_path, shared, run_folder):
     income_proportions      = config['income_proportions']
 
     if adjust_occupancy:
-        additional_occupied_units = int(config['adjust_occupancy_additional_units'])
+        additional_occupied_units_2035 = int(config['adjust_occupancy_additional_units_2035'])
+        additional_occupied_units_2050 = int(config['adjust_occupancy_additional_units_2050'])
     if adjust_taz_pop:
         target_population_2035 = int(config['target_population_2035'])
         target_population_2050 = int(config['target_population_2050'])
 
     print(f"  Scenario:              {scenario_name}")
     print(f"  Config:                {config_path}")
-    print(f"  Work-from-home col:    {adjust_for_workfromhome}")
+    print(f"  Occ unit emp adjust:   {adjust_for_occ_unit_emp}")
     print(f"  Occupancy adjust:      {adjust_occupancy}")
     if adjust_occupancy:
-        print(f"  Additional occ units:  {additional_occupied_units}")
+        print(f"  Additional occ units 2035: {additional_occupied_units_2035}")
+        print(f"  Additional occ units 2050: {additional_occupied_units_2050}")
     print(f"  TAZ population adjust: {adjust_taz_pop}")
     if adjust_taz_pop:
         print(f"  Target pop 2035:       {target_population_2035}")
@@ -256,13 +258,16 @@ def run_scenario(config_path, shared, run_folder):
     dfResZoned = pd.DataFrame(config['residential_units'])
     dfPool     = pd.DataFrame(config['residential_units'])
     dfPool     = get_adjusted_future_units(dfPool, zone_proportions)
+    total_future_units = dfPool['Future_Units'].sum()
+    assigned_units = 874
+    total_future_units = total_future_units + assigned_units
 
     # ── Forecast pipeline ─────────────────────────────────────────────────────
     df_res_assigned_lookup = DATA_DIR / 'inputs' / 'res_assigned_lookup.csv'
     conditions = get_parcel_conditions()
     sdfParcels, df_built_parcels = forecast_jurisdiction_pools(sdfParcels, dfPool, conditions)
     sdfParcels, df_built_parcels = forecast_trpa_pools(sdfParcels, dfPool, conditions, df_built_parcels)
-    sdfParcels, df_built_parcels = assign_remainders(sdfParcels, conditions, df_built_parcels, adu_target=4385)
+    sdfParcels, df_built_parcels = assign_remainders(sdfParcels, conditions, df_built_parcels, target_units = total_future_units)
     df_forecast_check = check_forecast_results(sdfParcels, dfPool)
     sdfParcels = assign_development_year(sdfParcels, dfResZoned)
     sdfParcels, dfResAssigned = assign_occupancy_rate(sdfParcels, occupancy_rates, df_res_assigned_lookup)
@@ -311,8 +316,8 @@ def run_scenario(config_path, shared, run_folder):
     # ── Optional: occupancy adjustment ────────────────────────────────────────
     if adjust_occupancy:
         rng = np.random.default_rng(seed=42)
-        df_taz_2035 = adjust_occupied_units(df_taz_2035, additional_occupied_units, "2035", rng)
-        df_taz_2050 = adjust_occupied_units(df_taz_2050, additional_occupied_units, "2050", rng)
+        df_taz_2035 = adjust_occupied_units(df_taz_2035, additional_occupied_units_2035, "2035", rng)
+        df_taz_2050 = adjust_occupied_units(df_taz_2050, additional_occupied_units_2050, "2050", rng)
     else:
         print("  Occupancy adjustment skipped")
 
@@ -325,22 +330,22 @@ def run_scenario(config_path, shared, run_folder):
     df_taz_2035 = update_employment_numbers(df_taz_2035, shared['dfEmployment_2035'])
     df_taz_2050 = update_employment_numbers(df_taz_2050, shared['dfEmployment_2050'])
 
-    # ── Optional: add work-from-home jobs to emp_other ───────────────────────
-    if adjust_for_workfromhome:
-        wfh_csv = config.get('work_from_home_csv', 'taz_work_from_home.csv')
-        dfWFH = pd.read_csv(DATA_DIR / 'inputs' / wfh_csv)
-        dfWFH['TAZ'] = dfWFH['TAZ'].astype(int)
+    # ── Optional: add occupied-unit employment to emp_other ──────────────────
+    if adjust_for_occ_unit_emp:
+        occ_emp_csv = config.get('occ_unit_emp_csv', 'taz_towncenter_jobs.csv')
+        dfOccEmp = pd.read_csv(DATA_DIR / 'inputs' / occ_emp_csv)
+        dfOccEmp['TAZ'] = dfOccEmp['TAZ'].astype(int)
         df_taz_2035['TAZ'] = df_taz_2035['TAZ'].astype(int)
         df_taz_2050['TAZ'] = df_taz_2050['TAZ'].astype(int)
-        df_taz_2035 = df_taz_2035.merge(dfWFH, on='TAZ', how='left')
-        df_taz_2050 = df_taz_2050.merge(dfWFH, on='TAZ', how='left')
-        df_taz_2035['emp_other'] = df_taz_2035['emp_other'] + df_taz_2035['work_from_home'].fillna(0)
-        df_taz_2050['emp_other'] = df_taz_2050['emp_other'] + df_taz_2050['work_from_home'].fillna(0)
-        df_taz_2035.drop(columns=['work_from_home'], inplace=True)
-        df_taz_2050.drop(columns=['work_from_home'], inplace=True)
-        print(f"  Work-from-home jobs added to emp_other ({wfh_csv})")
+        df_taz_2035 = df_taz_2035.merge(dfOccEmp, on='TAZ', how='left')
+        df_taz_2050 = df_taz_2050.merge(dfOccEmp, on='TAZ', how='left')
+        df_taz_2035['emp_other'] = df_taz_2035['emp_other'] + (df_taz_2035['occ_unit_emp'].fillna(0) * 0.375).round()
+        df_taz_2050['emp_other'] = df_taz_2050['emp_other'] + df_taz_2050['occ_unit_emp'].fillna(0)
+        df_taz_2035.drop(columns=['occ_unit_emp'], inplace=True)
+        df_taz_2050.drop(columns=['occ_unit_emp'], inplace=True)
+        print(f"  Occupied-unit employment added to emp_other ({occ_emp_csv}): 37.5% for 2035, 100% for 2050")
     else:
-        print("  Work-from-home adjustment skipped")
+        print("  Occupied-unit employment adjustment skipped")
 
     # Rename TAZ column for model input
     df_taz_2035.rename(columns={'TAZ': 'taz'}, inplace=True)

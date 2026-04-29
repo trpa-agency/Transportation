@@ -475,21 +475,28 @@ def get_parcel_conditions():
 
     # Scenario 2 Conditions
     # These will all be set to 0 in the main input files
-    TRPA_Affordable_MF_condition       = trpa_boundary_criteria + " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Affordable_SF_condition       = trpa_boundary_criteria + " & " + towncenter_condition + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Affordable_MF_condition       = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Affordable_SF_condition       = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + towncenter_condition + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
     TRPA_Affordable_Infill_condition   = trpa_boundary_criteria + " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Moderate_MF_condition         = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Moderate_SF_condition         = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Moderate_MF_condition         = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & "  + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Moderate_SF_condition         = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & "  + bonus_unit_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
     TRPA_Moderate_Infill_condition     = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
 
-    TRPA_Achievable_Bonus_MF_condition         = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Achievable_Bonus_SF_condition         = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_Bonus_MF_condition         = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & "  + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_Bonus_SF_condition         = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & "  + bonus_unit_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
     TRPA_Achievable_Bonus_Infill_condition     = trpa_boundary_criteria + " & " + bonus_unit_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Achievable_General_MF_condition       = trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Achievable_General_SF_condition       = trpa_boundary_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_General_MF_condition       = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_General_SF_condition       = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
     TRPA_Achievable_General_Infill_condition     = trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Affordable_by_Design_MF_condition       = trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
-    TRPA_Affordable_by_Design_SF_condition       = trpa_boundary_criteria + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_Towncenter_MF_condition     = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_Towncenter_SF_condition     = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + towncenter_condition + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Achievable_Towncenter_Infill_condition = trpa_boundary_criteria + " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    
+    TRPA_Affordable_by_Design_TC_Infill_condition = trpa_boundary_criteria + " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Affordable_by_Design_TC_SF_condition     = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + towncenter_condition + " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Affordable_by_Design_TC_MF_condition    = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + towncenter_condition + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Affordable_by_Design_MF_condition       = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
+    TRPA_Affordable_by_Design_SF_condition       = trpa_boundary_criteria + " & "+vacant_buildable_criteria+ " & " + sf_only_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
     TRPA_Affordable_by_Design_Infill_condition   = trpa_boundary_criteria + " & " + sf_mf_criteria + " & " + ready_to_forecast + " & " + condo_size_condition
     conditions = {
                     'CSLT_Bonus_SF'      : CSLT_Bonus_SF_condition, 
@@ -541,10 +548,16 @@ def get_parcel_conditions():
                     'TRPA_Achievable_Gen_MF' : TRPA_Achievable_General_MF_condition,
                     'TRPA_Achievable_Gen_SF' : TRPA_Achievable_General_SF_condition,
                     'TRPA_Achievable_Gen_Infill' : TRPA_Achievable_General_Infill_condition,
+                    'TRPA_Achievable_TC_MF' : TRPA_Achievable_Towncenter_MF_condition,
+                    'TRPA_Achievable_TC_SF' : TRPA_Achievable_Towncenter_SF_condition,
+                    'TRPA_Achievable_TC_Infill' : TRPA_Achievable_Towncenter_Infill_condition,
                     'TRPA_JADU'           : TRPA_ADU_condition,
                     'TRPA_Affordable_BD_MF' : TRPA_Affordable_by_Design_MF_condition,
                     'TRPA_Affordable_BD_SF' : TRPA_Affordable_by_Design_SF_condition,
-                    'TRPA_Affordable_BD_Infill' : TRPA_Affordable_by_Design_Infill_condition
+                    'TRPA_Affordable_BD_Infill' : TRPA_Affordable_by_Design_Infill_condition,
+                    'TRPA_Affordable_by_Design_TC_Infill' : TRPA_Affordable_by_Design_TC_Infill_condition,
+                    'TRPA_Affordable_by_Design_TC_SF' : TRPA_Affordable_by_Design_TC_SF_condition,
+                    'TRPA_Affordable_by_Design_TC_MF' : TRPA_Affordable_by_Design_TC_MF_condition
                     }
     return conditions
 # get SQL connection

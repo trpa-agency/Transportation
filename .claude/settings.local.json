@@ -10,7 +10,9 @@
       "Bash(python3 -c \"import flask; print\\(flask.__version__\\)\")",
       "Bash(c:/Users/amcclary/AppData/Local/ESRI/conda/envs/arcgispro-py3-plotly/python.exe -c ' *)",
       "Bash(python3 -c ' *)",
-      "Bash(python3 -c \" import json with open\\(r'c:/Users/amcclary/Documents/GitHub/Transportation/TravelDemandModel/2026_Housing_EIS/Forecast/scripts/Summary.ipynb'\\) as f: nb = json.load\\(f\\) for cell in nb['cells']: print\\(f'--- {cell[\\\\\"id\\\\\"]} ---'\\) print\\(''.join\\(cell['source']\\)[:300]\\) print\\(\\) \")"
+      "Bash(python3 -c \" import json with open\\(r'c:/Users/amcclary/Documents/GitHub/Transportation/TravelDemandModel/2026_Housing_EIS/Forecast/scripts/Summary.ipynb'\\) as f: nb = json.load\\(f\\) for cell in nb['cells']: print\\(f'--- {cell[\\\\\"id\\\\\"]} ---'\\) print\\(''.join\\(cell['source']\\)[:300]\\) print\\(\\) \")",
+      "Bash(python -c \"import pandas as pd; df = pd.read_csv\\('c:/Users/amcclary/Documents/GitHub/Transportation/TravelDemandModel/2026_Housing_EIS/Forecast/data/inputs/taz_towncenter_jobs.csv'\\); print\\(df.head\\(\\)\\); print\\('Columns:', df.columns.tolist\\(\\)\\); print\\('Total:', df.iloc[:,1].sum\\(\\)\\)\")",
+      "Bash(python -c ' *)"
     ]
   }
 }
