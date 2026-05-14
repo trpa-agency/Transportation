@@ -89,13 +89,36 @@ def adjust_occupied_units(df, additional_units, label, rng):
     for col in ["total_occ_units", "occ_units_med_inc", "occ_units_high_inc"]:
         df[col] = df[col].round().astype(int)
 
+    # Cap occupied units at residential units per TAZ; scale income breakdown down proportionally
+    capped_mask = df["total_occ_units"] > df["total_residential_units"]
+    if capped_mask.any():
+        for idx in df.index[capped_mask]:
+            old_occ = df.at[idx, "total_occ_units"]
+            new_occ = int(df.at[idx, "total_residential_units"])
+            scale   = new_occ / old_occ if old_occ > 0 else 0
+            med_new  = round(df.at[idx, "occ_units_med_inc"]  * scale)
+            high_new = round(df.at[idx, "occ_units_high_inc"] * scale)
+            df.at[idx, "occ_units_med_inc"]  = med_new
+            df.at[idx, "occ_units_high_inc"] = high_new
+            df.at[idx, "occ_units_low_inc"]  = max(0, new_occ - med_new - high_new)
+            df.at[idx, "total_occ_units"]    = new_occ
+            df.at[idx, "total_persons"]      = round(new_occ * df.at[idx, "persons_per_occ_unit"])
+        print(f"  {label}: {capped_mask.sum()} TAZ(s) capped at residential unit count")
+
     diff = target_sum - df["total_occ_units"].sum()
     if diff != 0:
         direction = 1 if diff > 0 else -1
-        eligible  = df.index if direction == 1 else df.index[df["total_occ_units"] > 0]
-        chosen    = rng.choice(eligible, size=abs(diff), replace=False)
-        df.loc[chosen, "total_occ_units"] += direction
-        print(f"  {label} total_occ_units adjusted by {diff:+d} units across {abs(diff)} random TAZs")
+        # When adding units, only pick TAZs not already at their residential cap
+        if direction == 1:
+            eligible = df.index[df["total_occ_units"] < df["total_residential_units"]]
+        else:
+            eligible = df.index[df["total_occ_units"] > 0]
+        if len(eligible) >= abs(diff):
+            chosen = rng.choice(eligible, size=abs(diff), replace=False)
+            df.loc[chosen, "total_occ_units"] += direction
+            print(f"  {label} total_occ_units adjusted by {diff:+d} units across {abs(diff)} random TAZs")
+        else:
+            print(f"  {label} rounding residual of {diff:+d} could not be fully distributed (cap constraint)")
 
     income_sum     = df["occ_units_low_inc"] + df["occ_units_med_inc"] + df["occ_units_high_inc"]
     taz_diff       = df["total_occ_units"] - income_sum

@@ -1,0 +1,13 @@
+variable,Base
+total_residential_units,49950
+total_occ_units,23655
+occ_units_low_inc,9929
+occ_units_med_inc,4838
+occ_units_high_inc,8881
+total_persons,54679
+emp_retail,3711
+emp_srvc,7503
+emp_rec,2248
+emp_game,2564
+emp_other,10711
+total_jobs,26737
