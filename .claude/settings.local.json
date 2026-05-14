@@ -12,7 +12,8 @@
       "Bash(python3 -c ' *)",
       "Bash(python3 -c \" import json with open\\(r'c:/Users/amcclary/Documents/GitHub/Transportation/TravelDemandModel/2026_Housing_EIS/Forecast/scripts/Summary.ipynb'\\) as f: nb = json.load\\(f\\) for cell in nb['cells']: print\\(f'--- {cell[\\\\\"id\\\\\"]} ---'\\) print\\(''.join\\(cell['source']\\)[:300]\\) print\\(\\) \")",
       "Bash(python -c \"import pandas as pd; df = pd.read_csv\\('c:/Users/amcclary/Documents/GitHub/Transportation/TravelDemandModel/2026_Housing_EIS/Forecast/data/inputs/taz_towncenter_jobs.csv'\\); print\\(df.head\\(\\)\\); print\\('Columns:', df.columns.tolist\\(\\)\\); print\\('Total:', df.iloc[:,1].sum\\(\\)\\)\")",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import pandas as pd; df = pd.read_csv\\('c:/Users/amcclary/Documents/GitHub/Transportation/TravelDemandModel/2026_Housing_EIS/Forecast/data/processed_data/run_2026-04-28_140613/Alternative_1_04282026/2050/SocioEcon_Summer.csv', nrows=2\\); print\\(df.columns.tolist\\(\\)\\); print\\(df.head\\(2\\)\\)\")"
     ]
   }
 }
