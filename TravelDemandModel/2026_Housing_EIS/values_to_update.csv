@@ -1,0 +1,111 @@
+section,paragraph_or_table,metric,old_value_doc,new_base_year_2026,alt1_2035,alt1_2050,alt2_2035,alt2_2050,alt3_2035,alt3_2050,units,notes
+Introduction,P2,Document context,2025 TRPA Regional Transportation Plan (RTP),2026 Housing EIS,,,,,,,text,Change planning context throughout
+Introduction,P2,Base year,2022,2026,,,,,,,year,All base year references update
+Introduction,P4,Base year reference,2022 model base year,2026 model base year,,,,,,,text,
+Residential Units,P15,Total existing residential units,49424,49950,51062,54197,51469,55435,51062,54197,units,2035/2050 values are totals including new construction
+Residential Units,P15,Occupied by full-time residents (count),23141,23655,24687,26507,24997,27750,25019,27362,units,
+Residential Units,P15,Occupancy rate,47%,47.4%,48.3%,48.9%,48.6%,50.1%,49.0%,50.5%,percent,
+Residential Units,P15,Non-occupied units (count),26283,26295,26375,27690,26472,27685,26043,26835,units,
+Residential Units,P15,Multi-family units (approx),9885 (20%),~10000 (est),,,,,,,units,Exact split requires parcel-level analysis
+Residential Units,P15,Single-family units (approx),39539 (80%),~39950 (est),,,,,,,units,
+Residential Units,P15,Additional units by 2050 (net new),4385,N/A (2026 base),1112,4247,1519,5485,1112,4247,units,Net above 2026 base; Alt1 and Alt3 same unit count
+Residential Units,P15,Total units by 2050,53809,N/A,51062,54197,51469,55435,51062,54197,units,
+Residential Units,P15,Additional SF units by 2050,1754 (40%),varies by alt,,,,,,,units,Alt2 has higher MF share due to Affordable pool (100% MF)
+Residential Units,P15,Additional MF units by 2050,2631 (60%),varies by alt,,,,,,,units,
+Residential Units,P16,Remaining residential allocations,1892,see pool tables,,,,,,,units,Now tracked by pool and alternative
+Residential Units,P16,Residential bonus units (pool),1448,1246 all alts + 228 Achievable Bonus in Alt2,1246,1246,1474,1474,1246,1246,units,
+Residential Units,P16,Banked residential units,345,see config residential_units,,,,,,,units,
+Residential Units,P16,Units on CTC / public lands,710,see assigned projects lookup,,,,,,,units,
+Residential Units,P16,CFA/TAU to residential conversion (MF),350,200 MF from CFA + TAU conversion,,,,,,,units,
+Residential Units,P16,CFA/TAU to residential conversion (SF),350,200 SF from CFA + TAU conversion,,,,,,,units,
+Alternatives Overview,NEW,Alt 1 - scenario description,N/A (RTP had single forecast),Standard housing package with pop target adjustment,,,,,,,text,adjust_taz_population=yes; targets 55592 (2035) / 57611 (2050)
+Alternatives Overview,NEW,Alt 1 - total new units (config),N/A,N/A,3377,3377,,,,,units,1246 Bonus + 2021 General + 110 ADU
+Alternatives Overview,NEW,Alt 2 - scenario description,N/A,Additional affordable housing units + town center employment,,,,,,,text,adjust_for_occ_unit_emp=yes; adds Affordable/Moderate/JADU/Achievable pools
+Alternatives Overview,NEW,Alt 2 - total new units (config),N/A,N/A,,,4615,4615,,,units,1246 Bonus + 2021 Gen + 110 ADU + 456 Affordable + 285 Moderate + 228 Achievable Bonus + 98 JADU + 57 Achievable Gen + 114 Affordable by Design
+Alternatives Overview,NEW,Alt 2 - additional affordable units vs Alt 1,N/A,N/A,,,1238,1238,,,units,Net additional units above Alt 1 baseline
+Alternatives Overview,NEW,Alt 3 - scenario description,N/A,Same units as Alt1 + occupancy adjustment (STR/housing activation),,,,,,,text,adjust_occupancy=yes; adjust_for_occ_unit_emp=yes
+Alternatives Overview,NEW,Alt 3 - total new units (config),N/A,N/A,,,,,3377,3377,units,Same as Alt1
+Alternatives Overview,NEW,Alt 3 - additional occupied units 2035,N/A,N/A,,,,,332,,units,Represents STR conversion and housing activation programs
+Alternatives Overview,NEW,Alt 3 - additional occupied units 2050,N/A,N/A,,,,,,855,units,
+Jurisdiction Allocation,NEW,CSLT new units (Bonus + General),N/A,N/A,484,484,484,484,484,484,units,89 Bonus + 395 General
+Jurisdiction Allocation,NEW,Douglas County new units,N/A,N/A,227,227,227,227,227,227,units,67 Bonus + 160 General
+Jurisdiction Allocation,NEW,El Dorado County new units,N/A,N/A,281,281,281,281,281,281,units,281 General
+Jurisdiction Allocation,NEW,Placer County new units,N/A,N/A,623,623,623,623,623,623,units,41 General + 582 Bonus
+Jurisdiction Allocation,NEW,Washoe County new units,N/A,N/A,316,316,316,316,316,316,units,196 General + 120 Bonus
+Jurisdiction Allocation,NEW,TRPA (regional pools) new units,N/A,N/A,1446,1446,2684,2684,1446,1446,units,Alt2 adds Affordable/Moderate/JADU/Achievable pools
+Jurisdiction Allocation,NEW,Total new units (all jurisdictions),N/A,N/A,3377,3377,4615,4615,3377,3377,units,
+Residential Occupancy Rate,P22-P26,Base occupancy rate,47% (2022 ACS),47.4%,48.3%,48.9%,48.6%,50.1%,49.0%,50.5%,percent,
+Residential Occupancy Rate,NEW,Occupied units total,23141 (2022),23655,24687,26507,24997,27750,25019,27362,units,
+Residential Occupancy Rate,NEW,Low-income occupied units,N/A,9929,10563,11441,10709,11650,10563,11441,units,Alt2 2050 highest due to Affordable pool
+Residential Occupancy Rate,NEW,Medium-income occupied units,N/A,4838,4889,5142,4952,5607,5042,5556,units,
+Residential Occupancy Rate,NEW,High-income occupied units,N/A,8881,9235,9924,9336,10493,9414,10365,units,
+Residential Occupancy Rate,NEW,Low income share,N/A,42.0%,42.8%,43.2%,42.8%,42.0%,42.2%,41.8%,percent,
+Residential Occupancy Rate,NEW,Medium income share,N/A,20.5%,19.8%,19.4%,19.8%,20.2%,20.2%,20.3%,percent,
+Residential Occupancy Rate,NEW,High income share,N/A,37.5%,37.4%,37.4%,37.3%,37.8%,37.6%,37.9%,percent,
+Population,P5/NEW,Total regional persons,~53000 (2022 est),54679,55588,57608,56281,60244,56340,59472,persons,Base year 2026; forecast by alternative and horizon
+Population,NEW,Population change from 2026 base by 2035,N/A,N/A,+909,,+1602,,+1661,,persons,
+Population,NEW,Population change from 2026 base by 2050,N/A,N/A,,+2929,,+5565,,+4793,persons,
+Population,NEW,Avg persons per occupied unit (HH size),N/A,2.31,2.25,2.17,2.25,2.17,2.25,2.17,persons/unit,PPU decreases slightly over time
+CFA,P39,Unused CFA pool,529880 sq ft,check current pool balance,,,,,,,sq ft,Updated with 2022-2026 allocations
+CFA,P39,CFA allocated since 2013 rate,5020 sq ft/yr,5020 sq ft/yr (reference unchanged),,,,,,,sq ft/yr,Historical context
+CFA,P39,CFA by 2035 (local pools),85765,78676,78676,,78676,,78676,,sq ft,Sum of local jurisdiction CFA zoned units to 2035
+CFA,P39,CFA by 2050 (total net),161373,161373 est,,161373,,161373,,161373,sq ft,Same across all alternatives
+CFA,P39,CFA annual construction rate,5763 sq ft/yr,5763 sq ft/yr,,,,,,,sq ft/yr,Maintained same rate
+CFA,P39,Remaining CFA unallocated 2050,457627,updated,,,,,,,sq ft,Recalculate with new allocation records
+CFA,P40,CFA to residential conversion,100000 sq ft,100000 sq ft,,,,,,,sq ft,Same across alts
+CFA,P40,Residential units from CFA conversion (MF),200,200,,,,,,,units,
+CFA,P40,Residential units from CFA conversion (SF),200,200,,,,,,,units,
+TAU,P42,TAUs constructed by 2035,489,see assigned_units,,,,,,,units,Check new assigned units file
+TAU,P42,TAUs constructed cumulative by 2050,992,see assigned_units,,,,,,,units,
+TAU,P42,Banked TAUs used,854,see assigned_units,,,,,,,units,
+TAU,P42,TAU bonus units used,138,see assigned_units,,,,,,,units,
+TAU,P42,TAUs removed/converted to residential,300,300,,,,,,,units,Lakeside Inn Motel 6 and similar
+TAU,P42,TAUs undeveloped through 2050,326,updated,,,,,,,units,
+TAU,P71,Hotel/motel occupied TAUs (base),5666,4906,5213,5213,5213,5213,5213,5213,units,2026 base lower; same forecast across alts
+TAU,P71,Resort occupied (base),N/A,3634,3634,3634,3634,3634,3634,3634,units,Same across alts
+TAU,P71,Casino occupied (base),N/A,2703,2718,2718,2718,2718,2718,2718,units,
+TAU,P71,Campground occupied (base),N/A,1964,2017,2017,2017,2017,2017,2017,units,
+TAU,P71,Total occupied lodging (hotel+resort+casino),N/A,11243,11565,11565,11565,11565,11565,11565,units,Same across alts
+TAU,P71,TAU occupancy rate,48%,~48.9%,,,,,,,percent,Need total TAU count to recalculate
+STRs,P72,Permitted STRs (base year),4313,update with 2026 STR permit data,,,,,,,units,Check latest permit data per jurisdiction
+STRs,P72,STRs as pct of residential,13%,~8.6% (4313/49950),,,,,,,percent,Lower pct with higher base unit count
+STRs,P72,Occupied STRs on model day,1941 (45%),updated with base visitor data,,,,,,,units,
+Employment,P63,Regional summer employment 2018,28604,28604 (historical context unchanged),,,,,,,jobs,
+Employment,P63,Regional summer employment base year,26777 (2022),26737 (2026),27150,27580,27294,27970,27249,27850,jobs,Small change 2022->2026
+Employment,P63,Workers living in region,28558 (2022),updated with 2026 data,,,,,,,workers,
+Employment,P63,New jobs by 2050 (vs base),+803 (+3%),Alt1:+843(+3.2%) Alt2:+1233(+4.6%) Alt3:+1113(+4.2%),,,,,,,jobs,
+Employment,P63,Emp retail (base/2035/2050),3711,3711,3778,3855,3778,3855,3778,3855,jobs,
+Employment,P63,Emp service (base/2035/2050),7503,7503,7632,7777,7632,7777,7632,7777,jobs,
+Employment,P63,Emp recreation (base/2035/2050),2248,2248,2286,2318,2286,2318,2286,2318,jobs,
+Employment,P63,Emp gaming (base/2035/2050),2564,2564,2580,2598,2580,2598,2580,2598,jobs,
+Employment,P63,Emp other (base/2035/2050),10711,10711,10874,11032,11018,11422,10973,11302,jobs,Alt2/3 higher due to town center employment
+Table 2 Construction,Table 2,Annual residential construction rate,157 units/yr,varies by alt,,,,,,,units/yr,
+Table 2 Construction,Table 2,Residential net change 2035,2041,N/A (2026 base),1112,,1519,,1112,,units,Net from 2026 base
+Table 2 Construction,Table 2,Residential net change 2050,4385,N/A,,4247,,5485,,4247,units,
+Table 2 Construction,Table 2,CFA net change 2035,85765,78676,78676,,78676,,78676,,sq ft,
+Table 2 Construction,Table 2,CFA net change 2050,161373,161373,,161373,,161373,,161373,sq ft,Same across alts
+Table 3 DR Utilization,Table 3,Total Residential DR by 2050,3685,3377 (Alt1/3) or 4615 (Alt2),,3377,,4615,,3377,units,
+Table 3 DR Utilization,Table 3,Residential allocations by 2050,1892,varies by alt,,1931,,2169,,1931,units,CSLT+DG+EL+PL+WA General totals
+Table 3 DR Utilization,Table 3,Residential bonus units by 2050,1448,1246 (Alt1/3) 1474 (Alt2),,1246,,1474,,1246,units,
+Table 3 DR Utilization,Table 3,Banked residential by 2050,345,see configs,,,,,,,units,
+Table 3 DR Utilization,Table 3,Total CFA utilization by 2050,261373,261373,,261373,,261373,,261373,sq ft,
+Table 3 DR Utilization,Table 3,CFA area-wide TRPA pool,71000,71000,,,,,,,sq ft,
+Table 4 Conversions,Table 4,Net residential from conversions 2050,+700,+700,,+700,,+700,,+700,units,Same across alts
+Table 4 Conversions,Table 4,Annual net conversion rate,+28 units/yr,+28 units/yr est,,,,,,,units/yr,
+Table 4 Conversions,Table 4,Net CFA conversion to residential 2050,-100000,-100000,,-100000,,-100000,,-100000,sq ft,
+Table 4 Conversions,Table 4,Net TAU conversion to residential 2050,-300,-300,,-300,,-300,,-300,units,
+School Enrollment,P78,CA K-12 enrollment trend,decreased 17% (2003-2022),update with 2026 data,,,,,,,pct,
+School Enrollment,P78,NV K-12 enrollment trend,decreased 46% (2003-2022),update with 2026 data,,,,,,,pct,
+School Enrollment,P78,Forecast enrollment pct change,3.5%,Alt1:+0.8%(35)/+2.7%(50); Alt2:+1.4%/+5.1%; Alt3:+1.5%/+4.4%,,,,,,,pct,K-12 only from 2026 base 6291
+School Enrollment,NEW,K-12 base year enrollment (2026),N/A,6291,,,,,,,students,2879 elem + 1240 mid + 2172 high
+School Enrollment,NEW,Elementary enrollment,2879 (2022),2879,2901,2956,2920,3025,2921,3005,students,
+School Enrollment,NEW,Middle school enrollment,1240 (2022),1240,1250,1273,1258,1303,1259,1294,students,
+School Enrollment,NEW,High school enrollment,2172 (2022),2172,2190,2231,2203,2284,2205,2267,students,
+School Enrollment,NEW,College enrollment,3018 (2022),3018,3042,3098,3063,3171,3064,3149,students,
+School Enrollment,NEW,Total K-12 + college enrollment,9309,9309,9383,9558,9444,9783,9449,9715,students,
+Mega-Region,Table 5,Sacramento pop growth by 2050,26%,23%,,,,,,,pct,Updated from SACOG 2025 MTP/SCS (was SACOG 2036 in orig doc)
+Mega-Region,Table 5,Sacramento emp growth by 2050,N/A,23%,,,,,,,pct,New row added
+Mega-Region,Table 5,Reno/Sparks pop growth by 2050,28%,28%,,,,,,,pct,Unchanged
+Mega-Region,Table 5,Reno/Sparks emp growth by 2050,34%,34%,,,,,,,pct,Unchanged
+Mega-Region,Table 5,Carson City pop growth by 2050,23.5%,23.5%,,,,,,,pct,Unchanged
+Mega-Region,Table 5,San Francisco pop growth by 2050,30%,30%,,,,,,,pct,Unchanged

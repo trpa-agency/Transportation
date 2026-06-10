@@ -16,11 +16,23 @@
       "PowerShell(head -30)",
       "Bash(python -c \"import json; nb=json.load\\(open\\(r'c:\\\\Users\\\\amcclary\\\\Documents\\\\GitHub\\\\Transportation\\\\TravelDemandModel\\\\2026_Housing_EIS\\\\data_inventory.ipynb'\\)\\); [print\\(c['source']\\) for c in nb['cells'] if c['cell_type']=='code'][:1]\")",
       "Bash(powershell -Command \"Get-ChildItem -Path 'TravelDemandModel\\\\2026_Housing_EIS' -Recurse -File | Select-Object FullName | Format-Table -AutoSize\")",
-      "Bash(powershell -Command ' *)"
+      "Bash(powershell -Command ' *)",
+      "WebSearch",
+      "WebFetch(domain:docs.overturemaps.org)",
+      "WebFetch(domain:github.com)",
+      "Bash(python -m pip install python-docx -q)",
+      "Bash(python -c \"import docx; print\\('ok'\\)\")",
+      "Bash(python \"C:\\\\Users\\\\amcclary\\\\AppData\\\\Local\\\\Temp\\\\build_csv.py\")",
+      "Bash(python \"C:\\\\Users\\\\amcclary\\\\AppData\\\\Local\\\\Temp\\\\build_appendix_f.py\")",
+      "Bash(python -c \"import docx; print\\('docx available'\\)\")",
+      "Bash(python -c \"import subprocess; result = subprocess.run\\(['pip', 'show', 'python-docx'], capture_output=True, text=True\\); print\\(result.stdout or result.stderr\\)\")",
+      "Bash(python make_pool_assumptions_doc.py)",
+      "Bash(python make_eis_methodology_doc.py)"
     ],
     "additionalDirectories": [
       "c:\\Users\\amcclary\\Downloads",
-      "c:\\Users\\amcclary\\Documents\\ArcGIS\\Projects\\MyProject"
+      "c:\\Users\\amcclary\\Documents\\ArcGIS\\Projects\\MyProject",
+      "C:\\Users\\amcclary\\AppData\\Local\\Temp"
     ]
   }
 }
