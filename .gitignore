@@ -5,6 +5,13 @@
 __pycache__/
 *.pyc
 *.pyo
+.pytest_cache/
 .DS_Store
 # ignore the geodatabase
 TravelDemandModel\2022\scripts\Workspace.gdb
+
+# SMART ETL working directories: raw API cache, run state, generated exports,
+# and logs. The capitalised SMART_Phase1/Data/ holds the committed Phase 1
+# record and is deliberately NOT ignored.
+SMART_Phase1/data/
+SMART_Phase1/logs/
