@@ -1,0 +1,223 @@
+# Values for the USDOT SMART data package deliverable.
+#
+# Everything here is stable between publications; row counts, column counts and
+# modified dates are read from the live service at build time by
+#   python scripts/build_data_package.py
+#
+# Sourced from the published Phase 1 package
+# (Data/TTD_Phase1_DataPackage/TTD_Phase1_README.md and MetadataPackage.json).
+
+package_name: TTD_Phase1_Dataset
+
+title: >-
+  Intelligent Sensor Integration on Rural Multi-Modal System with an Urban
+  Recreation Travel Demand, Lake Tahoe Basin, NV and CA
+
+dataset_title: TTD_Phase1_Dataset
+
+doi: https://doi.org/10.21949/1530332
+dmp_doi: https://dmphub.uc3prd.cdlib.net/dmps/10.48321/D1F82E31EA
+grant_number: SMARTFY22N1P1G41
+license: https://creativecommons.org/licenses/by/4.0/
+issued: "2025-10-08"
+
+collection_period: January 2025 to October 2025
+geographic_location: >-
+  Lake Tahoe Region, California and Nevada, United States of America
+# Bounding box of the Lake Tahoe Region, as published in the Phase 1 package.
+spatial_wkt: >-
+  POLYGON((-120.314028 39.332115, -119.805910 39.332115, -119.805910 38.700457,
+  -120.314028 38.700457, -120.314028 39.332115))
+
+description: >-
+  Sample data collected during Phase 1 of Tahoe Transportation District's SMART
+  grant from AI Cameras deployed around the Tahoe Basin. The dataset includes
+  camera locations, safety insights, vehicle counts, VRU counts, and sample
+  videos recorded of wrong way drivers.
+
+abstract: >-
+  The Tahoe Transportation District (TTD) and regional partners are seeking to
+  enhance transportation safety and mobility along key corridors in the Lake
+  Tahoe Basin. The roadway network entering, traveling within, and leaving the
+  Tahoe Basin lacks the infrastructure required to acquire real-time and
+  historical traffic and congestion data. This pilot project aims to support TTD
+  and the regional partners in collecting accurate count data at each of the
+  seven entry/exit points of the Tahoe Basin and along the
+  Truckee/US80/SR267/SR89 roadways. The project is designed to plan, prototype,
+  test, and evaluate a limited deployment of a data collection sensor
+  infrastructure to gather transportation and traveler-related information. The
+  goal is to integrate this information into a single cloud-based open source or
+  interface for reporting and management. This information will be utilized by
+  TTD, TRPA, partners, commuters, and travelers within the Tahoe Basin and
+  adjoining areas to provide an integrated infrastructure for collecting vehicle
+  data. This data will be incorporated into a database for various stakeholders.
+  Furthermore, the project will establish the framework for long-term data
+  collection across the region and integrate multiple transportation data
+  sources for efficient use by partner agencies. It will propel the region
+  toward real-time parking availability for motorists and improve the ease of
+  transit use, walking, and bicycling. Other long-term uses include sharing
+  information about weather hazards, closures, construction, or crashes.
+
+methods: >-
+  The Intelligent Sensor Integration on Rural Multi-Modal System project
+  leverages a suite of innovative, cloud-based and AI-driven technologies to
+  modernize data collection and enhance transportation safety and planning in
+  the Lake Tahoe Basin. The project deploys AI-powered video sensors at multiple
+  locations throughout the Lake Tahoe Basin to capture multimodal traffic
+  activity, including vehicle counts, pedestrian movements, bicyclist volumes,
+  travel speeds, and roadway safety events. These sensors operate in three
+  different technical configurations: Edge Processing, where video streams are
+  analyzed directly in the field using AI processors connected through
+  commercial cellular or satellite networks; Centralized Server Processing,
+  where video feeds are transmitted to an AI server located at the Caltrans
+  Traffic Management Center (TMC); and Cloud Processing, where video feeds
+  provided by NDOT are analyzed using cloud-based machine learning platforms.
+  All collected data is aggregated in a secure, cloud-hosted platform for
+  storage, processing, and integration. The project emphasizes interoperability
+  and accessibility by developing an online open-data portal in collaboration
+  with the Tahoe Regional Planning Agency (TRPA).
+
+software_notes: >-
+  The .csv, Comma Separated Value, file is a simple format designed for a
+  database table and supported by many applications. The most common software
+  used to open .csv files are Microsoft Excel and RecordEditor. The .geojson
+  format is an open geospatial format that can be opened by many GIS programs,
+  such as ArcGIS and QGIS. The .wmv format stores video and can be played using
+  most standard audio and visual software, such as Windows Media Player or VLC.
+
+authors:
+  - name: Bindl, Mason
+    role: Principal Data Creator
+    institution: Tahoe Regional Planning Agency
+    address: 128 Market Street, Stateline, Nevada
+    email: gis@trpa.gov
+  - name: McClary, Andrew
+    role: Associate Data Creator
+    institution: Tahoe Regional Planning Agency
+    address: 128 Market Street, Stateline, Nevada
+    email: gis@trpa.gov
+  - name: Shaw, Rachael
+    role: Associate Data Creator
+    institution: Tahoe Regional Planning Agency
+    address: 128 Market Street, Stateline, Nevada
+    email: gis@trpa.gov
+
+organizational_contact:
+  name: Styer, Tara
+  institution: Tahoe Transportation District
+  address: 128 Market Street, Stateline, Nevada
+  email: tstyer@tahoetransportation.org
+
+citation_authors: Bindl, Mason., McClary, Andrew., Shaw, Rachael., Styer, Tara.
+citation_year: 2025
+citation_title: TTD ATMS Data Aggregation Plan
+
+keywords:
+  - crashes
+  - technological innovations
+  - traffic volume
+  - near crashes
+  - vulnerable road users
+  - cameras
+  - traffic counts
+  - pedestrian counts
+  - bicycle counts
+  - traffic violations
+  - speed
+
+# Layers exported from the live feature service, in package file order.
+# `row_represents` feeds section E of the README.
+exports:
+  - layer_id: 1
+    filename: TTD_SMART_SafetyInsights.csv
+    format: csv
+    description: >-
+      A .csv, Comma Separated Value, file of safety insights from the SMART
+      Grant cameras in the Tahoe Basin.
+    row_represents: 1 recorded safety event
+  - layer_id: 2
+    filename: TTD_SMART_Speed.csv
+    format: csv
+    description: >-
+      The .csv, Comma Separated Value, file of vehicle speed data from the SMART
+      Grant cameras in the Tahoe Basin.
+    row_represents: >-
+      Recorded vehicle counts for a given speed interval from a specific
+      direction at a specified camera location
+  - layer_id: 0
+    filename: TTD_SMART_TrafficCameraLocations.geojson
+    format: geojson
+    description: >-
+      A .geojson spatial file with the locations of the SMART Grant cameras in
+      the Tahoe Basin.
+    row_represents: 1 camera location
+  - layer_id: 3
+    filename: TTD_SMART_VehicleCounts.csv
+    format: csv
+    description: >-
+      A .csv, Comma Separated Value, file of vehicle counts from the SMART Grant
+      cameras in the Tahoe Basin.
+    row_represents: >-
+      Recorded vehicle counts during a specified time interval from a specific
+      direction at a specified camera location, classified by vehicle type
+  - layer_id: 4
+    filename: TTD_SMART_VRUCounts.csv
+    format: csv
+    description: >-
+      A .csv, Comma Separated Value, file of vulnerable road user counts from
+      the SMART Grant cameras in the Tahoe Basin.
+    row_represents: >-
+      Recorded vulnerable road user counts for a given time interval from a
+      specific direction at a specified camera location
+
+# Files copied verbatim into the package. Paths are relative to SMART_Phase1/.
+# Missing files are reported rather than silently skipped.
+attachments:
+  - path: Data/TTD_Phase1_DataPackage/Intelligent_Sensor_Integration_on_Rural_Multi-Modal_System-3.pdf
+    description: A PDF file of the Final Data Management Plan
+    format: PDF
+    media_type: application/pdf
+  # The wrong-way-driver clips live in the published Phase 1 zip rather than
+  # loose on disk. Extract them alongside it, or point these at their source.
+  - path: Data/TTD_Phase1_DataPackage/videos/WWDriverVideo_03.08.2025.wmv
+    description: >-
+      Video of a recorded wrong way driver event at Meyers Roundabout/US 50 on
+      03.08.2025
+    format: WMV
+    media_type: multimedia
+  - path: Data/TTD_Phase1_DataPackage/videos/WWDriverVideo_04.19.2025.wmv
+    description: >-
+      Video of a recorded wrong way driver event at Meyers Roundabout/US 50 on
+      04.19.2025
+    format: WMV
+    media_type: multimedia
+  - path: Data/TTD_Phase1_DataPackage/videos/WWDriverVideo_07.19.2025.wmv
+    description: >-
+      Video of a recorded wrong way driver event at Meyers Roundabout/US 50 on
+      07.19.2025
+    format: WMV
+    media_type: multimedia
+  - path: Data/TTD_Phase1_DataPackage/videos/WWDriverVideo_07.20.2025.wmv
+    description: >-
+      Video of a recorded wrong way driver event at Meyers Roundabout/US 50 on
+      07.20.2025
+    format: WMV
+    media_type: multimedia
+  - path: Data/TTD_Phase1_DataPackage/videos/WWDriverVideo_08.02.2025.wmv
+    description: >-
+      Video of a recorded wrong way driver event at Meyers Roundabout/US 50 on
+      08.02.2025
+    format: WMV
+    media_type: multimedia
+  - path: Data/TTD_Phase1_DataPackage/videos/WWDriverVideo_08.03.2025.wmv
+    description: >-
+      Video of a recorded wrong way driver event at Meyers Roundabout/US 50 on
+      08.03.2025
+    format: WMV
+    media_type: multimedia
+
+readme_author:
+  name: Shaw, Rachael
+  title: Associate Transportation Planner
+  institution: Tahoe Regional Planning Agency
+  email: gis@trpa.gov

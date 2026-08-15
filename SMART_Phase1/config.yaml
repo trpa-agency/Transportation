@@ -1,0 +1,166 @@
+# SMART Phase 1 ETL configuration
+#
+# Non-secret settings only. Credentials live in .env (gitignored) -- see .env.template.
+#
+# The `datasets` block is the contract between the DERQ INSIGHT API and the
+# published ArcGIS feature service. Every field rename lives here, not in code.
+# run_etl.py validates every field_map target against the live layer schema
+# before it writes anything.
+
+arcgis:
+  service_url: https://maps.trpa.org/server/rest/services/Transportation_SMART/FeatureServer
+  portal_url: https://maps.trpa.org/portal
+  # Server maxRecordCount is 2000; addFeatures batches must not exceed it.
+  batch_size: 2000
+  request_timeout: 120
+  # Writes get a longer leash: deletes on the 450k-row editor-tracked tables
+  # can take minutes per batch, and hanging up early turns a slow success into
+  # a retry storm (the timed-out call still completes server-side).
+  write_timeout: 600
+
+derq:
+  api_url: https://api-external.cloud.derq.com
+  # Hard API limit -- a single request may not span more than 30 days.
+  max_days_per_request: 30
+  speed_buckets: "5,10,15,20,25"
+  event_types: "IC, WWD, STPV, TV, LCV, RLV, NM-VV, NM-VRU, CRSH"
+  # Sparse windows (early history, quiet cameras) can take Derq's backend
+  # 60-90s to answer; verified live -- a 60s timeout hangs up on requests that
+  # would have succeeded and turns them into 5-minute retry cycles.
+  request_timeout: 180
+  # Derq quota (confirmed by Derq, Aug 2026): 1,000 requests per day per API
+  # key across ALL endpoints, and no more than 5 requests/second.
+  # request_delay_seconds keeps us at <=2/sec; max_requests_per_run is a hard
+  # stop below the daily cap so one run can never exhaust the key -- leave
+  # headroom for the probe, QA notebooks, and a re-run.
+  request_delay_seconds: 0.5
+  max_requests_per_run: 850
+  max_retries: 4
+  retry_backoff_base: 10
+
+locations:
+  # Authoritative location list is the ArcGIS layer, not the DERQ /locations
+  # endpoint, so cameras can be curated without touching the API.
+  source_layer: 0
+  include_status: [Permanent, Temporary]
+
+run:
+  # Re-fetch and replace this many days behind the stored max date so that a
+  # partial final day (common -- the API returns whatever has landed so far)
+  # heals itself on the next run. Every field the ETL writes is either mapped
+  # from DERQ or enriched from the locations layer, so replacing a day loses
+  # nothing; the cost of a larger value is only extra API calls.
+  lookback_days: 3
+  # Used when a layer is empty and there is no max date to work back from.
+  backfill_start: "2025-09-07"
+
+email:
+  # Set enabled: false to run without sending a summary (useful during dev).
+  # These are not secrets; the smtp2go relay authorizes by sender IP, so this
+  # only works from TRPA servers. EMAIL_FROM / EMAIL_TO / SMTP_HOST / SMTP_PORT
+  # environment variables override these values if set.
+  enabled: true
+  subject_prefix: "DERQ ETL"
+  from: info@trpa.org
+  to: gis@trpa.gov
+  smtp_host: mail.smtp2go.com
+  smtp_port: 25
+
+datasets:
+
+  safety_insights:
+    layer_id: 1
+    endpoint: /safety-insights
+    load_mode: day_replace
+    # Field on the ArcGIS layer used for the day_replace WHERE clause.
+    date_field: TimeAtSite
+    # Field in the RAW DERQ payload used to trim partial API boundary days
+    # (the API filters on UTC midnight but stamps data in local time -- see
+    # DerqClient.fetch_window).
+    source_date_field: TimeAtSite
+    # Columns that must be converted to epoch milliseconds before pushing.
+    target_date_fields: [TimeAtSite]
+    # DERQ field -> ArcGIS field. Identity here; the API already matches.
+    field_map:
+      EventType: EventType
+      EventId: EventId
+      TimeAtSite: TimeAtSite
+      DetectionArea: DetectionArea
+      Direction: Direction
+      CameraId: CameraId
+      Object1Class: Object1Class
+      Object2Class: Object2Class
+      Movement: Movement
+    # Camera_Status is not a DERQ field -- it is a denormalized copy of the
+    # camera's Status from the locations layer, populated on all 24,244
+    # existing rows. Joined on LocationId at load time so new rows stay
+    # consistent with the published history.
+    #   target field  <-  column on the locations layer
+    enrich_from_locations:
+      Camera_Status: Status
+
+  vehicle_counts:
+    layer_id: 3
+    endpoint: /counts/vehicle
+    load_mode: day_replace
+    date_field: Date
+    source_date_field: date
+    target_date_fields: [Date]
+    field_map:
+      count: counts
+      date: Date
+      timeInterval: timeInterval
+      approach: approach
+      class: class
+    # No target field exists for these and the service schema is frozen, so
+    # they are dropped -- exactly as they were when the current 450k rows were
+    # built. Row granularity is preserved (one row per DERQ record, NOT
+    # aggregated) so totals stay continuous with the DOI-archived dataset.
+    drop_fields: [lane, movement]
+
+  vru_counts:
+    layer_id: 4
+    endpoint: /counts/vru
+    load_mode: day_replace
+    date_field: Date
+    source_date_field: date
+    target_date_fields: [Date]
+    field_map:
+      count: counts
+      date: Date
+      timeInterval: timeInterval
+      approach: approach
+      class: class
+    drop_fields: [headingDirection, movement]
+
+  speed:
+    # DISABLED Aug 2026: /speed-distribution is no longer part of TRPA's Derq
+    # subscription. Layer 2 keeps its 363 Phase 1 rows as a frozen historical
+    # record. Flip to true if the subscription is restored -- the fetch,
+    # aggregation and truncate/reload code paths are all still in place.
+    enabled: false
+    layer_id: 2
+    endpoint: /speed-distribution
+    # The Speed layer has no date field, so it cannot be appended to
+    # incrementally. It is a whole-of-record distribution: fetch the full
+    # history in 30-day chunks, sum, then truncate and reload (~363 rows).
+    load_mode: full_replace
+    date_field: null
+    target_date_fields: []
+    field_map:
+      speedinterval: speedinterval
+      approach: approach
+      count: counts
+    aggregate_key: [LocationId, LocationName, speedinterval, approach]
+    aggregate_sum_field: counts
+
+  daily_counts:
+    layer_id: 5
+    # Derived by summing vehicle_counts; never fetched from DERQ.
+    derived_from: vehicle_counts
+    load_mode: day_replace
+    date_field: Date
+    target_date_fields: [Date]
+    # Layer 5 has NO LocationId field -- group by name only.
+    group_by: [Date, LocationName]
+    sum_field: counts
