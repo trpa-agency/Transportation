@@ -14,7 +14,7 @@ from utils import (
 
 # get data for transit ridership
 def get_data_transit():
-    url = "https://www.laketahoeinfo.org/WebServices/GetTransitMonitoringData/CSV/e17aeb86-85e3-4260-83fd-a2b32501c476"
+    url = "https://www.laketahoeinfo.org/WebServices/GetTransitMonitoringData/CSV/REDACTED_LTINFO_WEBSERVICES_TOKEN"
 
     dfTransit = pd.read_csv(url)
     dfTransit['Month'] = pd.to_datetime(dfTransit['Month'])
