@@ -31,16 +31,38 @@ def update_field_from_dictionary(df, df_lookup, field_name,filter_column_1,filte
     filtered_lookup = df_lookup[(df_lookup[filter_column_1] == filter_condition_1)&
                                 (df_lookup['Field_Name'] == field_name)]
     dictionary = filtered_lookup.set_index(key_column)[value_column].to_dict()
+    if not dictionary:
+        print(f"WARNING: No lookup keys found for field '{field_name}' where {filter_column_1} == '{filter_condition_1}'")
+        return df
     if exact_match:
-        df[field_name]=df[field_name].map(dictionary)
+        # Normalize keys and values so the match ignores capitalization and extra whitespace
+        normalized_dictionary = {str(k).strip().lower(): v for k, v in dictionary.items()}
+        normalized_values = df[field_name].astype(str).str.strip().str.lower()
+        unmatched = df[field_name].notna() & ~normalized_values.isin(normalized_dictionary.keys())
+        warn_unmatched(df.loc[unmatched, field_name], field_name)
+        df[field_name]=normalized_values.map(normalized_dictionary)
     else:
         df = update_if_contains(df, field_name,dictionary)
     return df
 
 def update_if_contains(df, column_to_update, lookup_dictionary):
+    matched = pd.Series(False, index=df.index)
+    original_values = df[column_to_update].copy()
     for key, value in lookup_dictionary.items():
-        df.loc[df[column_to_update].str.contains(key), column_to_update] = value
+        mask = df[column_to_update].astype(str).str.contains(key, case=False, na=False)
+        df.loc[mask, column_to_update] = value
+        matched |= mask
+    unmatched = original_values.notna() & ~matched
+    warn_unmatched(original_values[unmatched], column_to_update)
     return df
+
+def warn_unmatched(unmatched_values, field_name):
+    # Print a warning listing values that had no matching key in the lookup
+    if unmatched_values.empty:
+        return
+    unique_values = unmatched_values.unique()
+    print(f"WARNING: {len(unmatched_values)} rows in '{field_name}' had no matching lookup key "
+          f"({len(unique_values)} unique values): {list(unique_values)}")
 def fieldJoinCalc(updateFC, updateFieldsList, sourceFC, sourceFieldsList):
     from time import strftime  
     print ("Started data transfer: " + strftime("%Y-%m-%d %H:%M:%S"))
@@ -63,7 +85,7 @@ def fieldJoinCalc(updateFC, updateFieldsList, sourceFC, sourceFieldsList):
     
 def update_if_contains_inplace(df, column_to_update, lookup_dictionary):
     for key, value in lookup_dictionary.items():
-        df.loc[df[column_to_update].str.contains(key), column_to_update] = value
+        df.loc[df[column_to_update].astype(str).str.contains(key, case=False, na=False), column_to_update] = value
 
     # Set values to the specified fill_value for keys not found in the dictionary
     # Default value is null

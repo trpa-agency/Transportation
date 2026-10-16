@@ -8,8 +8,7 @@ Each run creates a timestamped folder under data/processed_data/ with the struct
   run_YYYY-MM-DD_HHMMSS/
   ├── <scenario_name>/
   │   ├── 2035/          ← SocioEcon, SchoolEnrollment, visitors, config copy
-  │   ├── 2050/
-  │   └── tau_changes_by_apn.csv  ← TAU changes applied to base-year visitor data
+  │   └── 2050/
   ├── persons_per_occ_unit/   ← written only by scenarios with adjust_taz_population=yes
   │   ├── persons_per_occ_unit_2035.csv
   │   └── persons_per_occ_unit_2050.csv
@@ -170,8 +169,10 @@ def load_shared_data():
     persons_per_occ_unit_2035 = pd.read_csv(BASE_DATA_DIR / 'persons_per_occ_unit_2035.csv')
     persons_per_occ_unit_2050 = pd.read_csv(BASE_DATA_DIR / 'persons_per_occ_unit_2050.csv')
 
-    # Base-year TAUs; forecast-year TAUs are built per year in run_scenario()
-    dfOvernightVisitors = pd.read_csv(EIS_DIR / 'Base' / 'data' / 'processed_data' / 'OvernightVisitorZonalData_Summer.csv')
+    # Forecast-year TAUs match the final 2025 RTP model inputs (RTP Data Archive:
+    # 2035_FINAL_Scen3_Red_21Dec_2 and 2050_1_5PctInc), so the EIS uses the same TAUs as the RTP
+    dfOvernightVisitors_2035 = pd.read_csv(DATA_DIR / 'inputs' / 'OvernightVisitorZonalData_Summer_2035.csv')
+    dfOvernightVisitors_2050 = pd.read_csv(DATA_DIR / 'inputs' / 'OvernightVisitorZonalData_Summer_2050.csv')
     dfVisitorOccupancy  = pd.read_csv(EIS_DIR / 'Base' / 'data' / 'processed_data' / 'VisitorOccupancyRates_Summer.csv')
 
     dfEmployment_2035 = pd.read_csv(DATA_DIR / 'inputs' / 'employment_2035.csv')
@@ -184,7 +185,8 @@ def load_shared_data():
         'dfSchool':                  dfSchool,
         'persons_per_occ_unit_2035': persons_per_occ_unit_2035,
         'persons_per_occ_unit_2050': persons_per_occ_unit_2050,
-        'dfOvernightVisitors':       dfOvernightVisitors,
+        'dfOvernightVisitors_2035':  dfOvernightVisitors_2035,
+        'dfOvernightVisitors_2050':  dfOvernightVisitors_2050,
         'dfVisitorOccupancy':        dfVisitorOccupancy,
         'dfEmployment_2035':         dfEmployment_2035,
         'dfEmployment_2050':         dfEmployment_2050,
@@ -298,9 +300,6 @@ def run_scenario(config_path, shared, run_folder):
     sdfParcels = assign_development_year(sdfParcels, dfResZoned)
     sdfParcels, dfResAssigned = assign_occupancy_rate(sdfParcels, occupancy_rates, df_res_assigned_lookup)
     sdfParcels = assign_income_categories(sdfParcels, dfResAssigned, income_proportions)
-    sdfParcels, dfTauChanges = forecast_tourist_units(sdfParcels)
-    dfOvernight_2035 = build_overnight_visitor_forecast(shared['dfOvernightVisitors'], dfTauChanges, 2035)
-    dfOvernight_2050 = build_overnight_visitor_forecast(shared['dfOvernightVisitors'], dfTauChanges, 2050)
 
     # Tag parcels with scenario name before returning for concatenation
     sdfParcels['SCENARIO'] = scenario_name
@@ -383,13 +382,12 @@ def run_scenario(config_path, shared, run_folder):
     # ── Export final TAZ outputs ──────────────────────────────────────────────
     df_taz_2035.to_csv(folder_2035 / 'SocioEcon_Summer.csv',                        index=False)
     dfSchool_2035.to_csv(folder_2035 / 'SchoolEnrollment.csv',                      index=False)
-    dfOvernight_2035.to_csv(folder_2035 / 'OvernightVisitorZonalData_Summer.csv',   index=False)
+    shared['dfOvernightVisitors_2035'].to_csv(folder_2035 / 'OvernightVisitorZonalData_Summer.csv', index=False)
     shared['dfVisitorOccupancy'].to_csv(folder_2035 / 'VisitorOccupancyRates_Summer.csv',      index=False)
 
     df_taz_2050.to_csv(folder_2050 / 'SocioEcon_Summer.csv',                        index=False)
     dfSchool_2050.to_csv(folder_2050 / 'SchoolEnrollment.csv',                      index=False)
-    dfOvernight_2050.to_csv(folder_2050 / 'OvernightVisitorZonalData_Summer.csv',   index=False)
-    dfTauChanges.to_csv(scenario_folder / 'tau_changes_by_apn.csv',                 index=False)
+    shared['dfOvernightVisitors_2050'].to_csv(folder_2050 / 'OvernightVisitorZonalData_Summer.csv', index=False)
     shared['dfVisitorOccupancy'].to_csv(folder_2050 / 'VisitorOccupancyRates_Summer.csv',      index=False)
 
     # ── Copy config to run_folder/configs/ and both year folders ──────────────
