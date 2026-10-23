@@ -60,78 +60,165 @@ EIS_DIR       = FORECAST_DIR.parent  # 2026_Housing_EIS/
 
 # ── EDIT: directory containing scenario config JSONs ──────────────────────────
 # Every *.json file directly in this folder is treated as a scenario config.
-SCENARIO_DIR = FORECAST_DIR / 'configs_final_09242026'
+SCENARIO_DIR = FORECAST_DIR / 'configs_wfh' / 'configs_10162026'
 # ──────────────────────────────────────────────────────────────────────────────
 
 
 # ── Occupancy adjustment ───────────────────────────────────────────────────────
-def adjust_occupied_units(df, additional_units, label, rng):
+INCOME_COLS = {
+    "low":    "occ_units_low_inc",
+    "medium": "occ_units_med_inc",
+    "high":   "occ_units_high_inc",
+}
+DEFAULT_OCC_INCOME_DISTRIBUTION = {"low": 0.0, "medium": 0.5, "high": 0.5}
+
+
+def _round_to_total(values, total):
+    """Round non-negative floats to ints that sum exactly to total (largest remainder)."""
+    values  = np.asarray(values, dtype=float)
+    floored = np.floor(values).astype(int)
+    short   = int(total - floored.sum())
+    if short > 0:
+        floored[np.argsort(-(values - floored), kind="stable")[:short]] += 1
+    return floored
+
+
+def _allocate_capped(total, weights, capacity):
     """
-    Proportionally scale total_occ_units upward by additional_units, distributing
-    the extra units equally between medium and high income. Recomputes total_persons,
-    rounds all counts to integers, then corrects rounding residuals so regional totals
-    and per-TAZ income sums match exactly.
+    Split total across rows in proportion to weights without exceeding each row's
+    capacity. Units that would overflow a full row are re-spread over rows that
+    still have room (falling back to remaining capacity as the weight when every
+    weighted row is full). Returns ints summing exactly to total.
     """
-    target_sum      = int(df["total_occ_units"].sum()) + additional_units
-    additional_med  = additional_units / 2
-    additional_high = additional_units / 2
+    weights   = np.asarray(weights, dtype=float)
+    capacity  = np.asarray(capacity, dtype=float)
+    alloc     = np.zeros_like(capacity)
+    remaining = float(total)
+    while remaining > 1e-9:
+        room      = capacity - alloc
+        open_rows = room > 1e-9
+        w = np.where(open_rows, weights, 0.0)
+        if w.sum() <= 0:
+            w = np.where(open_rows, room, 0.0)
+        take = np.minimum(remaining * w / w.sum(), room)
+        alloc     += take
+        remaining -= take.sum()
+    # Only round up rows with a whole unit of room left, so the cap still holds
+    floored = np.floor(alloc + 1e-9).astype(int)
+    short   = int(total - floored.sum())
+    if short > 0:
+        frac = np.where(capacity - floored >= 1, alloc - floored, -1.0)
+        floored[np.argsort(-frac, kind="stable")[:short]] += 1
+    return floored
 
-    occ_factor = target_sum / df["total_occ_units"].sum()
-    df["total_occ_units"] = df["total_occ_units"] * occ_factor
 
-    current_med = df["occ_units_med_inc"].sum()
-    df["occ_units_med_inc"] = df["occ_units_med_inc"] * (current_med + additional_med) / current_med
+def _controlled_round(x, row_totals, col_totals):
+    """Round a float matrix to ints matching both row_totals and col_totals exactly."""
+    out     = np.floor(x).astype(int)
+    row_res = row_totals - out.sum(axis=1)
+    col_res = col_totals - out.sum(axis=0)
+    frac    = x - out
+    for flat in np.argsort(-frac, axis=None, kind="stable"):
+        i, j = np.unravel_index(flat, x.shape)
+        if row_res[i] > 0 and col_res[j] > 0:
+            out[i, j]  += 1
+            row_res[i] -= 1
+            col_res[j] -= 1
+    # Leftovers: row and column residuals sum to the same amount, so greedy fill is always feasible
+    for i in np.where(row_res > 0)[0]:
+        while row_res[i] > 0:
+            j = int(np.argmax(col_res))
+            out[i, j]  += 1
+            row_res[i] -= 1
+            col_res[j] -= 1
+    return out
 
-    current_high = df["occ_units_high_inc"].sum()
-    df["occ_units_high_inc"] = df["occ_units_high_inc"] * (current_high + additional_high) / current_high
 
+def adjust_occupied_units(df, additional_units, label, income_distribution=None):
+    """
+    Add exactly additional_units occupied units to the basin, split across
+    low/medium/high income according to income_distribution (e.g.
+    {"low": 0.2, "medium": 0.3, "high": 0.5}; normalized to sum to 1, defaults to
+    half medium / half high).
+
+    Priority order:
+      1. Basin total of added units equals additional_units exactly.
+      2. Basin added units by income match income_distribution exactly (to the unit).
+      3. No TAZ's occupied units exceed its residential units.
+      4. Within those constraints, added units go to TAZs in proportion to their
+         existing occupied units (overflow from full TAZs is re-spread to TAZs with
+         room), and each TAZ's income mix follows the existing basin pattern as
+         closely as the basin targets allow.
+    """
+    if income_distribution is None:
+        income_distribution = DEFAULT_OCC_INCOME_DISTRIBUTION
+    dist_total = sum(float(income_distribution.get(k, 0)) for k in INCOME_COLS)
+    if dist_total <= 0:
+        raise ValueError(f"{label}: income_distribution must have a positive total, got {income_distribution}")
+    keys        = list(INCOME_COLS)
+    income_cols = list(INCOME_COLS.values())
+    dist        = np.array([float(income_distribution.get(k, 0)) / dist_total for k in keys])
+
+    # ── Integer baseline: round occupied units and make income columns sum to them ──
+    res      = df["total_residential_units"].round().astype(int).to_numpy()
+    occ      = df["total_occ_units"].round().astype(int).to_numpy()
+    base_inc = df[income_cols].to_numpy(dtype=float).clip(min=0)
+    for i in range(len(df)):
+        row_sum     = base_inc[i].sum()
+        shares      = base_inc[i] / row_sum if row_sum > 0 else dist
+        base_inc[i] = _round_to_total(shares * occ[i], occ[i])
+    base_inc = base_inc.astype(int)
+
+    capacity = np.clip(res - occ, 0, None)
+    if capacity.sum() < additional_units:
+        raise ValueError(
+            f"{label}: cannot add {additional_units} occupied units; only {int(capacity.sum())} "
+            f"unoccupied residential units are available across all TAZs")
+
+    # ── Basin targets by income (exact integers) ─────────────────────────────
+    income_targets = _round_to_total(dist * additional_units, additional_units)
+
+    # ── Added units per TAZ: proportional to existing occupied units, capped ─
+    added_taz = _allocate_capped(additional_units, occ, capacity)
+
+    # ── Split each TAZ's added units across income to hit basin targets ──────
+    # Seed with each TAZ's share of each category's existing basin units (occupied-unit
+    # share when a category has none), then IPF to match TAZ totals and basin targets
+    occ_share = occ / occ.sum() if occ.sum() > 0 else np.full(len(occ), 1 / len(occ))
+    cat_sums  = base_inc.sum(axis=0)
+    seed = np.column_stack([
+        base_inc[:, j] / cat_sums[j] if cat_sums[j] > 0 else occ_share for j in range(len(keys))
+    ]) * income_targets
+    x = (seed + 1e-6) * (added_taz > 0)[:, None] * (income_targets > 0)[None, :]
+    for _ in range(500):
+        row = x.sum(axis=1)
+        x   = x * np.divide(added_taz, row, out=np.zeros_like(row), where=row > 0)[:, None]
+        col = x.sum(axis=0)
+        x   = x * np.divide(income_targets, col, out=np.zeros_like(col), where=col > 0)[None, :]
+        if np.abs(x.sum(axis=1) - added_taz).max() < 1e-6:
+            break
+    added_inc = _controlled_round(x, added_taz, income_targets)
+
+    # ── Write back ───────────────────────────────────────────────────────────
+    new_inc = base_inc + added_inc
+    df["total_occ_units"] = occ + added_taz
+    for j, col in enumerate(income_cols):
+        df[col] = new_inc[:, j]
     df["total_persons"] = (df["total_occ_units"] * df["persons_per_occ_unit"]).round().astype(int)
 
-    for col in ["total_occ_units", "occ_units_med_inc", "occ_units_high_inc"]:
-        df[col] = df[col].round().astype(int)
-
-    # Cap occupied units at residential units per TAZ; scale income breakdown down proportionally
-    capped_mask = df["total_occ_units"] > df["total_residential_units"]
-    if capped_mask.any():
-        for idx in df.index[capped_mask]:
-            old_occ = df.at[idx, "total_occ_units"]
-            new_occ = int(df.at[idx, "total_residential_units"])
-            scale   = new_occ / old_occ if old_occ > 0 else 0
-            med_new  = round(df.at[idx, "occ_units_med_inc"]  * scale)
-            high_new = round(df.at[idx, "occ_units_high_inc"] * scale)
-            df.at[idx, "occ_units_med_inc"]  = med_new
-            df.at[idx, "occ_units_high_inc"] = high_new
-            df.at[idx, "occ_units_low_inc"]  = max(0, new_occ - med_new - high_new)
-            df.at[idx, "total_occ_units"]    = new_occ
-            df.at[idx, "total_persons"]      = round(new_occ * df.at[idx, "persons_per_occ_unit"])
-        print(f"  {label}: {capped_mask.sum()} TAZ(s) capped at residential unit count")
-
-    diff = target_sum - df["total_occ_units"].sum()
-    if diff != 0:
-        direction = 1 if diff > 0 else -1
-        # When adding units, only pick TAZs not already at their residential cap
-        if direction == 1:
-            eligible = df.index[df["total_occ_units"] < df["total_residential_units"]]
-        else:
-            eligible = df.index[df["total_occ_units"] > 0]
-        if len(eligible) >= abs(diff):
-            chosen = rng.choice(eligible, size=abs(diff), replace=False)
-            df.loc[chosen, "total_occ_units"] += direction
-            print(f"  {label} total_occ_units adjusted by {diff:+d} units across {abs(diff)} random TAZs")
-        else:
-            print(f"  {label} rounding residual of {diff:+d} could not be fully distributed (cap constraint)")
-
-    income_sum     = df["occ_units_low_inc"] + df["occ_units_med_inc"] + df["occ_units_high_inc"]
-    taz_diff       = df["total_occ_units"] - income_sum
-    mismatch_count = (taz_diff != 0).sum()
-    if mismatch_count > 0:
-        df["occ_units_high_inc"] = df["occ_units_high_inc"] + taz_diff
-        print(f"  {label}: income mismatch corrected in {mismatch_count} TAZs (adjusted occ_units_high_inc)")
-
-    income_sum = df["occ_units_low_inc"] + df["occ_units_med_inc"] + df["occ_units_high_inc"]
-    bad = (income_sum != df["total_occ_units"]).sum()
-    print(f"{label} — occupied: {df['total_occ_units'].sum()} (target: {target_sum})  |  "
-          f"income sum check: {'PASS' if bad == 0 else f'FAIL — {bad} TAZs mismatched'}")
+    # ── Checks ───────────────────────────────────────────────────────────────
+    n_full     = int(((added_taz > 0) & (added_taz == capacity)).sum())
+    added_tot  = int(added_taz.sum())
+    added_cat  = added_inc.sum(axis=0)
+    over_cap   = int((df["total_occ_units"] > res).sum())
+    mismatched = int((df[income_cols].sum(axis=1) != df["total_occ_units"]).sum())
+    ok = (added_tot == additional_units and (added_cat == income_targets).all()
+          and over_cap == 0 and mismatched == 0)
+    split = ", ".join(f"{k}: +{int(a)}" for k, a in zip(keys, added_cat))
+    if n_full:
+        print(f"  {label}: {n_full} TAZ(s) filled to residential cap; overflow re-spread to TAZs with room")
+    print(f"{label} — added occupied: {added_tot} (target: {additional_units})  |  {split}  |  "
+          f"over cap: {over_cap}  |  income sum mismatches: {mismatched}  |  {'PASS' if ok else 'FAIL'}")
     return df
 
 
@@ -256,6 +343,8 @@ def run_scenario(config_path, shared, run_folder):
     if adjust_occupancy:
         additional_occupied_units_2035 = int(config['adjust_occupancy_additional_units_2035'])
         additional_occupied_units_2050 = int(config['adjust_occupancy_additional_units_2050'])
+        occ_income_distribution        = config.get('adjust_occupancy_income_distribution',
+                                                    DEFAULT_OCC_INCOME_DISTRIBUTION)
     if adjust_taz_pop:
         target_population_2035 = int(config['target_population_2035'])
         target_population_2050 = int(config['target_population_2050'])
@@ -267,6 +356,7 @@ def run_scenario(config_path, shared, run_folder):
     if adjust_occupancy:
         print(f"  Additional occ units 2035: {additional_occupied_units_2035}")
         print(f"  Additional occ units 2050: {additional_occupied_units_2050}")
+        print(f"  Additional occ income split: {occ_income_distribution}")
     print(f"  TAZ population adjust: {adjust_taz_pop}")
     if adjust_taz_pop:
         print(f"  Target pop 2035:       {target_population_2035}")
@@ -343,9 +433,8 @@ def run_scenario(config_path, shared, run_folder):
 
     # ── Optional: occupancy adjustment ────────────────────────────────────────
     if adjust_occupancy:
-        rng = np.random.default_rng(seed=42)
-        df_taz_2035 = adjust_occupied_units(df_taz_2035, additional_occupied_units_2035, "2035", rng)
-        df_taz_2050 = adjust_occupied_units(df_taz_2050, additional_occupied_units_2050, "2050", rng)
+        df_taz_2035 = adjust_occupied_units(df_taz_2035, additional_occupied_units_2035, "2035", occ_income_distribution)
+        df_taz_2050 = adjust_occupied_units(df_taz_2050, additional_occupied_units_2050, "2050", occ_income_distribution)
     else:
         print("  Occupancy adjustment skipped")
 

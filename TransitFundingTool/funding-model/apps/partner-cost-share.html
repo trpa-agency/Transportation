@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transit Partner Cost Share — TRPA</title>
+<meta name="description" content="Who pays for Lake Tahoe Region transit: cost attributed to each jurisdiction, its local share after outside funds, a cost-share formula builder, and funding commitments." />
+<link rel="icon" type="image/x-icon" href="https://trpa-agency.github.io/tools/assets/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@33.3.2/dist/ag-grid-community.min.js"></script>
+<link rel="stylesheet" href="../ui/common.css" />
+<link rel="stylesheet" href="https://trpa-agency.github.io/tools/assets/trpa-tokens.css" />
+<style>
+  .weights { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+  .weights label { display: flex; flex-direction: column; font-size: 0.74rem; font-weight: 600; color: var(--gray-text); }
+  .weights input { font: inherit; font-size: 0.84rem; border: 1px solid #C9D2DE; border-radius: 7px; padding: 0.2rem 0.4rem; background: #EEF6FD; color: #00539A; font-weight: 600; }
+  ul.agree li { margin: 0.4rem 0; } ul.agree .source { display: block; margin: 0; }
+</style>
+</head>
+<body>
+<header id="appHeader">
+  <div class="hdr-brand">
+    <a href="https://www.trpa.gov" target="_blank" rel="noopener noreferrer"><img src="https://trpa-agency.github.io/tools/assets/TRPALogo_COLOR.png" alt="Tahoe Regional Planning Agency logo" /></a>
+    <div class="htitle"><span class="hagency">Tahoe Regional Planning Agency</span><h1 class="hname">Transit Partner Cost Share</h1></div>
+    <a class="hdr-back" href="../index.html">All versions</a>
+  </div>
+  <div class="hdr-tools"><span class="beta-chip">Beta</span>
+    <label class="fld" style="flex-direction:row;align-items:center;gap:0.4rem">Fiscal year <select id="year" class="inline"></select></label>
+    <label class="checks"><input type="checkbox" id="optTransfers" /> Interagency transfers</label>
+    <button class="btn" id="btnReset">Reset shares</button></div>
+</header>
+<main class="wrap">
+  <div class="callout blue">Jurisdiction shares are <strong>placeholders</strong> for most services: an equal split among the jurisdictions in the costs tab. Use the formula builder to set them from measured splits of miles, hours, stops, and ridership, the method in the SSTMA working model. Funding is the rules-based allocation for the year shown (OPT-01 to OPT-09).</div>
+  <div class="kpis" id="kpis"></div>
+  <div class="card">
+    <div class="card-head"><div><h2>Cost and local share by jurisdiction</h2><p class="note">Each jurisdiction's share of service cost, the federal, state, private, and fare funding applied to that share, and the local share left, against what the jurisdiction contributes (RES-03).</p></div><div class="tools"><button class="btn" data-csv="juris">CSV</button></div></div>
+    <div id="chJuris" class="chart" style="min-height:340px"></div>
+    <div id="gridJuris" class="grid short" style="margin-top:0.5rem"></div>
+  </div>
+  <div class="cols-2">
+    <div class="card">
+      <div class="card-head"><div><h2>Cost-share formula builder</h2><p class="note">Enter each jurisdiction's percent of a service's miles, hours, stops, and riders. The share is the weighted average, as in the SSTMA Route 19, 22, and 28 worksheet.</p></div></div>
+      <label class="fld">Service<select id="svcPick"></select></label>
+      <div class="weights" style="margin:0.6rem 0" id="weights"></div>
+      <div id="gridMeasures" class="grid short"></div>
+      <div class="row" style="margin-top:0.5rem"><button class="btn primary" id="btnApply">Apply shares to this service</button><button class="btn" id="btnEqual">Equal split</button><span class="note" id="applyNote"></span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div><h2>A regional formula for local shares</h2><p class="note">Divides the region's total local share among jurisdictions by one basis and compares the result with what each contributes today.</p></div></div>
+      <label class="fld">Basis<select id="basis"><option value="cost">Share of service cost</option><option value="vsh">Share of service hours</option><option value="trips">Share of ridership</option><option value="equal">Equal shares</option></select></label>
+      <div id="chFormula" class="chart" style="min-height:300px"></div>
+      <div id="gridFormula" class="grid short"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div><h2>Partner detail</h2><p class="note">Services attributed to one jurisdiction and the sources it contributes.</p></div><div class="tools"><select id="jurPick" class="inline" aria-label="Jurisdiction"></select></div></div>
+    <div class="cols-2"><div id="gridPartnerSvc" class="grid short"></div><div id="gridPartnerSrc" class="grid short"></div></div>
+  </div>
+  <div class="cols-2">
+    <div class="card"><h2>Funding by commitment</h2><p class="note">How firmly each agency's revenue is committed for the year shown.</p><div id="chCommit" class="chart" style="min-height:300px"></div></div>
+    <div class="card"><h2>Agreements in the source files</h2><p class="note">Starting inventory for Task 4c.</p><ul class="tight agree note" id="agreeList"></ul></div>
+  </div>
+</main>
+<script src="../data/seed.js" charset="utf-8"></script>
+<script src="../engine/funding-engine.js" charset="utf-8"></script>
+<script src="../ui/common.js" charset="utf-8"></script>
+<script>
+'use strict';
+const FE = window.FundingEngine, $ = UI.$, KEY = 'trpa-funding-partners';
+const M = FE.load(window.FUNDING_SEED), X = FE.ix(M);
+const JUR0 = Object.fromEntries(M.services.map(s => [s.service_id, Object.assign({}, s.juris)]));
+const saved = UI.store.get(KEY);
+if (saved && saved.juris) for (const [sid, j] of Object.entries(saved.juris)) if (X.svc[sid]) { X.svc[sid].juris = j; X.svc[sid].juris_placeholder = !!(saved.placeholder || {})[sid]; }
+let YEAR = 0, TRANSFERS = false, R = null, SVC = '50', JUR = 'DOU';
+const WEIGHTS = { miles: 1, hours: 1, stops: 1, riders: 1 };
+const MEAS = {};   // per service: { jurisdiction: { miles, hours, stops, riders } } in percent
+const jurs = () => M.jurisdictions;
+function compute() {
+  R = FE.run(M, FE.scenario({ year: YEAR, method: 'optimized', allowTransfers: TRANSFERS })).results;
+  UI.store.set(KEY, { juris: Object.fromEntries(M.services.map(s => [s.service_id, s.juris])), placeholder: Object.fromEntries(M.services.map(s => [s.service_id, s.juris_placeholder])) });
+}
+function render() {
+  const J = Object.values(R.jurisdictions).filter(j => j.cost > 1 || j.contributions > 1);
+  const local = UI.sum(J.map(j => j.localShare)), contrib = UI.sum(J.map(j => j.contributions));
+  const placeholders = M.services.filter(s => !s.is_plan_element && !s.adjusts_service_id && Object.keys(s.juris).length > 1 && s.juris_placeholder).length;
+  $('kpis').innerHTML = [['navy', UI.money(R.totals.cost), 'Operating cost'], ['', UI.money(R.totals.cost - local), 'Paid by federal, state, private, and fares'], ['', UI.money(local), 'Local share across jurisdictions'],
+    ['accent', UI.money(contrib), 'Local contributions budgeted (used or not)'], [R.totals.gap > 1 ? 'danger' : 'green', UI.money(R.totals.gap), 'Unfunded gap'], ['', String(placeholders), 'Multi-jurisdiction services on placeholder shares']]
+    .map(([c, v, l]) => `<div class="kpi ${c}"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('');
+  const x = J.map(j => j.short);
+  UI.plot('chJuris', [
+    { type: 'bar', name: 'Outside funds applied', x, y: J.map(j => j.nonLocal), marker: { color: '#B4CBE8' }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'Local share', x, y: J.map(j => j.localShare), marker: { color: UI.COST }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'scatter', mode: 'markers', name: 'Own contributions (budgeted)', x, y: J.map(j => j.contributions), marker: { symbol: 'diamond', size: 13, color: UI.LEVEL_COLORS.local, line: { color: '#fff', width: 2 } }, hovertemplate: '%{y:$,.0f}' }
+  ], { barmode: 'stack', height: 340, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s', rangemode: 'tozero' } });
+  UI.grid('juris', $('gridJuris'), { rowData: J, getRowId: p => p.data.id, singleClickEdit: false, onRowClicked: e => { JUR = e.data.id; $('jurPick').value = JUR; renderPartner(); }, columnDefs: [
+    { field: 'name', headerName: 'Jurisdiction', minWidth: 180, flex: 1, pinned: 'left' }, { field: 'state', headerName: 'State', width: 76 },
+    UI.numCol({ field: 'cost', headerName: 'Share of cost', width: 126 }), UI.numCol({ field: 'nonLocal', headerName: 'Outside funds', width: 126 }), UI.numCol({ field: 'localShare', headerName: 'Local share', width: 120 }),
+    UI.numCol({ field: 'local', headerName: 'Local funds applied', width: 140 }), UI.numCol({ field: 'contributions', headerName: 'Own contributions (budgeted)', width: 170 }),
+    UI.numCol({ field: 'difference', headerName: 'Contributions − local share', width: 180, cellClass: p => 'num ' + UI.deltaClass(p.value) })] });
+  renderBuilder(); renderFormula(); renderPartner(); renderCommit();
+}
+function ensureMeasures(sid) {
+  if (MEAS[sid]) return MEAS[sid];
+  const s = X.svc[sid], t = UI.sum(Object.values(s.juris)) || 1, o = {};
+  for (const j of jurs()) { const v = ((s.juris[j.jurisdiction_id] || 0) / t) * 100; if (v > 0) o[j.jurisdiction_id] = { miles: v, hours: v, stops: v, riders: v }; }
+  return (MEAS[sid] = o);
+}
+function builderShares(sid) {
+  const meas = ensureMeasures(sid), W = WEIGHTS, wt = W.miles + W.hours + W.stops + W.riders || 1, out = {};
+  const tot = k => UI.sum(Object.values(meas).map(v => +v[k] || 0)) || 1;
+  const T = { miles: tot('miles'), hours: tot('hours'), stops: tot('stops'), riders: tot('riders') };
+  for (const [j, v] of Object.entries(meas)) out[j] = (W.miles * (v.miles || 0) / T.miles + W.hours * (v.hours || 0) / T.hours + W.stops * (v.stops || 0) / T.stops + W.riders * (v.riders || 0) / T.riders) / wt;
+  return out;
+}
+function renderBuilder() {
+  const meas = ensureMeasures(SVC), sh = builderShares(SVC);
+  const rows = jurs().map(j => ({ id: j.jurisdiction_id, name: j.name, ...(meas[j.jurisdiction_id] || { miles: 0, hours: 0, stops: 0, riders: 0 }), share: sh[j.jurisdiction_id] || 0, current: (X.svc[SVC].juris[j.jurisdiction_id] || 0) / (UI.sum(Object.values(X.svc[SVC].juris)) || 1) }));
+  const mcol = (f, h) => UI.numCol({ field: f, headerName: h, width: 86, editable: true, cellClass: 'num input', valueFormatter: p => p.value ? (+p.value).toFixed(1) + '%' : '', valueSetter: p => { const v = UI.parseNum(p.newValue) || 0; const m = MEAS[SVC]; if (!m[p.data.id]) m[p.data.id] = { miles: 0, hours: 0, stops: 0, riders: 0 }; m[p.data.id][f] = v; return true; } });
+  UI.grid('measures', $('gridMeasures'), { rowData: rows, getRowId: p => p.data.id, onCellValueChanged: () => setTimeout(renderBuilder, 0), columnDefs: [
+    { field: 'name', headerName: 'Jurisdiction', minWidth: 150, flex: 1 }, mcol('miles', 'Miles'), mcol('hours', 'Hours'), mcol('stops', 'Stops'), mcol('riders', 'Riders'),
+    UI.pctCol({ field: 'share', headerName: 'Formula share', width: 112 }), UI.pctCol({ field: 'current', headerName: 'Current', width: 92 })] });
+  $('applyNote').textContent = X.svc[SVC].juris_placeholder ? 'Current shares are a placeholder.' : 'Current shares were set from measured splits.';
+}
+function attribBasis(basis) {
+  const out = {}; for (const j of jurs()) out[j.jurisdiction_id] = 0;
+  for (const sv of Object.values(R.services)) {
+    const s = X.svc[sv.id], t = UI.sum(Object.values(s.juris)) || 1;
+    const v = basis === 'cost' ? sv.cost : basis === 'vsh' ? (+s.vsh || 0) : basis === 'trips' ? (+s.passenger_trips || 0) : 0;
+    for (const [j, sh] of Object.entries(s.juris)) out[j] += v * sh / t;
+  }
+  if (basis === 'equal') { const act = Object.values(R.jurisdictions).filter(j => j.cost > 1).map(j => j.id); for (const j of act) out[j] = 1; }
+  return out;
+}
+function renderFormula() {
+  const basis = $('basis').value, w = attribBasis(basis), W = UI.sum(Object.values(w)) || 1;
+  const J = Object.values(R.jurisdictions).filter(j => j.cost > 1 || j.contributions > 1), local = UI.sum(J.map(j => j.localShare));
+  const rows = J.map(j => ({ id: j.id, name: j.name, short: j.short, basisShare: (w[j.id] || 0) / W, formula: local * (w[j.id] || 0) / W, contributions: j.contributions })).map(r => ({ ...r, difference: r.contributions - r.formula }));
+  UI.plot('chFormula', [
+    { type: 'bar', name: 'Formula local share', x: rows.map(r => r.short), y: rows.map(r => r.formula), marker: { color: UI.COST }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'Contributes today', x: rows.map(r => r.short), y: rows.map(r => r.contributions), marker: { color: UI.LEVEL_COLORS.local }, hovertemplate: '%{y:$,.0f}' }
+  ], { barmode: 'group', height: 300, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s', rangemode: 'tozero' } });
+  UI.grid('formula', $('gridFormula'), { rowData: rows, getRowId: p => p.data.id, singleClickEdit: false, columnDefs: [
+    { field: 'name', headerName: 'Jurisdiction', minWidth: 170, flex: 1 }, UI.pctCol({ field: 'basisShare', headerName: 'Basis share', width: 104 }),
+    UI.numCol({ field: 'formula', headerName: 'Formula local share', width: 150 }), UI.numCol({ field: 'contributions', headerName: 'Contributes today', width: 140 }),
+    UI.numCol({ field: 'difference', headerName: 'Difference', width: 120, cellClass: p => 'num ' + UI.deltaClass(p.value) })] });
+}
+function renderPartner() {
+  const jid = JUR;
+  const svcRows = Object.values(R.services).map(sv => { const s = X.svc[sv.id], t = UI.sum(Object.values(s.juris)) || 1, f = (s.juris[jid] || 0) / t; return f > 0 ? { name: sv.name, share: f, cost: sv.cost * f, outside: (sv.cash - sv.byLevel.local) * f, local: sv.byLevel.local * f, placeholder: s.juris_placeholder } : null; }).filter(Boolean);
+  UI.grid('pSvc', $('gridPartnerSvc'), { rowData: svcRows, singleClickEdit: false, overlayNoRowsTemplate: '<span class="note">No services attributed to this jurisdiction.</span>', columnDefs: [
+    { field: 'name', headerName: 'Service', minWidth: 180, flex: 1 }, UI.pctCol({ field: 'share', headerName: 'Share', width: 84 }), UI.numCol({ field: 'cost', headerName: 'Cost share', width: 116 }),
+    UI.numCol({ field: 'outside', headerName: 'Outside funds', width: 116 }), UI.numCol({ field: 'local', headerName: 'Local funds', width: 108 }), { field: 'placeholder', headerName: 'Placeholder', width: 100, valueFormatter: p => p.value ? 'Yes' : '' }] });
+  const srcRows = M.lines.filter(l => l.contributor_jurisdiction_id === jid).map(l => ({ name: l.name, agency: l.recipient_agency_id, amount: (R.lines[l.line_id] || {}).amount || 0, prior: l.prior_year_amount, basis: (UI.COMMIT[l.commitment_basis] || {}).label, note: l.commitment_note }));
+  UI.grid('pSrc', $('gridPartnerSrc'), { rowData: srcRows, singleClickEdit: false, overlayNoRowsTemplate: '<span class="note">No local sources tagged to this jurisdiction.</span>', columnDefs: [
+    { field: 'name', headerName: 'Source it contributes', minWidth: 200, flex: 1 }, { field: 'agency', headerName: 'To', width: 84 }, UI.numCol({ field: 'amount', headerName: M.years[YEAR], width: 112 }),
+    UI.numCol({ field: 'prior', headerName: 'FY 25-26', width: 108 }), { field: 'basis', headerName: 'Commitment', width: 170, tooltipField: 'note' }] });
+}
+function renderCommit() {
+  const ags = Object.values(R.agencies).filter(a => a.revenue > 0), y = ags.map(a => a.short);
+  UI.plot('chCommit', Object.entries(UI.COMMIT).filter(([k]) => ags.some(a => a.commit[k])).map(([k, c]) => ({ type: 'bar', orientation: 'h', name: c.label, y, x: ags.map(a => a.commit[k] || 0), marker: { color: c.color, line: { color: '#fff', width: 1 } }, hovertemplate: '%{x:$,.0f}' })),
+    { barmode: 'stack', height: 300, hovermode: 'y unified', margin: { t: 70, r: 16, b: 36, l: 80 }, yaxis: { type: 'category', autorange: 'reversed' }, xaxis: { tickprefix: '$', tickformat: '~s' } });
+}
+// Controls
+$('year').innerHTML = UI.yearOptions(M, YEAR); $('year').addEventListener('change', e => { YEAR = +e.target.value; compute(); render(); });
+$('optTransfers').addEventListener('change', e => { TRANSFERS = e.target.checked; compute(); render(); });
+$('svcPick').innerHTML = FE.realServices(M).filter(s => !s.is_plan_element).map(s => `<option value="${s.service_id}" ${s.service_id === SVC ? 'selected' : ''}>${UI.esc(s.name)}${Object.keys(s.juris).length > 1 ? '' : ' (one jurisdiction)'}</option>`).join('');
+$('svcPick').addEventListener('change', e => { SVC = e.target.value; renderBuilder(); });
+$('weights').innerHTML = Object.keys(WEIGHTS).map(k => `<label>Weight: ${k}<input type="number" min="0" step="0.5" data-w="${k}" value="${WEIGHTS[k]}" /></label>`).join('');
+$('weights').querySelectorAll('input').forEach(i => i.addEventListener('change', () => { WEIGHTS[i.dataset.w] = UI.parseNum(i.value) || 0; renderBuilder(); }));
+$('btnApply').addEventListener('click', () => { const sh = builderShares(SVC); const s = X.svc[SVC]; s.juris = {}; for (const [j, v] of Object.entries(sh)) if (v > 1e-6) s.juris[j] = v; s.juris_placeholder = false; delete MEAS[SVC]; compute(); render(); });
+$('btnEqual').addEventListener('click', () => { const s = X.svc[SVC], ks = Object.keys(s.juris); s.juris = Object.fromEntries(ks.map(k => [k, 1 / ks.length])); s.juris_placeholder = true; delete MEAS[SVC]; compute(); render(); });
+$('btnReset').addEventListener('click', () => { if (!confirm('Return every jurisdiction share to the source data?')) return; for (const s of M.services) { s.juris = Object.assign({}, JUR0[s.service_id]); } UI.store.del(KEY); location.reload(); });
+$('basis').addEventListener('change', renderFormula);
+$('jurPick').innerHTML = M.jurisdictions.map(j => `<option value="${j.jurisdiction_id}" ${j.jurisdiction_id === JUR ? 'selected' : ''}>${UI.esc(j.name)}</option>`).join('');
+$('jurPick').addEventListener('change', e => { JUR = e.target.value; renderPartner(); });
+$('agreeList').innerHTML = M.agreements.map(a => `<li><strong>${UI.esc(a.title)}.</strong> ${UI.esc(a.description)}<span class="source">${UI.esc(UI.cite(M, 'agreement', a.agreement_id))}</span></li>`).join('');
+document.querySelectorAll('[data-csv]').forEach(b => b.addEventListener('click', () => UI.csv(b.dataset.csv, 'tahoe-transit-' + b.dataset.csv)));
+if (!UI.libsOk()) document.querySelector('main').insertAdjacentHTML('afterbegin', '<div class="callout">A library did not load. Check the network connection and reload.</div>');
+compute(); render();
+window.__app = { M, get R() { return R; } };
+</script>
+</body>
+</html>

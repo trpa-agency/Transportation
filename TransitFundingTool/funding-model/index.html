@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Regional Transit Funding Model — TRPA</title>
+<meta name="description" content="The Lake Tahoe Region transit funding model: one calculation engine and database, with a simple view and three front ends." />
+<link rel="icon" type="image/x-icon" href="https://trpa-agency.github.io/tools/assets/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="ui/common.css" />
+<link rel="stylesheet" href="https://trpa-agency.github.io/tools/assets/trpa-tokens.css" />
+<style>
+  .versions { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
+  .version { display: flex; flex-direction: column; gap: 0.35rem; background: #fff; border: 1px solid var(--gray-border); border-top: 4px solid var(--c); border-radius: 8px; padding: 0.8rem 0.9rem; text-decoration: none; color: inherit; }
+  .version:hover { box-shadow: 0 2px 10px rgba(0,59,113,0.14); }
+  .version h2 { font-size: 1rem; color: var(--trpa-navy); }
+  .version ul { margin: 0.2rem 0 0 1rem; padding: 0; font-size: 0.8rem; color: var(--gray-text); }
+  .files { columns: 2; font-size: 0.84rem; } @media (max-width: 700px) { .files { columns: 1; } }
+  .files li { break-inside: avoid; margin: 0.3rem 0; }
+</style>
+</head>
+<body>
+<header id="appHeader">
+  <div class="hdr-brand">
+    <a href="https://www.trpa.gov" target="_blank" rel="noopener noreferrer"><img src="https://trpa-agency.github.io/tools/assets/TRPALogo_COLOR.png" alt="Tahoe Regional Planning Agency logo" /></a>
+    <div class="htitle"><span class="hagency">Tahoe Regional Planning Agency</span><h1 class="hname">Regional Transit Funding Model</h1></div>
+  </div>
+  <div class="hdr-tools"><span class="beta-chip">Beta</span></div>
+</header>
+<main class="wrap">
+  <div class="card">
+    <div class="section-label">Task 4b: funding model</div>
+    <h2>One engine, four ways in</h2>
+    <p class="note" style="max-width:110ch">Every page below runs the same calculation engine on the same data. Costs, revenue, eligibility rules, federal share caps, and match are defined once, in <span class="mono">engine/funding-engine.js</span>, and every rule is listed with its source in <a href="RULES.md">RULES.md</a>. The data follows <a href="schema.sql">schema.sql</a>. The pages differ only in what they put first.</p>
+  </div>
+  <div class="versions">
+    <a class="version" href="simple.html" style="--c:#003B71"><h2>Simple view: assumptions and what-if</h2><p class="note">Every cost and funding input on one page, with what changes when dollars change.</p><ul><li>All inputs with their source cells</li><li>Multipliers by funding level and source</li><li>Value of $100,000 more, and cost of losing each source</li></ul></a>
+    <a class="version" href="apps/budget-scenarios.html" style="--c:#0072CE"><h2>A. Budget scenarios</h2><p class="note">For decision makers: test funding futures and compare them.</p><ul><li>Presets: SB 125 ends, partners return, pooling</li><li>Sliders by level and agency</li><li>Saved scenarios side by side, five-year view</li></ul></a>
+    <a class="version" href="apps/allocation-workbench.html" style="--c:#4A6118"><h2>B. Allocation workbench</h2><p class="note">For staff: set how each source is split and check it rule by rule.</p><ul><li>Editable shares matrix with rule coloring</li><li>Findings by rule ID</li><li>Service waterfall with the match arithmetic</li></ul></a>
+    <a class="version" href="apps/partner-cost-share.html" style="--c:#B47E00"><h2>C. Partner cost share</h2><p class="note">For partners: who pays for what, and on what commitment.</p><ul><li>Cost and local share by jurisdiction</li><li>Cost-share formula builder (miles, hours, stops, riders)</li><li>Regional formula against current contributions</li></ul></a>
+  </div>
+  <div class="card" style="margin-top:1rem">
+    <h2>Engine, data, and checks</h2>
+    <ul class="tight files">
+      <li><a href="engine/funding-engine.js">engine/funding-engine.js</a>: all funding logic and the rule registry; no UI code</li>
+      <li><a href="RULES.md">RULES.md</a>: 52 general rules and the rules for each of 63 sources</li>
+      <li><a href="schema.sql">schema.sql</a>: database schema (SQLite, PostgreSQL-compatible)</li>
+      <li><a href="data/seed.json">data/seed.json</a>: the data as normalized tables; <span class="mono">data/funding_model.sqlite</span> is the same data loaded with keys enforced</li>
+      <li><a href="tests/engine-tests.html">tests/engine-tests.html</a>: 54 checks, including 200 random funding scenarios with proven-optimal allocations</li>
+      <li><span class="mono">tools/verify.py</span>: re-reads 122 values from the workbooks and re-solves the optimizer independently</li>
+      <li><span class="mono">tools/seed_source.py</span>: where data values and citations are edited; <span class="mono">tools/build.py</span> regenerates the data files</li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>

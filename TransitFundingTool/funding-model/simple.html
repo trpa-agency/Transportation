@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transit Funding Model, Simple View — TRPA</title>
+<meta name="description" content="Every cost and funding assumption in the Lake Tahoe Region transit funding model, with what changes when the dollars available change." />
+<link rel="icon" type="image/x-icon" href="https://trpa-agency.github.io/tools/assets/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@33.3.2/dist/ag-grid-community.min.js"></script>
+<link rel="stylesheet" href="ui/common.css" />
+<link rel="stylesheet" href="https://trpa-agency.github.io/tools/assets/trpa-tokens.css" />
+<style>
+  .controls { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.6rem 0.9rem; align-items: end; }
+  .controls .wide { grid-column: span 2; }
+  .lv { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.5rem; }
+  @media (max-width: 800px) { .lv { grid-template-columns: repeat(3, minmax(0, 1fr)); } .controls .wide { grid-column: span 1; } }
+  .lv label { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.72rem; font-weight: 600; color: var(--gray-text); }
+  .lv input { font: inherit; font-size: 0.84rem; width: 100%; border: 1px solid #C9D2DE; border-radius: 7px; padding: 0.2rem 0.4rem; color: #00539A; background: #EEF6FD; font-weight: 600; }
+  ol.issues li { margin: 0.35rem 0; }
+</style>
+</head>
+<body>
+<header id="appHeader">
+  <div class="hdr-brand">
+    <a href="https://www.trpa.gov" target="_blank" rel="noopener noreferrer"><img src="https://trpa-agency.github.io/tools/assets/TRPALogo_COLOR.png" alt="Tahoe Regional Planning Agency logo" /></a>
+    <div class="htitle"><span class="hagency">Tahoe Regional Planning Agency</span><h1 class="hname">Transit Funding Model: Assumptions and What-If</h1></div>
+    <a class="hdr-back" href="index.html">All versions</a>
+  </div>
+  <div class="hdr-tools">
+    <span class="beta-chip">Beta</span>
+    <button class="btn" id="btnExport" title="Download the model's tables (matches schema.sql)">Export data</button>
+    <button class="btn" id="btnImport" title="Load an exported data file">Import</button>
+    <button class="btn" id="btnReset" title="Discard every change and return to the source data">Reset</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <div class="section-label">How to read this page</div>
+    <p class="note" style="max-width:120ch">Every input the model uses is listed below with the file and cell it came from. Blue cells are inputs you can change. Results compare your scenario with the <strong>source data</strong> for the same year and method, so every change in dollars shows its effect on funded service, gaps, and unused funds. The rules applied are listed at the end and in <span class="mono">RULES.md</span>.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div><h2>Scenario</h2><p class="note">Year, allocation method, and funding available. Multipliers apply on top of each source's own amount.</p></div></div>
+    <div class="controls">
+      <label class="fld">Fiscal year<select id="year"></select></label>
+      <label class="fld wide">Allocation method<select id="method"><option value="optimized">Rules-based (engine allocates every source)</option><option value="fixed">Draft shares (Revenue %s)</option></select></label>
+      <div class="fld wide">Options<span class="checks">
+        <label><input type="checkbox" id="optSpread" checked /> Spread shortfalls evenly</label>
+        <label><input type="checkbox" id="optTransfers" /> Allow interagency transfers</label>
+        <label><input type="checkbox" id="optStrict" /> Treat preferences as required</label></span></div>
+      <label class="fld">All service costs (%)<input type="number" id="costAll" value="100" step="1" min="0" /></label>
+    </div>
+    <div style="margin-top:0.7rem"><div class="fld" style="margin-bottom:0.25rem">Funding available by level (% of each source's amount)</div><div class="lv" id="levels"></div></div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+  <div class="card"><h3>What changed from the source data</h3><ul class="tight note" id="changes"></ul></div>
+
+  <div class="card">
+    <div class="card-head"><div><h2>Cost assumptions</h2><p class="note">Cost = vehicle service hours × cost per hour (COST-01), escalated by the operator rate each year (COST-03). Type a rate or annual cost to override it for one service.</p></div>
+      <div class="tools"><button class="btn" data-csv="svc">CSV</button></div></div>
+    <div id="gridSvc" class="grid tall"></div>
+    <h3 style="margin-top:0.9rem">Operator rates</h3>
+    <div id="gridOps" class="grid short"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div><h2>Funding assumptions</h2><p class="note">Base amount is the FY 26-27 budget (REV-01); later years follow the projection rule (REV-03 to REV-05). Change the base amount, or the multiplier, to see the effect of more or less money.</p></div>
+      <div class="tools"><button class="btn" data-csv="lines">CSV</button></div></div>
+    <div id="gridLines" class="grid tall"></div>
+    <h3 style="margin-top:0.9rem">FTA 5307 sub-allocation inputs (REV-02)</h3>
+    <div id="gridFta" class="grid short"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div><h2>Results by service</h2><p class="note" id="svcNote"></p></div><div class="tools"><button class="btn" data-csv="svcRes">CSV</button></div></div>
+    <div id="gridSvcRes" class="grid"></div>
+  </div>
+  <div class="cols-2">
+    <div class="card"><div class="card-head"><h2>Results by agency</h2><div class="tools"><button class="btn" data-csv="agRes">CSV</button></div></div><div id="gridAgRes" class="grid short"></div></div>
+    <div class="card"><div class="card-head"><h2>Funded service by year</h2></div><div id="chYears" class="chart" style="min-height:280px"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div><h2>How each source is used</h2><p class="note">Applied and unused amounts, and why any money is left over (OPT-08).</p></div><div class="tools"><button class="btn" data-csv="use">CSV</button></div></div>
+    <div id="gridUse" class="grid"></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div><h2>What more or less money would do</h2><p class="note">For each source: funded service gained from $100,000 more, and lost if the source disappears, re-solving the rules-based allocation each time (SENS-01, SENS-02).</p></div>
+      <div class="tools"><button class="btn primary" id="btnSens">Calculate</button><button class="btn" data-csv="sens">CSV</button></div></div>
+    <div id="gridSens" class="grid"></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div><h2>Rule checks</h2><p class="note">Every rule broken by the current allocation, with the rule ID from RULES.md.</p></div><div class="tools"><button class="btn" data-csv="issues">CSV</button></div></div>
+    <div id="gridIssues" class="grid short"></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div><h2>Rules the model applies</h2><p class="note">The engine's rule registry. Each check above cites one of these IDs.</p></div><div class="tools"><button class="btn" data-csv="rules">CSV</button></div></div>
+    <div id="gridRules" class="grid"></div>
+  </div>
+  <div class="card"><h2>Data issues found in the source files</h2><ol class="issues note" id="dataIssues"></ol></div>
+</main>
+
+<script src="data/seed.js" charset="utf-8"></script>
+<script src="engine/funding-engine.js" charset="utf-8"></script>
+<script src="ui/common.js" charset="utf-8"></script>
+<script>
+'use strict';
+const FE = window.FundingEngine, $ = UI.$, KEY = 'trpa-funding-simple';
+if (!UI.libsOk()) document.querySelector('main').insertAdjacentHTML('afterbegin', '<div class="callout">A library did not load. Check the network connection and reload.</div>');
+let { model: M, baseline: B } = UI.loadModels(null);
+const savedSc = UI.store.get(KEY);
+let SC = { year: 0, method: 'optimized', spreadShortfall: true, allowTransfers: false, strictPreferences: false, level: {}, line: {}, costAll: 1 };
+if (savedSc && savedSc.model && savedSc.sc) { try { M = FE.load(savedSc.model); SC = Object.assign(SC, savedSc.sc); } catch (e) { /* use source data */ } }
+let RUN = null, BASE = null, YEARS = null, BYEARS = null, SENS = null;
+
+const scen = (forBaseline, y) => FE.scenario({ year: y == null ? SC.year : y, method: SC.method, spreadShortfall: SC.spreadShortfall, allowTransfers: SC.allowTransfers, strictPreferences: SC.strictPreferences,
+  scale: forBaseline ? {} : { level: SC.level, line: SC.line }, costScale: forBaseline ? {} : { all: SC.costAll } });
+function recompute() {
+  RUN = FE.run(M, scen(false)); BASE = FE.run(B, scen(true));
+  YEARS = M.years.map((_, y) => FE.run(M, scen(false, y)).results.totals); BYEARS = B.years.map((_, y) => FE.run(B, scen(true, y)).results.totals);
+  UI.store.set(KEY, { model: FE.toSeed(M), sc: SC });
+}
+const d = (v, good = true) => `<span class="${UI.deltaClass(v, good)}">${UI.signed(v)}</span>`;
+function render() {
+  const T = RUN.results.totals, BT = BASE.results.totals;
+  const k = [['navy', UI.money(T.cost), 'Operating cost', d(T.cost - BT.cost, false)], ['', UI.money(T.revenue), 'Revenue available', d(T.revenue - BT.revenue)],
+    ['green', UI.money(T.funded), 'Funded service', d(T.funded - BT.funded)], [T.gap > 1 ? 'danger' : 'green', UI.money(T.gap), 'Unfunded gap', d(T.gap - BT.gap, false)],
+    ['accent', UI.money(T.unallocated), 'Revenue not used', d(T.unallocated - BT.unallocated, false)], [T.errors ? 'danger' : 'green', `${T.errors} · ${T.warnings}`, 'Rule errors · warnings', `<span class="flat">source data: ${BT.errors} · ${BT.warnings}</span>`, true]];
+  $('kpis').innerHTML = k.map(([c, v, l, dd, own]) => `<div class="kpi ${c}"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${dd}${own ? '' : ' <span class="flat">vs source data</span>'}</div></div>`).join('');
+  const ch = Object.values(RUN.results.services).map(s => ({ s, b: BASE.results.services[s.id] })).filter(x => x.b && Math.abs(x.s.funded - x.b.funded) > 1).sort((a, b) => (a.s.funded - a.b.funded) - (b.s.funded - b.b.funded));
+  const o = RUN.results.optimizer;
+  $('changes').innerHTML = (ch.length ? ch.slice(0, 10).map(x => `<li><strong>${UI.esc(x.s.name)}</strong>: funded ${UI.money(x.s.funded)} of ${UI.money(x.s.cost)} (${d(x.s.funded - x.b.funded)} vs source data)</li>`).join('') : '<li>No service is funded differently from the source data.</li>')
+    + (o ? `<li>Rules-based allocation: ${o.certificate && o.certificate.ok ? 'proven optimal (OPT-07)' : '<strong>not proven optimal</strong>'}; lowest share of cost funded on any service: ${UI.pct(o.minCoverage)}.</li>` : '<li>Draft shares are applied as written (ALLOC-01); switch to rules-based to let the engine allocate.</li>');
+  $('svcNote').textContent = `${M.years[SC.year]}, ${SC.method === 'optimized' ? 'rules-based allocation' : 'draft shares'}. Coverage = funded ÷ cost. Match columns apply MATCH-01 to MATCH-03.`;
+  renderGrids(); chartYears();
+}
+function renderGrids() {
+  const y = SC.year, R = RUN.results, BR = BASE.results, X = FE.ix(M);
+  // Services
+  const sv = (p, f, parse) => { const v = parse ? UI.parseNum(p.newValue) : p.newValue; if (p.data[f] === v) return false; p.data[f] = v; return true; };
+  UI.grid('svc', $('gridSvc'), { rowData: M.services.filter(s => !s.adjusts_service_id), getRowId: p => p.data.service_id, rowClassRules: { 'row-off': p => !p.data.included }, onCellValueChanged: () => setTimeout(refresh, 0),
+    columnDefs: [
+      { field: 'included', headerName: 'Include', width: 84, pinned: 'left', editable: true, cellDataType: 'boolean', cellClass: 'input', filter: false, valueSetter: p => sv(p, 'included') },
+      { field: 'name', headerName: 'Service', pinned: 'left', minWidth: 210, tooltipField: 'notes' },
+      { field: 'agency_id', headerName: 'Agency', width: 92 }, { field: 'operator_id', headerName: 'Operator', width: 104 },
+      { field: 'area_class', headerName: 'Urban/rural', width: 104 }, { field: 'service_type', headerName: 'Type', width: 110 },
+      UI.numCol({ field: 'vsh', headerName: 'Service hours', width: 116, editable: p => !p.data.is_plan_element, cellClass: 'num input', valueFormatter: p => p.value == null ? '—' : (+p.value).toLocaleString('en-US', { maximumFractionDigits: 1 }), valueSetter: p => sv(p, 'vsh', true) }),
+      UI.numCol({ colId: 'rate', headerName: 'Cost per hour', width: 110, editable: p => !p.data.is_plan_element, cellClass: 'num input', valueGetter: p => p.data.is_plan_element ? null : FE.serviceRate(M, p.data), valueFormatter: p => p.value == null ? '—' : '$' + (+p.value).toFixed(2),
+        valueSetter: p => { const v = UI.parseNum(p.newValue), o = X.op[p.data.operator_id]; p.data.cost_per_vsh_override = (v == null || (o && Math.abs(v - o.cost_per_vsh) < 0.005)) ? null : v; return true; }, tooltipValueGetter: p => p.data.cost_per_vsh_override != null ? 'Rate set for this service' : 'Operator rate' }),
+      UI.numCol({ field: 'annual_cost_override', headerName: 'Annual cost entered', width: 136, editable: p => !p.data.is_plan_element, cellClass: 'num input', valueSetter: p => sv(p, 'annual_cost_override', true) }),
+      UI.numCol({ colId: 'cost', headerName: `Cost ${M.years[y]}`, width: 122, valueGetter: p => FE.serviceCost(M, p.data, y, RUN.scenario) }),
+      UI.numCol({ colId: 'dcost', headerName: 'Change vs source', width: 122, valueGetter: p => { const b = FE.ix(B).svc[p.data.service_id]; return b ? FE.serviceCost(M, p.data, y, RUN.scenario) - FE.serviceCost(B, b, y, BASE.scenario) : null; }, valueFormatter: p => UI.signed(p.value) }),
+      UI.numCol({ field: 'reference_cost', headerName: 'Financial plan cost', width: 130, tooltipValueGetter: p => UI.cite(M, 'service', p.data.service_id, 'reference_cost') || null }),
+      { colId: 'juris', headerName: 'Jurisdiction shares', minWidth: 200, valueGetter: p => Object.entries(p.data.juris).map(([j, s]) => `${X.jur[j] ? X.jur[j].short_name : j} ${UI.pct(s / UI.sum(Object.values(p.data.juris)), 0)}`).join(', ') + (p.data.juris_placeholder ? ' (placeholder)' : '') },
+      { colId: 'src', headerName: 'Source', minWidth: 220, flex: 1, cellClass: 'muted', valueGetter: p => UI.cite(M, 'service', p.data.service_id, 'cost'), tooltipValueGetter: p => p.data.notes || null }
+    ] });
+  UI.grid('ops', $('gridOps'), { rowData: M.operators, getRowId: p => p.data.operator_id, onCellValueChanged: () => setTimeout(refresh, 0), columnDefs: [
+    { field: 'name', headerName: 'Operator', minWidth: 220, flex: 1 },
+    UI.numCol({ field: 'cost_per_vsh', headerName: 'Cost per hour', width: 120, editable: p => p.data.operator_id !== 'BUDGET', cellClass: 'num input', valueFormatter: p => '$' + (+p.value).toFixed(2), valueParser: p => UI.parseNum(p.newValue) }),
+    UI.numCol({ colId: 'esc', headerName: 'Escalator', width: 100, editable: true, cellClass: 'num input', valueGetter: p => +(p.data.annual_escalator * 100).toFixed(3), valueFormatter: p => p.value + '%', valueSetter: p => { const v = UI.parseNum(p.newValue); if (v == null) return false; p.data.annual_escalator = v / 100; return true; } }),
+    { field: 'basis', headerName: 'Basis', minWidth: 280, flex: 2, tooltipField: 'basis', cellClass: 'muted' },
+    { colId: 'src', headerName: 'Source', minWidth: 200, flex: 1, cellClass: 'muted', valueGetter: p => UI.cite(M, 'operator', p.data.operator_id) }] });
+  // Funding lines
+  UI.grid('lines', $('gridLines'), { rowData: M.lines, getRowId: p => p.data.line_id, rowClassRules: { 'row-off': p => !p.data.enabled || p.data.status === 'capital' }, onCellValueChanged: () => setTimeout(refresh, 0),
+    columnDefs: [
+      { field: 'enabled', headerName: 'Use', width: 70, pinned: 'left', editable: true, cellDataType: 'boolean', cellClass: 'input', filter: false },
+      { field: 'name', headerName: 'Funding source', pinned: 'left', minWidth: 230, tooltipValueGetter: p => p.data.purpose || null },
+      { field: 'recipient_agency_id', headerName: 'Agency', width: 92 }, { field: 'level', headerName: 'Level', width: 116, cellRenderer: p => UI.levelBadge(p.value) },
+      UI.numCol({ colId: 'base', headerName: 'Base amount', width: 124, editable: p => p.data.amount_method !== 'fta_5307_formula', cellClass: p => 'num' + (p.data.amount_method === 'fta_5307_formula' ? '' : ' input'), valueGetter: p => FE.lineBase(M, p.data),
+        valueSetter: p => { const v = UI.parseNum(p.newValue); if (v == null) return false; p.data.base_amount = v; return true; }, tooltipValueGetter: p => p.data.amount_method === 'fta_5307_formula' ? 'Set by the FTA sub-allocation inputs below' : (UI.cite(M, 'funding_line', p.data.line_id, 'amount') || null) }),
+      UI.numCol({ colId: 'mult', headerName: 'Multiplier', width: 100, editable: true, cellClass: 'num input', valueGetter: p => +(((SC.line[p.data.line_id] ?? 1) * (SC.level[p.data.level] ?? 1)) * 100).toFixed(1), valueFormatter: p => p.value + '%',
+        valueSetter: p => { const v = UI.parseNum(p.newValue); if (v == null) return false; const lv = SC.level[p.data.level] ?? 1; SC.line[p.data.line_id] = lv ? (v / 100) / lv : 0; if (Math.abs(SC.line[p.data.line_id] - 1) < 1e-9) delete SC.line[p.data.line_id]; return true; },
+        tooltipValueGetter: () => 'Source multiplier × level multiplier' }),
+      UI.numCol({ colId: 'amt', headerName: `Amount ${M.years[y]}`, width: 124, valueGetter: p => R.lines[p.data.line_id] ? R.lines[p.data.line_id].amount : 0 }),
+      UI.numCol({ colId: 'damt', headerName: 'Change vs source', width: 122, valueGetter: p => (R.lines[p.data.line_id] ? R.lines[p.data.line_id].amount : 0) - (BR.lines[p.data.line_id] ? BR.lines[p.data.line_id].amount : 0), valueFormatter: p => UI.signed(p.value) }),
+      UI.numCol({ field: 'prior_year_amount', headerName: 'FY 25-26 (fact sheet)', width: 132 }),
+      { colId: 'proj', headerName: 'Projection', width: 170, valueGetter: p => FE.projectionText(p.data), tooltipValueGetter: p => UI.cite(M, 'funding_line', p.data.line_id, 'projection') || null },
+      { colId: 'rules', headerName: 'Rules (RULES.md)', minWidth: 230, flex: 1, valueGetter: p => FE.rulesText(M, p.data), tooltipValueGetter: p => FE.rulesText(M, p.data) },
+      { field: 'match_text', headerName: 'Match (as written)', width: 170, tooltipField: 'match_text' },
+      { field: 'restriction_text', headerName: 'Restrictions (fact sheet)', width: 200, tooltipField: 'restriction_text' },
+      { field: 'commitment_basis', headerName: 'Commitment', width: 130, valueFormatter: p => (UI.COMMIT[p.value] || {}).label || p.value },
+      { colId: 'src', headerName: 'Amount source', minWidth: 240, cellClass: 'muted', valueGetter: p => UI.cite(M, 'funding_line', p.data.line_id, 'amount'), tooltipValueGetter: p => [UI.cite(M, 'funding_line', p.data.line_id), p.data.notes].filter(Boolean).join(' | ') || null }
+    ] });
+  // FTA inputs
+  const fRows = [['apportionment_5307', 'UZA 5307 apportionment ($)', 'fta'], ['operations_share', 'Share to operations', 'fta'], ['weight_revenue_miles', 'Weight: revenue miles', 'fta'], ['weight_population', 'Weight: population', 'fta'], ['weight_ridership', 'Weight: ridership', 'fta'],
+    ['TTD.urban_revenue_miles', 'TTD urban revenue miles', 'fac'], ['TART.urban_revenue_miles', 'Placer urban revenue miles', 'fac'], ['TTD.population', 'TTD population', 'fac'], ['TART.population', 'Placer population', 'fac'], ['TTD.ridership', 'TTD ridership', 'fac'], ['TART.ridership', 'Placer ridership', 'fac']]
+    .map(([k, label, t]) => ({ k, label, t, get value() { if (t === 'fta') return M.fta[k]; const [a, f] = k.split('.'); return M.ftaFactors[a][f]; }, set value(v) { if (t === 'fta') M.fta[k] = v; else { const [a, f] = k.split('.'); M.ftaFactors[a][f] = v; } } }));
+  const sh = FE.ftaShares(M);
+  UI.grid('fta', $('gridFta'), { rowData: fRows, getRowId: p => p.data.k, onCellValueChanged: () => setTimeout(refresh, 0), columnDefs: [
+    { field: 'label', headerName: 'Input', minWidth: 220, flex: 1 },
+    UI.numCol({ colId: 'v', headerName: 'Value', width: 150, editable: true, cellClass: 'num input', valueGetter: p => p.data.value, valueFormatter: p => p.data.k === 'operations_share' ? UI.pct(p.value) : (+p.value).toLocaleString('en-US', { maximumFractionDigits: 2 }), valueSetter: p => { const v = UI.parseNum(p.newValue); if (v == null) return false; p.data.value = v; return true; } }),
+    { colId: 'res', headerName: 'Result', minWidth: 260, flex: 1, valueGetter: p => p.node.rowIndex === 0 ? `TTD share ${UI.pct(sh.TTD, 2)} → ${UI.money(FE.ftaOperating(M, 'TTD'))}; Placer ${UI.pct(sh.TART, 2)} → ${UI.money(FE.ftaOperating(M, 'TART'))}` : '' },
+    { colId: 'src', headerName: 'Source', minWidth: 260, flex: 1, cellClass: 'muted', valueGetter: p => UI.cite(M, 'fta', p.data.t === 'fta' ? 'fta_suballocation' : 'fta_earned_share_factor') }] });
+  // Results by service
+  const svRows = Object.values(R.services).filter(s => s.cost > 0 || s.cash > 0).map(s => ({ ...s, coverage: s.cost > 0 ? s.funded / s.cost : null, dFunded: s.funded - ((BR.services[s.id] || {}).funded || 0) }));
+  UI.grid('svcRes', $('gridSvcRes'), { rowData: svRows, getRowId: p => p.data.id, singleClickEdit: false, columnDefs: [
+    { field: 'name', headerName: 'Service', pinned: 'left', minWidth: 210 }, { field: 'agency', headerName: 'Agency', width: 92 },
+    UI.numCol({ field: 'cost', headerName: 'Cost', width: 116 }), UI.numCol({ field: 'funded', headerName: 'Funded', width: 116 }),
+    UI.numCol({ field: 'gap', headerName: 'Gap', width: 106, cellClass: p => 'num' + (p.value > 1 ? ' c-error' : '') }), UI.pctCol({ field: 'coverage', headerName: 'Coverage', width: 96 }),
+    UI.numCol({ field: 'dFunded', headerName: 'Funded vs source', width: 130, valueFormatter: p => UI.signed(p.value), cellClass: p => 'num ' + UI.deltaClass(p.value) }),
+    UI.numCol({ field: 'fares', headerName: 'Fares', width: 96 }), UI.numCol({ field: 'fed', headerName: 'Federal', width: 110 }),
+    UI.numCol({ field: 'matchReq', headerName: 'Match required', width: 120 }), UI.numCol({ field: 'matchAvail', headerName: 'Match applied', width: 120, cellClass: p => 'num' + (p.data.matchReq > p.value + 5 ? ' c-error' : '') }),
+    UI.numCol({ colId: 'st', headerName: 'State', width: 104, valueGetter: p => p.data.byLevel.state }), UI.numCol({ colId: 'lo', headerName: 'Local', width: 104, valueGetter: p => p.data.byLevel.local }),
+    UI.numCol({ colId: 'pr', headerName: 'Private', width: 100, valueGetter: p => p.data.byLevel.private }), UI.pctCol({ field: 'riskShare', headerName: 'Time-limited', width: 104 }),
+    { colId: 'chk', headerName: 'Checks', width: 104, valueGetter: p => p.data.errors * 100 + p.data.warnings, cellRenderer: p => (p.data.errors ? `<span class="badge danger">${p.data.errors} err</span> ` : '') + (p.data.warnings ? `<span class="badge warning">${p.data.warnings} warn</span>` : '') || '<span class="badge success">OK</span>' }] });
+  // Agencies
+  const agRows = Object.values(R.agencies).filter(a => a.cost || a.revenue).map(a => ({ ...a, dFunded: a.funded - (BR.agencies[a.id] || {}).funded, dBalance: a.balance - (BR.agencies[a.id] || {}).balance }));
+  UI.grid('agRes', $('gridAgRes'), { rowData: agRows, getRowId: p => p.data.id, singleClickEdit: false, columnDefs: [
+    { field: 'name', headerName: 'Agency', minWidth: 190, flex: 1 }, UI.numCol({ field: 'cost', headerName: 'Cost', width: 112 }), UI.numCol({ field: 'revenue', headerName: 'Revenue', width: 112 }),
+    UI.numCol({ field: 'funded', headerName: 'Funded', width: 112 }), UI.numCol({ field: 'gap', headerName: 'Gap', width: 100 }), UI.numCol({ field: 'unallocated', headerName: 'Unused', width: 104 }),
+    UI.numCol({ field: 'balance', headerName: 'Balance', width: 108, cellClass: p => 'num' + (p.value < -1 ? ' c-error' : '') }),
+    UI.numCol({ field: 'dFunded', headerName: 'Funded vs source', width: 128, valueFormatter: p => UI.signed(p.value), cellClass: p => 'num ' + UI.deltaClass(p.value) })] });
+  // Source use
+  const useRows = Object.values(R.lines).filter(L => L.amount > 0 || L.allocated > 0).map(L => ({ ...L, services: Object.entries(L.services).sort((a, b) => b[1] - a[1]).map(([sid, v]) => `${X.svc[sid].short_name} ${UI.moneyShort(v)}`).join(', ') }));
+  UI.grid('use', $('gridUse'), { rowData: useRows, getRowId: p => p.data.id, singleClickEdit: false, columnDefs: [
+    { field: 'name', headerName: 'Funding source', pinned: 'left', minWidth: 230 }, { field: 'agency', headerName: 'Agency', width: 92 }, { field: 'level', headerName: 'Level', width: 116, cellRenderer: p => UI.levelBadge(p.value) },
+    UI.numCol({ field: 'amount', headerName: 'Amount', width: 116 }), UI.numCol({ field: 'allocated', headerName: 'Applied', width: 116 }), UI.numCol({ field: 'unallocated', headerName: 'Unused', width: 110, valueFormatter: p => Math.abs(p.value) < 1 ? '' : UI.money(p.value) }),
+    { field: 'reason', headerName: 'Why unused', width: 220, tooltipField: 'reasonDetail' }, { field: 'services', headerName: 'Applied to', minWidth: 300, flex: 1, tooltipField: 'services' }] });
+  // Issues
+  UI.grid('issues', $('gridIssues'), { rowData: R.issues.filter(i => i.severity !== 'info'), singleClickEdit: false, columnDefs: [
+    { field: 'severity', headerName: 'Severity', width: 100, cellRenderer: p => UI.sevBadge(p.value) }, { field: 'rule', headerName: 'Rule', width: 90 }, { field: 'title', headerName: 'Check', width: 190 },
+    { colId: 'line', headerName: 'Funding source', minWidth: 200, valueGetter: p => p.data.line ? X.line[p.data.line].name : '' }, { colId: 'svc', headerName: 'Service', width: 120, valueGetter: p => p.data.service ? X.svc[p.data.service].short_name : '' },
+    UI.numCol({ field: 'amount', headerName: 'Amount', width: 112 }), { field: 'message', headerName: 'Detail', minWidth: 320, flex: 2, tooltipField: 'message' }],
+    overlayNoRowsTemplate: '<span class="note">No rule errors or warnings.</span>' });
+  if (!UI.grids.rules) UI.grid('rules', $('gridRules'), { rowData: FE.RULES, singleClickEdit: false, columnDefs: [
+    { field: 'id', headerName: 'ID', width: 96, pinned: 'left' }, { field: 'title', headerName: 'Rule', width: 210 }, { field: 'kind', headerName: 'Type', width: 104 }, { field: 'severity', headerName: 'Severity', width: 96 },
+    { field: 'text', headerName: 'What the model does', minWidth: 420, flex: 3, tooltipField: 'text', wrapText: true, autoHeight: true }, { field: 'source', headerName: 'Source', minWidth: 220, flex: 1, tooltipField: 'source' }] });
+  renderSens();
+}
+function renderSens() {
+  if (!SENS) { UI.grid('sens', $('gridSens'), { rowData: [], columnDefs: [{ field: 'name', headerName: 'Press Calculate', flex: 1 }], overlayNoRowsTemplate: '<span class="note">Press Calculate to re-solve the allocation for each source.</span>' }); return; }
+  UI.grid('sens', $('gridSens'), { rowData: SENS.rows, singleClickEdit: false, columnDefs: [
+    { field: 'name', headerName: 'Funding source', pinned: 'left', minWidth: 230 }, { field: 'agency', headerName: 'Agency', width: 92 }, UI.numCol({ field: 'amount', headerName: 'Amount', width: 116 }),
+    UI.numCol({ field: 'plusFunded', headerName: '+$100,000 funds', width: 130, sort: 'desc' }), UI.numCol({ field: 'perDollar', headerName: 'Per $1', width: 90, valueFormatter: p => '$' + (+p.value).toFixed(2) }),
+    UI.numCol({ field: 'shadow', headerName: 'Dual price', width: 96, valueFormatter: p => p.value == null ? '—' : '$' + (+p.value).toFixed(2), headerTooltip: 'Value of the first extra dollar from the solved problem' }),
+    UI.numCol({ field: 'lossFunded', headerName: 'If removed', width: 120 }), { colId: 'loss', headerName: 'Services that lose funding', minWidth: 280, flex: 1, valueGetter: p => p.data.lossServices.map(s => `${s.short} ${UI.moneyShort(s.delta)}`).join(', ') }] });
+}
+function chartYears() {
+  const x = M.years;
+  UI.plot('chYears', [
+    { type: 'bar', name: 'Funded (scenario)', x, y: YEARS.map(t => t.funded), marker: { color: UI.POS }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'Gap (scenario)', x, y: YEARS.map(t => t.gap), marker: { color: UI.GAP }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'scatter', mode: 'lines+markers', name: 'Funded (source data)', x, y: BYEARS.map(t => t.funded), line: { color: UI.COST, width: 2 }, marker: { size: 7 }, hovertemplate: '%{y:$,.0f}' }
+  ], { barmode: 'stack', height: 300, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s', rangemode: 'tozero' } });
+}
+function refresh() { recompute(); render(); }
+
+// Controls
+$('year').innerHTML = UI.yearOptions(M, SC.year);
+$('method').value = SC.method; $('optSpread').checked = SC.spreadShortfall; $('optTransfers').checked = SC.allowTransfers; $('optStrict').checked = SC.strictPreferences; $('costAll').value = Math.round(SC.costAll * 100);
+$('levels').innerHTML = FE.LEVELS.map(lv => `<label><span><span class="swatch" style="background:${UI.LEVEL_COLORS[lv]}"></span>${UI.LEVEL_LABELS[lv]}</span><input type="number" min="0" step="5" data-lv="${lv}" value="${Math.round((SC.level[lv] ?? 1) * 100)}" /></label>`).join('');
+$('year').addEventListener('change', e => { SC.year = +e.target.value; SENS = null; refresh(); });
+$('method').addEventListener('change', e => { SC.method = e.target.value; refresh(); });
+$('optSpread').addEventListener('change', e => { SC.spreadShortfall = e.target.checked; refresh(); });
+$('optTransfers').addEventListener('change', e => { SC.allowTransfers = e.target.checked; refresh(); });
+$('optStrict').addEventListener('change', e => { SC.strictPreferences = e.target.checked; refresh(); });
+$('costAll').addEventListener('change', e => { const v = UI.parseNum(e.target.value); SC.costAll = v == null ? 1 : v / 100; refresh(); });
+$('levels').querySelectorAll('input').forEach(i => i.addEventListener('change', () => { const v = UI.parseNum(i.value); if (v == null || Math.abs(v - 100) < 1e-9) delete SC.level[i.dataset.lv]; else SC.level[i.dataset.lv] = v / 100; refresh(); }));
+$('btnSens').addEventListener('click', () => { $('btnSens').disabled = true; $('btnSens').textContent = 'Calculating…'; setTimeout(() => { SENS = FE.sensitivity(M, Object.assign(scen(false), { method: 'optimized' })); renderSens(); $('btnSens').disabled = false; $('btnSens').textContent = 'Calculate'; }, 30); });
+document.querySelectorAll('[data-csv]').forEach(b => b.addEventListener('click', () => UI.csv(b.dataset.csv, 'tahoe-transit-' + b.dataset.csv)));
+$('btnExport').addEventListener('click', () => UI.download('tahoe-transit-funding-data.json', JSON.stringify(Object.assign(FE.toSeed(M), { scenario: SC }), null, 1)));
+$('btnImport').addEventListener('click', () => UI.pickFile(data => { M = FE.load(data); if (data.scenario) SC = Object.assign(SC, data.scenario); UI.destroyGrids(); SENS = null; refresh(); }));
+$('btnReset').addEventListener('click', () => { if (!confirm('Discard every change and return to the source data?')) return; M = FE.load(window.FUNDING_SEED); SC = { year: 0, method: 'optimized', spreadShortfall: true, allowTransfers: false, strictPreferences: false, level: {}, line: {}, costAll: 1 }; UI.store.del(KEY); location.reload(); });
+$('dataIssues').innerHTML = M.dataIssues.map(i => `<li><strong>${UI.esc(i.title)}.</strong> ${UI.esc(i.description)} <span class="source">${UI.esc(UI.cite(M, 'data_issue', i.issue_id))}</span></li>`).join('');
+refresh();
+window.__app = { get M() { return M; }, get RUN() { return RUN; }, get SC() { return SC; } };
+</script>
+</body>
+</html>
