@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transit Allocation Workbench — TRPA</title>
+<meta name="description" content="Set how each Lake Tahoe Region transit funding source is split across services and check every split against eligibility, federal share, and match rules." />
+<link rel="icon" type="image/x-icon" href="https://trpa-agency.github.io/tools/assets/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@33.3.2/dist/ag-grid-community.min.js"></script>
+<link rel="stylesheet" href="../ui/common.css" />
+<link rel="stylesheet" href="https://trpa-agency.github.io/tools/assets/trpa-tokens.css" />
+<style>
+  .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; align-items: center; }
+  .rule-list { display: flex; flex-direction: column; gap: 0.25rem; max-height: 420px; overflow-y: auto; }
+  .rule-item { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 0.3rem 0.5rem; border: 1px solid var(--gray-border); border-radius: 6px; background: #fff; cursor: pointer; font: inherit; font-size: 0.8rem; color: var(--trpa-navy); text-align: left; }
+  .rule-item[aria-pressed="true"] { border-color: var(--trpa-blue); background: #eef6fd; }
+  .rule-item .n { font-weight: 700; }
+  .math { display: grid; grid-template-columns: max-content max-content max-content; gap: 0.15rem 0.9rem; font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+  .math .r { text-align: right; }
+  .math .k { color: var(--gray-text); }
+</style>
+</head>
+<body>
+<header id="appHeader">
+  <div class="hdr-brand">
+    <a href="https://www.trpa.gov" target="_blank" rel="noopener noreferrer"><img src="https://trpa-agency.github.io/tools/assets/TRPALogo_COLOR.png" alt="Tahoe Regional Planning Agency logo" /></a>
+    <div class="htitle"><span class="hagency">Tahoe Regional Planning Agency</span><h1 class="hname">Transit Allocation Workbench</h1></div>
+    <a class="hdr-back" href="../index.html">All versions</a>
+  </div>
+  <div class="hdr-tools"><span class="beta-chip">Beta</span>
+    <label class="fld" style="flex-direction:row;align-items:center;gap:0.4rem">Fiscal year <select id="year" class="inline"></select></label>
+    <button class="btn" id="btnExport" title="Download the shares as allocation_share rows (schema.sql)">Export shares</button>
+    <button class="btn" id="btnReset" title="Return every share to the consultant draft">Reset to draft</button></div>
+</header>
+<main class="wrap">
+  <div class="kpis" id="kpis"></div>
+  <div class="card">
+    <div class="card-head"><div><h2>Shares of each source by service</h2>
+      <p class="note" style="max-width:110ch">Type a share into any cell to change the split (ALLOC-01). Red cells break a required rule, a federal share cap, or match on that service; amber cells fall outside a source's intended use. Hover a colored cell for the rule. Select a row to split it automatically or copy the rules-based result into it.</p></div>
+      <div class="tools"><div class="seg" role="radiogroup" aria-label="Show shares or dollars" id="unit"><button type="button" role="radio" aria-checked="true" data-v="pct">Percent</button><button type="button" role="radio" aria-checked="false" data-v="usd">Dollars</button></div>
+        <button class="btn" data-csv="matrix">CSV</button></div></div>
+    <div class="toolbar no-print" style="margin-bottom:0.5rem">
+      <label class="fld" style="flex-direction:row;align-items:center;gap:0.4rem">Show <select id="agency" class="inline"></select></label>
+      <label class="checks"><input type="checkbox" id="hideZero" checked /> Hide $0 sources</label>
+      <label class="checks"><input type="checkbox" id="onlyIssues" /> Only rows with checks</label>
+      <span style="flex:1"></span>
+      <span class="note" id="selNote">No row selected</span>
+      <select id="basis" class="inline" aria-label="Basis for automatic split"><option value="vsh">by service hours</option><option value="cost">by cost</option><option value="trips">by ridership</option><option value="vsm">by service miles</option><option value="equal">equally</option></select>
+      <button class="btn" id="btnAuto" disabled>Split automatically</button>
+      <button class="btn" id="btnCopyRow" disabled>Use rules-based result</button>
+      <button class="btn primary" id="btnCopyAll">Use rules-based result for all shown</button>
+    </div>
+    <div class="legend-inline" style="margin-bottom:0.4rem"><span><b style="background:#EEF6FD;border:1px solid #B4CBE8"></b>Input</span><span><b style="background:#FBE9E4"></b>Breaks a rule</span><span><b style="background:#FDF3EA"></b>Outside intended use</span></div>
+    <div id="gridMatrix" class="grid tall"></div>
+  </div>
+  <div class="cols-side">
+    <div class="card"><h3>Checks by rule</h3><p class="note">Click a rule to list only its findings.</p><div class="rule-list" id="ruleList" style="margin-top:0.4rem"></div></div>
+    <div class="card"><div class="card-head"><div><h2>Findings</h2><p class="note" id="findNote"></p></div><div class="tools"><button class="btn" data-csv="issues">CSV</button></div></div><div id="gridIssues" class="grid"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div><h2>Inspect a service</h2><p class="note">How the shares above fund one service, step by step, against the rules-based allocation.</p></div>
+      <div class="tools"><select id="svcPick" class="inline" aria-label="Service to inspect"></select></div></div>
+    <div class="cols-2">
+      <div><div id="chWaterfall" class="chart" style="min-height:340px"></div></div>
+      <div><h3>Federal share and match on this service</h3><div class="math" id="math" style="margin-top:0.4rem"></div><p class="note" id="mathNote" style="margin-top:0.5rem"></p></div>
+    </div>
+    <div id="gridSvc" class="grid short" style="margin-top:0.6rem"></div>
+  </div>
+</main>
+<script src="../data/seed.js" charset="utf-8"></script>
+<script src="../engine/funding-engine.js" charset="utf-8"></script>
+<script src="../ui/common.js" charset="utf-8"></script>
+<script>
+'use strict';
+const FE = window.FundingEngine, $ = UI.$, KEY = 'trpa-funding-workbench';
+const M = FE.load(window.FUNDING_SEED), DRAFT0 = JSON.parse(JSON.stringify(M.draft)), X = FE.ix(M);
+const saved = UI.store.get(KEY); if (saved && saved.draft) M.draft = saved.draft;
+let YEAR = 0, UNIT = 'pct', AGENCY = 'ALL', SEL = null, RULEF = null, SVC = 'ADA-TTD';
+let R = null, O = null, PAIR = {};
+const sc = () => FE.scenario({ year: YEAR, method: 'fixed' });
+function compute() {
+  R = FE.run(M, sc()).results;
+  O = FE.run(M, FE.scenario({ year: YEAR, method: 'optimized' })).results;
+  PAIR = {};
+  for (const i of R.issues) {
+    if (i.severity === 'info') continue;
+    const keys = i.line && i.service ? [i.line + '|' + i.service] : (!i.line && i.service ? Object.keys(R.services[i.service].lines).filter(l => X.line[l].level === 'federal').map(l => l + '|' + i.service) : []);
+    for (const k of keys) { const p = PAIR[k] || (PAIR[k] = { sev: i.severity, msgs: [] }); if (i.severity === 'error') p.sev = 'error'; p.msgs.push(`${i.rule} ${i.title}: ${i.message}`); }
+  }
+  UI.store.set(KEY, { draft: M.draft });
+}
+const activeSvcs = () => FE.realServices(M).filter(s => FE.serviceCost(M, s, YEAR, sc()) > 0);
+function setShare(l, sid, share) {
+  const d = M.draft[l.line_id] || (M.draft[l.line_id] = { method: 'shares', basis: 'vsh', shares: {}, targets: [] });
+  if (d.method !== 'shares') { const cur = FE.draftShares(M, l, activeSvcs(), sc()); d.method = 'shares'; d.shares = cur; }
+  if (!share) delete d.shares[sid]; else d.shares[sid] = share;
+}
+function render() {
+  const T = R.totals, OT = O.totals;
+  $('kpis').innerHTML = [[T.errors ? 'danger' : 'green', String(T.errors), 'Rule errors', `<span class="flat">rules-based: ${OT.errors}</span>`], ['accent', String(T.warnings), 'Warnings', `<span class="flat">rules-based: ${OT.warnings}</span>`],
+    ['green', UI.money(T.funded), 'Funded service', `<span class="flat">rules-based: ${UI.money(OT.funded)}</span>`], [T.gap > 1 ? 'danger' : 'green', UI.money(T.gap), 'Unfunded gap', `<span class="flat">rules-based: ${UI.money(OT.gap)}</span>`],
+    ['accent', UI.money(T.excess), 'Applied above cost', '<span class="flat">cannot be spent (SVC-02)</span>'], ['', UI.money(T.unallocated), 'Not applied', `<span class="flat">rules-based: ${UI.money(OT.unallocated)}</span>`]]
+    .map(([c, v, l, d]) => `<div class="kpi ${c}"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d}</div></div>`).join('');
+  renderMatrix(); renderRules(); renderIssues(); renderSvc();
+}
+function renderMatrix() {
+  const svcs = activeSvcs();
+  let rows = M.lines.filter(l => l.status !== 'capital' && (AGENCY === 'ALL' || l.recipient_agency_id === AGENCY) && (!$('hideZero').checked || FE.lineAmount(M, l, YEAR, sc()) > 0));
+  if ($('onlyIssues').checked) rows = rows.filter(l => Object.keys(PAIR).some(k => k.startsWith(l.line_id + '|')) || (R.lines[l.line_id] && R.lines[l.line_id].allocated > R.lines[l.line_id].amount + 1));
+  const groups = M.agencies.filter(a => svcs.some(s => s.agency_id === a.agency_id)).map(a => ({ headerName: a.short_name, marryChildren: true, children: svcs.filter(s => s.agency_id === a.agency_id).map(s => ({
+    colId: 's:' + s.service_id, headerName: s.short_name, headerTooltip: `${s.name}: ${UI.money(FE.serviceCost(M, s, YEAR, sc()))}`, width: UNIT === 'pct' ? 90 : 108, type: 'rightAligned', headerClass: 'num', filter: false, cellDataType: 'number',
+    editable: p => p.data.enabled, valueGetter: p => { const L = R.lines[p.data.line_id], d = L ? L.services[s.service_id] : 0; if (!d) return null; return UNIT === 'pct' ? +((L.amount ? d / L.amount : 0) * 100).toFixed(2) : d; },
+    valueFormatter: p => p.value == null ? '' : (UNIT === 'pct' ? UI.pct(p.value / 100) : UI.money(p.value)),
+    valueSetter: p => { const v = UI.parseNum(p.newValue), L = R.lines[p.data.line_id]; const share = v == null ? 0 : UNIT === 'pct' ? v / 100 : (L && L.amount ? v / L.amount : 0); setShare(p.data, s.service_id, share); return true; },
+    cellClass: p => { const k = PAIR[p.data.line_id + '|' + s.service_id]; return 'num input' + (k ? ' c-' + k.sev : ''); },
+    tooltipValueGetter: p => { const k = PAIR[p.data.line_id + '|' + s.service_id]; return k ? k.msgs.join('\n') : null; } })) }));
+  UI.grid('matrix', $('gridMatrix'), { rowData: rows, getRowId: p => p.data.line_id, rowSelection: { mode: 'singleRow', checkboxes: false, enableClickSelection: true },
+    onSelectionChanged: e => { const r = e.api.getSelectedRows()[0]; SEL = r ? r.line_id : null; $('selNote').textContent = r ? 'Selected: ' + r.name : 'No row selected'; $('btnAuto').disabled = !r; $('btnCopyRow').disabled = !r; },
+    onCellValueChanged: () => setTimeout(() => { compute(); render(); }, 0),
+    columnDefs: [
+      { field: 'name', headerName: 'Funding source', pinned: 'left', width: 240, tooltipValueGetter: p => FE.rulesText(M, p.data) },
+      { field: 'recipient_agency_id', headerName: 'Agency', width: 88, pinned: 'left' },
+      UI.numCol({ colId: 'amt', headerName: M.years[YEAR], width: 112, pinned: 'left', valueGetter: p => FE.lineAmount(M, p.data, YEAR, sc()) }),
+      { colId: 'method', headerName: 'Split', width: 104, valueGetter: p => { const d = M.draft[p.data.line_id] || {}; return d.method === 'auto' ? 'Auto (' + (d.basis || 'vsh') + ')' : 'Shares'; }, tooltipValueGetter: p => UI.cite(M, 'funding_line', p.data.line_id, 'allocation') || null },
+      ...groups,
+      UI.numCol({ colId: 'left', headerName: 'Not applied', width: 110, valueGetter: p => { const L = R.lines[p.data.line_id]; if (!L) return null; return UNIT === 'pct' ? +((L.amount ? L.unallocated / L.amount : 0) * 100).toFixed(2) : L.unallocated; },
+        valueFormatter: p => p.value == null || Math.abs(p.value) < (UNIT === 'pct' ? 0.05 : 1) ? '' : (UNIT === 'pct' ? UI.pct(p.value / 100) : UI.money(p.value)), cellClass: p => 'num' + (p.value < (UNIT === 'pct' ? -0.05 : -1) ? ' c-error' : '') })
+    ] });
+  if (SEL && UI.grids.matrix.getRowNode(SEL)) UI.grids.matrix.getRowNode(SEL).setSelected(true);
+}
+function renderRules() {
+  const counts = {}; for (const i of R.issues) if (i.severity !== 'info') counts[i.rule] = (counts[i.rule] || 0) + 1;
+  const ids = FE.RULES.filter(r => r.severity === 'error' || r.severity === 'warning').map(r => r.id);
+  $('ruleList').innerHTML = `<button class="rule-item" data-r="" aria-pressed="${!RULEF}"><span>All checks</span><span class="n">${R.issues.filter(i => i.severity !== 'info').length}</span></button>` +
+    ids.map(id => { const r = FE.RULE[id], n = counts[id] || 0; return `<button class="rule-item" data-r="${id}" aria-pressed="${RULEF === id}" title="${UI.esc(r.text)}"><span>${UI.sevBadge(r.severity)} <strong>${id}</strong> ${UI.esc(r.title)}</span><span class="n ${n ? (r.severity === 'error' ? 'down' : '') : 'flat'}">${n}</span></button>`; }).join('');
+  $('ruleList').querySelectorAll('[data-r]').forEach(b => b.addEventListener('click', () => { RULEF = b.dataset.r || null; renderRules(); renderIssues(); }));
+}
+function renderIssues() {
+  const rows = R.issues.filter(i => i.severity !== 'info' && (!RULEF || i.rule === RULEF));
+  $('findNote').textContent = RULEF ? `${FE.RULE[RULEF].title}: ${FE.RULE[RULEF].text}` : 'Every error and warning in the current shares. Click a row to find it in the matrix.';
+  UI.grid('issues', $('gridIssues'), { rowData: rows, singleClickEdit: false, overlayNoRowsTemplate: '<span class="note">No findings for this rule.</span>',
+    onRowClicked: e => { const g = UI.grids.matrix; if (e.data.line && g.getRowNode(e.data.line)) { const n = g.getRowNode(e.data.line); g.ensureNodeVisible(n, 'middle'); n.setSelected(true); } if (e.data.service) { g.ensureColumnVisible('s:' + e.data.service); SVC = e.data.service; $('svcPick').value = SVC; renderSvc(); } },
+    columnDefs: [{ field: 'severity', headerName: 'Severity', width: 100, cellRenderer: p => UI.sevBadge(p.value) }, { field: 'rule', headerName: 'Rule', width: 92 },
+      { colId: 'l', headerName: 'Funding source', minWidth: 190, flex: 1, valueGetter: p => p.data.line ? X.line[p.data.line].name : '(all federal on the service)' },
+      { colId: 's', headerName: 'Service', width: 110, valueGetter: p => p.data.service ? X.svc[p.data.service].short_name : '' }, UI.numCol({ field: 'amount', headerName: 'Amount', width: 110 }),
+      { field: 'message', headerName: 'Detail', minWidth: 280, flex: 2, tooltipField: 'message' }] });
+}
+function renderSvc() {
+  const s = R.services[SVC], o = O.services[SVC]; if (!s) return;
+  const levels = FE.LEVELS.filter(lv => s.byLevel[lv] > 0.5);
+  const measure = ['absolute'].concat(levels.map(() => 'relative'), ['total']);
+  const xs = ['Cost'].concat(levels.map(lv => UI.LEVEL_LABELS[lv]), [s.gap > 0.5 ? 'Gap' : s.excess > 0.5 ? 'Excess' : 'Balance']);
+  const ys = [s.cost].concat(levels.map(lv => -s.byLevel[lv]), [0]);
+  UI.plot('chWaterfall', [{ type: 'waterfall', orientation: 'v', measure, x: xs, y: ys, connector: { line: { color: '#C9D2DE', width: 1 } },
+    increasing: { marker: { color: UI.COST } }, decreasing: { marker: { color: '#0072CE' } }, totals: { marker: { color: s.gap > 0.5 ? UI.GAP : '#4A6118' } },
+    text: ys.map((v, i) => i === ys.length - 1 ? UI.money(s.gap > 0.5 ? s.gap : -s.excess) : UI.money(Math.abs(v))), textposition: 'outside', hovertemplate: '%{x}: %{text}<extra></extra>' }],
+    { height: 340, showlegend: false, margin: { t: 30, r: 16, b: 40, l: 60 }, xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s' }, title: { text: `${s.name}: shares as entered`, font: { size: 13 } } });
+  const row = (k, a, b) => `<span class="k">${k}</span><span class="r">${a}</span><span class="r">${b}</span>`;
+  $('math').innerHTML = `<span class="k"></span><span class="r"><strong>Shares</strong></span><span class="r"><strong>Rules-based</strong></span>` +
+    row('Cost (COST-01)', UI.money(s.cost), UI.money(o.cost)) + row('− Fares (FED-01)', UI.money(s.fares), UI.money(o.fares)) + row('= Net cost', UI.money(s.net), UI.money(o.net)) +
+    row('Federal applied', UI.money(s.fed), UI.money(o.fed)) + row('Federal share of net', UI.pct(s.net ? s.fed / s.net : 0), UI.pct(o.net ? o.fed / o.net : 0)) + row('Highest cap (FED-03)', UI.pct(s.fedCap || 0), UI.pct(o.fedCap || 0)) +
+    row('Match required (MATCH-01)', UI.money(s.matchReq), UI.money(o.matchReq)) + row('Match applied (MATCH-02)', `<span class="${s.matchAvail + 5 < s.matchReq ? 'down' : ''}">${UI.money(s.matchAvail)}</span>`, UI.money(o.matchAvail)) +
+    row('Funded (RES-01)', UI.money(s.funded), UI.money(o.funded)) + row('Gap', `<span class="${s.gap > 1 ? 'down' : ''}">${UI.money(s.gap)}</span>`, UI.money(o.gap)) + row('Applied above cost', UI.money(s.excess), UI.money(o.excess));
+  const errs = R.issues.filter(i => i.service === SVC && i.severity === 'error');
+  $('mathNote').innerHTML = errs.length ? `<strong>${errs.length} rule error${errs.length > 1 ? 's' : ''}:</strong> ` + errs.map(i => `${i.rule} ${UI.esc(i.message)}`).join('; ') : 'The shares meet every required rule, cap, and match requirement on this service.';
+  const lids = new Set(Object.keys(s.lines).concat(Object.keys(o.lines)));
+  const rows = [...lids].map(lid => { const l = X.line[lid], u = FE.checkUse(M, l, X.svc[SVC]); return { name: l.name, level: l.level, shares: s.lines[lid] || 0, opt: o.lines[lid] || 0, cap: l.level === 'federal' ? FE.fedCap(l, X.svc[SVC]) : null, rules: u.hard.concat(u.soft).map(h => h.rule).join(', ') || 'OK', cite: UI.cite(M, 'funding_line', lid, 'amount') }; }).sort((a, b) => b.shares - a.shares);
+  UI.grid('svc', $('gridSvc'), { rowData: rows, singleClickEdit: false, columnDefs: [{ field: 'name', headerName: 'Funding source', minWidth: 220, flex: 1 }, { field: 'level', headerName: 'Level', width: 112, cellRenderer: p => UI.levelBadge(p.value) },
+    UI.numCol({ field: 'shares', headerName: 'From shares', width: 120 }), UI.numCol({ field: 'opt', headerName: 'Rules-based', width: 120 }), UI.pctCol({ field: 'cap', headerName: 'Federal cap', width: 100 }),
+    { field: 'rules', headerName: 'Rules raised', width: 130 }, { field: 'cite', headerName: 'Amount source', minWidth: 220, flex: 1, cellClass: 'muted', tooltipField: 'cite' }] });
+}
+// Controls
+$('year').innerHTML = UI.yearOptions(M, YEAR); $('year').addEventListener('change', e => { YEAR = +e.target.value; compute(); render(); });
+$('agency').innerHTML = '<option value="ALL">All receiving agencies</option>' + M.agencies.map(a => `<option value="${a.agency_id}">${UI.esc(a.name)}</option>`).join('');
+$('agency').addEventListener('change', e => { AGENCY = e.target.value; renderMatrix(); });
+$('hideZero').addEventListener('change', renderMatrix); $('onlyIssues').addEventListener('change', renderMatrix);
+UI.wireSeg($('unit'), v => { UNIT = v; renderMatrix(); });
+$('svcPick').innerHTML = FE.realServices(M).filter(s => !s.is_plan_element).map(s => `<option value="${s.service_id}" ${s.service_id === SVC ? 'selected' : ''}>${UI.esc(s.name)}</option>`).join('');
+$('svcPick').addEventListener('change', e => { SVC = e.target.value; renderSvc(); });
+$('btnAuto').addEventListener('click', () => { if (!SEL) return; M.draft[SEL] = { method: 'auto', basis: $('basis').value, shares: {}, targets: [] }; compute(); render(); });
+const copyOpt = lid => { const L = O.lines[lid]; const sh = {}; if (L && L.amount) for (const [sid, d] of Object.entries(L.services)) sh[sid] = d / L.amount; M.draft[lid] = { method: 'shares', basis: 'vsh', shares: sh, targets: [] }; };
+$('btnCopyRow').addEventListener('click', () => { if (!SEL) return; copyOpt(SEL); compute(); render(); });
+$('btnCopyAll').addEventListener('click', () => { for (const l of M.lines) if (l.status !== 'capital' && (AGENCY === 'ALL' || l.recipient_agency_id === AGENCY)) copyOpt(l.line_id); compute(); render(); });
+$('btnReset').addEventListener('click', () => { if (!confirm('Return every share to the consultant draft?')) return; M.draft = JSON.parse(JSON.stringify(DRAFT0)); compute(); render(); });
+$('btnExport').addEventListener('click', () => { const t = FE.toSeed(M).tables; UI.download('allocation-shares.json', JSON.stringify({ allocation_rule: t.allocation_rule, allocation_share: t.allocation_share, allocation_target: t.allocation_target }, null, 1)); });
+document.querySelectorAll('[data-csv]').forEach(b => b.addEventListener('click', () => UI.csv(b.dataset.csv, 'tahoe-transit-' + b.dataset.csv)));
+if (!UI.libsOk()) document.querySelector('main').insertAdjacentHTML('afterbegin', '<div class="callout">A library did not load. Check the network connection and reload.</div>');
+compute(); render();
+window.__app = { M, get R() { return R; }, get O() { return O; } };
+</script>
+</body>
+</html>

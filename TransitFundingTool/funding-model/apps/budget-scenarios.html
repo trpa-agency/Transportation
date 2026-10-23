@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transit Budget Scenarios — TRPA</title>
+<meta name="description" content="Test how Lake Tahoe Region transit service changes when funding amounts change: presets, sliders, the value of more funding, and scenario comparison." />
+<link rel="icon" type="image/x-icon" href="https://trpa-agency.github.io/tools/assets/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@33.3.2/dist/ag-grid-community.min.js"></script>
+<link rel="stylesheet" href="../ui/common.css" />
+<link rel="stylesheet" href="https://trpa-agency.github.io/tools/assets/trpa-tokens.css" />
+<style>
+  .panel { position: sticky; top: 64px; max-height: calc(100vh - 80px); overflow-y: auto; }
+  @media (max-width: 1000px) { .panel { position: static; max-height: none; } }
+  .panel .card { margin-bottom: 0.7rem; }
+  .slider { display: grid; grid-template-columns: 1fr auto; gap: 0.1rem 0.5rem; align-items: center; font-size: 0.8rem; margin: 0.35rem 0; }
+  .slider input[type=range] { grid-column: 1 / -1; width: 100%; accent-color: #0072CE; }
+  .slider output { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .presets { display: flex; flex-direction: column; gap: 0.3rem; }
+  .presets .btn { text-align: left; }
+  .adj { display: flex; justify-content: space-between; gap: 0.4rem; font-size: 0.78rem; padding: 0.2rem 0; border-bottom: 1px solid var(--gray-border); }
+  .adj button { border: none; background: none; color: var(--trpa-brick); cursor: pointer; font-weight: 700; }
+  .saved { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .chip { font-size: 0.74rem; font-weight: 600; border: 1px solid #C9D2DE; border-radius: 999px; padding: 0.1rem 0.6rem; background: #fff; }
+  .chip button { border: none; background: none; color: var(--gray-text); cursor: pointer; padding: 0 0 0 0.3rem; }
+</style>
+</head>
+<body>
+<header id="appHeader">
+  <div class="hdr-brand">
+    <a href="https://www.trpa.gov" target="_blank" rel="noopener noreferrer"><img src="https://trpa-agency.github.io/tools/assets/TRPALogo_COLOR.png" alt="Tahoe Regional Planning Agency logo" /></a>
+    <div class="htitle"><span class="hagency">Tahoe Regional Planning Agency</span><h1 class="hname">Transit Budget Scenarios</h1></div>
+    <a class="hdr-back" href="../index.html">All versions</a>
+  </div>
+  <div class="hdr-tools"><span class="beta-chip">Beta</span>
+    <label class="fld" style="flex-direction:row;align-items:center;gap:0.4rem">Fiscal year <select id="year" class="inline"></select></label></div>
+</header>
+<main class="wrap">
+  <div class="cols-side">
+    <aside class="panel">
+      <div class="card"><h3>Start from</h3><div class="presets" id="presets" style="margin-top:0.4rem"></div></div>
+      <div class="card"><h3>Funding by level</h3><p class="note">Percent of each source's amount.</p><div id="lvSliders"></div></div>
+      <div class="card"><h3>Funding by receiving agency</h3><div id="agSliders"></div></div>
+      <div class="card"><h3>Change one source</h3>
+        <label class="fld">Source<select id="adjLine"></select></label>
+        <div class="row" style="margin-top:0.35rem"><label class="fld" style="flex:1">Base-year amount ($)<input type="number" id="adjAmt" step="1000" min="0" /></label><button class="btn" id="adjApply" style="align-self:flex-end">Apply</button></div>
+        <div id="adjList" style="margin-top:0.4rem"></div></div>
+      <div class="card"><h3>Costs and rules</h3>
+        <div class="slider"><span>All service costs</span><output id="costOut">100%</output><input type="range" id="costAll" min="70" max="140" step="1" value="100" aria-label="All service costs, percent" /></div>
+        <div class="checks" style="flex-direction:column;gap:0.3rem;margin-top:0.4rem">
+          <label><input type="checkbox" id="optSpread" checked /> Spread shortfalls evenly (OPT-05)</label>
+          <label><input type="checkbox" id="optTransfers" /> Allow interagency transfers (OPT-03)</label>
+          <label><input type="checkbox" id="optStrict" /> Treat preferences as required (OPT-04)</label></div></div>
+      <div class="card"><h3>Saved scenarios</h3>
+        <div class="row"><input type="text" id="saveName" class="inline" placeholder="Name this scenario" style="flex:1;min-width:0" aria-label="Scenario name" /><button class="btn primary" id="btnSave">Save</button></div>
+        <div class="saved" id="savedList" style="margin-top:0.5rem"></div></div>
+    </aside>
+    <section>
+      <div class="kpis" id="kpis"></div>
+      <div class="card"><div class="card-head"><div><h2>Funded service and gap by agency</h2><p class="note">Source budgets (light) against this scenario (dark), for the year shown.</p></div></div>
+        <div id="chAgency" class="chart" style="min-height:330px"></div></div>
+      <div class="cols-2">
+        <div class="card"><h3>Where the next $100,000 does the most</h3><p class="note">Funded service gained per extra dollar of each source, re-solving the allocation (SENS-01). Above $1 means the dollar also unlocks federal funds.</p><div id="chNext" class="chart" style="min-height:380px"></div></div>
+        <div class="card"><h3>What losing each source would cost</h3><p class="note">Funded service lost if the source disappears (SENS-02).</p><div id="chLoss" class="chart" style="min-height:380px"></div></div>
+      </div>
+      <div class="card"><div class="card-head"><div><h2>Five years</h2><p class="note">Each year solved separately (OPT-09).</p></div></div><div id="chYears" class="chart" style="min-height:320px"></div></div>
+      <div class="card"><div class="card-head"><div><h2>Services that change</h2></div><div class="tools"><button class="btn" data-csv="routes">CSV</button></div></div><div id="gridRoutes" class="grid"></div></div>
+      <div class="card"><div class="card-head"><div><h2>Scenario comparison</h2><p class="note">Saved scenarios side by side for the year shown.</p></div><div class="tools"><button class="btn" data-csv="compare">CSV</button></div></div><div id="gridCompare" class="grid short"></div></div>
+    </section>
+  </div>
+</main>
+<script src="../data/seed.js" charset="utf-8"></script>
+<script src="../engine/funding-engine.js" charset="utf-8"></script>
+<script src="../ui/common.js" charset="utf-8"></script>
+<script>
+'use strict';
+const FE = window.FundingEngine, $ = UI.$, KEY = 'trpa-funding-scenarios';
+const M = FE.load(window.FUNDING_SEED), X = FE.ix(M);
+const blank = () => ({ name: 'Custom', level: {}, agency: {}, baseAmount: {}, line: {}, costAll: 1, spreadShortfall: true, allowTransfers: false, strictPreferences: false });
+let S = blank(), YEAR = 0;
+const stored = UI.store.get(KEY) || {};
+let SAVED = Array.isArray(stored.saved) ? stored.saved : [];
+if (stored.current) S = Object.assign(blank(), stored.current);
+const toSc = (s, y) => FE.scenario({ year: y, method: 'optimized', spreadShortfall: s.spreadShortfall, allowTransfers: s.allowTransfers, strictPreferences: s.strictPreferences,
+  baseAmount: s.baseAmount, scale: { level: s.level, agency: s.agency, line: s.line }, costScale: { all: s.costAll } });
+const SOURCE = blank();
+const PRESETS = [
+  ['Source budgets', 'FY 26-27 budgets as in the financial plan', () => blank()],
+  ['SB 125 not renewed', 'TTD and Lake Link lose SB 125 ($1.575 million)', () => Object.assign(blank(), { line: { 'ttd-sb125': 0, 'll-sb125': 0 } })],
+  ['Lake Link partners return', 'Seven private partners give their FY 25-26 amounts again', () => { const s = blank(); for (const l of M.lines.filter(l => l.line_id.startsWith('ll-') && l.commitment_basis === 'none')) s.baseAmount[l.line_id] = l.prior_year_amount; return s; }],
+  ['TART 5307 at plan amount', 'TART receives $2,660,000 of 5307, as in its Table A2', () => Object.assign(blank(), { baseAmount: { 'tart-5307': 2660000 } })],
+  ['Federal funds 10% lower', 'Every federal source at 90%', () => Object.assign(blank(), { level: { federal: 0.9 } })],
+  ['Costs 5% higher', 'All service costs up 5%', () => Object.assign(blank(), { costAll: 1.05 })],
+  ['Regional pooling', 'Agencies may fund each other\'s services (needs agreements)', () => Object.assign(blank(), { allowTransfers: true })]
+];
+let R = null, B = null, SENS = null, YR = null, BYR = null, sensTimer = null;
+function compute() {
+  R = FE.run(M, toSc(S, YEAR)).results; B = FE.run(M, toSc(SOURCE, YEAR)).results;
+  YR = M.years.map((_, y) => FE.run(M, toSc(S, y)).results.totals); BYR = M.years.map((_, y) => FE.run(M, toSc(SOURCE, y)).results.totals);
+  UI.store.set(KEY, { current: S, saved: SAVED });
+}
+const dl = (v, good = true) => `<span class="${UI.deltaClass(v, good)}">${UI.signed(v)}</span>`;
+function render() {
+  const T = R.totals, BT = B.totals, cov = R.optimizer ? R.optimizer.minCoverage : null, bcov = B.optimizer ? B.optimizer.minCoverage : null;
+  $('kpis').innerHTML = [['navy', UI.money(T.revenue), 'Revenue available', dl(T.revenue - BT.revenue)], ['', UI.money(T.cost), 'Operating cost', dl(T.cost - BT.cost, false)],
+    ['green', UI.money(T.funded), 'Funded service', dl(T.funded - BT.funded)], [T.gap > 1 ? 'danger' : 'green', UI.money(T.gap), 'Unfunded gap', dl(T.gap - BT.gap, false)],
+    ['accent', UI.money(T.unallocated), 'Revenue left unused', dl(T.unallocated - BT.unallocated, false)], ['', UI.pct(cov, 1), 'Lowest coverage on any service', `<span class="${UI.deltaClass((cov - bcov) * 1e6)}">${Math.abs(cov - bcov) < 5e-4 ? '—' : (cov > bcov ? '+' : '−') + UI.pct(Math.abs(cov - bcov), 1)}</span>`]]
+    .map(([c, v, l, d]) => `<div class="kpi ${c}"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d} <span class="flat">vs source budgets</span></div></div>`).join('');
+  const ags = Object.values(R.agencies).filter(a => a.cost > 0), x = ags.map(a => a.short);
+  UI.plot('chAgency', [
+    { type: 'bar', name: 'Funded, source budgets', x, y: ags.map(a => B.agencies[a.id].funded), offsetgroup: 'src', marker: { color: '#B4CBE8' }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'Gap, source budgets', x, y: ags.map(a => B.agencies[a.id].gap), base: ags.map(a => B.agencies[a.id].funded), offsetgroup: 'src', marker: { color: '#E8B9AC' }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'Funded, scenario', x, y: ags.map(a => a.funded), offsetgroup: 'sc', marker: { color: UI.POS }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'Gap, scenario', x, y: ags.map(a => a.gap), base: ags.map(a => a.funded), offsetgroup: 'sc', marker: { color: UI.GAP }, hovertemplate: '%{y:$,.0f}' }
+  ], { barmode: 'group', height: 330, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s', rangemode: 'tozero' } });
+  UI.plot('chYears', [
+    { type: 'scatter', mode: 'lines+markers', name: 'Funded, scenario', x: M.years, y: YR.map(t => t.funded), line: { color: UI.POS, width: 2 }, marker: { size: 8 }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'scatter', mode: 'lines+markers', name: 'Funded, source budgets', x: M.years, y: BYR.map(t => t.funded), line: { color: '#B4CBE8', width: 2 }, marker: { size: 8 }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'scatter', mode: 'lines+markers', name: 'Operating cost, scenario', x: M.years, y: YR.map(t => t.cost), line: { color: UI.COST, width: 2 }, marker: { size: 8 }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'Gap, scenario', x: M.years, y: YR.map(t => t.gap), marker: { color: UI.GAP }, hovertemplate: '%{y:$,.0f}' }
+  ], { height: 320, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s', rangemode: 'tozero' } });
+  const rows = Object.values(R.services).filter(s => s.cost > 0).map(s => { const b = B.services[s.id] || { funded: 0, cost: 0 }; return { id: s.id, name: s.name, agency: s.agency, cost: s.cost, srcFunded: b.funded, funded: s.funded, delta: s.funded - b.funded, coverage: s.funded / s.cost, gap: s.gap }; }).sort((a, b) => a.delta - b.delta);
+  UI.grid('routes', $('gridRoutes'), { rowData: rows, getRowId: p => p.data.id, singleClickEdit: false, columnDefs: [
+    { field: 'name', headerName: 'Service', pinned: 'left', minWidth: 210, flex: 1 }, { field: 'agency', headerName: 'Agency', width: 92 }, UI.numCol({ field: 'cost', headerName: 'Cost', width: 116 }),
+    UI.numCol({ field: 'srcFunded', headerName: 'Funded, source', width: 128 }), UI.numCol({ field: 'funded', headerName: 'Funded, scenario', width: 132 }),
+    UI.numCol({ field: 'delta', headerName: 'Change', width: 116, valueFormatter: p => UI.signed(p.value), cellClass: p => 'num ' + UI.deltaClass(p.value) }), UI.pctCol({ field: 'coverage', headerName: 'Coverage', width: 96 }),
+    UI.numCol({ field: 'gap', headerName: 'Gap', width: 106, cellClass: p => 'num' + (p.value > 1 ? ' c-error' : '') })] });
+  renderCompare(); renderPanel(); scheduleSens();
+}
+function scheduleSens() { clearTimeout(sensTimer); sensTimer = setTimeout(() => { SENS = FE.sensitivity(M, toSc(S, YEAR)); renderSens(); }, 250); }
+function renderSens() {
+  const rows = SENS.rows.filter(r => r.plusFunded > 1).sort((a, b) => b.perDollar - a.perDollar).slice(0, 14).reverse();
+  UI.plot('chNext', [{ type: 'bar', orientation: 'h', y: rows.map(r => r.name), x: rows.map(r => r.perDollar), marker: { color: rows.map(r => UI.LEVEL_COLORS[r.level]) }, customdata: rows.map(r => r.plusFunded), hovertemplate: '%{y}: $%{x:.2f} per $1 (%{customdata:$,.0f} per $100,000)<extra></extra>' }],
+    { height: 380, showlegend: false, margin: { t: 10, r: 16, b: 40, l: 10 }, yaxis: { type: 'category', automargin: true, tickfont: { size: 10 } }, xaxis: { tickprefix: '$', rangemode: 'tozero', title: { text: 'Funded service per extra $1', font: { size: 11 } } } });
+  if (!rows.length) Plotly.relayout('chNext', { annotations: [{ text: 'Every service is already fully funded; more money adds no service this year.', showarrow: false, xref: 'paper', yref: 'paper', x: 0.5, y: 0.5, font: { size: 12, color: '#6B7688' } }] });
+  const loss = SENS.rows.filter(r => r.lossFunded < -1).sort((a, b) => a.lossFunded - b.lossFunded).slice(0, 14).reverse();
+  UI.plot('chLoss', [{ type: 'bar', orientation: 'h', y: loss.map(r => r.name), x: loss.map(r => -r.lossFunded), marker: { color: UI.GAP }, customdata: loss.map(r => r.lossServices.map(s => s.short).join(', ')), hovertemplate: '%{y}: %{x:$,.0f} of service lost<br>%{customdata}<extra></extra>' }],
+    { height: 380, showlegend: false, margin: { t: 10, r: 16, b: 40, l: 10 }, yaxis: { type: 'category', automargin: true, tickfont: { size: 10 } }, xaxis: { tickprefix: '$', tickformat: '~s', rangemode: 'tozero', title: { text: 'Funded service lost', font: { size: 11 } } } });
+}
+function renderCompare() {
+  const cols = [{ name: 'Source budgets', s: SOURCE }, { name: 'Current scenario', s: S }].concat(SAVED.map(x => ({ name: x.name, s: x.s })));
+  const res = cols.map(c => FE.run(M, toSc(c.s, YEAR)).results);
+  const metrics = [['Revenue available', r => r.totals.revenue], ['Operating cost', r => r.totals.cost], ['Funded service', r => r.totals.funded], ['Unfunded gap', r => r.totals.gap], ['Revenue left unused', r => r.totals.unallocated],
+    ['Lowest coverage', r => r.optimizer.minCoverage, 'pct']].concat(Object.values(R.agencies).filter(a => a.cost > 0).map(a => [`${a.short} gap`, r => r.agencies[a.id].gap]));
+  const rowData = metrics.map(([label, f, kind]) => { const o = { metric: label, kind }; res.forEach((r, i) => o['c' + i] = f(r)); return o; });
+  UI.grid('compare', $('gridCompare'), { rowData, singleClickEdit: false, columnDefs: [{ field: 'metric', headerName: 'Measure', pinned: 'left', minWidth: 170 }].concat(cols.map((c, i) => UI.numCol({ field: 'c' + i, headerName: c.name, minWidth: 130, flex: 1, valueFormatter: p => p.data.kind === 'pct' ? UI.pct(p.value) : UI.money(p.value) }))) });
+}
+function slider(container, key, items) {
+  container.innerHTML = items.map(([id, label, color]) => `<div class="slider"><span>${color ? `<span class="swatch" style="background:${color}"></span>` : ''}${UI.esc(label)}</span><output id="o-${key}-${id}"></output><input type="range" min="0" max="150" step="5" data-k="${key}" data-id="${id}" aria-label="${UI.esc(label)} percent" /></div>`).join('');
+  container.querySelectorAll('input').forEach(i => i.addEventListener('input', () => { const v = +i.value / 100; if (Math.abs(v - 1) < 1e-9) delete S[key][i.dataset.id]; else S[key][i.dataset.id] = v; S.name = 'Custom'; $('o-' + key + '-' + i.dataset.id).textContent = i.value + '%'; debounce(); }));
+}
+let deb = null; const debounce = () => { clearTimeout(deb); deb = setTimeout(() => { compute(); render(); }, 120); };
+function renderPanel() {
+  document.querySelectorAll('[data-k]').forEach(i => { const v = Math.round(((S[i.dataset.k] || {})[i.dataset.id] ?? 1) * 100); i.value = v; $('o-' + i.dataset.k + '-' + i.dataset.id).textContent = v + '%'; });
+  $('costAll').value = Math.round(S.costAll * 100); $('costOut').textContent = Math.round(S.costAll * 100) + '%';
+  $('optSpread').checked = S.spreadShortfall; $('optTransfers').checked = S.allowTransfers; $('optStrict').checked = S.strictPreferences;
+  const adj = Object.entries(S.baseAmount).map(([id, v]) => [id, `${X.line[id].name}: ${UI.money(v)}`]).concat(Object.entries(S.line).map(([id, v]) => [id, `${X.line[id].name}: ${UI.pct(v, 0)} of amount`]));
+  $('adjList').innerHTML = adj.length ? adj.map(([id, t]) => `<div class="adj"><span>${UI.esc(t)}</span><button data-rm="${id}" aria-label="Remove change">×</button></div>`).join('') : '<span class="note">No single-source changes.</span>';
+  $('adjList').querySelectorAll('[data-rm]').forEach(b => b.addEventListener('click', () => { delete S.baseAmount[b.dataset.rm]; delete S.line[b.dataset.rm]; compute(); render(); }));
+  $('savedList').innerHTML = SAVED.length ? SAVED.map((x, i) => `<span class="chip"><button class="lnk" data-load="${i}" style="color:#005EA8;font-weight:600;padding:0">${UI.esc(x.name)}</button><button data-del="${i}" aria-label="Delete saved scenario">×</button></span>`).join('') : '<span class="note">Saved scenarios appear here and in the comparison table.</span>';
+  $('savedList').querySelectorAll('[data-load]').forEach(b => b.addEventListener('click', () => { S = Object.assign(blank(), JSON.parse(JSON.stringify(SAVED[+b.dataset.load].s))); compute(); render(); }));
+  $('savedList').querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', () => { SAVED.splice(+b.dataset.del, 1); compute(); render(); }));
+}
+// Panel setup
+$('year').innerHTML = UI.yearOptions(M, YEAR);
+$('year').addEventListener('change', e => { YEAR = +e.target.value; compute(); render(); });
+$('presets').innerHTML = PRESETS.map(([n, d], i) => `<button class="btn" data-p="${i}" title="${UI.esc(d)}"><strong>${UI.esc(n)}</strong><br><span class="note">${UI.esc(d)}</span></button>`).join('');
+$('presets').querySelectorAll('[data-p]').forEach(b => b.addEventListener('click', () => { const p = PRESETS[+b.dataset.p]; S = p[2](); S.name = p[0]; $('saveName').value = p[0]; compute(); render(); }));
+slider($('lvSliders'), 'level', FE.LEVELS.map(lv => [lv, UI.LEVEL_LABELS[lv], UI.LEVEL_COLORS[lv]]));
+slider($('agSliders'), 'agency', M.agencies.filter(a => a.agency_id !== 'REGION').map(a => [a.agency_id, a.name]));
+$('adjLine').innerHTML = M.lines.filter(l => l.status !== 'capital' && !l.match_only).map(l => `<option value="${l.line_id}">${UI.esc(l.name)}</option>`).join('');
+const showAdj = () => { const l = X.line[$('adjLine').value]; $('adjAmt').value = Math.round(S.baseAmount[l.line_id] ?? FE.lineBase(M, l)); };
+$('adjLine').addEventListener('change', showAdj); showAdj();
+$('adjApply').addEventListener('click', () => { const v = UI.parseNum($('adjAmt').value); if (v == null) return; S.baseAmount[$('adjLine').value] = v; S.name = 'Custom'; compute(); render(); });
+$('costAll').addEventListener('input', e => { S.costAll = +e.target.value / 100; $('costOut').textContent = e.target.value + '%'; debounce(); });
+$('optSpread').addEventListener('change', e => { S.spreadShortfall = e.target.checked; compute(); render(); });
+$('optTransfers').addEventListener('change', e => { S.allowTransfers = e.target.checked; compute(); render(); });
+$('optStrict').addEventListener('change', e => { S.strictPreferences = e.target.checked; compute(); render(); });
+$('btnSave').addEventListener('click', () => { const name = ($('saveName').value || S.name || 'Scenario').trim(); SAVED = SAVED.filter(x => x.name !== name); SAVED.push({ name, s: JSON.parse(JSON.stringify(S)) }); if (SAVED.length > 5) SAVED.shift(); compute(); render(); });
+document.querySelectorAll('[data-csv]').forEach(b => b.addEventListener('click', () => UI.csv(b.dataset.csv, 'tahoe-transit-' + b.dataset.csv)));
+if (!UI.libsOk()) document.querySelector('main').insertAdjacentHTML('afterbegin', '<div class="callout">A library did not load. Check the network connection and reload.</div>');
+compute(); render();
+window.__app = { get S() { return S; }, get R() { return R; }, get SENS() { return SENS; } };
+</script>
+</body>
+</html>
