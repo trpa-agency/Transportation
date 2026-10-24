@@ -7,9 +7,9 @@ Confidence tags: [Certain] means checked against a source cell or file. [Likely]
 ## Read this first
 
 - No partner has reviewed or endorsed the model. Stakeholder endorsement is TRPA's process. The tool can support it. [Certain]
-- Most dollar results rest on unconfirmed match rules and placeholder jurisdiction splits. Treat route-level and jurisdiction-level results as drafts. [Certain]
-- The South Tahoe Transit JPA is missing from the model. The SSTMA workbook assumes the JPA takes over south shore operations on October 1, 2026. The model still sends all south shore fixed route funding to TTD. [Certain]
-- Whether the JPA transition happened is still open. No answer is recorded in the project chats. [Likely]
+- Kira answered the questionnaire on October 23, 2026 (`docs/Transit Funding Tool - Questions for Kira - Answered 10-23.docx`). Her answers are applied to the model page; see Open decisions below for what each one settled. [Certain]
+- Jurisdiction splits stay even-split placeholders by her direction ("we can be more specific later on"). Treat jurisdiction-level results as drafts. [Certain]
+- The South Tahoe Transit JPA is not an operator and the working assumption is that it will not become one (Kira, Oct. 23, 2026). South shore fixed route funding stays with TTD. [Certain]
 - Task 4c (agreements inventory) cannot be finished from spreadsheets. The actual agreements must come from partners. [Certain]
 
 ## Purpose
@@ -95,6 +95,15 @@ Claude compared the model against the directive and RFP. Results are in the next
 
 Claude then moved all data out of the page's JavaScript into a build pipeline. Details are under Current tool and data pipeline.
 
+### October 23: Kira's answers applied
+
+Kira returned the questionnaire (`docs/Transit Funding Tool - Questions for Kira - Answered 10-23.docx`). Her answers were applied directly to `model/transit-funding-model.html` (the pipeline is not in this repo yet):
+
+- Data: TART 5307 at TART's $2,660,000; Route 30 at $147.80/VSH (about $517,300); the seven Lake Link private partners, NTCA, and Martis carried steady at FY 25-26 amounts ($839,273); the $232,235 planning and administration appropriation in scope; 5310 at 80 percent federal share with the TTD–Placer alternation projected through FY 30-31; Lake Link, My Ride to Work services, and vanpools marked non-federalized.
+- Engine: fares count as local match (a fare line with "Counts as match" unchecked is fare replacement instead).
+- Features: three scenario presets in the scenario bar (TDA and SB 125 stay in California; Lake Link federalized; TTD absorbs Lake Link); an Overview finding totaling money used outside a source's stated preference; a funding-cliffs callout on the Five-year outlook tab.
+- Result: FY 26-27 regional balance $6,612,170 with 12 rule errors (was $4,810,649 with 11). The $1,801,521 increase reconciles to the four data changes above minus the higher Route 30 cost. The new errors are small TART federal share breaches that follow from using TART's larger 5307 number.
+
 ## Status against the RFP
 
 | Item | Status | Evidence |
@@ -151,27 +160,30 @@ The pipeline code was delivered as `transit-funding-model.zip` in the October 22
 
 ## Open decisions
 
-These need the funding lead or partners. The meeting guide and the information-needed list cover each in detail.
+Kira answered the questionnaire on October 23, 2026. Status of each decision, applied to the model page the same day:
 
-1. Who is the primary audience: the four operators planning their own budgets, or TRPA making the case for a regional funding source or cost-share formula?
-2. Did the JPA take over south shore operations on October 1, 2026?
-3. What does "optimize" mean? Options include most federal money drawn, least local share, least money unused, or fair jurisdiction shares.
-4. Is match tested per route, per grant, or per recipient per program?
-5. Federal share by program and state. NDOT 5311 shows both 50 and 40 percent.
-6. Can California funds match federal funds on Nevada routes? Are toll credits available?
-7. Are North Shore free-fare payments fare replacement or local match?
-8. Which cost-share method applies to multi-jurisdiction routes?
-9. Are capital and planning or administration funds in scope?
+1. **Audience: answered.** TRPA first, making the case for a regional funding source; also a standard annual budgeting methodology other operators can use, and a starting point for cost-share negotiations. Results will be shown to elected officials. Deliverable: an easy-to-read table or chart.
+2. **JPA: answered.** The JPA is not an operator and the assumption is it will not become one. South shore funding stays with TTD.
+3. **Optimize: answered.** No optimizer. The tool flags problems and shows trade-offs.
+4. **Match test level: answered.** Per grant, per recipient.
+5. **Federal shares: answered for now.** NDOT 5311 at 50 percent non-federal (change later if needed); 5307 operating at 50 percent non-federal; 5310 might be 20 percent non-federal and pays ADA paratransit (to confirm with FTA).
+6. **Cross-state match: answered.** CA funds can match NV routes, with political pressure not to; the "TDA and SB 125 stay in California" scenario preset shows what that costs. Toll credits: assume unavailable.
+7. **Free fares: answered.** Any fares should be thought of as match. The engine now counts fare lines as local match.
+8. **Cost-share method: deferred.** Keep the even-split placeholder; be more specific later.
+9. **Scope: answered.** Capital out for this iteration; planning and administration funds in.
+
+Still open for partners: actual agreements (Task 4c), revenue miles by route split by jurisdiction, state, and UZA, actual FY 26-27 FTA apportionments (using the EXAMPLE figures for now), and the private operator list with service statistics.
 
 ## Recommended next steps
 
 1. ~~Move the data out of the page.~~ Done October 22.
-2. Add the JPA as a receiving agency. Add a scenario switch for TTD versus JPA operating the south shore.
-3. Replace placeholder jurisdiction splits with the SSTMA weighted formula. Partners set the weights.
+2. ~~Add the JPA as a receiving agency.~~ Resolved October 23: the JPA is not an operator and will not become one (Kira). No model change needed.
+3. Replace placeholder jurisdiction splits with the SSTMA weighted formula. Partners set the weights. (Kira, Oct. 23: keep the placeholder for now.)
 4. Ask partners for the actual agreements for Task 4c.
-5. Get the private operator list and service statistics from the funding lead.
-6. Turn the funding lead's rule answers into a rules config file the engine reads.
-7. Move the pipeline repo to a shared location so others can rebuild.
+5. Get the private operator list and service statistics from the funding lead (Kira, Oct. 23: "we don't have this data yet, but will work on it").
+6. ~~Turn the funding lead's rule answers into the model.~~ Done October 23: answers applied to the model page's data and engine, with three scenario presets (TDA and SB 125 stay in CA, Lake Link federalized, TTD absorbs Lake Link). Every change is marked "per Kira (Oct. 23, 2026)" in the page's notes.
+7. Move the pipeline repo to a shared location so others can rebuild. **Important:** the October 23 changes were made directly in `model/transit-funding-model.html` because the pipeline is not in this repo. When `pipeline/` lands, mirror them in `etl/seed/*.yaml` (and the engine template) before the next rebuild, or the rebuild will overwrite them.
+8. Confirm with FTA: the 5310 federal share (set to 80 percent per Kira, "might require 20% non-federal") and the NDOT 5311 operating rate (50 percent for now versus the 40 percent in partner notes).
 
 ## Links
 

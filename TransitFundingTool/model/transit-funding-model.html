@@ -244,6 +244,12 @@
     <button type="button" class="issue-pill" id="issuePill" title="Open the rule checks"><span class="dot" style="background:var(--trpa-brick)"></span><span id="issuePillText">Checking rules</span></button>
   </span>
   <span class="scenario-actions">
+    <calcite-select id="presetSel" scale="s" width="auto" label="Apply a scenario preset" title="Apply a scenario the funding lead asked for (Oct. 23, 2026). Edits are logged; Reset returns to the source data.">
+      <calcite-option value="">Scenario presets</calcite-option>
+      <calcite-option value="ca-only">TDA and SB 125 stay in California</calcite-option>
+      <calcite-option value="ll-fed">Lake Link federalized</calcite-option>
+      <calcite-option value="ttd-absorbs">TTD absorbs Lake Link</calcite-option>
+    </calcite-select>
     <calcite-button id="btnExport" appearance="outline" kind="brand" scale="s" icon-start="download" title="Download this scenario as a JSON file you can share or reload">Export scenario</calcite-button>
     <calcite-button id="btnImport" appearance="outline" kind="brand" scale="s" icon-start="upload" title="Load a scenario JSON file">Import</calcite-button>
     <calcite-button id="btnReset" appearance="outline" kind="neutral" scale="s" icon-start="reset" title="Discard all edits and return to the source data">Reset</calcite-button>
@@ -429,6 +435,7 @@
   <!-- ═════════ OUTLOOK ═════════ -->
   <section class="panel" role="tabpanel" id="panel-outlook" data-panel="outlook" aria-labelledby="tab-outlook" hidden>
     <div class="tabpad">
+      <div class="callout" id="cliffNote" hidden></div>
       <div class="card">
         <div class="card-head"><div><h2>Revenue and cost, FY 26-27 to FY 30-31</h2>
           <p class="note" style="max-width:110ch">Costs escalate by each operator's rate. Each source follows its own projection rule: growth rate, end year, cap, or year-by-year values from the financial plan. The orange line adds every service plan element, included or not.</p></div></div>
@@ -749,7 +756,7 @@ window.TRANSIT_MODEL_DATA = {
    "vsh": 3500.0,
    "vsm": 9850.0,
    "dataYear": "26-27 estimate",
-   "rateOverride": null,
+   "rateOverride": 147.8,
    "costOverride": null,
    "costSchedule": null,
    "activeYears": [
@@ -766,7 +773,7 @@ window.TRANSIT_MODEL_DATA = {
    },
    "refCost": 517288,
    "refCite": "Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G169 (route cost incl. allocated fixed cost); Table 2 row 20",
-   "note": "Pilot funded through FY 27-28. The costs tab looks up operator \"Via\" ($68.70/VSH, the Lake Link rate). VRH Rates lists $147.80/VSH for Route 30 (TTD–Via), and the FY 26-27 Emerald Bay Shuttle budget is $517,288. Enter 147.80 in the rate column to use it.",
+   "note": "Pilot funded through FY 27-28. Uses $147.80/VSH (VRH Rates, TTD-Via) per Kira (Oct. 23, 2026), about $517,300, matching the FY 26-27 Emerald Bay Shuttle budget of $517,288. The costs tab's $68.70 lookup (the Lake Link rate) is treated as an error.",
    "cite": "Example Transit Financial Scenario Workbook.xlsx › costs row 7",
    "id": "30",
    "name": "Route 30 (Emerald Bay Shuttle)",
@@ -907,7 +914,7 @@ window.TRANSIT_MODEL_DATA = {
    "localCond": "Zone 1 (Douglas County), Zone 2 (CSLT), Zone 3 (CSLT)",
    "area": "urban",
    "type": "microtransit",
-   "federalized": true,
+   "federalized": false,
    "trips": 223047.0,
    "vsh": 47002.0,
    "vsm": 366322.0,
@@ -924,7 +931,7 @@ window.TRANSIT_MODEL_DATA = {
    },
    "refCost": 3228840,
    "refCite": "Financial PlanG.xlsx › T2-4 G26 (contract plus fixed costs)",
-   "note": "VSH are from the contract, not actuals (costs tab U12).",
+   "note": "VSH are from the contract, not actuals (costs tab U12). Non-federalized per Kira (Oct. 23, 2026).",
    "cite": "Example Transit Financial Scenario Workbook.xlsx › costs row 12",
    "id": "LL",
    "name": "Lake Link microtransit",
@@ -1180,7 +1187,7 @@ window.TRANSIT_MODEL_DATA = {
    "localCond": "Placer County, Nevada County",
    "area": "mixed",
    "type": "seasonal",
-   "federalized": true,
+   "federalized": false,
    "trips": null,
    "vsh": 2500.0,
    "vsm": null,
@@ -1197,7 +1204,7 @@ window.TRANSIT_MODEL_DATA = {
    },
    "refCost": 894233,
    "refCite": "Financial PlanG.xlsx › TNTTMA $ F43 (winter and summer combined)",
-   "note": "Costs tab estimate (2,500 VSH). TNT/TMA FY 26-27 Park & Ride budget is $894,233 for both seasons.",
+   "note": "Costs tab estimate (2,500 VSH). TNT/TMA FY 26-27 Park & Ride budget is $894,233 for both seasons. Non-federalized per Kira (Oct. 23, 2026).",
    "cite": "Example Transit Financial Scenario Workbook.xlsx › costs row 22",
    "id": "PR-W",
    "name": "Park & Ride shuttle (winter)",
@@ -1211,7 +1218,7 @@ window.TRANSIT_MODEL_DATA = {
    "localCond": "Placer County, Nevada County",
    "area": "mixed",
    "type": "seasonal",
-   "federalized": true,
+   "federalized": false,
    "trips": null,
    "vsh": 500.0,
    "vsm": null,
@@ -1228,7 +1235,7 @@ window.TRANSIT_MODEL_DATA = {
    },
    "refCost": null,
    "refCite": "",
-   "note": "Costs tab estimate (500 VSH).",
+   "note": "Costs tab estimate (500 VSH). Non-federalized per Kira (Oct. 23, 2026).",
    "cite": "Example Transit Financial Scenario Workbook.xlsx › costs row 23",
    "id": "PR-S",
    "name": "Park & Ride shuttle (summer)",
@@ -1242,7 +1249,7 @@ window.TRANSIT_MODEL_DATA = {
    "localCond": "Placer County, Nevada County, Washoe County",
    "area": "mixed",
    "type": "airport",
-   "federalized": true,
+   "federalized": false,
    "trips": null,
    "vsh": 1200.0,
    "vsm": null,
@@ -1260,7 +1267,7 @@ window.TRANSIT_MODEL_DATA = {
    },
    "refCost": 694260,
    "refCite": "Financial PlanG.xlsx › TNTTMA $ F22",
-   "note": "Costs tab estimate based on FY 25-26 budget (1,200 VSH × $200.98). TNT/TMA FY 26-27 NLTE budget is $694,260.",
+   "note": "Costs tab estimate based on FY 25-26 budget (1,200 VSH × $200.98). TNT/TMA FY 26-27 NLTE budget is $694,260. Non-federalized per Kira (Oct. 23, 2026).",
    "cite": "Example Transit Financial Scenario Workbook.xlsx › costs row 24",
    "id": "NLTE",
    "name": "North Lake Tahoe Express (airport)",
@@ -1274,7 +1281,7 @@ window.TRANSIT_MODEL_DATA = {
    "localCond": "Placer County, Washoe County",
    "area": "mixed",
    "type": "vanpool",
-   "federalized": true,
+   "federalized": false,
    "trips": null,
    "vsh": null,
    "vsm": null,
@@ -1291,7 +1298,7 @@ window.TRANSIT_MODEL_DATA = {
    },
    "refCost": 195800,
    "refCite": "Financial PlanG.xlsx › TNTTMA $ K43",
-   "note": "Not in the costs tab. Included because Revenue %s has a Vanpools column; cost is the TNT/TMA FY 26-27 vanpool budget.",
+   "note": "Not in the costs tab. Included because Revenue %s has a Vanpools column; cost is the TNT/TMA FY 26-27 vanpool budget. Non-federalized per Kira (Oct. 23, 2026).",
    "cite": "Financial PlanG.xlsx › TNTTMA $ K36:K43",
    "id": "VAN",
    "name": "Vanpools (TNT/TMA)",
@@ -1836,7 +1843,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Rural operating, capital, and planning assistance.",
    "grantor": "FTA through Nevada DOT",
    "program": "FTA 5311 Rural Area Formula",
-   "notes": "",
+   "notes": "Kira (Oct. 23, 2026): use a 50 percent non-federal match for now; change later if NDOT confirms the 40 percent operating rate in the partner notes.",
    "cites": {
     "amount": "Financial PlanG.xlsx › Per Route Model D15; Financial PlanG.xlsx › T2-4 Table A1 G65",
     "prior": "Federal Funds – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -1868,7 +1875,7 @@ window.TRANSIT_MODEL_DATA = {
     78300.0,
     0.0
    ],
-   "fedShare": 0.5,
+   "fedShare": 0.8,
    "fedShareADA": null,
    "matchEligible": true,
    "matchOnly": false,
@@ -1886,13 +1893,13 @@ window.TRANSIT_MODEL_DATA = {
    "commitment": "formula",
    "commitNote": "Alternates with Placer County: the FY 26-27 apportionment goes to Placer (FTA Allocation Split J35); TTD in FY 27-28 and FY 29-30.",
    "contributor": null,
-   "matchText": "50% non-federal",
+   "matchText": "20% non-federal",
    "conditionText": "Can only be applied to ADA routes",
    "restrictionText": "ADA services and capital only",
    "purpose": "Urbanized area funding to meet the needs of older adults and people with disabilities.",
    "grantor": "Federal Transit Administration",
    "program": "FTA 5310",
-   "notes": "",
+   "notes": "Federal share set to 80 percent per Kira (Oct. 23, 2026): 5310 might require a 20 percent non-federal match; confirm with FTA. Revenue %s row 8 lists 50 percent.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G63:K63; Financial PlanG.xlsx › Per Route Model D17",
     "prior": "Federal Funds – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -1924,7 +1931,7 @@ window.TRANSIT_MODEL_DATA = {
     null,
     null
    ],
-   "fedShare": 0.5,
+   "fedShare": 0.8,
    "fedShareADA": null,
    "matchEligible": true,
    "matchOnly": false,
@@ -1942,13 +1949,13 @@ window.TRANSIT_MODEL_DATA = {
    "commitment": "onetime",
    "commitNote": "",
    "contributor": null,
-   "matchText": "50% non-federal",
+   "matchText": "20% non-federal",
    "conditionText": "Can only be applied to ADA routes",
    "restrictionText": "ADA services and capital only",
    "purpose": "",
    "grantor": "Federal Transit Administration",
    "program": "FTA 5310 carryover",
-   "notes": "",
+   "notes": "Federal share set to 80 percent per Kira (Oct. 23, 2026): 5310 might require a 20 percent non-federal match; confirm with FTA. Revenue %s row 8 lists 50 percent.",
    "cites": {
     "amount": "Financial PlanG.xlsx › Per Route Model D18; Financial PlanG.xlsx › T2-4 Table A1 G64",
     "match": "Financial PlanG.xlsx › Revenue %s row 9",
@@ -2371,7 +2378,7 @@ window.TRANSIT_MODEL_DATA = {
    "enabled": true,
    "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0,
+   "amount": 232235.0,
    "prior": 232235,
    "growth": 0,
    "lastYear": null,
@@ -2401,9 +2408,9 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "TTD general fund planning and administration.",
    "grantor": "Douglas, Washoe, Placer, Carson City",
    "program": "Local appropriation",
-   "notes": "Supports TTD planning and administration rather than route operations; not in the FY 26-27 operating plan.",
+   "notes": "Planning and administration funds are in scope per Kira (Oct. 23, 2026): most of TTD's planning and administration is paid from the transit operations budget. Carried at the FY 25-26 fact sheet amount.",
    "cites": {
-    "amount": "Not in Financial PlanG FY 26-27 tables",
+    "amount": "Local Funds 1 of 2 – FINAL.pdf › FY 25-26 budgeted ($232,235), carried forward per Kira (Oct. 23, 2026)",
     "prior": "Local Funds 1 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
     "restrictions": "Local Funds 1 of 2 – FINAL.pdf › Local Appropriation"
    },
@@ -3068,9 +3075,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 25000.0,
    "prior": 25000,
    "growth": 0,
    "lastYear": null,
@@ -3106,7 +3113,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Contribution for Lake Link operations.",
    "grantor": "South Lake Tahoe Tourism Improvement District",
    "program": "Lake Link partner contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G89 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › T2-4 Table A1 F89; Local Funds 2 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -3122,9 +3129,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 15000.0,
    "prior": 15000,
    "growth": 0,
    "lastYear": null,
@@ -3160,7 +3167,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Contribution for Lake Link operations.",
    "grantor": "Heavenly",
    "program": "Lake Link partner contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G90 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › T2-4 Table A1 F90; Local Funds 2 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -3176,9 +3183,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 65000.0,
    "prior": 65000,
    "growth": 0,
    "lastYear": null,
@@ -3214,7 +3221,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Contribution for Lake Link operations.",
    "grantor": "Caesars Entertainment",
    "program": "Lake Link partner contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G91 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › T2-4 Table A1 F91; Local Funds 2 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -3230,9 +3237,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 85000.0,
    "prior": 85000,
    "growth": 0,
    "lastYear": null,
@@ -3268,7 +3275,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Contribution for Lake Link operations.",
    "grantor": "Round Hill Pines Resort",
    "program": "Lake Link partner contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G92 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › T2-4 Table A1 F92; Local Funds 2 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -3284,9 +3291,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 25000.0,
    "prior": 25000,
    "growth": 0,
    "lastYear": null,
@@ -3322,7 +3329,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Contribution for Lake Link operations.",
    "grantor": "Advance Learning",
    "program": "Lake Link partner contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G93 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › T2-4 Table A1 F93; Local Funds 2 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -3338,9 +3345,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 62100.0,
    "prior": 62100,
    "growth": 0,
    "lastYear": null,
@@ -3376,7 +3383,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Contribution for Lake Link operations.",
    "grantor": "Lake Tahoe Visitors Authority",
    "program": "Lake Link partner contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G94 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › T2-4 Table A1 F94; Local Funds 2 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -3392,9 +3399,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 25000.0,
    "prior": 25000,
    "growth": 0,
    "lastYear": null,
@@ -3430,7 +3437,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Contribution for Lake Link operations.",
    "grantor": "Lake Tahoe Community College",
    "program": "Lake Link partner contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › T2-4 Table A1 G95 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › T2-4 Table A1 F95; Local Funds 2 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -3447,8 +3454,8 @@ window.TRANSIT_MODEL_DATA = {
   {
    "enabled": true,
    "status": "budgeted",
-   "amountMode": "fta5307",
-   "amount": 1653136.47,
+   "amountMode": "manual",
+   "amount": 2660000.0,
    "prior": 2500000,
    "growth": 0.01,
    "lastYear": null,
@@ -3492,9 +3499,9 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Urbanized area operating, capital, and transportation-related planning.",
    "grantor": "Federal Transit Administration",
    "program": "FTA 5307 Urbanized Area Formula",
-   "notes": "TART financial plan Table A2 budgets $2,660,000 of 5307 for FY 26-27; the per-route model uses the earned-share result ($1,653,136).",
+   "notes": "Set to TART's own plan amount per Kira (Oct. 23, 2026): TART receives additional 5307 directed through PCTPA, so the UZA earned-share split ($1,653,136) understates it. No longer follows the FTA sub-allocation worksheet.",
    "cites": {
-    "amount": "Financial PlanG.xlsx › Per Route Model E12 = FTA Allocation Split (26-27) G35; Table A2 G59 shows $2,660,000",
+    "amount": "Financial PlanG.xlsx › T5-7 Table A2 G59 ($2,660,000, TART plan), per Kira (Oct. 23, 2026); earned-share split would give $1,653,136 (FTA Allocation Split (26-27) G35)",
     "prior": "Federal Funds – FINAL.pdf › FY 25-26 budgeted for operations",
     "match": "Financial PlanG.xlsx › Revenue %s row 3",
     "restrictions": "Federal Funds – FINAL.pdf › FTA 5307",
@@ -3515,16 +3522,16 @@ window.TRANSIT_MODEL_DATA = {
    "amount": 75224.8,
    "prior": 0,
    "growth": 0,
-   "lastYear": 0,
+   "lastYear": null,
    "cap": null,
    "overrides": [
     null,
-    null,
-    null,
-    null,
-    null
+    0.0,
+    77000.0,
+    0.0,
+    79100.0
    ],
-   "fedShare": 0.5,
+   "fedShare": 0.8,
    "fedShareADA": null,
    "matchEligible": true,
    "matchOnly": false,
@@ -3542,19 +3549,20 @@ window.TRANSIT_MODEL_DATA = {
    "commitment": "formula",
    "commitNote": "",
    "contributor": null,
-   "matchText": "50% non-federal",
+   "matchText": "20% non-federal",
    "conditionText": "Can only be applied to ADA routes",
    "restrictionText": "ADA services and capital only",
    "purpose": "",
    "grantor": "Federal Transit Administration",
    "program": "FTA 5310",
-   "notes": "The FTA split worksheet assigns the FY 26-27 5310 apportionment to Placer (J35). It does not appear in TART Table A2. Alternates with TTD; later Placer years are not projected in the plan.",
+   "notes": "The FTA split worksheet assigns the FY 26-27 5310 apportionment to Placer (J35). It does not appear in TART Table A2. Alternates with TTD; later Placer years are not projected in the plan. Federal share set to 80 percent per Kira (Oct. 23, 2026): 5310 might require a 20 percent non-federal match; confirm with FTA. Revenue %s row 8 lists 50 percent. Alternation confirmed per Kira (Oct. 23, 2026): TTD and Placer County switch off each year. FY 28-29 and FY 30-31 are estimated at about 1 percent growth, matching the plan's FTA growth rule.",
    "cites": {
     "amount": "Financial PlanG.xlsx › Per Route Model E17 = FTA Allocation Split (26-27) J35",
     "prior": "Federal Funds – FINAL.pdf › FY 25-26 budgeted for operations",
     "match": "Financial PlanG.xlsx › Revenue %s row 8",
     "restrictions": "Federal Funds – FINAL.pdf › FTA 5310",
-    "build": "FY 26-27 amount: Financial PlanG.xlsx › FTA Allocation Split (26-27) J35 | Conditions and match: Financial PlanG.xlsx › Revenue %s row 8, columns B and C"
+    "build": "FY 26-27 amount: Financial PlanG.xlsx › FTA Allocation Split (26-27) J35 | Conditions and match: Financial PlanG.xlsx › Revenue %s row 8, columns B and C",
+    "projection": "Alternation per Kira (Oct. 23, 2026); FY 28-29 and FY 30-31 estimated at ~1% growth (Financial PlanG.xlsx › T2-4 O2 FTA rule)"
    },
    "user": false,
    "id": "tart-5310",
@@ -4273,9 +4281,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 50000.0,
    "prior": 50000,
    "growth": 0,
    "lastYear": null,
@@ -4311,7 +4319,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "Budget contribution for Hwy 267 operations.",
    "grantor": "Martis Zone of Benefit",
    "program": "Zone of benefit",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › Per Route Model E42; Financial PlanG.xlsx › T5-7 Table A2 G73",
     "prior": "Local Funds 1 of 2 – FINAL.pdf › FY 25-26 budgeted for operations",
@@ -4971,9 +4979,9 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "enabled": true,
-   "status": "none",
+   "status": "factsheet",
    "amountMode": "manual",
-   "amount": 0.0,
+   "amount": 487173.0,
    "prior": 487173,
    "growth": 0,
    "lastYear": null,
@@ -5012,7 +5020,7 @@ window.TRANSIT_MODEL_DATA = {
    "purpose": "",
    "grantor": "North Tahoe Community Alliance",
    "program": "Nonprofit contribution",
-   "notes": "",
+   "notes": "Assumed steady at the FY 25-26 amount per Kira (Oct. 23, 2026); no commitment secured.",
    "cites": {
     "amount": "Financial PlanG.xlsx › TNTTMA $ V10 (FY 26-27 = $0)",
     "prior": "Financial PlanG.xlsx › TNTTMA $ E30 (FY 25-26)",
@@ -5158,7 +5166,7 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "title": "Route 30 cost rate",
-   "text": "The costs tab prices Route 30 at the Lake Link Via rate ($68.70/VSH, $240,450). VRH Rates lists $147.80/VSH for Route 30 (TTD–Via), and the FY 26-27 Emerald Bay Shuttle budget is $517,288. The model keeps the costs tab value; enter 147.80 in the Route 30 rate cell to switch.",
+   "text": "The costs tab prices Route 30 at the Lake Link Via rate ($68.70/VSH, $240,450). The model now uses $147.80/VSH (about $517,300) per Kira (Oct. 23, 2026), matching VRH Rates and the FY 26-27 Emerald Bay Shuttle budget of $517,288.",
    "cite": "Example Transit Financial Scenario Workbook.xlsx › costs J7; VRH Rates J10; Financial PlanG.xlsx › T2-4 G20"
   },
   {
@@ -5178,7 +5186,7 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "title": "TART FTA 5307 amount",
-   "text": "The per-route model uses $1,653,136 (75 percent of Placer's earned share). TART's financial plan (Table A2) budgets $2,660,000. The model uses the earned-share result; enter the budget figure in Details to compare.",
+   "text": "The per-route model uses $1,653,136 (75 percent of Placer's earned share). TART's financial plan (Table A2) budgets $2,660,000, including 5307 directed through PCTPA. The model uses TART's number per Kira (Oct. 23, 2026).",
    "cite": "Financial PlanG.xlsx › Per Route Model E12; T5-7 G59"
   },
   {
@@ -5198,12 +5206,12 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "title": "Fact sheet items not in the FY 26-27 plan",
-   "text": "Nevada State general fund allocation to TTD ($346,500 in FY 25-26), local appropriation for TTD planning and administration ($232,235), and Martis Zones of Benefit ($50,000 in FY 25-26, $0 in FY 26-27). They are listed at $0 so they can be turned on.",
+   "text": "Nevada State general fund allocation to TTD ($346,500 in FY 25-26) stays at $0: it was not addressed in the Oct. 23 answers. The local appropriation for TTD planning and administration ($232,235), Martis Zones of Benefit ($50,000), the seven Lake Link private partners ($302,100), and the North Tahoe Community Alliance ($487,173) are now carried at their FY 25-26 amounts per Kira (Oct. 23, 2026).",
    "cite": "State Funds – FINAL.pdf › Nevada State; Local Funds 1 of 2 – FINAL.pdf › Local Appropriation, Martis Zones of Benefit"
   },
   {
    "title": "Fact sheet and plan differences",
-   "text": "TDVA is $65,000 on the fact sheet (FY 25-26) and $120,000 in the FY 26-27 plan. The Travel North Tahoe Nevada card shows \"TTD budgeted $8,000\" though the funded system is NLTE.",
+   "text": "TDVA is $65,000 on the fact sheet (FY 25-26) and $120,000 in the FY 26-27 plan. The Travel North Tahoe Nevada card shows \"TTD budgeted $8,000\" though the funded system is NLTE. Kira (Oct. 23, 2026): use the plan amount ($120,000).",
    "cite": "Local Funds 1 of 2 – FINAL.pdf › Tahoe Douglas Visitor Authority; Travel North Tahoe Nevada"
   },
   {
@@ -5213,7 +5221,7 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "title": "Match rates for NDOT 5311",
-   "text": "Revenue %s lists 50 percent non-federal match for 5311; partner notes say NDOT match is 20 percent for administration, 40 percent for operating, and 5 percent for capital. The model uses 50 percent; change the federal share in Details if 60 percent applies to operating.",
+   "text": "Revenue %s lists 50 percent non-federal match for 5311; partner notes say NDOT match is 20 percent for administration, 40 percent for operating, and 5 percent for capital. Kira (Oct. 23, 2026): go with 50 percent non-federal for now; we can change it later.",
    "cite": "Financial PlanG.xlsx › Revenue %s C6, F64"
   },
   {
@@ -5245,6 +5253,26 @@ window.TRANSIT_MODEL_DATA = {
    "title": "Fixed costs for contractors",
    "text": "The costs tab notes that fixed costs could be separated out, but that is harder for private contractors, and fixed costs change with large service changes. The model uses fully allocated rates.",
    "cite": "Example Transit Financial Scenario Workbook.xlsx › costs W4"
+  },
+  {
+   "title": "Funding rule decisions from the funding lead (Oct. 23, 2026)",
+   "text": "No optimizer: the tool flags problems and shows trade-offs. Match is tested per grant, per recipient. 5307 operating at 50 percent non-federal; 5310 at 20 percent non-federal (to confirm); NDOT 5311 at 50 percent for now. Fares count as local match. Toll credits are assumed unavailable. “Ideally used in” conditions are preferences, and using a source outside its intended jurisdiction is allowed but highlighted. Jurisdiction cost splits stay even-split placeholders for now. Capital is out of scope for this iteration; planning and administration funds are in scope.",
+   "cite": "docs › Transit Funding Tool - Questions for Kira - Answered 10-23.docx"
+  },
+  {
+   "title": "South Tahoe Transit JPA",
+   "text": "The JPA is not an operator, and the working assumption is that it will not become one (Kira, Oct. 23, 2026). South shore fixed route funding stays with TTD in this model.",
+   "cite": "docs › Transit Funding Tool - Questions for Kira - Answered 10-23.docx"
+  },
+  {
+   "title": "Funding cliffs with no defined replacement",
+   "text": "SB 125 ends after FY 26-27 ($1,575,000 across TTD and Lake Link) and the Route 30 pilot funds end after FY 27-28. No replacement funding is defined yet; Kira (Oct. 23, 2026) asked that this be highlighted as a gap and a need. See the Five-year outlook tab.",
+   "cite": "docs › Transit Funding Tool - Questions for Kira - Answered 10-23.docx"
+  },
+  {
+   "title": "Scenario presets",
+   "text": "The scenario bar can apply three requested scenarios (Kira, Oct. 23, 2026): keep TDA and SB 125 in California only, federalize Lake Link, and TTD absorbs Lake Link with its revenue streams. Each preset is a set of logged edits on top of the current scenario; Reset returns to the source data.",
+   "cite": "docs › Transit Funding Tool - Questions for Kira - Answered 10-23.docx"
   }
  ],
  "agreements": [
@@ -5305,13 +5333,13 @@ window.TRANSIT_MODEL_DATA = {
   },
   {
    "title": "Lake Link private partners",
-   "text": "SLTTID, Heavenly, Caesars, Round Hill Pines, Advance Learning, LTVA, and LTCC contributed in FY 25-26 with no FY 26-27 commitment.",
+   "text": "SLTTID, Heavenly, Caesars, Round Hill Pines, Advance Learning, LTVA, and LTCC contributed in FY 25-26 with no FY 26-27 commitment. The model assumes their contributions remain steady per Kira (Oct. 23, 2026); multi-year contribution agreements would let the plan count on them.",
    "cite": "Financial PlanG.xlsx › T2-4 note 8"
   }
  ],
  "build": {
-  "id": "92094f69e259",
-  "builtAt": "2026-10-22T15:31:05",
+  "id": "20261023a",
+  "builtAt": "2026-10-23T21:51:59",
   "workbooks": {
    "scen": {
     "file": "Example Transit Financial Scenario Workbook.xlsx",
@@ -5477,7 +5505,7 @@ const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 const FIELD_LABELS = { amount: 'FY 26-27 amount', prior: 'FY 25-26 amount', growth: 'Annual growth', lastYear: 'Last year', cap: 'Cap', fedShare: 'Federal share cap', fedShareADA: 'Federal share cap (ADA)',
   matchEligible: 'Counts as match', matchOnly: 'Match-only credit', enabled: 'Included', include: 'Included', vsh: 'Service hours', vsm: 'Service miles', trips: 'Passenger trips',
   rateOverride: 'Cost per hour', costOverride: 'Annual cost', rate: 'Cost per hour', escal: 'Annual escalator', level: 'Funding level', recipient: 'Receiving agency', commitment: 'Commitment basis',
-  status: 'Status', area: 'Urban/rural', type: 'Service type', operator: 'Operator', federalized: 'Federalized', amountMode: 'Amount source', name: 'Name', alloc: 'Allocation' };
+  status: 'Status', area: 'Urban/rural', type: 'Service type', operator: 'Operator', federalized: 'Federalized', amountMode: 'Amount source', name: 'Name', alloc: 'Allocation', rules: 'Eligibility rules', agency: 'Agency' };
 function fieldLabel(path) { if (path.startsWith('overrides.')) return 'Amount in ' + YEARS[+path.split('.')[1]]; if (path.startsWith('rules.')) return 'Rule: ' + path.slice(6); if (path.startsWith('costSchedule.')) return 'Cost in ' + YEARS[+path.split('.')[1]]; if (path.startsWith('juris.')) return 'Share: ' + jurName(path.slice(6)); if (path.startsWith('alloc.pct.')) return 'Share to ' + svcShort(path.slice(10)); if (path.startsWith('fta.')) return 'FTA split: ' + path.slice(4); return FIELD_LABELS[path] || path; }
 function entityName(entity, id) { if (entity === 'line') return (lineById(id) || {}).name || id; if (entity === 'service') return (svcById(id) || {}).name || id; if (entity === 'operator') return (S.operators.find(o => o.id === id) || {}).name || id; if (entity === 'fta') return 'FTA 5307 sub-allocation'; return id; }
 function logChange(entity, id, path, from, to) {
@@ -5589,7 +5617,7 @@ function compute(st, y) {
     R.issues.push(it);
     if (l && s) { const k = l.id + '|' + s.id; if (!R.pair[k]) R.pair[k] = { sev, msgs: [] }; else if (R.pair[k].sev === 'warning' && sev === 'error') R.pair[k].sev = 'error'; R.pair[k].msgs.push(`${rule}: ${msg}`); }
   };
-  for (const s of svcs) { const cost = svcCost(st, s, y); R.svc[s.id] = { s, cost, byLevel: zeroLevels(), cash: 0, credits: 0, fed: 0, fares: 0, matchAvail: 0, matchReq: 0, fedCap: 0, alloc: {}, risk: 0, nErr: 0, nWarn: 0 }; }
+  for (const s of svcs) { const cost = svcCost(st, s, y); R.svc[s.id] = { s, cost, byLevel: zeroLevels(), cash: 0, credits: 0, fed: 0, fares: 0, faresRepl: 0, matchAvail: 0, matchReq: 0, fedCap: 0, alloc: {}, risk: 0, nErr: 0, nWarn: 0 }; }
   for (const l of st.lines) {
     const amt = lineAmount(st, l, y);
     const L = { l, amount: amt, pct: {}, alloc: {}, allocated: 0, unallocated: 0, pctTotal: 0 };
@@ -5602,7 +5630,9 @@ function compute(st, y) {
       L.alloc[sid] = A; L.allocated += A; sv.alloc[l.id] = A;
       if (l.matchOnly) sv.credits += A; else { sv.byLevel[l.level] += A; sv.cash += A; if (COMMIT[l.commitment] && COMMIT[l.commitment].risk) sv.risk += A; }
       if (l.level === 'federal' && !l.matchOnly) { sv.fed += A; const se = fedShareEff(l, sv.s); if (se < 1) sv.matchReq += A * (1 - se) / se; sv.fedCap = Math.max(sv.fedCap, se); }
-      else if (l.level === 'fare') sv.fares += A;
+      // Fares count as local match (Kira, Oct. 23, 2026). A fare line with "Counts as match"
+      // unchecked is treated as fare replacement instead: it reduces net cost, not match.
+      else if (l.level === 'fare') { sv.fares += A; if (l.matchEligible !== false) sv.matchAvail += A; else sv.faresRepl += A; }
       else if (l.matchEligible !== false && !l.matchOnly) sv.matchAvail += A;
       if (A > 0.5) {
         const ev = ruleEval(l, sv.s);
@@ -5616,7 +5646,7 @@ function compute(st, y) {
     else if (L.unallocated > Math.max(1, amt * 0.001)) addIssue('info', 'Unallocated', `${money(L.unallocated)} (${pct(L.unallocated / amt)}) is not applied to a service`, l, null, L.unallocated);
   }
   for (const sv of Object.values(R.svc)) {
-    const net = Math.max(0, sv.cost - sv.fares); sv.net = net;
+    const net = Math.max(0, sv.cost - sv.faresRepl); sv.net = net;
     sv.matchAvailAll = sv.matchAvail + sv.credits;
     // $5 or 0.05 percent tolerance so rounding in shares does not raise errors
     if (sv.fed > 1 && sv.fedCap < 1 && sv.fed > sv.fedCap * net + Math.max(5, net * 0.0005)) addIssue('error', 'Federal share cap', `Federal funds of ${money(sv.fed)} are ${pct(net ? sv.fed / net : 1, 0)} of net cost; the cap is ${pct(sv.fedCap, 0)}`, null, sv.s, sv.fed - sv.fedCap * net);
@@ -5664,6 +5694,39 @@ function compute(st, y) {
   return R;
 }
 
+/* Scenario presets requested by the funding lead (Oct. 23, 2026). Each applies
+   logged edits on top of the current scenario; Reset returns to the source data. */
+const PRESETS = {
+  'ca-only': {
+    name: 'TDA and SB 125 stay in California',
+    apply() {
+      for (const id of ['ttd-ltf', 'ttd-sta', 'ttd-sb125', 'll-sb125', 'tart-ltf-trpa', 'tart-ltf-pctpa', 'tart-sta-trpa', 'tart-sta-pctpa']) {
+        const l = lineById(id); if (!l) continue;
+        const r = clone(l.rules || {}); delete r.preferStates; r.states = ['CA'];
+        setField('line', l, 'rules', r);
+      }
+    }
+  },
+  'll-fed': {
+    name: 'Lake Link federalized',
+    apply() { const s = svcById('LL'); if (s) setField('service', s, 'federalized', true); }
+  },
+  'ttd-absorbs': {
+    name: 'TTD absorbs Lake Link',
+    apply() {
+      for (const s of S.services) if (s.agency === 'SSTMA') setField('service', s, 'agency', 'TTD');
+      for (const l of S.lines) if (l.recipient === 'SSTMA') setField('line', l, 'recipient', 'TTD');
+    }
+  }
+};
+function applyPreset(key) {
+  const p = PRESETS[key]; if (!p) return;
+  p.apply();
+  S.name = (!S.name || S.name === DEF.name) ? p.name : S.name + ' + ' + p.name;
+  $('scenarioName').value = S.name;
+  resetGrids(); refresh();
+}
+
 /* Rules-based allocation, applied to the base year:
    1. earmarked sources and fares, then federal sources up to each route's federal share cap;
    2. non-federal sources to each route's remaining cost, most restricted first and time-limited before recurring,
@@ -5686,7 +5749,7 @@ function suggestAllocation(scope) {
         if (!(sid in remaining)) continue;
         if (!L.l.matchOnly) remaining[sid] -= A;
         if (isFed(L.l)) { const se = fedShareEff(L.l, svcById(sid)); fed[sid] += A; req[sid] += A * (1 - se) / se; }
-        else if (L.l.level === 'fare') fares[sid] += A; else if (L.l.matchEligible !== false) nonfed[sid] += A;
+        else if (L.l.level === 'fare') { if (L.l.matchEligible === false) fares[sid] += A; else nonfed[sid] += A; } else if (L.l.matchEligible !== false) nonfed[sid] += A;
       }
     }
   }
@@ -5717,7 +5780,7 @@ function suggestAllocation(scope) {
     pm[l.id][s.id] = (pm[l.id][s.id] || 0) + amt / full[l.id];
     if (!l.matchOnly) remaining[s.id] -= amt;
     if (isFed(l)) { const se = fedShareEff(l, s); fed[s.id] += amt; req[s.id] += amt * (1 - se) / se; }
-    else if (l.level === 'fare') fares[s.id] += amt;
+    else if (l.level === 'fare') { if (l.matchEligible === false) fares[s.id] += amt; else nonfed[s.id] += amt; }
     else if (l.matchEligible !== false || l.matchOnly) nonfed[s.id] += amt;
   };
   const capFor = (l, s, matchLimited) => {
@@ -5903,6 +5966,8 @@ function renderFindings() {
   else if (T.fedUnalloc > 1) out.push(`<strong>Federal share:</strong> ${moneyShort(T.fedUnalloc)} in federal funds is not applied to any service.`);
   const stIss = R.issues.filter(i => i.sev === 'error' && i.rule !== 'Federal share cap' && i.line);
   if (stIss.length) { const names = [...new Set(stIss.map(i => i.lineName))]; out.push(`<strong>Eligibility:</strong> ${stIss.length} allocation${stIss.length === 1 ? '' : 's'} break a source restriction, involving ${listWords(names.slice(0, 3).map(esc))}${names.length > 3 ? ` and ${names.length - 3} more` : ''}. See Allocation and rules.`); }
+  const prefIss = R.issues.filter(i => i.sev === 'warning' && (i.rule === 'State preference' || i.rule === 'Jurisdiction preference' || i.rule === 'Intended use'));
+  if (prefIss.length) { const svNames = [...new Set(prefIss.map(i => i.svcName))]; out.push(`<strong>Used outside the stated preference:</strong> ${moneyShort(sum(prefIss.map(i => i.amt)))} is applied to services the source is only "ideally" meant for (${listWords(svNames.slice(0, 3).map(esc))}${svNames.length > 3 ? ` and ${svNames.length - 3} more` : ''}). The funding lead allows this to leverage the whole system (Oct. 23, 2026); each instance is highlighted as a warning, not an error.`); }
   const gaps = Object.values(R.svc).filter(s => s.gap < -1).sort((a, b) => a.gap - b.gap);
   if (gaps.length) out.push(`<strong>Route gaps:</strong> the largest unfunded costs at the route level are ${listWords(gaps.slice(0, 3).map(s => `${esc(s.s.short)} (${moneyShort(-s.gap)})`))}.`);
   $('ovFindings').innerHTML = out.map(x => `<li>${x}</li>`).join('');
@@ -6238,7 +6303,7 @@ function renderResults() {
 function resultsRoute() {
   $('resTitle').textContent = `Results by service, ${YEARS[YEAR]}`;
   $('resNote').textContent = 'Funding applied to each service by level, against its cost. Federal share and match are checked per service. Click a row to see every source on it.';
-  $('resSource').textContent = 'Net cost is cost minus fares. Match required is what the federal sources on the service need in non-federal funds at their share caps; match applied counts state, local, private, and other funds plus match-only credits.';
+  $('resSource').textContent = 'Fares count as local match (Kira, Oct. 23, 2026), so net cost equals cost unless a fare line is marked as fare replacement. Match required is what the federal sources on the service need in non-federal funds at their share caps; match applied counts fares, state, local, private, and other funds plus match-only credits.';
   const svs = Object.values(R.svc).filter(s => s.cost > 0 || s.cash > 0).sort((a, b) => b.cost - a.cost);
   const y = svs.map(s => s.s.short);
   const traces = LEVEL_ORDER.filter(lv => svs.some(s => s.byLevel[lv])).map(lv => ({ type: 'bar', orientation: 'h', name: LEVELS[lv].label, y, x: svs.map(s => s.byLevel[lv]), marker: { color: LEVELS[lv].color, line: { color: '#fff', width: 1 } }, hovertemplate: '%{x:$,.0f}' }));
@@ -6330,6 +6395,22 @@ function openSvcDetail(id) {
 
 /* ── Outlook ── */
 function renderOutlook() {
+  // Funding cliffs: time-limited sources that end before the last plan year, with no
+  // defined replacement (Kira, Oct. 23, 2026). Alternating formula funds are excluded.
+  const ends = [];
+  for (const l of S.lines) {
+    if (!l.enabled || l.status === 'capital' || l.matchOnly) continue;
+    if (l.lastYear == null && l.commitment !== 'onetime') continue;
+    let lastY = -1, lastAmt = 0;
+    YEARS.forEach((_, y) => { const a = lineAmount(S, l, y); if (a > 0.5) { lastY = y; lastAmt = a; } });
+    if (lastY >= 0 && lastY < YEARS.length - 1) ends.push({ name: l.name, lastY, lastAmt });
+  }
+  const cn = $('cliffNote');
+  if (ends.length) {
+    ends.sort((a, b) => a.lastY - b.lastY || b.lastAmt - a.lastAmt);
+    cn.innerHTML = `<strong>Funding cliffs.</strong> These sources end within the plan period: ${listWords(ends.map(e => `${esc(e.name)} (${moneyShort(e.lastAmt)} through ${YEARS[e.lastY]})`))}. No replacement funding is defined (Kira, Oct. 23, 2026); treat these as the gap and the need to plan for.`;
+    cn.hidden = false;
+  } else cn.hidden = true;
   chartOutlook('chOutlook', 380);
   const ags = AGENCIES.filter(a => SERIES.some(r => r.agency[a.id].cost || r.agency[a.id].revTotal));
   const traces = [], ann = [], n = ags.length, cols = Math.min(n, 4);
@@ -6502,6 +6583,8 @@ function init() {
   $('btnAuto').addEventListener('click', () => { const l = lineById(ALLOC_SEL); if (!l) return; setField('line', l, 'alloc', { mode: 'auto', basis: $('allocBasis').value, note: 'Split among eligible services' }); refresh(); });
   $('btnClearRow').addEventListener('click', () => { const l = lineById(ALLOC_SEL); if (!l) return; setField('line', l, 'alloc', { mode: 'manual', pct: {}, note: 'Cleared' }); refresh(); });
   $('btnSuggest').addEventListener('click', () => { suggestAllocation(ALLOC_AGENCY); refresh(); });
+  const ps = $('presetSel');
+  ps.addEventListener('calciteSelectChange', () => { const k = ps.value; if (k) { applyPreset(k); ps.value = ''; } });
   $('btnAddSvc').addEventListener('click', () => {
     const n = S.services.filter(s => s.user).length + 1; const id = 'user-svc-' + Date.now();
     const at = S.services.findIndex(s => s.plan);
