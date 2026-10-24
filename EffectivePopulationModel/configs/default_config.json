@@ -1,0 +1,121 @@
+{
+    "_comment": "Tahoe Effective Population Model - default scenario. Every value here is the default the TEPM R-Shiny dashboard opened with, so running this config unmodified reproduces the dashboard's landing-page result. Copy this file, rename it, and edit the inputs to build a new scenario. Keys beginning with an underscore are documentation and are ignored by the loader.",
+
+    "scenario_name": "TEPM_2018_Baseline",
+    "description": "2018 base year effective population, matching the default assumptions of the TEPM R-Shiny dashboard.",
+
+    "inputs": {
+        "_comment": "Set any value to null only where noted; every other input is required.",
+
+        "_entry": "--- Regional entry volume and resident/commuter populations ---",
+        "entry_volume": 25281,
+        "_entry_volume": "Annual average daily vehicles entering the region. StreetLight InSight 2018 OD study 150448, external-origin/internal-destination (EI) trips, all days, all day. Set data_sources.entry_volume.enabled to recompute this from the OD export.",
+        "resident_population": 51577,
+        "_resident_population": "Full-time residents. 2018 ACS 5-year estimate for the basin.",
+        "nonresident_commuters": 4949,
+        "_nonresident_commuters": "Annual average non-resident workers commuting into the basin. 2018 LEHD/CTPP.",
+        "resident_commuters": 1800,
+        "_resident_commuters": "Annual average residents commuting out of the basin. 2018 LEHD/CTPP.",
+
+        "_trips": "--- Entry trips that are not day visitors ---",
+        "freight_trips": null,
+        "_freight_trips": "null derives it as round(entry_volume x derived_input_rules.freight_share_of_entry_volume) = 758 at the default entry volume. Supply a number to override.",
+        "discretionary_trips": null,
+        "_discretionary_trips": "Residents and overnight visitors leaving and re-entering the basin (Costco runs, ski trips to Kirkwood). null derives it as round(round(overnight_population) x 0.07) + 5750 = 8,299 at the default assumptions. Supply a number to override.",
+
+        "_day": "--- Day visitors ---",
+        "day_visitor_vehicle_occupancy": 2.62,
+
+        "_second_home": "--- Second homes ---",
+        "second_homes": 20580,
+        "_second_homes": "2018 ACS 5-year table B25004_006 (vacant: seasonal, recreational or occasional use) summed over the 25 basin census tracts = 26,585, less 6,005 short-term rental units so STRs are not counted twice. Set data_sources.second_homes.enabled to recompute this from the ACS API.",
+        "second_home_occupancy": 0.19,
+        "_second_home_occupancy": "Share of second homes occupied on an average day.",
+        "vehicles_per_second_home": 1.27,
+        "second_home_vehicle_occupancy": 1.97,
+        "second_home_length_of_stay": null,
+        "_second_home_length_of_stay": "null reproduces the R model, which divided second home arrivals by the STR length of stay (4.28 nights). Supply a number to use a second-home-specific stay length instead.",
+
+        "_str": "--- Short-term rentals (VHRs) ---",
+        "str_units_rented_annual": 482940,
+        "_str_units_rented_annual": "Annual STR unit-nights rented. Transient occupancy tax reporting.",
+        "vehicles_per_str_unit": 2.07,
+        "str_length_of_stay": 4.28,
+        "str_vehicle_occupancy": 3.92,
+
+        "_hotel": "--- Hotel / motel / resort / casino ---",
+        "hotel_units_rented_annual": 1754130,
+        "_hotel_units_rented_annual": "Annual room-nights rented. Transient occupancy tax reporting.",
+        "vehicles_per_hotel_room": 1.08,
+        "hotel_length_of_stay": 3.44,
+        "hotel_vehicle_occupancy": 3.26,
+
+        "_camp": "--- Campgrounds ---",
+        "campsites_rented_annual": 99284,
+        "_campsites_rented_annual": "Annual campsite-nights rented.",
+        "vehicles_per_campsite": 1.18,
+        "campsite_length_of_stay": 3.64,
+        "campsite_vehicle_occupancy": 3.26,
+
+        "_constants": "--- Conversion constant ---",
+        "days_per_year": 365
+    },
+
+    "derived_input_rules": {
+        "_comment": "Rules applied only to inputs left null above. These reproduce the defaults the Shiny app computed on the fly.",
+        "freight_share_of_entry_volume": 0.03,
+        "discretionary_share_of_overnight_population": 0.07,
+        "discretionary_base_trips": 5750
+    },
+
+    "data_sources": {
+        "_comment": "Optional. When a block is enabled it recomputes that input from source data and overrides the literal value above. Both are disabled by default so the model runs with no network access and no large source files on disk.",
+
+        "entry_volume": {
+            "enabled": false,
+            "_enabled": "Set true after placing the StreetLight OD export under data/inputs/.",
+            "od_csv": "150448_2018_od_grid_trav_od_traveler_all.csv",
+            "_od_csv": "Relative paths resolve against data/inputs/. Absolute paths are used as given.",
+            "day_type": "0: All Days (M-Su)",
+            "day_part": "0: All Day (12am-12am)",
+            "trip_types": ["EI"],
+            "_trip_types": "EI = external origin, internal destination, i.e. vehicles entering the basin. Other options are IE, II and EE."
+        },
+
+        "second_homes": {
+            "enabled": false,
+            "_enabled": "Set true to pull the ACS estimate live from TRPA's Demographics census service. Needs network access to maps.trpa.org; no API key.",
+            "service_url": "https://maps.trpa.org/server/rest/services/Demographics/MapServer/28",
+            "_service_url": "TRPA Demographics census table. Already limited to basin geographies, so no tract clipping is needed. Summing this for 2018 returns 26,585, matching what the Census Bureau API returns for the basin tracts.",
+            "variable_code": "B25004_006E",
+            "_variable_code": "Vacant housing units for seasonal, recreational or occasional use. ACS variable codes in this table carry the E estimate suffix.",
+            "dataset": "acs/acs5",
+            "sample_level": "tract",
+            "_sample_level": "Must be pinned. The table carries the same variable at tract and block group level, and summing both would double count.",
+            "year_sample": 2018,
+            "_year_sample": "ACS 5-year vintage. The table carries 2011 through 2024. Tract counts change after 2020 as boundaries were redrawn; the service handles that itself.",
+            "subtract_units": 6005,
+            "_subtract_units": "Short-term rental units removed so they are not counted in both the second home and STR segments."
+        },
+
+        "resident_population": {
+            "enabled": false,
+            "_enabled": "Set true to pull full-time resident population from the same service. Summing this for 2018 returns 51,577, matching the literal default above.",
+            "service_url": "https://maps.trpa.org/server/rest/services/Demographics/MapServer/28",
+            "variable_code": "B01003_001E",
+            "_variable_code": "Total population.",
+            "dataset": "acs/acs5",
+            "sample_level": "tract",
+            "year_sample": 2018
+        }
+    },
+
+    "sensitivity": {
+        "_comment": "Optional one-at-a-time sensitivity sweep. When enabled, each parameter is run low and high while all others hold at their scenario value, and the results are written to sensitivity_tornado.csv sorted by swing. This is the batch replacement for moving a slider in the dashboard.",
+        "enabled": false,
+        "variation": 0.10,
+        "_variation": "Fractional change applied to each parameter unless the entry overrides it.",
+        "parameters": null,
+        "_parameters": "null sweeps every behavioral and volumetric input. Otherwise a list whose entries are either an input name, or an object such as {\"input\": \"entry_volume\", \"low\": 22000, \"high\": 28000} or {\"input\": \"str_length_of_stay\", \"variation\": 0.25}."
+    }
+}

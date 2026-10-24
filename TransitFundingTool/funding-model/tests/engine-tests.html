@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Funding engine tests</title>
+<style>body { font: 13px/1.45 Consolas, monospace; margin: 1rem; color: #003B71; } .fail { color: #9C3E27; font-weight: 700; } .pass { color: #4A6118; } h1 { font: 700 16px 'Open Sans', sans-serif; }</style>
+</head>
+<body>
+<h1>Funding engine tests</h1>
+<div id="summary">Running…</div>
+<pre id="out"></pre>
+<script src="../data/seed.js" charset="utf-8"></script>
+<script src="../engine/funding-engine.js" charset="utf-8"></script>
+<script>
+'use strict';
+const FE = window.FundingEngine, out = [], results = { pass: 0, fail: 0, failures: [] };
+const log = s => out.push(s);
+function check(name, cond, detail) { if (cond) { results.pass++; log('PASS ' + name); } else { results.fail++; results.failures.push(name + (detail ? ' — ' + detail : '')); log('FAIL ' + name + (detail ? ' — ' + detail : '')); } }
+const near = (a, b, tol = 1) => Math.abs(a - b) <= tol;
+const r0 = v => Math.round(v);
+
+const m = FE.load(window.FUNDING_SEED);
+
+// ── 1. Regression against the first model (transit-funding-model.html), FY 26-27, draft shares ──
+const draft = FE.run(m, { year: 0, method: 'fixed' }).results;
+check('Total cost = $20,776,900 (costs tab less the Main Line double count, plus vanpools)', near(draft.totals.cost, 20776900, 2), r0(draft.totals.cost));
+check('Total revenue = $25,587,548', near(draft.totals.revenue, 25587548, 2), r0(draft.totals.revenue));
+const AG = { TTD: [7148101, 8772734], SSTMA: [3229037, 3287724], TART: [9359828, 11586958], TNTTMA: [1039932, 1940132] };
+for (const [a, [c, rv]] of Object.entries(AG)) check(`${a} cost and revenue`, near(draft.agencies[a].cost, c, 2) && near(draft.agencies[a].revenue, rv, 2), `${r0(draft.agencies[a].cost)} / ${r0(draft.agencies[a].revenue)}`);
+const CASH = { '19X': 844045, '22': 1644417, '28': 162589, '30': 673296, '50': 2546492, '51': 193208, '55': 1518996, '89': 2303111, '267': 2327570, 'ADA-PLA': 543080, 'ADA-TTD': 1189690, 'LL': 3287724, 'NIGHT': 732388, 'NLTE': 850099, 'PR-S': 149039, 'PR-W': 745194, 'TART-NS': 1222732, 'TART-NV': 518381, 'TART-WS': 1039697, 'TC': 2900000, 'VAN': 195800 };
+const cashBad = Object.entries(CASH).filter(([k, v]) => !near(draft.services[k].cash, v, 2)).map(([k, v]) => `${k}: ${r0(draft.services[k].cash)} vs ${v}`);
+check('Funds applied to each of 21 services match the first model', cashBad.length === 0, cashBad.join('; '));
+const errs = draft.issues.filter(i => i.severity === 'error');
+check('Draft shares produce the same 11 rule errors', errs.length === 11, errs.map(i => i.rule + ' ' + i.service).join(', '));
+const byRule = r => errs.filter(i => i.rule === r).map(i => i.service).sort().join(',');
+check('…3 LCTOP state errors on 19X, 22, 28', byRule('ELIG-05') === '19X,22,28', byRule('ELIG-05'));
+check('…match errors on 19X, 22, 50, 55', byRule('MATCH-03') === '19X,22,50,55', byRule('MATCH-03'));
+check('…federal cap errors on 19X, 22, 30 (single source) and 50 (combined)', byRule('FED-02') === '19X,22,30' && byRule('FED-03') === '50', byRule('FED-02') + ' | ' + byRule('FED-03'));
+const prefW = draft.issues.filter(i => i.severity === 'warning' && i.rule !== 'SVC-02');
+check('Draft shares produce the same 6 preference warnings (TDA on Nevada routes)', prefW.length === 6 && prefW.every(i => i.rule === 'PREF-02'), prefW.map(i => i.rule + ' ' + i.service).join(', '));
+const years = FE.runYears(m, { method: 'fixed' }).map(r => r.results.totals.balance);
+check('Five-year balance matches the first model (FY 29-30 −$139,873; FY 30-31 −$545,215)', near(years[3], -139873, 3) && near(years[4], -545215, 3), years.map(r0).join(', '));
+
+// ── 2. Workbook values and calculation rules ──
+const sh = FE.ftaShares(m);
+check('REV-02 FTA earned share: TTD 48.703% (FTA Allocation Split L28)', near(sh.TTD, 0.48703124444392937, 1e-12), sh.TTD);
+check('REV-02 TTD 5307 operations $1,569,548.05 (G34)', near(FE.ftaOperating(m, 'TTD'), 1569548.0510082091, 0.01));
+check('REV-02 TART 5307 operations $1,653,136.47 (G35)', near(FE.ftaOperating(m, 'TART'), 1653136.466491791, 0.01));
+const L = id => FE.ix(m).line[id];
+const amt = (id, y) => FE.lineAmount(m, L(id), y, FE.scenario());
+check('REV-03/REV-04 Tahoe Blue: $728,987 in FY 27-28, capped at $750,000 from FY 28-29 (T2-4 H88:K88)', near(amt('ll-tahoeblue', 1), 728987.44, 0.01) && amt('ll-tahoeblue', 2) === 750000 && amt('ll-tahoeblue', 4) === 750000);
+check('REV-03 LCTOP alternates: $265,506, $0, $265,500, $0, $265,500 (T2-4 G73:K73)', [0, 1, 2, 3, 4].map(y => r0(amt('ttd-lctop', y))).join() === '265506,0,265500,0,265500');
+check('REV-03 Douglas County $750,000 then $850,000 (T2-4 G86:K86)', [0, 1, 4].map(y => amt('ll-douglas', y)).join() === '750000,850000,850000');
+check('REV-05 Keep Tahoe Blue ends after FY 27-28 ($8,322; $29,678; $0)', [0, 1, 2].map(y => amt('ttd-ktb', y)).join() === '8322,29678,0');
+check('REV-03 FTA 5307 TTD +1%/yr: $1,585,244 in FY 27-28 (T2-4 H60 rounds to $1,585,200)', near(amt('ttd-5307', 1), 1569548.0510082091 * 1.01, 0.01));
+check('REV-06 Capital-only 5339 gives $0', amt('ttd-5339', 0) === 0);
+const S = id => FE.ix(m).svc[id];
+check('COST-01 Route 19X = 2,250.4 VSH × $214.66 = $483,071 (costs K4)', near(FE.serviceCost(m, S('19X'), 0, FE.scenario()), 483070.864, 0.001));
+check('COST-03 Route 19X FY 27-28 = $483,071 × 1.04', near(FE.serviceCost(m, S('19X'), 1, FE.scenario()), 483070.864 * 1.04, 0.001));
+check('COST-05 Route 30 costs $0 after the FY 27-28 pilot', FE.serviceCost(m, S('30'), 2, FE.scenario()) === 0 && FE.serviceCost(m, S('30'), 1, FE.scenario()) > 0);
+const incl = FE.scenario({ include: { 'SP-LTCC': true } });
+check('COST-04 Including the LTCC change lowers Route 50 by $10,600 in FY 26-27', near(FE.serviceCost(m, S('50'), 0, incl), 2021796.676 - 10600, 0.01));
+check('COST-02 Vanpools use the entered $195,800', FE.serviceCost(m, S('VAN'), 0, FE.scenario()) === 195800);
+
+// ── 3. Eligibility rules ──
+const cu = (l, s) => FE.checkUse(m, L(l), S(s));
+check('ELIG-05 LCTOP is not eligible on Route 19X (Nevada)', !cu('ttd-lctop', '19X').ok && cu('ttd-lctop', '19X').hard[0].rule === 'ELIG-05');
+check('ELIG-05 LCTOP on Route 50 is capped at its two-thirds California share', cu('ttd-lctop', '50').ok && near(cu('ttd-lctop', '50').cap, 2 / 3, 1e-9));
+check('ELIG-06 Douglas County on Lake Link is capped at the one-third Douglas share', cu('ll-douglas', 'LL').ok && near(cu('ll-douglas', 'LL').cap, 1 / 3, 1e-9));
+check('ELIG-03 NDOT 5311 is not eligible on urban Route 50', !cu('ttd-5311nv', '50').ok && cu('ttd-5311nv', '50').hard.some(h => h.rule === 'ELIG-03'));
+check('ELIG-04 FTA 5310 only on paratransit', !cu('ttd-5310co', '50').ok && cu('ttd-5310co', 'ADA-TTD').ok);
+check('ELIG-01 Nevada State Parks only on Route 28', !cu('ttd-nvparks', '22').ok && cu('ttd-nvparks', '28').ok);
+check('PREF-02 TDA on Route 22 is allowed with a warning', cu('ttd-ltf', '22').ok && cu('ttd-ltf', '22').soft.some(p => p.rule === 'PREF-02'));
+check('PREF-04 TTD funds on a TART route raise the interagency warning', cu('ttd-ltf', 'TART-WS').soft.some(p => p.rule === 'PREF-04'));
+check('FED-02 FTA 5307 uses the 80% ADA cap on paratransit', FE.fedCap(L('ttd-5307'), S('ADA-TTD')) === 0.8 && FE.fedCap(L('ttd-5307'), S('50')) === 0.5);
+
+// ── 4. Optimizer: optimality proof and zero rule errors ──
+const opt = FE.run(m, { year: 0, method: 'optimized' });
+const oc = opt.results.optimizer;
+check('OPT-07 Base-year optimum is certified (primal and dual feasible, zero gap)', oc.status === 'optimal' && oc.certificate.ok, JSON.stringify(oc.certificate));
+check('Optimized allocation breaks no required rule, cap, or match', opt.results.totals.errors === 0, opt.results.issues.filter(i => i.severity === 'error').map(i => i.rule + ' ' + i.service + ' ' + i.message).join(' | '));
+check('OPT-01 Funded service equals the certified optimum', near(opt.results.totals.funded, oc.certificate.primalObjective / 1e-6, 1));
+log(`INFO base-year optimized: funded ${r0(opt.results.totals.funded)} of ${r0(opt.results.totals.cost)}; gap ${r0(opt.results.totals.gap)}; unused ${r0(opt.results.totals.unallocated)}; ${oc.variables} variables, ${oc.constraints} constraints, ${oc.iterations} pivots`);
+const overFunded = Object.values(opt.results.services).filter(s => s.excess > 1);
+check('Optimized allocation never funds a service above its cost', overFunded.length === 0, overFunded.map(s => s.id).join());
+const prefOpt = opt.results.issues.filter(i => i.severity === 'warning');
+log('INFO optimized warnings: ' + prefOpt.map(i => `${i.rule} ${(FE.ix(m).line[i.line] || {}).name || ''} on ${i.service}`).join('; '));
+const unused = Object.values(opt.results.lines).filter(x => x.unallocated > 1);
+check('OPT-08 Every unused amount has a reason', unused.every(x => x.reason), unused.filter(x => !x.reason).map(x => x.id).join());
+log('INFO unused: ' + unused.map(x => `${x.name} ${r0(x.unallocated)} (${x.reason})`).join('; '));
+
+// Fuzz: 200 random funding scenarios
+let seedN = 12345; const rnd = () => (seedN = (seedN * 1103515245 + 12345) % 2147483648) / 2147483648;
+let fz = { n: 0, certFail: 0, errFail: 0, overFail: 0, supplyFail: 0, worst: 0 }, failNotes = [];
+for (let k = 0; k < 200; k++) {
+  const scale = { line: {} }; for (const l of m.lines) scale.line[l.line_id] = rnd() < 0.15 ? 0 : rnd() * 1.6;
+  const sc = { year: Math.floor(rnd() * 5), method: 'optimized', allowTransfers: rnd() < 0.3, strictPreferences: rnd() < 0.2, scale, costScale: { all: 0.7 + rnd() * 0.8 } };
+  const r = FE.run(m, sc), o = r.results.optimizer; fz.n++;
+  if (!(o.status === 'optimal' && o.certificate.ok)) { fz.certFail++; failNotes.push(`#${k} cert ${o.status} ${JSON.stringify(o.certificate)}`); }
+  const hard = r.results.issues.filter(i => i.severity === 'error');
+  if (hard.length) { fz.errFail++; failNotes.push(`#${k} ${hard.slice(0, 3).map(i => i.rule + ' ' + i.service + ' ' + i.message).join(' | ')}`); }
+  if (Object.values(r.results.services).some(s => s.excess > 1)) fz.overFail++;
+  if (Object.values(r.results.lines).some(x => x.allocated > x.amount + 1)) fz.supplyFail++;
+  fz.worst = Math.max(fz.worst, o.certificate ? o.certificate.gap : 1);
+}
+check('OPT-07 200 random scenarios: every optimum certified', fz.certFail === 0, failNotes.slice(0, 3).join(' || '));
+check('200 random scenarios: no rule, cap, or match errors', fz.errFail === 0, failNotes.slice(0, 3).join(' || '));
+check('200 random scenarios: no service above cost; no source over its amount', fz.overFail === 0 && fz.supplyFail === 0, JSON.stringify(fz));
+
+// Optimized funded service is never below what a rule-compliant allocation achieves:
+// remove every draft use that breaks a rule, then the draft becomes feasible; the optimum must fund at least that much.
+const compliant = {};
+for (const [lid, a] of Object.entries(FE.allocateFixed(m, 0, FE.scenario()))) for (const [sid, d] of Object.entries(a)) if (FE.checkUse(m, L(lid), S(sid)).ok) (compliant[lid] = compliant[lid] || {})[sid] = d;
+// trim federal to the match available on each service and cash to cost, which keeps every rule satisfied
+const evalC = FE.evaluate(m, 0, FE.scenario(), compliant);
+for (const sv of Object.values(evalC.services)) {
+  if (sv.matchReq > sv.matchAvail) { const k = sv.matchAvail / sv.matchReq; for (const lid of Object.keys(sv.lines)) if (L(lid).level === 'federal') compliant[lid][sv.id] *= k; }
+}
+const evalC2 = FE.evaluate(m, 0, FE.scenario(), compliant);
+for (const sv of Object.values(evalC2.services)) if (sv.cash > sv.cost) { const k = sv.cost / sv.cash; for (const lid of Object.keys(sv.lines)) if (!L(lid).match_only) compliant[lid][sv.id] *= k; }
+const evalC3 = FE.evaluate(m, 0, FE.scenario(), compliant);
+log(`INFO trimmed draft: funded ${r0(evalC3.totals.funded)}, errors ${evalC3.totals.errors}`);
+check('Optimum funds at least as much as the trimmed, rule-compliant draft', opt.results.totals.funded >= evalC3.totals.funded - 1, `${r0(opt.results.totals.funded)} vs ${r0(evalC3.totals.funded)}`);
+
+// ── 5. Scenario responses ──
+const noSB = FE.run(m, { year: 0, method: 'optimized', scale: { line: { 'ttd-sb125': 0, 'll-sb125': 0 } } }).results;
+log(`INFO without SB 125: funded ${r0(noSB.totals.funded)}, gap ${r0(noSB.totals.gap)} — ` + Object.values(noSB.services).filter(s => s.gap > 1).map(s => `${s.short} ${r0(s.gap)}`).join(', '));
+check('Removing SB 125 cannot increase funded service', noSB.totals.funded <= opt.results.totals.funded + 1);
+const cov = Object.values(noSB.services).filter(s => s.cost > 0).map(s => s.funded / s.cost);
+const ttdCov = Object.values(noSB.services).filter(s => s.cost > 0 && s.agency === 'TTD' && s.gap > 1).map(s => s.funded / s.cost);
+check('OPT-05 Without SB 125 no service is left unfunded, and TTD routes with gaps share one coverage level', Math.min(...cov) > 0.5 && Math.max(...ttdCov) - Math.min(...ttdCov) < 0.005, 'coverage ' + cov.map(c => c.toFixed(3)).join(', ') + '; optimizer t = ' + (noSB.optimizer.minCoverage || 0).toFixed(3));
+const noSBnoSpread = FE.run(m, { year: 0, method: 'optimized', spreadShortfall: false, scale: { line: { 'ttd-sb125': 0, 'll-sb125': 0 } } }).results;
+check('OPT-05 Spreading the shortfall keeps total funded service unchanged', near(noSBnoSpread.totals.funded, noSB.totals.funded, 1), `${r0(noSBnoSpread.totals.funded)} vs ${r0(noSB.totals.funded)}`);
+const pooled = FE.run(m, { year: 4, method: 'optimized', allowTransfers: true }).results, siloed = FE.run(m, { year: 4, method: 'optimized' }).results;
+log(`INFO FY 30-31: funded ${r0(siloed.totals.funded)} siloed vs ${r0(pooled.totals.funded)} with interagency transfers (cost ${r0(siloed.totals.cost)})`);
+check('Allowing transfers cannot reduce funded service', pooled.totals.funded >= siloed.totals.funded - 1);
+const strict = FE.run(m, { year: 0, method: 'optimized', strictPreferences: true }).results;
+log(`INFO strict preferences FY 26-27: funded ${r0(strict.totals.funded)} (gap ${r0(strict.totals.gap)})`);
+check('Strict preferences cannot increase funded service', strict.totals.funded <= opt.results.totals.funded + 1);
+
+// ── 6. Sensitivity ──
+const t0 = performance.now();
+const sens = FE.sensitivity(m, { year: 4, method: 'optimized' });
+const dt = performance.now() - t0;
+log(`INFO FY 30-31 sensitivity in ${Math.round(dt)} ms: ` + sens.rows.filter(r => Math.abs(r.plusFunded) > 1 || Math.abs(r.lossFunded) > 1).sort((a, b) => b.perDollar - a.perDollar).slice(0, 12).map(r => `${r.name}: +$100K → ${r0(r.plusFunded)} (dual ${r.shadow == null ? "n/a" : r.shadow.toFixed(3)}), loss ${r0(r.lossFunded)}`).join('; '));
+check('SENS-01 finite step agrees with the dual price for small steps on some source', sens.rows.some(r => r.shadow > 0.01 && near(r.perDollar, r.shadow, 0.05)));
+check('SENS-01 no source adds more funded service than $1 of federal match can unlock (≤ $9 per $1)', sens.rows.every(r => r.perDollar <= 9.01 && r.perDollar >= -1e-6));
+
+// ── 7. Export round trip ──
+const m2 = FE.load(FE.toSeed(m));
+const a = FE.run(m, { year: 2, method: 'optimized' }).results.totals, b = FE.run(m2, { year: 2, method: 'optimized' }).results.totals;
+check('Export to tables and reload gives identical results', near(a.funded, b.funded, 0.01) && near(a.cost, b.cost, 0.01) && near(a.revenue, b.revenue, 0.01));
+
+// ── 8. Rule registry covers every rule the code cites ──
+const cited = new Set(); for (const i of [...draft.issues, ...opt.results.issues]) cited.add(i.rule);
+check('Every rule cited in results is in the registry', [...cited].every(r => FE.RULE[r]), [...cited].filter(r => !FE.RULE[r]).join());
+
+document.getElementById('summary').innerHTML = `<span class="${results.fail ? 'fail' : 'pass'}">${results.pass} passed, ${results.fail} failed</span>`;
+document.getElementById('out').textContent = out.join('\n');
+window.__test = { results, out, fz };
+</script>
+</body>
+</html>

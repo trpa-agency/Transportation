@@ -423,13 +423,106 @@ def qa_checks(sdfParcels, dfPool):
 # Tourist Accommodation Forecast
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def forecast_tourist_units(sdfParcels, tau_assigned_lookup='Lookup_Lists/forecast_tourist_assigned_units.csv'):
-    """Assign forecasted tourist accommodation units from the assigned units lookup."""
-    dfTouristAssigned = pd.read_csv(tau_assigned_lookup)
-    sdfParcels['FORECASTED_TOURIST_UNITS'] = 0
-    sdfParcels['FORECASTED_TOURIST_UNITS'] = sdfParcels.APN.map(
-        dict(zip(dfTouristAssigned.APN, dfTouristAssigned['Unit_Pool'])))
-    return sdfParcels
+LOOKUP_DIR = Path(__file__).parent / 'Lookup_Lists'
+BASE_LOOKUP_DIR = Path(__file__).parents[2] / 'Base' / 'scripts' / 'Lookup_Lists'
+
+TAU_TYPE_COLUMNS = {'HotelMotel': 'hotelmotel', 'Resort': 'resort', 'Casino': 'casino'}
+
+
+def forecast_tourist_units(sdfParcels,
+                           tau_assigned_lookup=LOOKUP_DIR / 'forecast_tourist_assigned_units.csv',
+                           tau_type_lookup=BASE_LOOKUP_DIR / 'lookup_tau_type.csv',
+                           tau_override_lookup=LOOKUP_DIR / 'forecast_tourist_apn_overrides.csv',
+                           forecast_years=(2035, 2050)):
+    """Apply assigned tourist accommodation unit (TAU) changes cumulatively by forecast year.
+
+    - Multiple lookup rows for the same APN (e.g. General + Tourist Bonus Units, or a
+      2035 and a 2050 phase) are summed, not overwritten.
+    - Changes are cumulative: the 2050 change includes all rows with Forecast_Year <= 2050.
+    - Removals are clamped at the parcel's base-year units so closures already zeroed in
+      the base year (closed_tourist_parcels.csv) are not removed twice.
+    - APNs missing from the base parcels take their TAZ from tau_override_lookup.
+    - TAU type comes from tau_override_lookup, then the base-year lookup_tau_type.csv,
+      then defaults to HotelMotel (same default as the base-year build).
+
+    Adds FORECASTED_TOURIST_UNITS_<year> (net change) per forecast year to sdfParcels;
+    FORECASTED_TOURIST_UNITS holds the final-year change.
+
+    Returns (sdfParcels, dfTauChanges) where dfTauChanges has one row per lookup APN with
+    TAZ, TAU_TYPE and Change_<year> columns, ready for build_overnight_visitor_forecast().
+    """
+    dfAssigned = pd.read_csv(tau_assigned_lookup, encoding='utf-8-sig')
+    dfOverride = pd.read_csv(tau_override_lookup, dtype={'APN': str}, encoding='utf-8-sig')
+    tau_type_map = pd.read_csv(tau_type_lookup, encoding='utf-8-sig').set_index('APN')['TAU_Type'].to_dict()
+    tau_type_map.update(dfOverride.dropna(subset=['TAU_Type']).set_index('APN')['TAU_Type'].to_dict())
+
+    # Group by APN: a few multipart parcels repeat an APN across rows
+    base_units = sdfParcels.groupby('APN')['TouristAccommodation_Units'].sum()
+    parcel_taz = sdfParcels.groupby('APN')['TAZ'].first()
+    override_taz = dfOverride.dropna(subset=['TAZ']).set_index('APN')['TAZ'].astype(int).astype(str).to_dict()
+
+    dfTauChanges = pd.DataFrame({'APN': dfAssigned['APN'].unique()})
+    in_parcels = dfTauChanges['APN'].isin(base_units.index)
+    dfTauChanges['TAZ'] = dfTauChanges['APN'].map(parcel_taz).fillna(dfTauChanges['APN'].map(override_taz))
+    dfTauChanges['TAU_TYPE'] = dfTauChanges['APN'].map(tau_type_map).fillna('HotelMotel')
+    dfTauChanges['Base_Units'] = dfTauChanges['APN'].map(base_units).fillna(0)
+
+    missing_taz = dfTauChanges['TAZ'].isna()
+    if missing_taz.any():
+        raise ValueError(f"TAU lookup APNs with no TAZ (add them to {Path(tau_override_lookup).name}): "
+                         f"{dfTauChanges.loc[missing_taz, 'APN'].tolist()}")
+
+    for year in forecast_years:
+        raw = dfAssigned[dfAssigned['Forecast_Year'] <= year].groupby('APN')['Future_Units'].sum()
+        raw = dfTauChanges['APN'].map(raw).fillna(0)
+        # Parcels in the base data can't drop below zero units; override APNs have no parcel to clamp against
+        clamped = (dfTauChanges['Base_Units'] + raw).clip(lower=0) - dfTauChanges['Base_Units']
+        dfTauChanges[f'Lookup_Change_{year}'] = raw.astype(int)
+        dfTauChanges[f'Change_{year}'] = clamped.where(in_parcels, raw).astype(int)
+
+        parcel_change = dfTauChanges[in_parcels].set_index('APN')[f'Change_{year}']
+        sdfParcels[f'FORECASTED_TOURIST_UNITS_{year}'] = sdfParcels['APN'].map(parcel_change).fillna(0).astype(int)
+
+        clamped_rows = dfTauChanges[dfTauChanges[f'Change_{year}'] != dfTauChanges[f'Lookup_Change_{year}']]
+        print(f"  TAU {year}: lookup net {raw.sum():+.0f}, applied net {dfTauChanges[f'Change_{year}'].sum():+d}")
+        for _, r in clamped_rows.iterrows():
+            print(f"    {r['APN']}: lookup {r[f'Lookup_Change_{year}']:+d} clamped to {r[f'Change_{year}']:+d} "
+                  f"(base units {r['Base_Units']:.0f})")
+
+    sdfParcels['FORECASTED_TOURIST_UNITS'] = sdfParcels[f'FORECASTED_TOURIST_UNITS_{forecast_years[-1]}']
+    not_in_parcels = dfTauChanges.loc[~in_parcels, 'APN'].tolist()
+    if not_in_parcels:
+        print(f"  TAU APNs not in base parcels (TAZ from override lookup): {not_in_parcels}")
+    return sdfParcels, dfTauChanges
+
+
+def build_overnight_visitor_forecast(dfOvernightBase, dfTauChanges, year):
+    """Add a forecast year's TAU changes to the base-year OvernightVisitorZonalData by TAZ and type."""
+    df = dfOvernightBase.copy()
+    unknown = set(dfTauChanges['TAU_TYPE']) - set(TAU_TYPE_COLUMNS)
+    if unknown:
+        raise ValueError(f"Unknown TAU_TYPE values in TAU changes: {unknown}")
+
+    changes = (dfTauChanges.assign(taz=dfTauChanges['TAZ'].astype(int),
+                                   col=dfTauChanges['TAU_TYPE'].map(TAU_TYPE_COLUMNS))
+               .pivot_table(index='taz', columns='col', values=f'Change_{year}', aggfunc='sum', fill_value=0))
+
+    missing_tazs = set(changes.index) - set(df['taz'])
+    if missing_tazs:
+        raise ValueError(f"TAU change TAZs not in OvernightVisitorZonalData: {sorted(missing_tazs)}")
+
+    for col in changes.columns:
+        df[col] = df[col] + df['taz'].map(changes[col]).fillna(0).astype(int)
+        negative = df[col] < 0
+        if negative.any():
+            print(f"  {year} {col}: {negative.sum()} TAZ(s) below zero set to 0: {df.loc[negative, 'taz'].tolist()}")
+            df.loc[negative, col] = 0
+
+    totals = {c: int(df[c].sum()) for c in TAU_TYPE_COLUMNS.values()}
+    base_totals = {c: int(dfOvernightBase[c].sum()) for c in TAU_TYPE_COLUMNS.values()}
+    print(f"  {year} TAUs: {totals} total {sum(totals.values())} "
+          f"(base {sum(base_totals.values())}, net {sum(totals.values()) - sum(base_totals.values()):+d})")
+    return df
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

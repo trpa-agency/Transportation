@@ -125,7 +125,8 @@ python run_scenarios.py ../configs_final_test
 │   │   ├── processed_data/                    ← Phase 1 outputs (TDM inputs)
 │   │   │   ├── SocioEcon_Summer.csv           ← Base year TAZ socioeconomic summary
 │   │   │   ├── SchoolEnrollment.csv           ← Base year enrollment by school/TAZ
-│   │   │   ├── OvernightVisitorZonalData_Summer.csv
+│   │   │   ├── OvernightVisitorZonalData_Summer_2035.csv  ← final 2025 RTP 2035 TAU input
+    │   │   ├── OvernightVisitorZonalData_Summer_2050.csv  ← final 2025 RTP 2050 TAU input
 │   │   │   ├── VisitorOccupancyRates_Summer.csv
 │   │   │   ├── taz_summarized.csv
 │   │   │   ├── inputs_summarized.csv
@@ -179,7 +180,8 @@ python run_scenarios.py ../configs_final_test
     │
     ├── data/
     │   ├── inputs/                            ← Shared forecast inputs
-    │   │   ├── OvernightVisitorZonalData_Summer.csv
+    │   │   ├── OvernightVisitorZonalData_Summer_2035.csv  ← final 2025 RTP 2035 TAU input
+    │   │   ├── OvernightVisitorZonalData_Summer_2050.csv  ← final 2025 RTP 2050 TAU input
     │   │   ├── employment_2035.csv
     │   │   ├── employment_2050.csv
     │   │   ├── res_assigned_lookup.csv        ← Occupancy/income for known projects
@@ -561,7 +563,8 @@ Forecast/data/processed_data/run_2026-04-28_153116/
 │   ├── 2035/
 │   │   ├── SocioEcon_Summer.csv
 │   │   ├── SchoolEnrollment.csv
-│   │   ├── OvernightVisitorZonalData_Summer.csv
+│   │   ├── OvernightVisitorZonalData_Summer_2035.csv  ← final 2025 RTP 2035 TAU input
+    │   │   ├── OvernightVisitorZonalData_Summer_2050.csv  ← final 2025 RTP 2050 TAU input
 │   │   ├── VisitorOccupancyRates_Summer.csv
 │   │   └── alternative_1_04282026_config.json       ← provenance copy
 │   └── 2050/
