@@ -5990,7 +5990,10 @@ function chartSankey() {
   }
   for (const m of Object.values(agMap)) link(m.a, m.b, m.v, hexA(m.c, 0.4), '');
   const h = Math.max(560, Object.keys(idx).filter(k => k.startsWith('sv:')).length * 24 + 80);
-  Plotly.react('chSankey', [{ type: 'sankey', arrangement: 'snap', valueformat: '$,.0f', node: { label: nodes, color: ncol, pad: 10, thickness: 14, line: { color: '#fff', width: 1 }, hovertemplate: '%{label}: %{value:$,.0f}<extra></extra>' },
+  Plotly.react('chSankey', [{ type: 'sankey', arrangement: 'snap', valueformat: '$,.0f',
+    // Sankey hover labels default to the link's rgba color, which reads as faded; force the app-wide style.
+    hoverlabel: { bgcolor: '#fff', bordercolor: '#C9D2DE', font: { family: FONT, size: 12, color: '#003B71' } },
+    node: { label: nodes, color: ncol, pad: 10, thickness: 14, line: { color: '#fff', width: 1 }, hovertemplate: '%{label}: %{value:$,.0f}<extra></extra>' },
     link: { source: src, target: tgt, value: val, color: lcol, hovertemplate: '%{source.label} → %{target.label}: %{value:$,.0f}<extra></extra>' } }],
     layout({ height: h, margin: { t: 10, r: 10, b: 10, l: 10 }, font: { family: FONT, color: '#003B71', size: 11 } }), PCFG);
 }
