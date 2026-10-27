@@ -1,14 +1,19 @@
 # Transit Funding Tool
 
-TRPA regional transit funding model for RFP Task 4 (Funding and Implementation Strategy). Handoff package assembled October 23, 2026. Pipeline rebuilt and added October 27, 2026.
+TRPA regional transit funding model for RFP Task 4 (Funding and Implementation Strategy). Handoff package assembled October 23, 2026, and updated October 27, 2026.
 
-Start with `docs/Project Context Handoff.md`. It covers the purpose, work history, status against the RFP, open decisions, and next steps.
+Start with `CLAUDE.md`. It gives the reading order, the rules for changing the model, the decisions in force, and open items. `docs/Project Context Handoff.md` has the full history. To set up a new Claude Project, follow `docs/Claude Project Setup.md`.
 
 ## Folder layout
 
 | Path | What it is |
 | --- | --- |
-| `docs/Project Context Handoff.md` | Full project context. Read first. |
+| `CLAUDE.md` | Entry point for Claude and for people: reading order, working rules, decisions, open items |
+| `docs/Project Context Handoff.md` | Full project context and work history |
+| `docs/Domain Lead Answers 2026-10-23.md` | TRPA's Oct. 23 decisions, quoted, with how each is applied |
+| `docs/Model Logic.md` | How the model page calculates, and known gaps |
+| `docs/Review Feedback 2026-10-27.md` | Oct. 27 review feedback and what changed |
+| `docs/Claude Project Setup.md` | Files and instructions for a new Claude Project |
 | `docs/Overall Directive.md` | Kira's email and the RFP Task 4 text |
 | `docs/Rule Errors, Pitfalls, and Open Questions.md` | October 19 review: 11 rule errors, 16 source data conflicts with cell references, 17 questions |
 | `docs/Funding App - Information Needed.md` | October 20 gap list with owners and priorities |
