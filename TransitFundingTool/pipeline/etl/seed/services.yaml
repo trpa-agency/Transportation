@@ -1,0 +1,1087 @@
+# Services. Fields under `from` are read from the workbooks at each build and replace the values here.
+# `keep` holds a value here instead; `workbook` records the workbook value when it was kept, so the build can warn if it moves.
+services:
+- id: 19X
+  name: Route 19X
+  short: 19X
+  agency: TTD
+  operator: TTD
+  group: TTD
+  stateCond: Nevada Route
+  localCond: Carson City, Douglas County
+  area: rural
+  type: fixed
+  federalized: true
+  trips: 10747.0
+  vsh: 2250.4
+  vsm: 61381.0
+  dataYear: 24-25
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    CC: 0.5
+    DOU: 0.5
+  refCost: 613805
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G142 (route cost incl. allocated fixed cost)
+  note: ''
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 4
+  from:
+    costs:
+      label: 19X
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 142
+      occurrence: 1
+      col: G
+- id: '22'
+  name: Route 22
+  short: '22'
+  agency: TTD
+  operator: TTD
+  group: TTD
+  stateCond: Nevada Route
+  localCond: Douglas County
+  area: rural
+  type: fixed
+  federalized: true
+  trips: 18457.0
+  vsh: 4409.6
+  vsm: 121654.0
+  dataYear: 24-25
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    DOU: 1
+  refCost: 1210300
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G151 (route cost incl. allocated fixed cost)
+  note: ''
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 5
+  from:
+    costs:
+      label: '22'
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 151
+      occurrence: 2
+      col: G
+- id: '28'
+  name: Route 28 (East Shore Express)
+  short: '28'
+  agency: TTD
+  operator: TTD
+  group: TTD
+  stateCond: Nevada Seasonal Route
+  localCond: Washoe County
+  area: urban
+  type: seasonal
+  federalized: true
+  trips: 24699.0
+  vsh: 1192.7
+  vsm: 22330.0
+  dataYear: 24-25
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    WAS: 1
+  refCost: 269366
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G160 (route cost incl. allocated fixed cost)
+  note: ''
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 6
+  from:
+    costs:
+      label: '28'
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 160
+      occurrence: 3
+      col: G
+- id: '30'
+  name: Route 30 (Emerald Bay Shuttle)
+  short: '30'
+  agency: TTD
+  operator: Via
+  group: TTD
+  stateCond: California Seasonal Route
+  localCond: El Dorado County
+  area: urban
+  type: seasonal
+  federalized: true
+  trips: 10700.0
+  vsh: 3500.0
+  vsm: 9850.0
+  dataYear: 26-27 estimate
+  rateOverride: 147.8
+  costOverride: null
+  costSchedule: null
+  activeYears:
+  - true
+  - true
+  - false
+  - false
+  - false
+  include: true
+  plan: false
+  juris:
+    ELD: 1
+  refCost: 517288
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G169 (route cost incl. allocated fixed cost); Table 2 row 20
+  note: Pilot funded through FY 27-28. Uses $147.80/VSH (VRH Rates, TTD-Via) per TRPA (Oct. 23, 2026), about $517,300, matching the FY 26-27 Emerald
+    Bay Shuttle budget of $517,288. The costs tab's $68.70 lookup (the Lake Link rate) is treated as an error.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 7
+  from:
+    costs:
+      label: '30'
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 169
+      occurrence: 4
+      col: G
+  keep:
+    dataYear:
+      reason: Data year label marks the estimate
+      workbook: 26-27
+- id: '50'
+  name: Route 50
+  short: '50'
+  agency: TTD
+  operator: TTD
+  group: TTD
+  stateCond: California Route (portion in NV)
+  localCond: CSLT, El Dorado County, Douglas County
+  area: urban
+  type: fixed
+  federalized: true
+  trips: 170332.0
+  vsh: 9418.6
+  vsm: 134562.0
+  dataYear: 24-25
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    CSLT: 0.3333333333333333
+    ELD: 0.3333333333333333
+    DOU: 0.3333333333333333
+  refCost: 1898048
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G175 (route cost incl. allocated fixed cost)
+  note: ''
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 8
+  from:
+    costs:
+      label: '50'
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 175
+      occurrence: 5
+      col: G
+- id: '51'
+  name: Route 51
+  short: '51'
+  agency: TTD
+  operator: TTD
+  group: TTD
+  stateCond: California Route (portion in NV)
+  localCond: CSLT, El Dorado County, Douglas County
+  area: urban
+  type: fixed
+  federalized: true
+  trips: 115.0
+  vsh: 167.0
+  vsm: 1700.0
+  dataYear: 24-25
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    CSLT: 0.3333333333333333
+    ELD: 0.3333333333333333
+    DOU: 0.3333333333333333
+  refCost: 29892
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G186 (route cost incl. allocated fixed cost)
+  note: TTD expanded operations supported by the Tahoe Douglas Visitor Authority (Local Funds fact sheet).
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 9
+  from:
+    costs:
+      label: '51'
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 186
+      occurrence: 6
+      col: G
+- id: '55'
+  name: Route 55
+  short: '55'
+  agency: TTD
+  operator: TTD
+  group: TTD
+  stateCond: California Route
+  localCond: CSLT, El Dorado County
+  area: urban
+  type: fixed
+  federalized: true
+  trips: 55609.0
+  vsh: 9312.2
+  vsm: 111689.0
+  dataYear: 24-25
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    CSLT: 0.5
+    ELD: 0.5
+  refCost: 1759504
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G196 (route cost incl. allocated fixed cost)
+  note: ''
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 10
+  from:
+    costs:
+      label: '55'
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 196
+      occurrence: 7
+      col: G
+- id: ADA-TTD
+  name: TTD ADA paratransit
+  short: ADA (TTD)
+  agency: TTD
+  operator: TTD
+  group: TTD
+  stateCond: CA/NV
+  localCond: (none listed)
+  area: urban
+  type: paratransit
+  federalized: true
+  trips: 14556.0
+  vsh: 5429.0
+  vsm: 71677.0
+  dataYear: 24-25
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    CSLT: 0.3333333333333333
+    ELD: 0.3333333333333333
+    DOU: 0.3333333333333333
+  refCost: 1061778
+  refCite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs G206 (route cost incl. allocated fixed cost)
+  note: Costs tab lists CA/NV with no local conditions. Jurisdiction shares are a placeholder that follows Route 50.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 11
+  from:
+    costs:
+      label: ADA Para
+      agency: TTD
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Estimated Total Operating Cost
+      near: 206
+      occurrence: 8
+      col: G
+- id: LL
+  name: Lake Link microtransit
+  short: Lake Link
+  agency: SSTMA
+  operator: Via
+  group: Lake Link
+  stateCond: CA/NV
+  localCond: Zone 1 (Douglas County), Zone 2 (CSLT), Zone 3 (CSLT)
+  area: urban
+  type: microtransit
+  federalized: false
+  trips: 223047.0
+  vsh: 47002.0
+  vsm: 366322.0
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    DOU: 0.3333333333333333
+    CSLT: 0.6666666666666666
+  refCost: 3228840
+  refCite: Financial PlanG.xlsx › T2-4 G26 (contract plus fixed costs)
+  note: VSH are from the contract, not actuals (costs tab U12). Non-federalized per TRPA (Oct. 23, 2026).
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 12
+  from:
+    costs:
+      label: Lake Link
+      agency: SSTMA
+    refCost:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Total
+      near: 26
+      occurrence: 2
+      col: G
+- id: TART-WS
+  name: Main Line – West Shore
+  short: West Shore
+  agency: TART
+  operator: TART
+  group: Main Line
+  stateCond: California route
+  localCond: Placer County
+  area: urban
+  type: fixed
+  federalized: true
+  trips: 21205.0
+  vsh: 4237.5
+  vsm: 82391.1
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 1
+  refCost: null
+  refCite: ''
+  note: Main Line segment. The costs tab Main Line subtotal (row 16) is not counted again.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 13
+  from:
+    costs:
+      label: West Shore
+      agency: TART
+  keep:
+    stateCond:
+      reason: Spelling fixed; the workbook reads 'Califorrnia route'
+      workbook: Califorrnia route
+- id: TART-NS
+  name: Main Line – North Shore
+  short: North Shore
+  agency: TART
+  operator: TART
+  group: Main Line
+  stateCond: California route
+  localCond: Placer County
+  area: urban
+  type: fixed
+  federalized: true
+  trips: 92011.0
+  vsh: 4983.5
+  vsm: 113132.1
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 1
+  refCost: null
+  refCite: ''
+  note: Main Line segment.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 14
+  from:
+    costs:
+      label: N Shore
+      agency: TART
+- id: TART-NV
+  name: Main Line – Nevada
+  short: Nevada
+  agency: TART
+  operator: TART
+  group: Main Line
+  stateCond: Nevada route
+  localCond: Washoe County
+  area: urban
+  type: fixed
+  federalized: true
+  trips: 34977.0
+  vsh: 4219.3125
+  vsm: 63697.0
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    WAS: 1
+  refCost: null
+  refCite: ''
+  note: Main Line segment in Washoe County; supported by Washoe RTC.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 15
+  from:
+    costs:
+      label: Nevada
+      agency: TART
+- id: '89'
+  name: Hwy 89 (Tahoe City–Truckee)
+  short: Hwy 89
+  agency: TART
+  operator: TART
+  group: TART
+  stateCond: California route
+  localCond: Placer County, Nevada County
+  area: mixed
+  type: fixed
+  federalized: true
+  trips: 71136.0
+  vsh: 8331.75
+  vsm: 167948.7
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 0.5
+    NEV: 0.5
+  refCost: null
+  refCite: ''
+  note: 'Urban and rural class is a placeholder: the Truckee end lies outside the Lake Tahoe UZA.'
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 17
+  from:
+    costs:
+      label: '89'
+      agency: TART
+- id: '267'
+  name: Hwy 267 (Kings Beach–Truckee)
+  short: Hwy 267
+  agency: TART
+  operator: TART
+  group: TART
+  stateCond: California route
+  localCond: Placer County, Nevada County
+  area: mixed
+  type: fixed
+  federalized: true
+  trips: 73556.0
+  vsh: 8420.2333
+  vsm: 176999.3
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 0.5
+    NEV: 0.5
+  refCost: null
+  refCite: ''
+  note: Urban and rural class is a placeholder.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 18
+  from:
+    costs:
+      label: '267'
+      agency: TART
+- id: NIGHT
+  name: Night service
+  short: Night
+  agency: TART
+  operator: TART
+  group: TART
+  stateCond: California route
+  localCond: Placer County
+  area: urban
+  type: fixed
+  federalized: true
+  trips: 4725.0
+  vsh: 2985.0
+  vsm: 57781.2
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 1
+  refCost: null
+  refCite: ''
+  note: ''
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 19
+  from:
+    costs:
+      label: Night
+      agency: TART
+- id: ADA-PLA
+  name: TART ADA paratransit
+  short: ADA (TART)
+  agency: TART
+  operator: Truckee
+  group: TART
+  stateCond: California route
+  localCond: (none listed)
+  area: urban
+  type: paratransit
+  federalized: true
+  trips: 3573.0
+  vsh: 1951.65
+  vsm: 34749.0
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 1
+  refCost: null
+  refCite: ''
+  note: No local conditions listed; Placer County is a placeholder.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 20
+  from:
+    costs:
+      label: ADA Para
+      agency: TART
+- id: TC
+  name: TART Connect microtransit
+  short: TART Connect
+  agency: TART
+  operator: Placer Via
+  group: TART
+  stateCond: California route
+  localCond: Placer County
+  area: urban
+  type: microtransit
+  federalized: true
+  trips: 157369.0
+  vsh: 27342.51
+  vsm: 544888.71
+  dataYear: 25-26
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 1
+  refCost: 2997578
+  refCite: Financial PlanG.xlsx › T5-7 G26
+  note: ''
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 21
+  from:
+    costs:
+      label: Placer TART Connect
+      agency: TART
+    refCost:
+      wb: plan
+      sheet: T5-7 TART TNTTMA FinancialPlan
+      row: Total
+      near: 26
+      occurrence: 2
+      col: G
+- id: PR-W
+  name: Park & Ride shuttle (winter)
+  short: P&R winter
+  agency: TNTTMA
+  operator: MRTW
+  group: TNT/TMA
+  stateCond: California route
+  localCond: Placer County, Nevada County
+  area: mixed
+  type: seasonal
+  federalized: false
+  trips: null
+  vsh: 2500.0
+  vsm: null
+  dataYear: estimate
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 0.5
+    NEV: 0.5
+  refCost: 894233
+  refCite: Financial PlanG.xlsx › TNTTMA $ F43 (winter and summer combined)
+  note: Costs tab estimate (2,500 VSH). TNT/TMA FY 26-27 Park & Ride budget is $894,233 for both seasons. Non-federalized per TRPA (Oct. 23, 2026).
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 22
+  from:
+    costs:
+      label: Park&Ride (Winter)
+      agency: TNTTMA
+    refCost:
+      wb: plan
+      sheet: TNTTMA $
+      row: Total Expenses
+      near: 43
+      occurrence: 2
+      col: F
+- id: PR-S
+  name: Park & Ride shuttle (summer)
+  short: P&R summer
+  agency: TNTTMA
+  operator: MRTW
+  group: TNT/TMA
+  stateCond: California route
+  localCond: Placer County, Nevada County
+  area: mixed
+  type: seasonal
+  federalized: false
+  trips: null
+  vsh: 500.0
+  vsm: null
+  dataYear: estimate
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 0.5
+    NEV: 0.5
+  refCost: null
+  refCite: ''
+  note: Costs tab estimate (500 VSH). Non-federalized per TRPA (Oct. 23, 2026).
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 23
+  from:
+    costs:
+      label: Park&Ride (Summ)
+      agency: TNTTMA
+- id: NLTE
+  name: North Lake Tahoe Express (airport)
+  short: NLTE
+  agency: TNTTMA
+  operator: MRTW
+  group: TNT/TMA
+  stateCond: CA/NV
+  localCond: Placer County, Nevada County, Washoe County
+  area: mixed
+  type: airport
+  federalized: false
+  trips: null
+  vsh: 1200.0
+  vsm: null
+  dataYear: estimate
+  rateOverride: null
+  costOverride: null
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 0.3333333333333333
+    NEV: 0.3333333333333333
+    WAS: 0.3333333333333333
+  refCost: 694260
+  refCite: Financial PlanG.xlsx › TNTTMA $ F22
+  note: Costs tab estimate based on FY 25-26 budget (1,200 VSH × $200.98). TNT/TMA FY 26-27 NLTE budget is $694,260. Non-federalized per TRPA
+    (Oct. 23, 2026).
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs row 24
+  from:
+    costs:
+      label: NLTE
+      agency: TNTTMA
+    refCost:
+      wb: plan
+      sheet: TNTTMA $
+      row: Total Expenses
+      near: 22
+      occurrence: 1
+      col: F
+- id: VAN
+  name: Vanpools (TNT/TMA)
+  short: Vanpools
+  agency: TNTTMA
+  operator: BUDGET
+  group: TNT/TMA
+  stateCond: CA/NV
+  localCond: Placer County, Washoe County
+  area: mixed
+  type: vanpool
+  federalized: false
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: 26-27 budget
+  rateOverride: null
+  costOverride: 195800
+  costSchedule: null
+  activeYears: null
+  include: true
+  plan: false
+  juris:
+    PLA: 0.5
+    WAS: 0.5
+  refCost: 195800
+  refCite: Financial PlanG.xlsx › TNTTMA $ K43
+  note: Not in the costs tab. Included because Revenue %s has a Vanpools column; cost is the TNT/TMA FY 26-27 vanpool budget. Non-federalized
+    per TRPA (Oct. 23, 2026).
+  cite: Financial PlanG.xlsx › TNTTMA $ K36:K43
+  from:
+    refCost:
+      wb: plan
+      sheet: TNTTMA $
+      row: Total Expenses
+      near: 43
+      occurrence: 2
+      col: K
+- id: SP-US50
+  name: Replace 19X with US 50 service (4 round trips)
+  short: US 50 service
+  agency: TTD
+  operator: BUDGET
+  group: ''
+  stateCond: ''
+  localCond: ''
+  area: rural
+  type: fixed
+  federalized: true
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: ''
+  rateOverride: null
+  costOverride: null
+  costSchedule:
+  - 476500.0
+  - 495600.0
+  - 514600.0
+  - 533700.0
+  - 552700.0
+  activeYears: null
+  include: false
+  plan: true
+  juris:
+    CC: 0.5
+    DOU: 0.5
+  refCost: null
+  refCite: ''
+  note: The financial plan adds this cost without removing Route 19X. Uncheck Route 19X to model the replacement.
+  cite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs row 29
+  from:
+    costSchedule:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Eliminate 19X and Replace with US 50 Service (4 Round Trips)
+      near: 29
+      cols:
+      - G
+      - H
+      - I
+      - J
+      - K
+- id: SP-28
+  name: Seasonal Route 28 extension to Spooner Mobility Hub
+  short: 28 to Spooner
+  agency: TTD
+  operator: BUDGET
+  group: ''
+  stateCond: ''
+  localCond: ''
+  area: urban
+  type: seasonal
+  federalized: true
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: ''
+  rateOverride: null
+  costOverride: null
+  costSchedule:
+  - 0.0
+  - 137200.0
+  - 142400.0
+  - 147700.0
+  - 153000.0
+  activeYears: null
+  include: false
+  plan: true
+  juris:
+    WAS: 0.5
+    DOU: 0.5
+  refCost: null
+  refCite: ''
+  note: Jurisdiction split is a placeholder.
+  cite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs row 30
+  from:
+    costSchedule:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Seasonal Expansion of Route 28 to Spooner Mobility Hub
+      near: 30
+      cols:
+      - G
+      - H
+      - I
+      - J
+      - K
+- id: SP-EBS
+  name: Continue Emerald Bay Shuttle (Route 30) beyond the pilot
+  short: 30 after pilot
+  agency: TTD
+  operator: BUDGET
+  group: ''
+  stateCond: ''
+  localCond: ''
+  area: urban
+  type: seasonal
+  federalized: true
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: ''
+  rateOverride: null
+  costOverride: null
+  costSchedule:
+  - 0.0
+  - 0.0
+  - 558700.0
+  - 579400.0
+  - 600100.0
+  activeYears: null
+  include: false
+  plan: true
+  juris:
+    ELD: 1
+  refCost: null
+  refCite: ''
+  note: ''
+  cite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs row 31
+  from:
+    costSchedule:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Continue to Operate the Emerald Bay Shuttle (Route 30) Beyond the Pilot Period
+      near: 31
+      cols:
+      - G
+      - H
+      - I
+      - J
+      - K
+- id: SP-MEY
+  name: Pilot co-mingled paratransit and microtransit to Meyers
+  short: Meyers pilot
+  agency: SSTMA
+  operator: BUDGET
+  group: ''
+  stateCond: ''
+  localCond: ''
+  area: urban
+  type: microtransit
+  federalized: true
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: ''
+  rateOverride: null
+  costOverride: null
+  costSchedule:
+  - 0.0
+  - 357300.0
+  - 371000.0
+  - 384800.0
+  - 398500.0
+  activeYears: null
+  include: false
+  plan: true
+  juris:
+    ELD: 1
+  refCost: null
+  refCite: ''
+  note: Assumes a third-party contractor at Lake Link costs (Table 2 note 4).
+  cite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs row 32
+  from:
+    costSchedule:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Pilot Co-mingled Paratransit/Microtransit Service to Meyers 4
+      near: 32
+      cols:
+      - G
+      - H
+      - I
+      - J
+      - K
+- id: SP-LTCC
+  name: Discontinue Route 50 summer deviation to LTCC
+  short: 50 LTCC change
+  agency: TTD
+  operator: BUDGET
+  group: ''
+  stateCond: ''
+  localCond: ''
+  area: urban
+  type: fixed
+  federalized: true
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: ''
+  rateOverride: null
+  costOverride: null
+  costSchedule:
+  - -10600.0
+  - -11000.0
+  - -11400.0
+  - -11800.0
+  - -12300.0
+  activeYears: null
+  include: false
+  plan: true
+  juris:
+    CSLT: 0.3333333333333333
+    ELD: 0.3333333333333333
+    DOU: 0.3333333333333333
+  refCost: null
+  refCite: ''
+  note: Cost reduction.
+  cite: Financial PlanG.xlsx › T2-4 A1 TTD LL Costs row 33
+  from:
+    costSchedule:
+      wb: plan
+      sheet: T2-4 A1 TTD LL Costs
+      row: Discontinue Route 50 Deviation to LTCC during Summer
+      near: 33
+      cols:
+      - G
+      - H
+      - I
+      - J
+      - K
+- id: SP-INC
+  name: Reinstate TART Connect in Incline Village
+  short: Incline Connect
+  agency: TART
+  operator: BUDGET
+  group: ''
+  stateCond: ''
+  localCond: ''
+  area: urban
+  type: microtransit
+  federalized: true
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: ''
+  rateOverride: null
+  costOverride: null
+  costSchedule:
+  - 0.0
+  - 1044400.0
+  - 1086200.0
+  - 1129600.0
+  - 1402800.0
+  activeYears: null
+  include: false
+  plan: true
+  juris:
+    WAS: 1
+  refCost: null
+  refCite: ''
+  note: ''
+  cite: Financial PlanG.xlsx › T5-7 TART TNTTMA FinancialPlan row 36
+  from:
+    costSchedule:
+      wb: plan
+      sheet: T5-7 TART TNTTMA FinancialPlan
+      row: Reinstate TART Connect Service in Incline Village
+      near: 36
+      cols:
+      - G
+      - H
+      - I
+      - J
+      - K
+- id: SP-VAN
+  name: Add vanpools between Reno and Truckee/North Lake Tahoe
+  short: More vanpools
+  agency: TNTTMA
+  operator: BUDGET
+  group: ''
+  stateCond: ''
+  localCond: ''
+  area: mixed
+  type: vanpool
+  federalized: true
+  trips: null
+  vsh: null
+  vsm: null
+  dataYear: ''
+  rateOverride: null
+  costOverride: null
+  costSchedule:
+  - 25000.0
+  - 26000.0
+  - 0.0
+  - 0.0
+  - 0.0
+  activeYears: null
+  include: false
+  plan: true
+  juris:
+    WAS: 0.5
+    NEV: 0.5
+  refCost: null
+  refCite: ''
+  note: Two vans per year at $12,000 per van (TNTTMA $ J45:J46).
+  cite: Financial PlanG.xlsx › T5-7 TART TNTTMA FinancialPlan row 37
+  from:
+    costSchedule:
+      wb: plan
+      sheet: T5-7 TART TNTTMA FinancialPlan
+      row: Increase Van Pools between Reno and Truckee/North Lake Tahoe
+      near: 37
+      cols:
+      - G
+      - H
+      - I
+      - J
+      - K

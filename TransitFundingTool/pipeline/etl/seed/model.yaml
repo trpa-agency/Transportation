@@ -1,0 +1,71 @@
+# Model constants: agencies, jurisdictions, and source file names. Edited by hand.
+schema: tahoe-transit-funding-data/1
+modelVersion: tahoe-transit-funding-1.0
+sourceFiles:
+  scen: Example Transit Financial Scenario Workbook.xlsx
+  plan: Financial PlanG.xlsx
+  v1g: Funding Model V1G.xlsx
+  sstma: SSTMA multijurisdiction transit services working model.xlsx
+  fed: Federal Funds – FINAL.pdf
+  state: State Funds – FINAL.pdf
+  loc1: Local Funds 1 of 2 – FINAL.pdf
+  loc2: Local Funds 2 of 2 – FINAL.pdf
+sourceFileNotes:
+  scen: Most current operator costs per route; state and local route conditions (costs tab); operator rates (VRH Rates).
+  plan: Revenue sources by percent to routes (Revenue %s), revenue conditions and match notes, per-route model, FTA split, five-year financial
+    plan tables, TNT/TMA budget.
+  v1g: Earlier funding model; used for corrected VSH bases.
+  sstma: Multi-jurisdiction cost-share method (miles, hours, stops, ridership) and Lake Link zone structure.
+  fed: Federal funding fact sheet (FY 25-26 budgeted amounts, purpose, match, restrictions).
+  state: State funding fact sheet.
+  loc1: Local funding fact sheet, part 1.
+  loc2: Local funding fact sheet, part 2 (Lake Link partners).
+agencies:
+- id: TTD
+  name: Tahoe Transportation District
+  short: TTD
+- id: SSTMA
+  name: South Shore TMA (Lake Link)
+  short: Lake Link
+- id: TART
+  name: Placer County TART
+  short: TART
+- id: TNTTMA
+  name: Truckee North Tahoe TMA
+  short: TNT/TMA
+- id: REGION
+  name: Regional or new (not yet assigned)
+  short: Regional
+jurisdictions:
+- id: CSLT
+  name: City of South Lake Tahoe
+  short: CSLT
+  state: CA
+- id: ELD
+  name: El Dorado County
+  short: El Dorado
+  state: CA
+- id: PLA
+  name: Placer County
+  short: Placer
+  state: CA
+- id: NEV
+  name: Nevada County
+  short: Nevada Co.
+  state: CA
+- id: TRK
+  name: Town of Truckee
+  short: Truckee
+  state: CA
+- id: DOU
+  name: Douglas County
+  short: Douglas
+  state: NV
+- id: WAS
+  name: Washoe County
+  short: Washoe
+  state: NV
+- id: CC
+  name: Carson City
+  short: Carson City
+  state: NV

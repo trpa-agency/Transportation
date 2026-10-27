@@ -1,0 +1,80 @@
+# FTA 5307 sub-allocation inputs. `from` reads them from the FTA Allocation Split (26-27) tab.
+fta:
+  apport5307: 4296912.69
+  apport5339: 405232.2
+  apport5310: 75224.8
+  opsShare: 0.75
+  weights:
+    miles: 1
+    pop: 1
+    riders: 1
+  ttd:
+    miles: 803084.0
+    pop: 31420.0
+    riders: 489907.0
+  tart:
+    miles: 1408116.0
+    pop: 16643.0
+    riders: 613042.0
+from:
+  apport5307:
+    sheet: FTA Allocation Split (26-27)
+    row: UZA Total
+    near: 23
+    col: K
+    wb: plan
+  apport5339:
+    sheet: FTA Allocation Split (26-27)
+    row: UZA Total
+    near: 23
+    col: L
+    wb: plan
+  apport5310:
+    sheet: FTA Allocation Split (26-27)
+    row: Placer
+    near: 35
+    col: J
+    wb: plan
+    occurrence: 2
+  ttd.miles:
+    sheet: FTA Allocation Split (26-27)
+    row: TTD
+    near: 28
+    col: F
+    wb: plan
+    occurrence: 3
+  ttd.pop:
+    sheet: FTA Allocation Split (26-27)
+    row: TTD
+    near: 28
+    col: H
+    wb: plan
+    occurrence: 3
+  ttd.riders:
+    sheet: FTA Allocation Split (26-27)
+    row: TTD
+    near: 28
+    col: J
+    wb: plan
+    occurrence: 4
+  tart.miles:
+    sheet: FTA Allocation Split (26-27)
+    row: Placer
+    near: 29
+    col: F
+    wb: plan
+    occurrence: 1
+  tart.pop:
+    sheet: FTA Allocation Split (26-27)
+    row: Placer
+    near: 29
+    col: H
+    wb: plan
+    occurrence: 1
+  tart.riders:
+    sheet: FTA Allocation Split (26-27)
+    row: Placer
+    near: 29
+    col: J
+    wb: plan
+    occurrence: 1
