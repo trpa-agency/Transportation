@@ -97,12 +97,25 @@ Claude then moved all data out of the page's JavaScript into a build pipeline. D
 
 ### October 23: Kira's answers applied
 
-Kira returned the questionnaire (`docs/Transit Funding Tool - Questions for Kira - Answered 10-23.docx`). Her answers were applied directly to `model/transit-funding-model.html` (the pipeline is not in this repo yet):
+Kira returned the questionnaire (`docs/Transit Funding Tool - Questions for Kira - Answered 10-23.docx`). Her answers were applied directly to `model/transit-funding-model.html` (the pipeline was not in the repo then; they are now in `pipeline/etl/seed/`):
 
 - Data: TART 5307 at TART's $2,660,000; Route 30 at $147.80/VSH (about $517,300); the seven Lake Link private partners, NTCA, and Martis carried steady at FY 25-26 amounts ($839,273); the $232,235 planning and administration appropriation in scope; 5310 at 80 percent federal share with the TTD–Placer alternation projected through FY 30-31; Lake Link, My Ride to Work services, and vanpools marked non-federalized.
 - Engine: fares count as local match (a fare line with "Counts as match" unchecked is fare replacement instead).
 - Features: three scenario presets in the scenario bar (TDA and SB 125 stay in California; Lake Link federalized; TTD absorbs Lake Link); an Overview finding totaling money used outside a source's stated preference; a funding-cliffs callout on the Five-year outlook tab.
 - Result: FY 26-27 regional balance $6,612,170 with 12 rule errors (was $4,810,649 with 11). The $1,801,521 increase reconciles to the four data changes above minus the higher Route 30 cost. The new errors are small TART federal share breaches that follow from using TART's larger 5307 number.
+
+### October 27: Review feedback and pipeline rebuild
+
+Review feedback was applied to the model page:
+
+- **Tab structure.** Today, Inputs you can change, Results and future, and Reference. A new Existing funding conditions tab shows the source data. All editable inputs are on one Inputs and assumptions page.
+- **Engine.** Federal funds above each source's federal share cap are left out of agency balances. Surpluses carry into the next fiscal year.
+- **Interface.** The presets are checkboxes that can be undone. The allocation split applies when chosen. Export and Import use Excel.
+- **Citations and look.** Sources are numbered, with superscripts throughout. TRPA is cited instead of Kira. The palette is Connecting Tahoe, and fonts are larger.
+
+TTD's FY 26-27 surplus fell from $1,580,018 to $442,655 because $1,137,363 of its federal funds has no eligible operating use. The remaining surplus depends on $2.42 million in one-time funds. [Certain]
+
+The October 22 pipeline zip was never saved to the repo. A new pipeline was written in `pipeline/`. It reproduces the October 27 page field for field. The one change: TART 5307 now reads Table A2 G59, which TRPA chose on October 23. A test with rows inserted in all eight source tabs still found every value. The October 23 decisions are recorded as `keep` entries in the seed, each with a reason. [Certain]
 
 ## Status against the RFP
 
@@ -121,42 +134,26 @@ Kira returned the questionnaire (`docs/Transit Funding Tool - Questions for Kira
 
 ## Current tool and data pipeline
 
-The model page reads its data from a build step. The workbooks stay the source of truth.
+The model page is built by `pipeline/` (rebuilt October 27, 2026). The workbooks stay the source of truth. See `pipeline/README.md` for details.
 
-How it works:
-
-- `etl/build_model_data.py` reads the Scenario Workbook costs tab and Financial PlanG. It finds cells by row and column label. Inserting rows in the workbooks does not break the build.
-- Hand-maintained YAML seed files in `etl/seed/` hold judgment calls: eligibility rules, commitment basis, jurisdiction shares, notes, and known data overrides.
-- The build writes `data/model-data.json`, `data/model-data.js`, a build report, and `dist/transit-funding-model.html`. The `dist` file is a single page with data inlined. That file is what lives in the Project.
-- Workbook paths, table names, and column maps are in `etl/config.yaml`.
-
-Where each value comes from:
-
-| Value | Source |
-| --- | --- |
-| Trips, hours, miles, operator, route conditions | Scenario Workbook, costs tab |
-| Operator cost per hour | Scenario Workbook, VRH Rates column J |
-| FY 26-27 amounts and later years | Financial PlanG: Tables A1 and A2, Per Route Model, TNTTMA $, Actual Revenues |
-| Conditions, match text, federal share, route shares | Financial PlanG, Revenue %s |
-| Service plan element costs | Financial PlanG, Tables A1 and A2 |
-| FTA sub-allocation inputs | Financial PlanG, FTA Allocation Split (26-27) |
-| Eligibility rules, commitment, jurisdiction shares, FY 25-26 fact sheet amounts | `etl/seed/*.yaml`, edited by hand |
+- `pipeline/etl/build_model_data.py` reads the Scenario Workbook costs tab and Financial PlanG. It finds rows by label, so inserting rows is safe.
+- `pipeline/etl/seed/*.yaml` holds the judgment calls: eligibility rules, commitment basis, jurisdiction shares, notes, and values held over the workbook (`keep`, each with a reason and the workbook value at the time).
+- `pipeline/etl/config.yaml` holds the workbook folder, file names, and the costs tab and Revenue %s layouts.
+- `pipeline/template/transit-funding-model.template.html` is the page without data. Change the page here, not in `model/`.
+- The build writes `pipeline/data/` (data and build report) and `pipeline/dist/transit-funding-model.html`.
 
 To update after a workbook change:
 
-1. Save the workbooks in the SharePoint folder "4. Funding Implementation Memo".
-2. Run `build_data.bat`, or `propy etl/build_model_data.py` from ArcGIS Pro Python (3.11).
-3. Read `data/build-report.md`. Fix warnings in the workbooks or seed, then rebuild.
-4. Upload `dist/transit-funding-model.html` to the Project to replace the old page.
+1. Save the workbooks. To build from the live copies, set `workbook_folder` in `pipeline/etl/config.yaml` to the synced SharePoint folder "4. Funding Implementation Memo".
+2. Run `pipeline/build_data.bat`, or `propy etl/build_model_data.py` from `pipeline/`.
+3. Read `pipeline/data/build-report.md`. It lists warnings, workbook values that changed, and seed values held over the workbook.
+4. Copy `pipeline/dist/transit-funding-model.html` to `model/`, then upload it to the Project.
 
-Validation done on October 22 [Certain]:
+Validation on October 27 [Certain]:
 
-- Field-by-field diff against the values previously hardcoded in the page: zero discrepancies.
-- Five-year projection regression: balances, costs, and revenues match the original to the penny. Rule error and warning counts are identical.
-- Headless browser test: every tab renders. Saved scenarios rebase onto new builds.
-- Current build: FY 26-27 regional balance of $4,810,649, with 11 rule errors.
-
-The pipeline code was delivered as `transit-funding-model.zip` in the October 22 chat. The zip is not in the Project. Andy holds the working copy. Source workbooks are excluded from the zip.
+- Field-by-field comparison with the October 27 page: one difference, the TART 5307 citation above.
+- The build was run on Andy's computer against `source-data/workbooks/`: 0 warnings, 21 held values.
+- Headless browser test of the built page: every tab renders with no console errors. FY 26-27 has 12 rule errors.
 
 ## Open decisions
 
@@ -182,7 +179,7 @@ Still open for partners: actual agreements (Task 4c), revenue miles by route spl
 4. Ask partners for the actual agreements for Task 4c.
 5. Get the private operator list and service statistics from the funding lead (Kira, Oct. 23: "we don't have this data yet, but will work on it").
 6. ~~Turn the funding lead's rule answers into the model.~~ Done October 23: answers applied to the model page's data and engine, with three scenario presets (TDA and SB 125 stay in CA, Lake Link federalized, TTD absorbs Lake Link). Every change is marked "per Kira (Oct. 23, 2026)" in the page's notes.
-7. Move the pipeline repo to a shared location so others can rebuild. **Important:** the October 23 changes were made directly in `model/transit-funding-model.html` because the pipeline is not in this repo. When `pipeline/` lands, mirror them in `etl/seed/*.yaml` (and the engine template) before the next rebuild, or the rebuild will overwrite them.
+7. ~~Put the pipeline in the repo.~~ Done October 27: `pipeline/` rebuilt, with the October 23 decisions in the seed and the October 27 engine in the template. Next, move the repo to a shared location so others can rebuild.
 8. Confirm with FTA: the 5310 federal share (set to 80 percent per Kira, "might require 20% non-federal") and the NDOT 5311 operating rate (50 percent for now versus the 40 percent in partner notes).
 
 ## Links

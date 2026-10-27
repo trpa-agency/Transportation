@@ -1,0 +1,77 @@
+# Regional Transit Funding Model: build settings.
+# Paths are relative to this file (pipeline/etl).
+
+# Folder that holds the source workbooks. Point this at the synced SharePoint
+# folder "4. Funding Implementation Memo" to build from the live copies.
+workbook_folder: ../../source-data/workbooks
+
+workbooks:
+  scen:
+    file: Example Transit Financial Scenario Workbook.xlsx
+  plan:
+    file: Financial PlanG.xlsx
+
+seed_folder: seed
+
+output:
+  data_folder: ../data                              # model-data.json, model-data.js, build-report.md
+  template: ../template/transit-funding-model.template.html
+  dist: ../dist/transit-funding-model.html          # single file with the data inlined
+  check_page: ../../model/transit-funding-model.html  # page that --check compares against
+
+# Scenario workbook, costs tab. One row per service.
+costs_tab:
+  wb: scen
+  sheet: costs
+  header_row: 3                 # hint only; the row is found by label_header
+  label_header: Service/Route
+  agency_header: Agency
+  fields:                       # model field: column header in row 3
+    stateCond: State Route Conditions
+    localCond: Local Route Conditions
+    trips: Passenger-Trips
+    vsh: Vehicle Service Hours
+    vsm: Vehicle Service Miles
+    dataYear: Data Year
+  ignore_labels:
+    - Main Line                 # subtotal of West Shore, N Shore, and Nevada; counting it would double count about $2.5 million
+    - Total
+
+# Financial PlanG, Revenue %s tab. One row per revenue source.
+revenue_tab:
+  wb: plan
+  sheet: Revenue %s
+  header_row: 1                 # hint only; the row is found by header_label
+  header_label: Revenue Sources
+  label_col: D                  # Revenue Sources
+  condition_col: B              # Revenue Conditions
+  match_col: C                  # Match Requirements
+  first_route_col: F
+  last_route_col: AC
+  end_label: Total              # source rows end above the row labeled Total in column D
+  columns:                      # route column header: service id (a list sums several columns into one service)
+    19X: 19X
+    "22": "22"
+    "28": "28"
+    "50": "50"
+    "55": "55"
+    "51": "51"
+    ADA Para (TTD): ADA-TTD
+    "30": "30"
+    Lake Link (Zone 1): LL
+    Lake Link (Zone 2): LL
+    Lake Link (Zone 3): LL
+    Mainline: null              # TART Main Line is split into three services; set shares for those in the seed
+    Hwy 89: "89"
+    Hwy 267: "267"
+    Night: NIGHT
+    ADA Para (Placer): ADA-PLA
+    TART Connect (Zone 1): TC
+    TART Connect (Zone 2): TC
+    TART Connect (Zone 3): TC
+    TART Connect (Zone 4): TC
+    Park&Ride Shuttle (Winter): PR-W
+    Park&Ride Shuttle (Summer): PR-S
+    North Lake Tahoe Express: NLTE
+    Vanpools: VAN
+  ignore_rows: []

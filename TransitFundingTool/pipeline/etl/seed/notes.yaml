@@ -1,0 +1,141 @@
+# Data notes and the agreements inventory shown on the page. Edited by hand.
+# Write TRPA direction as "per TRPA (Oct. 23, 2026)" or "(TRPA, Oct. 23, 2026)"; the page turns it into a superscript.
+dataNotes:
+- title: Costs tab total double-counts TART Main Line
+  text: The costs tab total ($23.08 million, K25) sums the Main Line subtotal (row 16) and its three segments (rows 13–15), counting about $2.50
+    million twice. This model counts the segments once.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs K25, K13:K16
+- title: Route 30 cost rate
+  text: The costs tab prices Route 30 at the Lake Link Via rate ($68.70/VSH, $240,450). The model now uses $147.80/VSH (about $517,300) per TRPA
+    (Oct. 23, 2026), matching VRH Rates and the FY 26-27 Emerald Bay Shuttle budget of $517,288.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs J7; VRH Rates J10; Financial PlanG.xlsx › T2-4 G20
+- title: VSH shares that sum to less than 100 percent
+  text: On Financial PlanG, TART total VSH (Operating Stats F45) includes Main Line and its segments, so TART 5307 shares on Revenue %s sum to
+    72 percent. LCTOP and interest shares divide by TTD hours including Route 30 but give Route 30 nothing (90 percent). The model uses the corrected
+    bases from Funding Model V1G.
+  cite: Financial PlanG.xlsx › Operating Stats F43, F45; Revenue %s rows 3, 15, 20; Funding Model V1G.xlsx › Operating Stats F45, F48
+- title: TDVA formula error
+  text: Per Route Model row 28 multiplies the Nevada State Parks amount (D27, $85,000) instead of the TDVA amount (D28, $120,000). The model uses
+    $120,000.
+  cite: Financial PlanG.xlsx › Per Route Model O28
+- title: TDA labels on the per-route model
+  text: Per Route Model D19 and D21 are labeled LTF and STA but hold TTD's rural one-third and urban two-thirds of LTF plus STA ($615,042 and
+    $1,230,085), and no route formulas use them. The model uses LTF $1,263,326 and STA $581,801 from Table A1 with the TDA shares on Revenue %s.
+  cite: Financial PlanG.xlsx › Per Route Model D19, D21; T2-4 G66:G67
+- title: TART FTA 5307 amount
+  text: The per-route model uses $1,653,136 (75 percent of Placer's earned share). TART's financial plan (Table A2) budgets $2,660,000, including
+    5307 directed through PCTPA. The model uses TART's number per TRPA (Oct. 23, 2026).
+  cite: Financial PlanG.xlsx › Per Route Model E12; T5-7 G59
+- title: TNT/TMA service costs
+  text: The costs tab estimates NLTE at $241,181 (1,200 VSH) and Park & Ride at $602,952 (3,000 VSH) at $200.98/VSH. The TNT/TMA FY 26-27 budget
+    shows NLTE $694,260 and Park & Ride $894,233, which is what its revenues are sized to. TNT/TMA program administration ($321,870) and regional
+    marketing ($223,823), and the membership, management, and marketing revenues that pay for them, are outside the per-route model.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs rows 22–24; Financial PlanG.xlsx › TNTTMA $ F22, F43, K22, Q22
+- title: LCTOP on Nevada routes
+  text: The State Funds fact sheet restricts LCTOP to California, but the draft shares on Revenue %s assign part of it to Nevada routes 19X, 22,
+    and 28. The model flags these cells.
+  cite: State Funds – FINAL.pdf › LCTOP; Financial PlanG.xlsx › Revenue %s row 15
+- title: Federal funds above the operating share
+  text: At the costs tab route costs, the draft shares put more federal money on Routes 19X, 22, and 50 than the 50 percent operating share allows,
+    and TTD holds more 5311 than its two rural routes can absorb at 50 percent. TTD's own per-route worksheet uses $912,052 of the $1,798,577
+    in 5311. Confirm how the remainder is used (administration, capital, or other routes).
+  cite: Financial PlanG.xlsx › T2-4 Q146:R146
+- title: Fact sheet items not in the FY 26-27 plan
+  text: 'Nevada State general fund allocation to TTD ($346,500 in FY 25-26) stays at $0: it was not addressed in the Oct. 23 answers. The local
+    appropriation for TTD planning and administration ($232,235), Martis Zones of Benefit ($50,000), the seven Lake Link private partners ($302,100),
+    and the North Tahoe Community Alliance ($487,173) are now carried at their FY 25-26 amounts per TRPA (Oct. 23, 2026).'
+  cite: State Funds – FINAL.pdf › Nevada State; Local Funds 1 of 2 – FINAL.pdf › Local Appropriation, Martis Zones of Benefit
+- title: Fact sheet and plan differences
+  text: 'TDVA is $65,000 on the fact sheet (FY 25-26) and $120,000 in the FY 26-27 plan. The Travel North Tahoe Nevada card shows "TTD budgeted
+    $8,000" though the funded system is NLTE. TRPA (Oct. 23, 2026): use the plan amount ($120,000).'
+  cite: Local Funds 1 of 2 – FINAL.pdf › Tahoe Douglas Visitor Authority; Travel North Tahoe Nevada
+- title: Electrification credits
+  text: Revenue %s notes call electrification credits "not real money, only used as match." The fact sheet lists $8,000 budgeted for TTD operations.
+    The model counts them as match only; this can be switched in Details.
+  cite: Financial PlanG.xlsx › Revenue %s B16:C16; State Funds – FINAL.pdf › Electrification Credits
+- title: Match rates for NDOT 5311
+  text: 'Revenue %s lists 50 percent non-federal match for 5311; partner notes say NDOT match is 20 percent for administration, 40 percent for
+    operating, and 5 percent for capital. TRPA (Oct. 23, 2026): go with 50 percent non-federal for now; we can change it later.'
+  cite: Financial PlanG.xlsx › Revenue %s C6, F64
+- title: Lake Link and placeholder jurisdiction shares
+  text: Jurisdiction shares split each service equally among the jurisdictions in the costs tab, except Lake Link (one-third Douglas, two-thirds
+    CSLT). ADA paratransit services have no local conditions listed. Lake Link VSH are contract hours, not actuals.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs columns C, U12
+- title: Fares on Route 30 in FY 27-28
+  text: Table A1 carries Emerald Bay fares in FY 26-27 only. The model continues them through the FY 27-28 pilot season with 2 percent ridership
+    growth.
+  cite: Financial PlanG.xlsx › T2-4 G72:H72
+- title: 'Service plan: replacing 19X'
+  text: The financial plan adds the US 50 service cost without removing Route 19X. To model a replacement, include the element and exclude Route
+    19X.
+  cite: Financial PlanG.xlsx › T2-4 rows 21, 29
+- title: Vanpools
+  text: Revenue %s has a Vanpools column, but the costs tab has no vanpool row. The model includes vanpools at the TNT/TMA FY 26-27 budget ($195,800).
+  cite: Financial PlanG.xlsx › Revenue %s AC1; TNTTMA $ K43
+- title: Open questions in the source files
+  text: '"What revenues can we count on for 27-28 for Lake Link?" and "Do we recommend Transportation user fee?" A new regional source can be
+    tested with Add source on the Funding sources tab.'
+  cite: Financial PlanG.xlsx › Questions F4, F6
+- title: Fixed costs for contractors
+  text: The costs tab notes that fixed costs could be separated out, but that is harder for private contractors, and fixed costs change with large
+    service changes. The model uses fully allocated rates.
+  cite: Example Transit Financial Scenario Workbook.xlsx › costs W4
+- title: Funding rule decisions from the funding lead (Oct. 23, 2026)
+  text: 'No optimizer: the tool flags problems and shows trade-offs. Match is tested per grant, per recipient. 5307 operating at 50 percent non-federal;
+    5310 at 20 percent non-federal (to confirm); NDOT 5311 at 50 percent for now. Fares count as local match. Toll credits are assumed unavailable.
+    “Ideally used in” conditions are preferences, and using a source outside its intended jurisdiction is allowed but highlighted. Jurisdiction
+    cost splits stay even-split placeholders for now. Capital is out of scope for this iteration; planning and administration funds are in scope.'
+  cite: TRPA (Oct. 23, 2026)
+- title: South Tahoe Transit JPA
+  text: The JPA is not an operator, and the working assumption is that it will not become one (TRPA, Oct. 23, 2026). South shore fixed route funding
+    stays with TTD in this model.
+  cite: TRPA (Oct. 23, 2026)
+- title: Funding cliffs with no defined replacement
+  text: SB 125 ends after FY 26-27 ($1,575,000 across TTD and Lake Link) and the Route 30 pilot funds end after FY 27-28. No replacement funding
+    is defined yet; TRPA (Oct. 23, 2026) asked that this be highlighted as a gap and a need. See the Five-year outlook tab.
+  cite: TRPA (Oct. 23, 2026)
+- title: Scenario presets
+  text: 'The scenario bar can apply three requested scenarios (TRPA, Oct. 23, 2026): keep TDA and SB 125 in California only, federalize Lake Link,
+    and TTD absorbs Lake Link with its revenue streams. Each preset is a set of logged edits on top of the current scenario; Reset returns to
+    the source data.'
+  cite: TRPA (Oct. 23, 2026)
+agreements:
+- title: Lake Link funding agreements with Douglas County and the City of South Lake Tahoe
+  text: The only two written Lake Link contracts. The plan assumes support continues at existing levels after the current terms end.
+  cite: Financial PlanG.xlsx › Per Route Model D88; T2-4 note 6
+- title: SSTMA operating contract for Lake Link (Downtowner/Via)
+  text: Sets the Lake Link hourly cost and the 2027 contract service hours.
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates L9; Financial PlanG.xlsx › T2-4 note 2
+- title: 'Emerald Bay Shuttle (Route 30) pilot: TTD–Via contract and pilot funding'
+  text: Keep Tahoe Blue, Carbon Reduction Program, El Dorado County, and Placer County funds committed through FY 27-28.
+  cite: Financial PlanG.xlsx › T2-4 rows 79–82
+- title: Placer County TART Connect contract
+  text: Contract-specified escalation of 5 percent per year.
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates L15
+- title: My Ride to Work contracts with TART and TNT/TMA
+  text: Bus and van rates for Park & Ride shuttles and NLTE; the MRTW contract is listed at $488,320.
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates rows 18–21; Financial PlanG.xlsx › Revenue %s M81
+- title: FTA 5307, 5339, and 5310 sub-allocation between TTD and Placer County
+  text: Earned-share worksheet based on revenue miles, population, and ridership. FTA expects the MPO and designated recipients to set the split
+    through a "fair and rational" process.
+  cite: Financial PlanG.xlsx › FTA Allocation Split (26-27); Revenue %s AD59
+- title: TRPA TDA apportionment (LTF and STA) to TTD and TART
+  text: The plan assumes no change in the TRPA TDA split; TTD applies one-third to rural and two-thirds to urban routes.
+  cite: Financial PlanG.xlsx › T2-4 note 2; Revenue %s AE10
+- title: LCTOP rotation between TTD and TART
+  text: LCTOP alternates every other year based on ridership.
+  cite: Financial PlanG.xlsx › Revenue %s D67
+- title: NDOT 5311 subrecipient agreement with TTD
+  text: Partner notes record NDOT match at 20 percent for administration, 40 percent for operating, and 5 percent for capital.
+  cite: Financial PlanG.xlsx › Revenue %s F64
+- title: Tahoe Blue Events Center transportation mitigation fee
+  text: A $3 ticket surcharge allocated to transit, with an annual attendee cap.
+  cite: Financial PlanG.xlsx › T2-4 note 7
+- title: Partner cost-sharing practices on TTD routes
+  text: Costs are allocated by route by percent of miles per month, utility costs are pooled systemwide by partner agreement, and whoever receives
+    a route's benefit gets its urban or rural benefit.
+  cite: Financial PlanG.xlsx › Revenue %s E61:E63, C65
+- title: Lake Link private partners
+  text: SLTTID, Heavenly, Caesars, Round Hill Pines, Advance Learning, LTVA, and LTCC contributed in FY 25-26 with no FY 26-27 commitment. The
+    model assumes their contributions remain steady per TRPA (Oct. 23, 2026); multi-year contribution agreements would let the plan count on them.
+  cite: Financial PlanG.xlsx › T2-4 note 8

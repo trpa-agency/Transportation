@@ -1,0 +1,81 @@
+# Operator cost rates. `from` reads the rate from the VRH Rates tab at each build.
+operators:
+- id: TTD
+  name: TTD (directly operated)
+  escal: 0.04
+  basis: Total operating cost per VSH from FY 24-25 actuals plus 4% per year inflation
+  rate: 214.66
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates J7
+  from:
+    wb: scen
+    sheet: VRH Rates
+    row: TTD Fixed Route Bus
+    near: 7
+    col: J
+- id: Via
+  name: Via (SSTMA Lake Link contract)
+  escal: 0.04
+  basis: SSTMA Lake Link contract costs for 2027 plus fixed admin costs
+  rate: 68.7
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates J9
+  from:
+    wb: scen
+    sheet: VRH Rates
+    row: Lake Link
+    near: 9
+    col: J
+- id: TART
+  name: TART (Placer County)
+  escal: 0.04
+  basis: FY 24-25 actuals cost model, Existing Conditions report, plus 4% per year
+  rate: 185.83
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates J14
+  from:
+    wb: scen
+    sheet: VRH Rates
+    row: TART Fixed Route
+    near: 14
+    col: J
+- id: Placer Via
+  name: Placer Via / Downtowner (TART Connect)
+  escal: 0.05
+  basis: FY 24-25 actuals plus 5% per year, the contract escalation rate
+  rate: 107.23
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates J15
+  from:
+    wb: scen
+    sheet: VRH Rates
+    row: TART Connect
+    near: 15
+    col: J
+- id: Truckee
+  name: Truckee (TART paratransit)
+  escal: 0.04
+  basis: FY 24-25 actuals cost model plus 4% per year
+  rate: 134.52932651755168
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates J16
+  from:
+    wb: scen
+    sheet: VRH Rates
+    row: Placer TART Paratransit
+    near: 16
+    col: J
+- id: MRTW
+  name: My Ride to Work (TNT/TMA contract)
+  escal: 0.03
+  basis: Park and Ride bus contract cost FY 25-26 plus 3%; costs tab uses the bus rate for all MRTW service
+  rate: 200.9839
+  cite: Example Transit Financial Scenario Workbook.xlsx › VRH Rates J20; costs tab uses the bus rate for all MRTW service (costs X35)
+  from:
+    wb: scen
+    sheet: VRH Rates
+    row: Shuttle (P&R)
+    near: 20
+    col: J
+    cite_suffix: ; costs tab uses the bus rate for all MRTW service (costs X35)
+- id: BUDGET
+  name: Budget amount (no hourly rate)
+  rate: 0
+  escal: 0.04
+  basis: Annual cost entered directly; escalated at the financial plan general inflation rate
+  cite: Financial PlanG.xlsx › T2-4 O1 (4% general escalator)
