@@ -1,0 +1,15 @@
+# conda env create -f environment.yml && conda activate od-analysis
+name: od-analysis
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - geopandas>=1.0
+  - shapely>=2.0
+  - pyogrio
+  - scipy
+  - numpy
+  - pandas
+  - matplotlib
+  - pyyaml
+  - jupyterlab

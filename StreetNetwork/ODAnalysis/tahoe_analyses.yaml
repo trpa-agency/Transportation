@@ -1,0 +1,38 @@
+# The six Tahoe OD analyses (the PROTECT criticality sets).
+# Run: python run_od.py --config tahoe_analyses.yaml
+# Paths are relative to this file. Any key under `defaults` can be overridden per analysis.
+
+defaults:
+  streets: data/tahoe_streets.gpkg
+  class_col: class            # road-class column; speeds below are looked up by it
+  speeds:                     # free-flow mph by class (omit to use the built-in table)
+    motorway: 55
+    trunk: 45
+    primary: 35
+    secondary: 30
+    tertiary: 30
+    unclassified: 25
+    residential: 25
+    living_street: 10
+    service: 10
+    unknown: 15
+  origins: data/tahoe_origins.gpkg
+  population: population      # trips per origin
+  weight: equity_wt           # equity weight for traffic_prioritarian (null for none)
+  origin_id: origin_id
+  destinations: data/tahoe_destinations.gpkg
+  dest_name: name
+  cost: time                  # time | distance
+  n_draws: 100                # 1 with sigma 0 = deterministic
+  sigma: 0.25
+  beta: 2.0                   # gravity distance-decay exponent
+  seed: 20261008
+  out: output
+
+analyses:
+  - {name: evacuation,         dest_layer: evacuation_exits,   mode: nearest}
+  - {name: law_enforcement,    dest_layer: law_enforcement,    mode: nearest}
+  - {name: medical_facilities, dest_layer: medical_facilities, mode: gravity}
+  - {name: emergency_shelters, dest_layer: emergency_shelters, mode: gravity}
+  - {name: schools,            dest_layer: schools,            mode: gravity}
+  - {name: fresh_food,         dest_layer: fresh_food,         mode: gravity}

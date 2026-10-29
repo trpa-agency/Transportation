@@ -14,7 +14,8 @@ Each run creates a timestamped folder under data/processed_data/ with the struct
   │   └── persons_per_occ_unit_2050.csv
   ├── configs/               ← copy of every scenario config run
   ├── all_scenarios_parcels.parquet
-  └── all_scenarios_parcels.shp  (+ sidecar files)
+  └── parcels.gdb/           ← one attributed parcel feature class per scenario
+      └── <scenario_name>_parcels
 
 Usage
 -----
@@ -57,6 +58,8 @@ DATA_DIR      = FORECAST_DIR / 'data'
 OUT_DIR       = FORECAST_DIR / 'data' / 'processed_data'
 BASE_DATA_DIR = FORECAST_DIR / 'data' / 'processed_data' / 'base_data'
 EIS_DIR       = FORECAST_DIR.parent  # 2026_Housing_EIS/
+# Static parcel polygons joined to forecast output by APN (see make_parcel_geometry_snapshot.py)
+PARCEL_GEOMETRY_FC = BASE_DATA_DIR / 'parcel_geometry.gdb' / 'parcel_geometry'
 
 # ── EDIT: directory containing scenario config JSONs ──────────────────────────
 # Every *.json file directly in this folder is treated as a scenario config.
@@ -280,29 +283,69 @@ def load_shared_data():
     }
 
 
-def export_combined_shapefile(df_all, run_folder):
-    """
-    Export the combined parcel DataFrame as a shapefile using ArcGIS SEDF.
-    Requires a SHAPE column with geometry objects. Fails gracefully if geometry
-    is absent or the export errors.
-    """
-    if 'SHAPE' not in df_all.columns:
-        print("  Shapefile skipped — no SHAPE column in combined parcel data.")
-        return
+def _arcpy_field_type(series):
+    """Map a pandas column to an ArcGIS field type and text length."""
+    if pd.api.types.is_bool_dtype(series):
+        return 'SHORT', None
+    if pd.api.types.is_integer_dtype(series):
+        vals = series.dropna()
+        fits_long = vals.empty or (vals.min() >= -2**31 and vals.max() < 2**31)
+        return ('LONG' if fits_long else 'DOUBLE'), None
+    if pd.api.types.is_numeric_dtype(series):
+        return 'DOUBLE', None
+    max_len = series.dropna().astype(str).str.len().max()
+    return 'TEXT', max(int(max_len) if pd.notna(max_len) else 0, 10)
 
-    temp_fc = 'memory/all_scenarios_parcels'
-    try:
-        sedf = pd.DataFrame.spatial.from_df(df_all, geometry_column='SHAPE')
-        sedf.spatial.to_featureclass(temp_fc)
-        arcpy.conversion.FeatureClassToShapefile([temp_fc], str(run_folder))
+
+def export_scenario_feature_classes(df_all, run_folder):
+    """
+    Export one fully attributed parcel feature class per scenario to
+    <run_folder>/parcels.gdb, joining forecast rows to the static parcel
+    geometry snapshot (base_data/parcel_geometry.gdb) by APN.
+    Raises if the snapshot is missing or any APN has no geometry.
+    """
+    if not arcpy.Exists(str(PARCEL_GEOMETRY_FC)):
+        raise FileNotFoundError(
+            f"Parcel geometry snapshot not found: {PARCEL_GEOMETRY_FC}\n"
+            "  Build it once with scripts/make_parcel_geometry_snapshot.py")
+
+    with arcpy.da.SearchCursor(str(PARCEL_GEOMETRY_FC), ['APN', 'SHAPE@WKB']) as cur:
+        geometry = {apn: bytes(wkb) for apn, wkb in cur}
+    sr = arcpy.Describe(str(PARCEL_GEOMETRY_FC)).spatialReference
+
+    missing = set(df_all['APN']) - set(geometry)
+    if missing:
+        raise ValueError(f"{len(missing)} APNs have no geometry in the snapshot, e.g. {sorted(missing)[:5]}")
+
+    gdb = run_folder / 'parcels.gdb'
+    if not gdb.exists():
+        arcpy.management.CreateFileGDB(str(run_folder), gdb.name)
+
+    field_specs = [(col, *_arcpy_field_type(df_all[col])) for col in df_all.columns]
+
+    # Rows are inserted into memory and copied to the gdb in one pass —
+    # row-by-row inserts straight into a file gdb are several times slower
+    temp_fc = 'memory/scenario_parcels'
+    cols    = [col for col, _, _ in field_specs]
+
+    for scenario, df in df_all.groupby('SCENARIO', sort=False):
+        fc_name = arcpy.ValidateTableName(f"{scenario}_parcels", str(gdb))
+        arcpy.management.CreateFeatureclass('memory', 'scenario_parcels', 'POLYGON', spatial_reference=sr)
+        arcpy.management.AddFields(temp_fc, [
+            [col, ftype, col, length] if ftype == 'TEXT' else [col, ftype]
+            for col, ftype, length in field_specs
+        ])
+
+        rows = df[cols].astype(object).where(df[cols].notna(), None).itertuples(index=False, name=None)
+        with arcpy.da.InsertCursor(temp_fc, cols + ['SHAPE@WKB']) as cur:
+            for row, apn in zip(rows, df['APN']):
+                cur.insertRow(row + (geometry[apn],))
+
+        arcpy.management.CopyFeatures(temp_fc, str(gdb / fc_name))
         arcpy.management.Delete(temp_fc)
-        print(f"  Shapefile exported to {run_folder / 'all_scenarios_parcels.shp'}")
-    except Exception as e:
-        print(f"  Shapefile export failed: {e}")
-        try:
-            arcpy.management.Delete(temp_fc)
-        except Exception:
-            pass
+        print(f"  {fc_name}: {len(df):,} parcels")
+
+    print(f"  Feature classes exported to {gdb}")
 
 
 def run_scenario(config_path, shared, run_folder):
@@ -535,7 +578,7 @@ def main(scenario_dir):
         df_all.to_parquet(parquet_path, index=False)
         print(f"  Parquet saved to {parquet_path}")
 
-        export_combined_shapefile(df_all, run_folder)
+        export_scenario_feature_classes(df_all, run_folder)
 
     # ── Summary ───────────────────────────────────────────────────────────────
     print(f"\n{'='*60}")
