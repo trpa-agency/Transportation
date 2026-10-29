@@ -16,50 +16,53 @@
 <script type="module" src="https://js.arcgis.com/calcite-components/5.0"></script>
 
 <!--
-  Connecting Tahoe palette. Every color on the page and in the charts reads from this block.
-  Base values from the TRPA "Connecting Tahoe: Strengthening Transportation Resilience" StoryMap theme:
-  navy #0B1F41, blue #007DC3, green #6EBE44, orange #F16022, button blue #007CB9, warm gray #BEBDB1.
-  Shades marked "derived" are darker or lighter steps of those values, added for text and chart contrast.
+  Connecting Tahoe palette from the TRPA design system (trpa-tokens.css, data-brand="connecting-tahoe").
+  Every color on the page and in the charts reads from this block.
+  Brand: blue #2B94D1, deep teal #044554, red #BA5B53, sage #54746A, green #98CA4D, gold #E4CB3F.
+  Blue, green, and gold are fills only; words use their text steps. Neutrals are the shared TRPA grays.
+  Values marked "derived" are not in the design system.
 -->
 <style>
   :root {
-    --ct-navy:#0B1F41; --ct-blue:#007DC3; --ct-green:#6EBE44; --ct-orange:#F16022; --ct-warm:#BEBDB1;
-    --ct-blue-strong:#007CB9;               /* button blue */
-    --ct-blue-text:#005F96;                 /* derived: input text on tint */
-    --ct-blue-200:#A9D2EC;                  /* derived */
-    --ct-blue-tint:#E6F2FA;                 /* derived */
-    --ct-forest:#3F7F25;                    /* derived: green for text and status */
-    --ct-green-tint:#EEF6E8;                /* derived */
-    --ct-orange-tint:#FEEFE7;               /* derived */
-    --ct-orange-text:#B8461A;               /* derived: orange for text */
-    --ct-brick:#B23A12;                     /* derived: danger */
-    --ct-danger-tint:#FBE7DF;               /* derived */
-    --ct-danger-text:#8A2C0E;               /* derived */
-    --ct-gray-500:#8F8D80;                  /* derived from warm gray */
-    --ct-row-total:#F3F2EC;                 /* derived */
-    --ct-border-strong:#CFCDC2;             /* derived */
+    /* Connecting Tahoe brand colors */
+    --ct-blue:#2B94D1; --ct-teal:#044554; --ct-red:#BA5B53; --ct-sage:#54746A; --ct-green:#98CA4D; --ct-gold:#E4CB3F;
+    --ct-blue-light:#E6F2F9; --ct-red-light:#F7EBEA; --ct-green-light:#F3F9EA; --ct-gold-light:#FCF9E8;
+    /* text steps: each passes 4.5:1 on white and on its light tint */
+    --ct-blue-text:#2273A3; --ct-red-text:#A7524B; --ct-green-text:#5D7B2F; --ct-gold-text:#807223;
+    --ct-blue-200:#AAD4ED;                  /* derived: 40 percent blue on white, for tinted borders */
+
+    /* shared TRPA neutrals */
+    --gray-bg:#F5F7FA; --gray-border:#E2E6EC; --gray-text:#6B7688; --gray-muted:#8A93A3;
+    --gray-border-strong:#C5CCD6;           /* derived: step between gray-border and gray-muted */
+    --row-total:#F3F6FA;                    /* TRPA AG Grid header background */
 
     /* chart series */
-    --c-federal:#007DC3; --c-state:#5BA83B; --c-local:#F16022; --c-private:#7FB8E0; --c-fare:#8F8D80; --c-other:#D3D2C8;
-    --c-carry:#9AA5B8; --c-cost:#0B1F41; --c-plan:#0B1F41; --c-pos:#007DC3; --c-neg:#B23A12; --c-unalloc:#F16022;
-    --c-commit-formula:#0B1F41; --c-commit-agreement:#007DC3; --c-commit-budget:#7FB8E0; --c-commit-earned:#D3D2C8;
-    --c-commit-onetime:#F16022; --c-commit-none:#B23A12; --c-commit-proposed:#8F8D80;
-    --c-grid:#ECEBE5; --c-axis:#D6D4CA; --c-node:#8F8D80;
+    --c-federal:#2B94D1; --c-state:#98CA4D; --c-local:#BA5B53; --c-private:#E4CB3F; --c-fare:#54746A; --c-other:#C5CCD6;
+    --c-carry:#8A93A3; --c-cost:#044554; --c-plan:#044554; --c-pos:#044554; --c-neg:#BA5B53; --c-unalloc:#807223;
+    --c-commit-formula:#044554; --c-commit-agreement:#2B94D1; --c-commit-budget:#54746A; --c-commit-earned:#C5CCD6;
+    --c-commit-onetime:#E4CB3F; --c-commit-none:#BA5B53; --c-commit-proposed:#8A93A3;
+    --c-grid:#E8EDF3; --c-axis:#E2E6EC; --c-node:#8A93A3;
 
-    --gray-bg:#F6F6F2; --gray-border:#E3E2DA; --gray-text:#5C5B52; --gray-muted:#8F8D80;
-    --brand-primary:var(--ct-blue); --brand-primary-light:var(--ct-blue-tint); --brand-dark:var(--ct-navy); --brand-text:var(--ct-navy);
-    --brand-accent:var(--ct-orange); --brand-accent-text:var(--ct-orange-text); --brand-radius:8px; --brand-radius-control:7px;
+    /* semantic tokens */
+    --brand-primary:var(--ct-blue); --brand-primary-text:var(--ct-blue-text); --brand-primary-light:var(--ct-blue-light);
+    --brand-dark:var(--ct-teal); --brand-text:var(--ct-teal);
+    --brand-accent:var(--ct-red); --brand-accent-text:var(--ct-red-text); --brand-accent-light:var(--ct-red-light);
+    --brand-radius:8px; --brand-radius-control:7px;
     --brand-font:'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --status-success:var(--ct-forest); --status-success-light:var(--ct-green-tint); --status-warning-text:var(--ct-orange-text); --status-warning-light:var(--ct-orange-tint);
-    --status-danger:var(--ct-brick); --status-danger-light:var(--ct-danger-tint); --status-info-light:var(--ct-blue-tint);
-    --calcite-color-brand:var(--ct-blue-strong); --calcite-color-brand-hover:#006A9E; --calcite-color-brand-press:#005A87;
+    --status-success:var(--ct-green-text); --status-success-light:var(--ct-green-light);
+    --status-warning:var(--ct-gold); --status-warning-text:var(--ct-gold-text); --status-warning-light:var(--ct-gold-light);
+    --status-danger:var(--ct-red-text); --status-danger-light:var(--ct-red-light);
+    --status-info:var(--ct-blue-text); --status-info-light:var(--ct-blue-light);
+    /* Calcite: white on #2B94D1 is only 3.35:1, so solid buttons fill with the blue text step */
+    --calcite-color-brand:var(--ct-blue-text); --calcite-color-brand-hover:var(--ct-teal); --calcite-color-brand-press:var(--ct-teal);
+    --calcite-color-text-1:var(--brand-text); --calcite-color-text-2:var(--brand-text);
   }
 </style>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   [hidden] { display: none !important; }
   html, body { margin: 0; font-family: var(--brand-font); color: var(--brand-text); background: var(--gray-bg); font-size: 16px; line-height: 1.55; color-scheme: light; }
-  a { color: var(--ct-blue); }
+  a { color: var(--ct-blue-text); }
   :focus-visible { outline: 2px solid var(--ct-blue); outline-offset: 2px; }
   h1, h2, h3, h4 { font-weight: 700; line-height: 1.25; margin: 0; }
   h2 { font-size: 1.35rem; }
@@ -68,14 +71,14 @@
 
   /* ── App header (shared TRPA tool shell) ── */
   #appHeader { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-    padding: 0.45rem 1rem; background: #fff; border-bottom: 1px solid var(--gray-border); box-shadow: 0 1px 4px rgba(11,31,65,0.06); z-index: 40; }
+    padding: 0.45rem 1rem; background: #fff; border-bottom: 1px solid var(--gray-border); box-shadow: 0 1px 4px rgba(4,69,84,0.06); z-index: 40; }
   .hdr-brand { display: flex; align-items: center; gap: 0.7rem; min-width: 0; }
   .hdr-brand img { height: 36px; width: auto; display: block; }
   .htitle { display: flex; flex-direction: column; line-height: 1.15; }
-  .hagency { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ct-blue); }
-  .hname { font-size: 1.15rem; font-weight: 700; color: var(--ct-navy); margin: 0; }
+  .hagency { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ct-blue-text); }
+  .hname { font-size: 1.15rem; font-weight: 700; color: var(--ct-teal); margin: 0; }
   .hdr-back { font-size: 0.8rem; font-weight: 600; color: var(--gray-text); text-decoration: none; border-left: 1px solid var(--gray-border); padding-left: 0.7rem; white-space: nowrap; }
-  .hdr-back:hover { color: var(--ct-blue); }
+  .hdr-back:hover { color: var(--ct-blue-text); }
   .hdr-links { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
   .beta-chip { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-accent-text);
     border: 1px solid var(--brand-accent-text); border-radius: 999px; padding: 0.1rem 0.5rem; }
@@ -85,10 +88,10 @@
   /* ── Scenario bar ── */
   .scenario-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; padding: 0.55rem 1rem; background: #fff; border-bottom: 1px solid var(--gray-border); }
   .scenario-bar label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-text); }
-  .scenario-bar input[type=text] { font: inherit; font-size: 0.918rem; color: var(--brand-text); border: 1px solid var(--ct-border-strong); border-radius: var(--brand-radius-control); padding: 0.25rem 0.55rem; min-width: 220px; }
+  .scenario-bar input[type=text] { font: inherit; font-size: 0.918rem; color: var(--brand-text); border: 1px solid var(--gray-border-strong); border-radius: var(--brand-radius-control); padding: 0.25rem 0.55rem; min-width: 220px; }
   .scenario-meta { font-size: 0.842rem; color: var(--gray-text); display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
   .scenario-actions { margin-left: auto; display: flex; gap: 0.35rem; flex-wrap: wrap; }
-  .issue-pill { display: inline-flex; align-items: center; gap: 0.35rem; border: 1.5px solid var(--ct-border-strong); background: #fff; color: var(--brand-text); border-radius: 999px;
+  .issue-pill { display: inline-flex; align-items: center; gap: 0.35rem; border: 1.5px solid var(--gray-border-strong); background: #fff; color: var(--brand-text); border-radius: 999px;
     padding: 0.15rem 0.7rem; font-size: 0.821rem; font-weight: 600; cursor: pointer; font-family: inherit; }
   .issue-pill:hover { border-color: var(--ct-blue); }
   .issue-pill .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
@@ -97,20 +100,20 @@
   .wrap { max-width: 1480px; margin: 0 auto; padding: 0 1rem 3rem; }
   .tabbar { position: sticky; top: var(--hdr-h, 52px); z-index: 30; display: flex; gap: 0.15rem; overflow-x: auto; background: var(--gray-bg); border-bottom: 1px solid var(--gray-border); margin: 0 -1rem; padding: 0.35rem 1rem 0; scrollbar-width: thin; }
   .tabbar button { flex: 0 0 auto; font: inherit; font-size: 0.907rem; font-weight: 600; color: var(--gray-text); background: transparent; border: none; border-bottom: 3px solid transparent; padding: 0.45rem 0.75rem 0.4rem; cursor: pointer; white-space: nowrap; border-radius: 6px 6px 0 0; }
-  .tabbar button:hover { color: var(--ct-navy); background: #fff; }
-  .tabbar button[aria-selected="true"] { color: var(--ct-navy); border-bottom-color: var(--ct-blue); background: #fff; }
+  .tabbar button:hover { color: var(--ct-teal); background: #fff; }
+  .tabbar button[aria-selected="true"] { color: var(--ct-teal); border-bottom-color: var(--ct-blue); background: #fff; }
   .tabpad { padding: 1rem 0 0; }
   .card { background: #fff; border: 1px solid var(--gray-border); border-radius: var(--brand-radius); padding: 1rem 1.1rem; margin-bottom: 1rem; min-width: 0; }
   .card > h2, .card > h3 { margin-bottom: 0.35rem; }
   .card-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.5rem; }
   .card-head .tools { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
-  .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ct-blue); margin-bottom: 0.15rem; }
+  .section-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ct-blue-text); margin-bottom: 0.15rem; }
   .note { font-size: 0.886rem; color: var(--gray-text); line-height: 1.5; }
   .note strong { color: var(--brand-text); }
   .source { font-size: 0.8rem; color: var(--gray-text); margin-top: 0.45rem; }
-  .callout { border-left: 4px solid var(--ct-orange); background: var(--ct-orange-tint); padding: 0.55rem 0.85rem; border-radius: 0 6px 6px 0; margin: 0.6rem 0; font-size: 0.918rem; }
-  .callout.blue { border-left-color: var(--ct-blue); background: var(--ct-blue-tint); }
-  .callout.green { border-left-color: var(--ct-forest); background: var(--ct-green-tint); }
+  .callout { border-left: 4px solid var(--ct-gold); background: var(--ct-gold-light); padding: 0.55rem 0.85rem; border-radius: 0 6px 6px 0; margin: 0.6rem 0; font-size: 0.918rem; }
+  .callout.blue { border-left-color: var(--ct-blue); background: var(--ct-blue-light); }
+  .callout.green { border-left-color: var(--ct-green-text); background: var(--ct-green-light); }
   .cols-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
   .cols-3-2 { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 1rem; }
   @media (max-width: 1000px) { .cols-2, .cols-3-2 { grid-template-columns: minmax(0, 1fr); } }
@@ -130,17 +133,17 @@
   .kpi .v.down { color: var(--status-danger); }
   .kpi .l { font-size: 0.8rem; color: var(--gray-text); margin-top: 0.1rem; }
   .kpi .d { font-size: 0.8rem; color: var(--gray-text); margin-top: 0.15rem; }
-  .kpi.accent { border-top-color: var(--brand-accent); } .kpi.danger { border-top-color: var(--status-danger); } .kpi.navy { border-top-color: var(--ct-navy); }
-  .kpi.click { cursor: pointer; } .kpi.click:hover { box-shadow: 0 1px 6px rgba(11,31,65,0.12); }
+  .kpi.accent { border-top-color: var(--brand-accent); } .kpi.danger { border-top-color: var(--status-danger); } .kpi.navy { border-top-color: var(--ct-teal); }
+  .kpi.click { cursor: pointer; } .kpi.click:hover { box-shadow: 0 1px 6px rgba(4,69,84,0.12); }
 
   /* Segmented controls, pills, badges */
   .seg { display: inline-flex; border-radius: var(--brand-radius-control); overflow: hidden; border: 1px solid var(--gray-border); }
   .seg button { border: none; border-right: 1px solid var(--gray-border); background: #fff; cursor: pointer; font-family: var(--brand-font); min-height: 30px; font-size: 0.821rem; font-weight: 600; color: var(--gray-text); padding: 0.3rem 0.75rem; }
   .seg button:last-child { border-right: none; }
-  .seg button[aria-checked="true"] { background: var(--ct-blue-strong); color: #fff; font-weight: 700; }
-  .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1.5px solid var(--ct-border-strong); background: #fff; color: var(--brand-text); border-radius: 999px; padding: 0.2rem 0.75rem; font-size: 0.821rem; font-weight: 600; cursor: pointer; font-family: var(--brand-font); min-height: 28px; }
+  .seg button[aria-checked="true"] { background: var(--ct-blue-text); color: #fff; font-weight: 700; }
+  .pill { display: inline-flex; align-items: center; gap: 0.4rem; border: 1.5px solid var(--gray-border-strong); background: #fff; color: var(--brand-text); border-radius: 999px; padding: 0.2rem 0.75rem; font-size: 0.821rem; font-weight: 600; cursor: pointer; font-family: var(--brand-font); min-height: 28px; }
   .pill:hover { border-color: var(--brand-primary); }
-  .pill i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; background: var(--c, var(--ct-gray-500)); }
+  .pill i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; background: var(--c, var(--gray-muted)); }
   .pill[aria-pressed="true"] { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
   .pill .n { font-size: 0.8rem; font-weight: 700; background: var(--brand-primary-light); border-radius: 999px; padding: 0 0.45rem; color: var(--gray-text); }
   .pill[aria-pressed="true"] .n { background: rgba(255,255,255,0.18); color: #fff; }
@@ -160,21 +163,21 @@
   .grid.short { height: 300px; }
   .grid.tall { height: 600px; }
   .ag-cell.num, .ag-header-cell.num .ag-header-cell-label { justify-content: flex-end; text-align: right; font-variant-numeric: tabular-nums; }
-  .ag-cell.input { background: var(--ct-blue-tint); color: var(--ct-blue-text); font-weight: 600; }
-  .ag-cell.edited { box-shadow: inset 3px 0 0 var(--ct-orange); }
-  .ag-cell.c-error { background: var(--ct-danger-tint) !important; color: var(--ct-danger-text); }
-  .ag-cell.c-warning { background: var(--ct-orange-tint) !important; }
+  .ag-cell.input { background: var(--ct-blue-light); color: var(--ct-blue-text); font-weight: 600; }
+  .ag-cell.edited { box-shadow: inset 3px 0 0 var(--ct-red); }
+  .ag-cell.c-error { background: var(--ct-red-light) !important; color: var(--ct-red-text); }
+  .ag-cell.c-warning { background: var(--ct-gold-light) !important; }
   .ag-cell.muted { color: var(--gray-text); }
-  .ag-row.row-off { color: var(--ct-gray-500); }
-  .ag-row.row-off .ag-cell { text-decoration: line-through; text-decoration-color: rgba(143,141,128,0.6); }
-  .ag-row.row-total { font-weight: 700; background: var(--ct-row-total); }
-  .grid-btn { font: inherit; font-size: 0.8rem; font-weight: 600; color: var(--ct-blue-strong); background: #fff; border: 1px solid var(--ct-border-strong); border-radius: 6px; padding: 0 0.5rem; line-height: 22px; cursor: pointer; }
+  .ag-row.row-off { color: var(--gray-muted); }
+  .ag-row.row-off .ag-cell { text-decoration: line-through; text-decoration-color: rgba(138,147,163,0.6); }
+  .ag-row.row-total { font-weight: 700; background: var(--row-total); }
+  .grid-btn { font: inherit; font-size: 0.8rem; font-weight: 600; color: var(--ct-blue-text); background: #fff; border: 1px solid var(--gray-border-strong); border-radius: 6px; padding: 0 0.5rem; line-height: 22px; cursor: pointer; }
   .grid-btn:hover { border-color: var(--ct-blue); }
   .input-legend { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; color: var(--gray-text); }
-  .input-legend b { display: inline-block; width: 14px; height: 12px; border-radius: 2px; background: var(--ct-blue-tint); border: 1px solid var(--ct-blue-200); }
-  .input-legend b.ed { background: #fff; box-shadow: inset 3px 0 0 var(--ct-orange); border: 1px solid var(--gray-border); }
-  .input-legend b.er { background: var(--ct-danger-tint); border: 1px solid #EDB9A3; }
-  .input-legend b.wa { background: var(--ct-orange-tint); border: 1px solid #F6C4A8; }
+  .input-legend b { display: inline-block; width: 14px; height: 12px; border-radius: 2px; background: var(--ct-blue-light); border: 1px solid var(--ct-blue-200); }
+  .input-legend b.ed { background: #fff; box-shadow: inset 3px 0 0 var(--ct-red); border: 1px solid var(--gray-border); }
+  .input-legend b.er { background: var(--ct-red-light); border: 1px solid var(--ct-red); }
+  .input-legend b.wa { background: var(--ct-gold-light); border: 1px solid var(--ct-gold); }
 
   .mono { font-weight: 600; color: var(--brand-text); }
   calcite-dialog#dlgLine { --calcite-dialog-size-x: 960px; --calcite-dialog-max-size-x: 96vw; }
@@ -196,15 +199,15 @@
 
   /* Editor dialog */
   .ed-sec { border: 1px solid var(--gray-border); border-radius: var(--brand-radius); padding: 0.7rem 0.85rem; margin-bottom: 0.7rem; background: #fff; }
-  .ed-sec > h4 { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ct-blue); margin-bottom: 0.45rem; }
+  .ed-sec > h4 { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ct-blue-text); margin-bottom: 0.45rem; }
   .ed-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.55rem 0.8rem; }
   .ed-grid .wide { grid-column: 1 / -1; }
   .fld { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.8rem; font-weight: 600; color: var(--gray-text); }
-  .fld input[type=text], .fld input[type=number], .fld select, .fld textarea { font: inherit; font-size: 0.907rem; font-weight: 400; color: var(--brand-text); border: 1px solid var(--ct-border-strong); border-radius: var(--brand-radius-control); padding: 0.3rem 0.5rem; background: #fff; width: 100%; }
+  .fld input[type=text], .fld input[type=number], .fld select, .fld textarea { font: inherit; font-size: 0.907rem; font-weight: 400; color: var(--brand-text); border: 1px solid var(--gray-border-strong); border-radius: var(--brand-radius-control); padding: 0.3rem 0.5rem; background: #fff; width: 100%; }
   .fld textarea { min-height: 54px; resize: vertical; }
   .fld input:disabled { background: var(--gray-bg); color: var(--gray-text); }
   .fld .hint { font-weight: 400; font-size: 0.8rem; }
-  .fld.edited input, .fld.edited select, .fld.edited textarea { box-shadow: inset 3px 0 0 var(--ct-orange); }
+  .fld.edited input, .fld.edited select, .fld.edited textarea { box-shadow: inset 3px 0 0 var(--ct-red); }
   .checks { display: flex; flex-wrap: wrap; gap: 0.25rem 0.8rem; font-size: 0.864rem; font-weight: 400; color: var(--brand-text); }
   .checks label { display: inline-flex; align-items: center; gap: 0.3rem; }
   .cite-list { margin: 0; padding-left: 1.1rem; font-size: 0.842rem; color: var(--brand-text); }
@@ -221,7 +224,7 @@
   .datanotes .cite { font-size: 0.8rem; color: var(--gray-text); display: block; }
   .fta-grid { display: grid; grid-template-columns: max-content repeat(2, minmax(110px, 160px)) minmax(80px, 120px); gap: 0.35rem 0.7rem; align-items: center; font-size: 0.886rem; }
   .fta-grid .h { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-text); }
-  .fta-grid input { font: inherit; font-size: 0.907rem; color: var(--ct-blue-text); font-weight: 600; background: var(--ct-blue-tint); border: 1px solid var(--ct-border-strong); border-radius: 6px; padding: 0.2rem 0.4rem; width: 100%; }
+  .fta-grid input { font: inherit; font-size: 0.907rem; color: var(--ct-blue-text); font-weight: 600; background: var(--ct-blue-light); border: 1px solid var(--gray-border-strong); border-radius: 6px; padding: 0.2rem 0.4rem; width: 100%; }
   .fta-out { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.5rem; margin-top: 0.7rem; }
   .fta-out div { background: var(--gray-bg); border-radius: 6px; padding: 0.4rem 0.55rem; font-size: 0.8rem; color: var(--gray-text); }
   .fta-out b { display: block; font-size: 1rem; color: var(--brand-text); }
@@ -237,7 +240,7 @@
   @media print {
     #appHeader, .scenario-bar, .tabbar, .no-print, calcite-button { display: none !important; }
     body { background: #fff; }
-    .card { break-inside: avoid; border-color: #ccc; }
+    .card { break-inside: avoid; border-color: var(--gray-border-strong); }
   }
 
   /* ── Grouped tab bar: Today, Inputs, Results, Reference ── */
@@ -245,13 +248,14 @@
   .tabgroup { display: flex; flex-direction: column; flex: 0 0 auto; }
   .tg-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-text); padding: 0 0.75rem 0.1rem; border-left: 3px solid var(--tg, transparent); line-height: 1.2; }
   .tabgroup .tg-btns { display: flex; gap: 0.15rem; }
-  .tabgroup[data-g="today"] { --tg: var(--ct-navy); }
+  .tabgroup[data-g="today"] { --tg: var(--ct-teal); }
   .tabgroup[data-g="inputs"] { --tg: var(--ct-blue); }
   .tabgroup[data-g="results"] { --tg: var(--ct-green); }
-  .tabgroup[data-g="ref"] { --tg: var(--ct-warm); }
+  .tabgroup[data-g="ref"] { --tg: var(--ct-sage); }
 
   /* ── Overview ── */
-  .ov-lede { font-size: 1.05rem; max-width: 70ch; margin: 0.4rem 0 0; }
+  .ov-lede { font-size: 1.05rem; margin: 0.4rem 0 0; }
+  .ov-draft { margin: 0.5rem 0 0; }
   .ov-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.9rem; margin-bottom: 1rem; }
   @media (max-width: 1100px) { .ov-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 620px) { .ov-tiles { grid-template-columns: minmax(0, 1fr); } }
@@ -260,8 +264,8 @@
   .ov-tile ul { margin: 0; padding-left: 1.1rem; }
   .ov-tile li { margin: 0.15rem 0; }
   .ov-tile .go { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .linkbtn { font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ct-blue-strong); background: #fff; border: 1px solid var(--ct-border-strong); border-radius: var(--brand-radius-control); padding: 0.3rem 0.75rem; cursor: pointer; }
-  .linkbtn:hover { border-color: var(--ct-blue); background: var(--ct-blue-tint); }
+  .linkbtn { font: inherit; font-size: 0.9rem; font-weight: 600; color: var(--ct-blue-text); background: #fff; border: 1px solid var(--gray-border-strong); border-radius: var(--brand-radius-control); padding: 0.3rem 0.75rem; cursor: pointer; }
+  .linkbtn:hover { border-color: var(--ct-blue); background: var(--ct-blue-light); }
   .ov-status { font-size: 0.95rem; color: var(--gray-text); }
 
   /* ── Inputs page ── */
@@ -269,16 +273,16 @@
   @media (max-width: 1000px) { .in-layout { grid-template-columns: minmax(0, 1fr); } .in-nav { position: static !important; } }
   .in-nav { position: sticky; top: calc(var(--hdr-h, 52px) + 64px); background: #fff; border: 1px solid var(--gray-border); border-radius: var(--brand-radius); padding: 0.6rem 0.4rem; }
   .in-nav a { display: block; padding: 0.3rem 0.65rem; border-radius: 6px; color: var(--brand-text); text-decoration: none; font-size: 0.92rem; }
-  .in-nav a:hover { background: var(--ct-blue-tint); }
+  .in-nav a:hover { background: var(--ct-blue-light); }
   .in-nav .grp { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-text); padding: 0.55rem 0.65rem 0.15rem; }
   .in-sec { scroll-margin-top: calc(var(--hdr-h, 52px) + 70px); }
-  .live { display: flex; flex-wrap: wrap; gap: 0.35rem 1.4rem; align-items: baseline; background: var(--ct-blue-tint); border: 1px solid var(--ct-blue-200); border-radius: var(--brand-radius); padding: 0.6rem 0.95rem; margin-bottom: 1rem; font-size: 0.95rem; }
+  .live { display: flex; flex-wrap: wrap; gap: 0.35rem 1.4rem; align-items: baseline; background: var(--ct-blue-light); border: 1px solid var(--ct-blue-200); border-radius: var(--brand-radius); padding: 0.6rem 0.95rem; margin-bottom: 1rem; font-size: 0.95rem; }
   .live b { font-size: 1.05rem; }
   .live .was { color: var(--gray-text); font-size: 0.86rem; }
   .presets { display: grid; gap: 0.7rem; }
   .preset { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.2rem 0.8rem; border: 1.5px solid var(--gray-border); border-radius: var(--brand-radius); padding: 0.75rem 0.9rem; background: #fff; }
-  .preset.on { border-color: var(--ct-blue); background: var(--ct-blue-tint); }
-  .preset input[type=checkbox] { width: 20px; height: 20px; margin-top: 0.15rem; accent-color: var(--ct-blue-strong); grid-row: span 3; }
+  .preset.on { border-color: var(--ct-blue); background: var(--ct-blue-light); }
+  .preset input[type=checkbox] { width: 20px; height: 20px; margin-top: 0.15rem; accent-color: var(--ct-blue-text); grid-row: span 3; }
   .preset .pt { font-weight: 700; font-size: 1rem; }
   .preset .pd { font-size: 0.92rem; color: var(--gray-text); }
   .preset .pe { font-size: 0.92rem; }
@@ -287,33 +291,33 @@
   .assume .fld { font-size: 0.9rem; color: var(--brand-text); }
   .assume .fld .hint { font-size: 0.84rem; color: var(--gray-text); }
   .opening { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.5rem 0.8rem; margin-top: 0.4rem; }
-  .opening input { font: inherit; font-size: 0.92rem; color: var(--ct-blue-text); font-weight: 600; background: var(--ct-blue-tint); border: 1px solid var(--ct-border-strong); border-radius: 6px; padding: 0.25rem 0.45rem; width: 100%; }
-  .opening input.edited { box-shadow: inset 3px 0 0 var(--ct-orange); }
+  .opening input { font: inherit; font-size: 0.92rem; color: var(--ct-blue-text); font-weight: 600; background: var(--ct-blue-light); border: 1px solid var(--gray-border-strong); border-radius: 6px; padding: 0.25rem 0.45rem; width: 100%; }
+  .opening input.edited { box-shadow: inset 3px 0 0 var(--ct-red); }
   .scenario-chips { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; }
-  .chip { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.8rem; font-weight: 600; background: var(--ct-blue-tint); color: var(--ct-blue-text); border: 1px solid var(--ct-blue-200); border-radius: 999px; padding: 0.1rem 0.6rem; cursor: pointer; font-family: inherit; }
+  .chip { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.8rem; font-weight: 600; background: var(--ct-blue-light); color: var(--ct-blue-text); border: 1px solid var(--ct-blue-200); border-radius: 999px; padding: 0.1rem 0.6rem; cursor: pointer; font-family: inherit; }
   .chip:hover { border-color: var(--ct-blue); }
 
   /* Allocation split controls */
-  .split-box { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; border: 1px dashed var(--ct-border-strong); border-radius: var(--brand-radius); padding: 0.3rem 0.55rem; }
-  .split-box.ready { border-style: solid; border-color: var(--ct-blue); background: var(--ct-blue-tint); }
-  .split-box select { font: inherit; font-size: 0.9rem; border: 1px solid var(--ct-border-strong); border-radius: 6px; padding: 0.2rem 0.4rem; background: #fff; color: var(--brand-text); }
+  .split-box { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; border: 1px dashed var(--gray-border-strong); border-radius: var(--brand-radius); padding: 0.3rem 0.55rem; }
+  .split-box.ready { border-style: solid; border-color: var(--ct-blue); background: var(--ct-blue-light); }
+  .split-box select { font: inherit; font-size: 0.9rem; border: 1px solid var(--gray-border-strong); border-radius: 6px; padding: 0.2rem 0.4rem; background: #fff; color: var(--brand-text); }
   .split-box select:disabled { color: var(--gray-text); background: var(--gray-bg); }
-  .split-msg { font-size: 0.9rem; color: var(--ct-forest); font-weight: 600; min-height: 1.3em; }
+  .split-msg { font-size: 0.9rem; color: var(--ct-green-text); font-weight: 600; min-height: 1.3em; }
 
   /* Citations */
   sup.cn { font-size: 0.7em; line-height: 0; margin-left: 0.08em; }
-  sup.cn a { color: var(--ct-blue-strong); text-decoration: none; font-weight: 700; cursor: pointer; }
+  sup.cn a { color: var(--ct-blue-text); text-decoration: none; font-weight: 700; cursor: pointer; }
   sup.cn a:hover { text-decoration: underline; }
   ol.srclist { margin: 0.3rem 0 0 1.4rem; padding: 0; }
   ol.srclist li { margin: 0.35rem 0; padding-left: 0.2rem; }
-  ol.srclist li:target, ol.srclist li.flash { background: var(--ct-orange-tint); border-radius: 4px; }
+  ol.srclist li:target, ol.srclist li.flash { background: var(--ct-gold-light); border-radius: 4px; }
 
   /* Toast */
-  #toast { position: fixed; left: 50%; bottom: 1.2rem; transform: translateX(-50%); max-width: min(720px, calc(100vw - 2rem)); background: var(--ct-navy); color: #fff; border-radius: var(--brand-radius); padding: 0.75rem 1rem; font-size: 0.95rem; box-shadow: 0 6px 24px rgba(11,31,65,0.25); z-index: 100; display: flex; gap: 1rem; align-items: flex-start; }
+  #toast { position: fixed; left: 50%; bottom: 1.2rem; transform: translateX(-50%); max-width: min(720px, calc(100vw - 2rem)); background: var(--ct-teal); color: #fff; border-radius: var(--brand-radius); padding: 0.75rem 1rem; font-size: 0.95rem; box-shadow: 0 6px 24px rgba(4,69,84,0.25); z-index: 100; display: flex; gap: 1rem; align-items: flex-start; }
   #toast button { font: inherit; font-size: 0.85rem; color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.5); border-radius: 6px; padding: 0.1rem 0.5rem; cursor: pointer; flex: 0 0 auto; }
   .today-note { font-size: 0.92rem; color: var(--gray-text); }
-  .upd { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ct-forest); background: var(--ct-green-tint); border-radius: 999px; padding: 0.05rem 0.55rem; vertical-align: middle; }
-  .upd.fixed { color: var(--ct-navy); background: var(--gray-bg); border: 1px solid var(--gray-border); }
+  .upd { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ct-green-text); background: var(--ct-green-light); border-radius: 999px; padding: 0.05rem 0.55rem; vertical-align: middle; }
+  .upd.fixed { color: var(--ct-teal); background: var(--gray-bg); border: 1px solid var(--gray-border); }
 </style>
 </head>
 <body>
@@ -329,8 +333,8 @@
   </div>
   <div class="hdr-links">
     <span class="beta-chip" title="Working draft for stakeholder review. Allocation percentages and several conditions are still being confirmed.">Beta</span>
-    <span class="year-pick">Results year
-      <calcite-select id="yearSel" scale="s" label="Fiscal year shown in results"></calcite-select>
+    <span class="year-pick">Fiscal year
+      <calcite-select id="yearSel" scale="s" label="Fiscal year shown in the model"></calcite-select>
     </span>
   </div>
 </header>
@@ -342,7 +346,7 @@
   <span class="scenario-meta">
     <span id="editCount">No edits from source data</span>
     <span id="saveState"></span>
-    <button type="button" class="issue-pill" id="issuePill" title="Open the rule checks"><span class="dot" style="background:var(--ct-brick)"></span><span id="issuePillText">Checking rules</span></button>
+    <button type="button" class="issue-pill" id="issuePill" title="Open the rule checks"><span class="dot" style="background:var(--ct-red-text)"></span><span id="issuePillText">Checking rules</span></button>
   </span>
   <span class="scenario-actions">
     <calcite-button id="btnExport" appearance="outline" kind="brand" scale="s" icon-start="file-excel" title="Download this scenario as an Excel workbook: inputs, results by agency and service, five-year outlook, rule checks, and changes">Export to Excel</calcite-button>
@@ -359,15 +363,15 @@
     <button type="button" role="tab" id="tab-overview" data-tab="overview" aria-controls="panel-overview" aria-selected="true" tabindex="0">Overview</button></div></div>
   <div class="tabgroup" data-g="today"><span class="tg-label">Today</span><div class="tg-btns">
     <button type="button" role="tab" id="tab-existing" data-tab="existing" aria-controls="panel-existing" aria-selected="false" tabindex="-1">Existing funding conditions</button></div></div>
-  <div class="tabgroup" data-g="inputs"><span class="tg-label">Inputs you can change</span><div class="tg-btns">
+  <div class="tabgroup" data-g="inputs"><span class="tg-label">Inputs users can change</span><div class="tg-btns">
     <button type="button" role="tab" id="tab-inputs" data-tab="inputs" aria-controls="panel-inputs" aria-selected="false" tabindex="-1">Inputs and assumptions</button>
     <button type="button" role="tab" id="tab-alloc" data-tab="alloc" aria-controls="panel-alloc" aria-selected="false" tabindex="-1">Allocation and rules</button></div></div>
   <div class="tabgroup" data-g="results"><span class="tg-label">Results and future</span><div class="tg-btns">
-    <button type="button" role="tab" id="tab-results" data-tab="results" aria-controls="panel-results" aria-selected="false" tabindex="-1">Results</button>
+    <button type="button" role="tab" id="tab-results" data-tab="results" aria-controls="panel-results" aria-selected="false" tabindex="-1">One-year outlook</button>
     <button type="button" role="tab" id="tab-outlook" data-tab="outlook" aria-controls="panel-outlook" aria-selected="false" tabindex="-1">Five-year outlook</button>
     <button type="button" role="tab" id="tab-agreements" data-tab="agreements" aria-controls="panel-agreements" aria-selected="false" tabindex="-1">Agreements and risk</button></div></div>
   <div class="tabgroup" data-g="ref"><span class="tg-label">Reference</span><div class="tg-btns">
-    <button type="button" role="tab" id="tab-assumptions" data-tab="assumptions" aria-controls="panel-assumptions" aria-selected="false" tabindex="-1">Assumptions and notes</button></div></div>
+    <button type="button" role="tab" id="tab-assumptions" data-tab="assumptions" aria-controls="panel-assumptions" aria-selected="false" tabindex="-1">Sources and notes</button></div></div>
 </nav>
 
   <!-- ═════════ OVERVIEW ═════════ -->
@@ -376,38 +380,34 @@
       <div class="callout blue" id="rebaseNote" hidden></div>
       <div class="card">
         <h2>How transit in the Tahoe Region is paid for, route by route</h2>
-        <p class="ov-lede">This model brings the region's transit operating costs and funding sources into one place. Change any input to test a funding scenario and see the effect on each agency over five years.</p>
+        <p class="ov-lede">This model brings the region's transit operating costs and funding sources into one place, with the goal of providing transparency and showing the trade-offs of future funding options.</p>
+        <p class="note ov-draft"><em>This tool is a draft undergoing further review and stakeholder validation.</em></p>
       </div>
       <div class="ov-tiles">
-        <div class="ov-tile" style="--tg:var(--ct-navy)">
+        <div class="ov-tile" style="--tg:var(--ct-teal)">
           <span class="kicker">Today</span>
           <h3>Existing funding conditions</h3>
-          <p class="note">FY 26-27 costs and funding as budgeted. Your edits do not change this page.</p>
+          <p class="note">A snapshot of how all transit operating revenue sources are currently budgeted in fiscal year (FY) 26-27.</p>
           <div class="go"><button type="button" class="linkbtn" data-go="existing">Existing funding conditions</button></div>
         </div>
         <div class="ov-tile" style="--tg:var(--ct-blue)">
-          <span class="kicker">Inputs you can change</span>
-          <h3>Inputs and assumptions</h3>
-          <p class="note">Service hours, cost rates, funding amounts, projections, scenario presets, and model assumptions. Shares by route are on Allocation and rules.</p>
+          <span class="kicker">Inputs users can change</span>
+          <h3>Inputs, assumptions, and rules</h3>
+          <p class="note">These pages allow users to edit service hours, operating cost rates, funding amounts, model assumptions, and how each funding source is split across routes. Use the <b>Reset</b> button in the top right corner to reset to original inputs.</p>
           <div class="go"><button type="button" class="linkbtn" data-go="inputs">Inputs and assumptions</button><button type="button" class="linkbtn" data-go="alloc">Allocation and rules</button></div>
         </div>
         <div class="ov-tile" style="--tg:var(--ct-green)">
-          <span class="kicker">Results</span>
-          <h3>Results for one year</h3>
-          <p class="note">Balance by route, agency, and jurisdiction, plus agreements and time-limited funds. Updates as you change inputs.</p>
-          <div class="go"><button type="button" class="linkbtn" data-go="results">Results</button><button type="button" class="linkbtn" data-go="agreements">Agreements and risk</button></div>
+          <span class="kicker">Results and future</span>
+          <h3>One-year and five-year outlooks</h3>
+          <p class="note">The One-year outlook shows the balance for a selected fiscal year by route, agency, and jurisdiction. The Five-year outlook projects each agency's balance through FY 30-31. The Agreements and risk page lists funding agreements and time-limited funds. All three pages update as users change inputs and assumptions.</p>
+          <div class="go"><button type="button" class="linkbtn" data-go="results">One-year outlook</button><button type="button" class="linkbtn" data-go="outlook">Five-year outlook</button><button type="button" class="linkbtn" data-go="agreements">Agreements and risk</button></div>
         </div>
-        <div class="ov-tile" style="--tg:var(--ct-green)">
-          <span class="kicker">Future</span>
-          <h3>Five-year outlook</h3>
-          <p class="note">FY 26-27 through FY 30-31. Each agency's surplus carries into the next year.</p>
-          <div class="go"><button type="button" class="linkbtn" data-go="outlook">Five-year outlook</button></div>
+        <div class="ov-tile" style="--tg:var(--ct-sage)">
+          <span class="kicker">Reference</span>
+          <h3>Sources and notes</h3>
+          <p class="note">Includes every source file, numbered to match the superscripts throughout the model. The data notes and open questions flag known data issues and items that need partner validation.</p>
+          <div class="go"><button type="button" class="linkbtn" data-go="assumptions">Sources and notes</button></div>
         </div>
-      </div>
-      <div class="card">
-        <h3>Current scenario</h3>
-        <p class="ov-status" id="ovStatus"></p>
-        <p class="source">Sources are numbered on the Assumptions and notes tab. Superscript numbers throughout the model refer to that list.</p>
       </div>
     </div>
   </section>
@@ -442,7 +442,7 @@
       <div class="card">
         <h3>Operating cost by service</h3>
         <p class="note">Vehicle service hours times the operator's cost per hour, or the budgeted amount where no hourly rate applies.</p>
-        <div id="chExSvc" class="chart" role="img" aria-label="Horizontal bars of operating cost by service, colored by agency"></div>
+        <div id="chExSvc" class="chart" role="img" aria-label="Horizontal bars of operating cost by service, grouped by operator"></div>
         <p class="source">Costs tab and VRH Rates tab<sup class="cn"><a data-src="2" title="Example Transit Financial Scenario Workbook.xlsx">2</a></sup>.</p>
       </div>
       <div class="card">
@@ -521,7 +521,7 @@
             <p class="source">Defaults split each service equally among the jurisdictions in the costs tab "Local Route Conditions" column<sup class="cn"><a data-src="2" title="Example Transit Financial Scenario Workbook.xlsx">2</a></sup>. Lake Link is one-third Douglas County and two-thirds City of South Lake Tahoe, following the even zone split in the Operating Stats tab<sup class="cn"><a data-src="1" title="Financial PlanG.xlsx">1</a></sup>. The SSTMA working model averages shares of miles, hours, stops, and ridership<sup class="cn"><a data-src="4" title="SSTMA multijurisdiction transit services working model.xlsx">4</a></sup>.</p>
           </div>
           <div class="card in-sec" id="in-plan">
-            <div class="card-head"><div><h2>Service plan elements</h2><p class="note">Recommended changes from the financial plan, with their annual marginal cost. Check "Include" to add one to the scenario. It then appears as a service you can fund on Allocation and rules.</p></div>
+            <div class="card-head"><div><h2>Service plan elements</h2><p class="note">Recommended changes from the financial plan, with their annual marginal cost. Check "Include" to add one to the scenario. It then appears as a service users can fund on Allocation and rules.</p></div>
               <div class="tools"><calcite-button data-csv="plan" appearance="outline" kind="brand" scale="s" icon-start="file-csv">CSV</calcite-button></div></div>
             <div id="gridPlan" class="grid short"></div>
             <p class="source">T2-4 and T5-7 service plan rows<sup class="cn"><a data-src="1" title="Financial PlanG.xlsx">1</a></sup>.</p>
@@ -599,7 +599,7 @@
         <div class="card-head">
           <div><h3>Rule checks</h3><p class="note">Errors break a fact sheet restriction, a federal share cap, or a match requirement. Warnings flag a use outside a source's stated intent, or one agency's funds applied to another agency's service.</p></div>
           <div class="tools">
-            <input type="search" id="issueFilter" placeholder="Filter checks" aria-label="Filter rule checks" style="font:inherit;font-size:0.9rem;border:1px solid var(--ct-border-strong);border-radius:7px;padding:0.2rem 0.5rem" />
+            <input type="search" id="issueFilter" placeholder="Filter checks" aria-label="Filter rule checks" style="font:inherit;font-size:0.9rem;border:1px solid var(--gray-border-strong);border-radius:7px;padding:0.2rem 0.5rem" />
             <calcite-button data-csv="issues" appearance="outline" kind="brand" scale="s" icon-start="file-csv">CSV</calcite-button>
           </div>
         </div>
@@ -611,6 +611,10 @@
   <!-- ═════════ RESULTS ═════════ -->
   <section class="panel" role="tabpanel" id="panel-results" data-panel="results" aria-labelledby="tab-results" hidden>
     <div class="tabpad">
+      <div class="card">
+        <h3>Current scenario</h3>
+        <p class="ov-status" id="resStatus"></p>
+      </div>
       <div class="card">
         <h2 id="findHead">What this scenario shows</h2>
         <ul class="tight findings note" id="resFindings"></ul>
@@ -684,7 +688,7 @@
     </div>
   </section>
 
-  <!-- ═════════ ASSUMPTIONS AND NOTES ═════════ -->
+  <!-- ═════════ SOURCES AND NOTES ═════════ -->
   <section class="panel" role="tabpanel" id="panel-assumptions" data-panel="assumptions" aria-labelledby="tab-assumptions" hidden>
     <div class="tabpad">
       <div class="card" id="sourcesCard">
@@ -728,7 +732,7 @@
 
 <!-- Confirm -->
 <calcite-dialog id="dlgConfirm" heading="Reset to source data?" modal width-scale="s" scale="s">
-  <p class="note" id="dlgConfirmText">This discards every edit in this scenario and reloads the values from the source files. Export the scenario first if you want to keep it.</p>
+  <p class="note" id="dlgConfirmText">This discards every edit in this scenario and reloads the values from the source files. Export the scenario first to keep it.</p>
   <calcite-button slot="footer-end" id="dlgConfirmCancel" appearance="outline" kind="neutral" scale="s">Cancel</calcite-button>
   <calcite-button slot="footer-end" id="dlgConfirmOk" appearance="solid" kind="danger" scale="s">Reset</calcite-button>
 </calcite-dialog>
@@ -5520,18 +5524,18 @@ window.TRANSIT_MODEL_DATA = {
   }
  ],
  "build": {
-  "id": "20261027a",
-  "builtAt": "2026-10-27T18:10:42",
+  "id": "20261028a",
+  "builtAt": "2026-10-28T22:33:46",
   "workbooks": {
    "scen": {
     "file": "Example Transit Financial Scenario Workbook.xlsx",
     "sha256": "fccb9a121a47afb6",
-    "modified": "2026-10-20T00:14:57"
+    "modified": "2026-10-28T02:17:15"
    },
    "plan": {
     "file": "Financial PlanG.xlsx",
     "sha256": "8e0aa78245720af0",
-    "modified": "2026-10-20T00:14:57"
+    "modified": "2026-10-28T02:17:15"
    }
   },
   "warnings": []
@@ -5566,7 +5570,7 @@ const LEVELS = {
 };
 const LEVEL_ORDER = ['federal', 'state', 'local', 'private', 'fare', 'other'];
 const COST_COLOR = TOK('--c-cost'), PLAN_COLOR = TOK('--c-plan'), POS_COLOR = TOK('--c-pos'), NEG_COLOR = TOK('--c-neg'), UNALLOC_COLOR = TOK('--c-unalloc'), CARRY_COLOR = TOK('--c-carry');
-const INK = TOK('--ct-navy'), GRIDC = TOK('--c-grid'), AXISC = TOK('--c-axis'), MUTED = TOK('--gray-text'), BORDER = TOK('--ct-border-strong'), NODEC = TOK('--c-node');
+const INK = TOK('--ct-teal'), GRIDC = TOK('--c-grid'), AXISC = TOK('--c-axis'), MUTED = TOK('--gray-text'), BORDER = TOK('--gray-border-strong'), NODEC = TOK('--c-node');
 
 const AGENCIES = DATA ? DATA.agencies : [];
 const AG = Object.fromEntries(AGENCIES.map(a => [a.id, a]));
@@ -5620,7 +5624,7 @@ function patchState(p) {
 
 /* ══════════════════════════════════════════════════════════════════════════
    SOURCES AND CITATIONS
-   Source files are numbered once (Assumptions and notes tab). Citation strings from
+   Source files are numbered once (Sources and notes tab). Citation strings from
    the data build name a file, then the tab and cell. On screen the file name becomes
    a superscript number. citeHtml keeps the tab and cell; citeNums returns only the numbers.
    ══════════════════════════════════════════════════════════════════════════ */
@@ -5726,7 +5730,7 @@ function loadState() {
 function save() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); saveOk = true; } catch (e) { saveOk = false; }
   const el = document.getElementById('saveState');
-  if (el) el.textContent = saveOk ? 'Saved in this browser' : 'Not saved: browser storage unavailable. Export to keep your edits.';
+  if (el) el.textContent = saveOk ? 'Saved in this browser' : 'Not saved: browser storage unavailable. Export to keep these edits.';
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -6184,7 +6188,7 @@ function layout(extra) {
   return out;
 }
 const GRID_THEME = (typeof agGrid !== 'undefined') ? agGrid.themeQuartz.withParams({ accentColor: TOK('--ct-blue'), fontFamily: FONT, fontSize: 14, headerFontSize: 13, headerTextColor: MUTED,
-  headerBackgroundColor: TOK('--ct-row-total'), rowHeight: 36, headerHeight: 42, spacing: 6, borderColor: TOK('--gray-border'), foregroundColor: INK }) : null;
+  headerBackgroundColor: TOK('--row-total'), rowHeight: 36, headerHeight: 42, spacing: 6, borderColor: TOK('--gray-border'), foregroundColor: INK }) : null;
 const GRID_EL = {};
 function makeGrid(key, el, opts) {
   const g = GRIDS[key];
@@ -6206,7 +6210,7 @@ const fmt$ = p => (p.value == null || p.value === '' ? '–' : money(p.value));
 const fmtPctCell = p => (p.value == null || p.value === '' ? '' : pct(p.value));
 const numCol = (o) => Object.assign({ type: 'rightAligned', cellClass: 'num', headerClass: 'num', valueFormatter: fmt$, cellDataType: 'number', filter: 'agNumberColumnFilter' }, o);
 const parseNum = v => { if (v == null || v === '') return null; const n = +String(v).replace(/[$,%\s]/g, ''); return isNaN(n) ? null : n; };
-const levelBadge = lv => `<span class="swatch" style="background:${LEVELS[lv] ? LEVELS[lv].color : '#ccc'}"></span>${esc(LEVELS[lv] ? LEVELS[lv].label : lv)}`;
+const levelBadge = lv => `<span class="swatch" style="background:${LEVELS[lv] ? LEVELS[lv].color : TOK('--gray-muted')}"></span>${esc(LEVELS[lv] ? LEVELS[lv].label : lv)}`;
 const sevBadge = s => s === 'error' ? '<span class="badge danger">Error</span>' : s === 'warning' ? '<span class="badge warning">Warning</span>' : '<span class="badge info">Info</span>';
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -6218,7 +6222,7 @@ function renderStatus() {
   $('editCount').textContent = n ? `${n} value${n === 1 ? '' : 's'} changed from source data` : 'No edits from source data';
   const T = R.tot;
   $('issuePillText').textContent = `${T.nErr} rule error${T.nErr === 1 ? '' : 's'} · ${T.nWarn} warning${T.nWarn === 1 ? '' : 's'} (${YEARS[YEAR]})`;
-  $('issuePill').querySelector('.dot').style.background = T.nErr ? 'var(--ct-brick)' : T.nWarn ? 'var(--ct-orange)' : 'var(--ct-forest)';
+  $('issuePill').querySelector('.dot').style.background = T.nErr ? 'var(--ct-red-text)' : T.nWarn ? 'var(--ct-gold)' : 'var(--ct-green-text)';
   const pk = Object.keys(PRESETS).filter(k => S.presets[k]);
   $('presetChips').innerHTML = pk.map(k => `<button type="button" class="chip" data-preset="${k}" title="Preset applied. Open Inputs and assumptions to change it.">Preset: ${esc(PRESETS[k].name)}</button>`).join('');
   $('presetChips').querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { goTab('inputs'); setTimeout(() => $('in-presets').scrollIntoView({ behavior: 'smooth' }), 120); }));
@@ -6253,12 +6257,6 @@ function onTabChange(tab) {
 
 /* ── Overview ── */
 function renderOverview() {
-  const n = Object.keys(S.edited).length, T = R.tot, P = presetNames();
-  const errs = SERIES[0].tot.nErr;
-  $('ovStatus').innerHTML = `<strong>${esc(S.name || 'Untitled scenario')}</strong>. ` +
-    (n ? `${n} value${n === 1 ? '' : 's'} changed from the source data` : 'No values changed from the source data') +
-    (P.length ? `, with ${P.length === 1 ? 'one preset' : P.length + ' presets'} applied (${esc(listWords(P))})` : '') + '. ' +
-    `FY 26-27 has ${errs} rule error${errs === 1 ? '' : 's'}. ` + (() => { const d = AGENCIES.filter(a => SERIES[4].agency[a.id].balance < -1); return d.length ? `By ${YEARS[4]}, ${listWords(d.map(a => `${a.short} (${moneyShort(SERIES[4].agency[a.id].balance)})`))} ${d.length === 1 ? 'runs a deficit' : 'run deficits'}.` : `No agency runs a deficit through ${YEARS[4]}.`; })();
   document.querySelectorAll('#panel-overview [data-go]').forEach(b => { if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => goTab(b.dataset.go)); } });
 }
 
@@ -6266,7 +6264,7 @@ function renderOverview() {
 let SRC_FILTER = 'all';
 function renderExisting() {
   const R0 = RB_SERIES[0], T = R0.tot;
-  $('exAsOf').innerHTML = `FY 26-27 budgets from the financial plan${supHtml([SRC_NUM.plan])} and costs from the scenario workbook${supHtml([SRC_NUM.scen])}. This page always shows the source data. Your edits change the Results and Five-year outlook tabs. ` +
+  $('exAsOf').innerHTML = `FY 26-27 budgets from the financial plan${supHtml([SRC_NUM.plan])} and costs from the scenario workbook${supHtml([SRC_NUM.scen])}. This page always shows the source data. User edits change the One-year outlook and Five-year outlook tabs. ` +
     `Region: ${moneyShort(T.cost)} operating cost across ${T.nSvc} services, and ${moneyShort(T.revTotal)} in operating revenue from ${T.nLines} sources. ` +
     (T.fedExcess > 1 ? `Of that revenue, ${moneyShort(T.fedExcess)} is federal money above the federal share cap with no eligible operating use.` : '');
   chartAgencyInto('chExAgency', R0, false);
@@ -6274,16 +6272,19 @@ function renderExisting() {
   const prior = zeroLevels(); DEF.lines.filter(l => l.enabled && l.status !== 'capital' && !l.matchOnly && l.prior).forEach(l => { prior[l.level] += +l.prior || 0; });
   const lv = LEVEL_ORDER.filter(k => prior[k] || T.rev[k]);
   Plotly.react('chExLevels', [
-    { type: 'bar', name: 'FY 25-26 (fact sheets)', x: lv.map(k => LEVELS[k].label), y: lv.map(k => prior[k]), marker: { color: TOK('--ct-warm') }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'FY 25-26 (fact sheets)', x: lv.map(k => LEVELS[k].label), y: lv.map(k => prior[k]), marker: { color: TOK('--gray-muted') }, hovertemplate: '%{y:$,.0f}' },
     { type: 'bar', name: 'FY 26-27 (budget)', x: lv.map(k => LEVELS[k].label), y: lv.map(k => T.rev[k]), marker: { color: lv.map(k => LEVELS[k].color) }, hovertemplate: '%{y:$,.0f}' }
   ], layout({ barmode: 'group', height: 330, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s' }, bargap: 0.25, bargroupgap: 0.06, showlegend: true }), PCFG);
   chartSankey('chSankey', R0);
-  // cost by service, colored by agency
-  const AGC = { TTD: TOK('--ct-blue'), SSTMA: TOK('--ct-orange'), TART: TOK('--c-state'), TNTTMA: TOK('--ct-navy'), REGION: TOK('--ct-warm') };
-  const svs = Object.values(R0.svc).filter(s => s.cost > 0).sort((a, b) => b.cost - a.cost);
-  const ags = AGENCIES.filter(a => svs.some(s => s.s.agency === a.id));
-  Plotly.react('chExSvc', ags.map(a => ({ type: 'bar', orientation: 'h', name: a.short, y: svs.filter(s => s.s.agency === a.id).map(s => s.s.short), x: svs.filter(s => s.s.agency === a.id).map(s => s.cost), marker: { color: AGC[a.id] || NODEC }, hovertemplate: '%{y}: %{x:$,.0f}<extra>' + a.short + '</extra>' })),
-    layout({ height: 120 + svs.length * 26, barmode: 'overlay', margin: { t: 40, r: 16, b: 40, l: 100 }, legend: { orientation: 'h', x: 0, y: 1.02, yanchor: 'bottom' }, xaxis: { tickprefix: '$', tickformat: '~s' }, yaxis: { type: 'category', categoryorder: 'array', categoryarray: svs.map(s => s.s.short).reverse() } }), PCFG);
+  // cost by service, grouped by operator (largest total first), all bars deep teal
+  const svs = Object.values(R0.svc).filter(s => s.cost > 0);
+  const agTot = {}; svs.forEach(s => { agTot[s.s.agency] = (agTot[s.s.agency] || 0) + s.cost; });
+  const ags = AGENCIES.filter(a => agTot[a.id]).sort((a, b) => agTot[b.id] - agTot[a.id]);
+  const svRows = ags.flatMap(a => svs.filter(s => s.s.agency === a.id).sort((x, y) => y.cost - x.cost).map(s => ({ g: a.short, s }))).reverse(); // first row plots at the bottom
+  Plotly.react('chExSvc', [{ type: 'bar', orientation: 'h', y: [svRows.map(r => r.g), svRows.map(r => r.s.s.short)], x: svRows.map(r => r.s.cost),
+      marker: { color: TOK('--ct-teal') }, customdata: svRows.map(r => [r.g, r.s.s.short]), hovertemplate: '%{customdata[1]} (%{customdata[0]}): %{x:$,.0f}<extra></extra>' }],
+    layout({ height: 80 + svRows.length * 26, showlegend: false, margin: { t: 10, r: 16, b: 40, l: 60 }, xaxis: { tickprefix: '$', tickformat: '~s' },
+      yaxis: { type: 'multicategory', dividercolor: BORDER, dividerwidth: 1 } }), PCFG);
   // inventory cards
   const counts = {}; DEF.lines.forEach(l => counts[l.level] = (counts[l.level] || 0) + 1);
   $('srcFilters').innerHTML = [`<button type="button" class="pill" aria-pressed="${SRC_FILTER === 'all'}" data-f="all">All <span class="n">${DEF.lines.length}</span></button>`]
@@ -6300,7 +6301,7 @@ function renderFindings() {
   const agTxt = shown.map(a => { const b = R.agency[a.id].balance; return `${a.short} ${b >= 0 ? 'surplus of' : 'deficit of'} ${moneyShort(Math.abs(b))}`; });
   out.push(`<strong>Agency ending balances:</strong> ${listWords(agTxt)}. The region-wide total of ${T.balance < 0 ? MINUS : ''}${moneyShort(Math.abs(T.balance))} nets one agency's surplus against another's deficit. Funds do not move between agencies without an agreement.` + (T.carryIn > 1 ? ` These include ${moneyShort(T.carryIn)} carried from the prior year.` : ''));
   const exc = shown.filter(a => R.agency[a.id].fedExcess > 1);
-  if (exc.length) out.push(`<strong>Federal funds above the share cap:</strong> ${listWords(exc.map(a => `${a.short} ${moneyShort(R.agency[a.id].fedExcess)}`))}. Federal operating funds can pay only their share of net cost, so this money has no eligible operating use and is ${S.assume.fedExcess === 'count' ? 'counted in the balances by your assumption' : 'left out of the balances'}.`);
+  if (exc.length) out.push(`<strong>Federal funds above the share cap:</strong> ${listWords(exc.map(a => `${a.short} ${moneyShort(R.agency[a.id].fedExcess)}`))}. Federal operating funds can pay only their share of net cost, so this money has no eligible operating use and is ${S.assume.fedExcess === 'count' ? 'counted in the balances under the user assumption on Inputs and assumptions' : 'left out of the balances'}.`);
   const otDep = shown.filter(a => { const A = R.agency[a.id]; return A.balance > 1 && (A.commit.onetime || 0) > 1; });
   if (otDep.length) out.push(`<strong>Surplus built on one-time money:</strong> ${listWords(otDep.map(a => { const A = R.agency[a.id]; const top = Object.values(R.line).filter(L => L.l.recipient === a.id && L.l.commitment === 'onetime' && L.amount > 0).sort((x, y) => y.amount - x.amount).slice(0, 2).map(L => esc(L.l.name)); return `${a.short}'s ${moneyShort(A.balance)} surplus includes ${moneyShort(A.commit.onetime)} in one-time or time-limited funds (largest: ${listWords(top)})`; }))}. These do not recur.`);
   const last = SERIES[SERIES.length - 1];
@@ -6420,7 +6421,7 @@ function renderCosts() {
   ];
   const rows = S.services.filter(s => !s.plan);
   makeGrid('services', $('gridServices'), { columnDefs: cols, rowData: rows, getRowId: p => p.data.id, rowClassRules: { 'row-off': p => !p.node.rowPinned && !p.data.include },
-    onCellValueChanged: () => setTimeout(refresh, 0), pinnedBottomRowData: [costTotalRow()], getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--ct-row-total') } : null });
+    onCellValueChanged: () => setTimeout(refresh, 0), pinnedBottomRowData: [costTotalRow()], getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--row-total') } : null });
   // Jurisdictions
   const jcols = [{ field: 'name', headerName: 'Service', pinned: 'left', minWidth: 200 }];
   for (const j of JURIS) jcols.push(numCol({ colId: j.id, headerName: j.short, headerTooltip: `${j.name} (${j.state})`, width: 96, editable: true, cellDataType: 'number', valueGetter: p => { const v = +(p.data.juris || {})[j.id] || 0; return v ? +(v * 100).toFixed(2) : null; },
@@ -6692,7 +6693,16 @@ function renderAlloc() {
 
 /* ── Results ── */
 let RES_VIEW = 'route';
+function renderScenarioStatus() {
+  const n = Object.keys(S.edited).length, P = presetNames();
+  const errs = SERIES[YEAR].tot.nErr, fy = YEARS[YEAR];
+  $('resStatus').innerHTML = `<strong>${esc(S.name || 'Untitled scenario')}</strong>. ` +
+    (n ? `${n} value${n === 1 ? '' : 's'} changed from the source data` : 'No values changed from the source data') +
+    (P.length ? `, with ${P.length === 1 ? 'one preset' : P.length + ' presets'} applied (${esc(listWords(P))})` : '') + '. ' +
+    `${fy} has ${errs} rule error${errs === 1 ? '' : 's'}. ` + (() => { const d = AGENCIES.filter(a => SERIES[YEAR].agency[a.id].balance < -1); return d.length ? `In ${fy}, ${listWords(d.map(a => `${a.short} (${moneyShort(SERIES[YEAR].agency[a.id].balance)})`))} ${d.length === 1 ? 'runs a deficit' : 'run deficits'}.` : `No agency runs a deficit in ${fy}.`; })();
+}
 function renderResults() {
+  renderScenarioStatus();
   renderFindings();
   if (RES_VIEW === 'route') return resultsRoute();
   if (RES_VIEW === 'agency') return resultsAgency();
@@ -6724,7 +6734,7 @@ function resultsRoute() {
   ];
   const tot = { id: '_t', name: 'Total', agency: '', cost: sum(rows.map(r => r.cost)), total: sum(rows.map(r => r.total)), gap: sum(rows.map(r => r.gap)), req: sum(rows.map(r => r.req)), avail: sum(rows.map(r => r.avail)), err: 0, warn: 0 };
   LEVEL_ORDER.forEach(k => tot[k] = sum(rows.map(r => r[k])));
-  makeGrid('results', $('gridResults'), { columnDefs: cols, rowData: rows, getRowId: p => p.data.id, pinnedBottomRowData: [tot], singleClickEdit: false, getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--ct-row-total') } : null,
+  makeGrid('results', $('gridResults'), { columnDefs: cols, rowData: rows, getRowId: p => p.data.id, pinnedBottomRowData: [tot], singleClickEdit: false, getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--row-total') } : null,
     onRowClicked: e => { if (!e.node.rowPinned) openSvcDetail(e.data.id); } });
 }
 function resultsAgency() {
@@ -6748,7 +6758,7 @@ function resultsAgency() {
   ];
   const tot = { id: '_t', name: 'Region', cost: R.tot.cost, revTotal: R.tot.revTotal, balance: R.tot.balance, fedExcess: R.tot.fedExcess, carryIn: R.tot.carryIn, unallocated: R.tot.unallocated, routeGap: sum(rows.map(r => r.routeGap)), risk: R.tot.risk, nSvc: R.tot.nSvc };
   LEVEL_ORDER.forEach(k => tot[k] = R.tot.rev[k]);
-  makeGrid('results', $('gridResults'), { columnDefs: cols, rowData: rows, getRowId: p => p.data.id, pinnedBottomRowData: [tot], singleClickEdit: false, getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--ct-row-total') } : null });
+  makeGrid('results', $('gridResults'), { columnDefs: cols, rowData: rows, getRowId: p => p.data.id, pinnedBottomRowData: [tot], singleClickEdit: false, getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--row-total') } : null });
 }
 function resultsJuris() {
   $('resTitle').textContent = `Results by jurisdiction, ${YEARS[YEAR]}`;
@@ -6849,7 +6859,7 @@ function renderProjection() {
   ];
   makeGrid('proj', $('gridProjection'), { columnDefs: pcols, rowData: S.lines.filter(l => l.status !== 'capital' && (YEARS.some((_, y) => lineAmount(S, l, y) > 0) || isEdited('line', l.id, 'amount'))), getRowId: p => p.data.id, onCellValueChanged: () => setTimeout(refresh, 0),
     pinnedBottomRowData: [Object.assign({ id: '_t', name: 'Total', recipient: '', level: '' }, Object.fromEntries(YEARS.map((_, y) => ['_y' + y, SERIES[y].tot.revTotal])))],
-    getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--ct-row-total') } : null });
+    getRowStyle: p => p.node.rowPinned ? { fontWeight: 700, background: TOK('--row-total') } : null });
 }
 
 /* ── Agreements ── */
@@ -6914,7 +6924,7 @@ function renderChanges() {
     { field: 't', headerName: 'When', width: 150, valueFormatter: p => new Date(p.value).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) },
     { field: 'name', headerName: 'Item', minWidth: 180, flex: 1.2, tooltipField: 'name' }, { field: 'field', headerName: 'Field', width: 150 },
     { field: 'from', headerName: 'From', minWidth: 110, flex: 1, valueFormatter: p => show(p.value), tooltipValueGetter: p => show(p.value) },
-    { field: 'to', headerName: 'To', minWidth: 110, flex: 1, valueFormatter: p => show(p.value), tooltipValueGetter: p => show(p.value) }], overlayNoRowsTemplate: '<span class="note">No changes yet. Edits you make anywhere in the model are listed here.</span>' });
+    { field: 'to', headerName: 'To', minWidth: 110, flex: 1, valueFormatter: p => show(p.value), tooltipValueGetter: p => show(p.value) }], overlayNoRowsTemplate: '<span class="note">No changes yet. Edits users make anywhere in the model are listed here.</span>' });
 }
 function renderAssumptions() {
   // data build
@@ -6943,7 +6953,7 @@ function renderLive() {
   const n = Object.keys(S.edited).length;
   const cell = (y) => { const a = deficitList(SERIES[y]), b = deficitList(RB_SERIES[y]); return `<span>${YEARS[y]} agency deficits <b>${a}</b>${a !== b ? ` <span class="was">(source data ${b})</span>` : ''}</span>`; };
   const e = SERIES[0].tot.nErr, eb = RB_SERIES[0].tot.nErr;
-  $('inLive').innerHTML = `<span><strong>Effect of your inputs</strong> · ${n} value${n === 1 ? '' : 's'} changed</span>` + cell(0) + cell(4) +
+  $('inLive').innerHTML = `<span><strong>Effect of user inputs</strong> · ${n} value${n === 1 ? '' : 's'} changed</span>` + cell(0) + cell(4) +
     `<span>FY 26-27 rule errors <b>${e}</b>${e !== eb ? ` <span class="was">(source data ${eb})</span>` : ''}</span>`;
 }
 function renderPresets() {
