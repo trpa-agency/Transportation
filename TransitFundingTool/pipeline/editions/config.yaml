@@ -1,0 +1,23 @@
+# Public and full editions of the Regional Transit Funding Model.
+# Paths are relative to this file (pipeline/editions).
+# The full edition is the model page with the Existing funding conditions wording below. Password protection is not set up yet.
+
+source_page: ../../model/transit-funding-model.html   # the vetted page; run the main build and copy it to model/ first
+output_folder: dist
+
+public:
+  file: transit-funding-public.html
+  # The public page is the Existing funding conditions page alone, with a link to the full model in the header.
+  full_link_text: Open the full model
+  status_label: DRAFT   # replaces the Beta chip in the header
+full:
+  file: transit-funding-full.html
+
+# Existing funding conditions, on both the public and the full page.
+existing_page:
+  heading: A Snapshot of Today's Transit Funding Landscape   # replaces "Existing funding conditions, FY 26-27" and its Source data label
+  # replaces the generated note under the heading (sources, region totals, and federal funds above the share cap)
+  subtext: >-
+    Transit funding in the Tahoe Region is complicated, with about 60 revenue sources and four transit providers.
+    This page shows an overview of how transit is currently paid for, by operator, by route, and by funding source.
+    This page is a draft, and inputs require further stakeholder validation.

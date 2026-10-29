@@ -1,6 +1,6 @@
 # Model logic
 
-How the model page calculates, as of October 27, 2026. The code is the JavaScript at the bottom of `pipeline/template/transit-funding-model.template.html`. Section numbers in the code comments match the headings in parentheses below.
+How the model page calculates, as of October 29, 2026. The code is the JavaScript at the bottom of `pipeline/template/transit-funding-model.template.html`. Section numbers in the code comments match the headings in parentheses below.
 
 ## Page and libraries
 
@@ -13,12 +13,12 @@ How the model page calculates, as of October 27, 2026. The code is the JavaScrip
 
 | Group | Tab | Changes with inputs? |
 | --- | --- | --- |
-| | Overview | Status line only |
+| | Overview | No. Navigation and a draft caveat |
 | Today | Existing funding conditions | No. Always the source data, FY 26-27 |
-| Inputs you can change | Inputs and assumptions | These are the inputs |
-| Inputs you can change | Allocation and rules | Shares are inputs; rule checks update |
-| Results and future | Results, Five-year outlook, Agreements and risk | Yes |
-| Reference | Assumptions and notes | No (sources, data notes, build) |
+| Inputs users can change | Inputs and assumptions | These are the inputs |
+| Inputs users can change | Allocation and rules | Shares are inputs; rule checks update |
+| Results and future | One-year outlook, Five-year outlook, Agreements and risk | Yes |
+| Reference | Sources and notes | No (sources, data notes, build) |
 
 ## Services and cost (engine, section 5)
 
@@ -35,7 +35,7 @@ The FY 26-27 amount comes from the financial plan, or from the FTA 5307 split fo
 
 - **Shares:** each source is split across services by shares. Manual shares come from Revenue %s or from the user. An automatic split divides the source by service hours, cost, ridership, service miles, or equally among the services its rules allow.
 - **Unallocated money:** whatever is not applied stays with the receiving agency.
-- **Fixed across years:** shares do not change by year. Check later years with the Results year selector.
+- **Fixed across years:** shares do not change by year. Check later years with the Fiscal year selector.
 - **Suggest allocation:** a rules-based default, not an optimizer. Earmarked sources and fares go first. Federal funds follow, up to each route's share cap. Flexible funds then go to each route's remaining cost, most restricted first. Funds never move to another agency's services.
 
 ## Rule checks
@@ -93,7 +93,7 @@ Each preset lists the values it sets. Checking it applies them as logged edits. 
 
 ## Citations
 
-- **Numbered sources:** source files are numbered once, on Assumptions and notes. 1 to 8 are the workbooks and fact sheets in a fixed order; 9 is TRPA direction of Oct. 23, 2026.
+- **Numbered sources:** source files are numbered once, on Sources and notes. 1 to 8 are the workbooks and fact sheets in a fixed order; 9 is TRPA direction of Oct. 23, 2026.
 - **Seed text stays verbatim:** cite strings in the seed keep the full file name, tab, and cell. The page swaps the file name for a superscript number when it draws them: `citeHtml`, `citeText`, and `textHtml`.
 - **TRPA direction:** write it in seed text as "per TRPA (Oct. 23, 2026)" or "(TRPA, Oct. 23, 2026)" and it becomes superscript 9.
 
