@@ -1,6 +1,6 @@
 # Tahoe Transit Funding Model: Project Context Handoff
 
-As of October 27, 2026. Prepared from the project files, the project chats (October 20 to 27), and the project memory. New readers: start with `CLAUDE.md` at the top of this folder.
+As of October 29, 2026. Prepared from the project files, the project chats (October 20 to 29), and the project memory. New readers: start with `CLAUDE.md` at the top of this folder.
 
 Confidence tags: [Certain] means checked against a source cell or file. [Likely] means strong evidence. [Guessing] means a gap was filled.
 
@@ -118,6 +118,17 @@ TTD's FY 26-27 surplus fell from $1,580,018 to $442,655 because $1,137,363 of it
 
 The October 22 pipeline zip was never saved to the repo. A new pipeline was written in `pipeline/`. It reproduces the October 27 page field for field. The one change: TART 5307 now reads Table A2 G59, which TRPA chose on October 23. A test with rows inserted in all eight source tabs still found every value. The October 23 decisions are recorded as `keep` entries in the seed, each with a reason. [Certain]
 
+### October 28 and 29: Look, wording, and a public page
+
+The project changed hands on October 27. These changes followed:
+
+- **Palette.** Colors follow the Connecting Tahoe brand in the TRPA design system: blue #2B94D1, deep teal #044554, red #BA5B53, sage #54746A, green #98CA4D, and gold #E4CB3F. Text uses the darker text steps.
+- **Chart colors.** Each funding level keeps one color across charts: federal blue, state green, local public red, private gold, fares sage, and other gray. Revenue by funding level shows FY 25-26 as lighter bars of the same colors. Commitment basis has its own scale, with teal and sage for firm sources and reds for at-risk sources. Ending balance bars are deep teal for surpluses and TRPA brick #9C3E27 for deficits. Operating cost by service is all deep teal, grouped by operator.
+- **Overview.** New lead text, a draft caveat, and four boxes: Today, Inputs users can change, Results and future, and Reference. The Current scenario summary moved to the top of the One-year outlook and follows the selected year.
+- **Names.** Results is now One-year outlook. Assumptions and notes is now Sources and notes. The Results year selector is now Fiscal year. Interface text says "users" instead of "you."
+- **Public page.** `pipeline/editions/` builds two pages from `model/`. The public page shows only Existing funding conditions, retitled and marked DRAFT, with a link to the full model. The full page is a copy of the model page. Password protection is not set up. The repo is public, so both pages and the workbooks can be downloaded from GitHub. [Certain]
+- **Cost per rider.** Left off. Same-year route costs exist only for six TTD services. See next steps 12 and 13. [Certain]
+
 ## Status against the RFP
 
 | Item | Status | Evidence |
@@ -142,6 +153,7 @@ The model page is built by `pipeline/` (rebuilt October 27, 2026). The workbooks
 - `pipeline/etl/config.yaml` holds the workbook folder, file names, and the costs tab and Revenue %s layouts.
 - `pipeline/template/transit-funding-model.template.html` is the page without data. Change the page here, not in `model/`.
 - The build writes `pipeline/data/` (data and build report) and `pipeline/dist/transit-funding-model.html`.
+- `pipeline/editions/` builds the public and full pages from `model/`. See `pipeline/editions/README.md`.
 
 To update after a workbook change:
 
@@ -149,6 +161,7 @@ To update after a workbook change:
 2. Run `pipeline/build_data.bat`, or `propy etl/build_model_data.py` from `pipeline/`.
 3. Read `pipeline/data/build-report.md`. It lists warnings, workbook values that changed, and seed values held over the workbook.
 4. Copy `pipeline/dist/transit-funding-model.html` to `model/`, then upload it to the Project.
+5. Run `pipeline/build_editions.bat` to rebuild the public and full pages.
 
 Validation on October 27 [Certain]:
 
@@ -185,6 +198,8 @@ Still open for partners: actual agreements (Task 4c), revenue miles by route spl
 9. Build per-grant, per-recipient match testing in the engine, as TRPA chose on October 23.
 10. Get TNT/TMA's FY 26-27 operating costs. The costs tab estimates leave TNT/TMA revenue at 2.3 times cost.
 11. Ask TTD or the consultant whether Table A1's 35,680 TTD service hours include Route 30, which is also added as its own line. [Guessing]
+12. Get FY 25-26 route operating costs from TART, SSTMA, and TNT/TMA, plus ridership for the TNT/TMA services, so cost per rider can be shown with cost and ridership from the same year. The workbooks have same-year route costs only for six TTD services (FY 24-25, Per Route Model row 1). The TART and Lake Link columns in that row repeat the TTD values. Cost per rider is left off the model until this data arrives (TRPA direction, Oct. 29, 2026). [Certain]
+13. Ask TTD or the consultant to reconcile TTD's FY 24-25 route costs with its hourly rate. The Per Route Model FY 24-25 costs imply $191 to $214 per service hour. The VRH Rates tab says the FY 26-27 rate of $214.66 is the FY 24-25 actual plus 4 percent a year, which implies about $198. [Certain]
 
 ## Links
 
@@ -207,5 +222,5 @@ The three source chats are in Andy's account and are not visible to others:
 - One idea per sentence. No em dashes. Oxford commas. No filler.
 - Every figure should cite its workbook, tab, and cell. In the page, file names become superscript numbers keyed to the numbered source list.
 - Cite TRPA decisions as TRPA direction (Oct. 23, 2026), never a staff member by name.
-- The model page uses the Connecting Tahoe palette. Other agency material uses the TRPA brand (trpa-claude-skills repo).
+- The model page uses the Connecting Tahoe palette. Each funding level keeps one color in every chart. Other agency material uses the TRPA brand (trpa-claude-skills repo).
 - Code runs in the arcgispro-py3 environment. Settings live in config files. No secrets in code.

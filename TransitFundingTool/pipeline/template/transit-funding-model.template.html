@@ -38,9 +38,10 @@
 
     /* chart series */
     --c-federal:#2B94D1; --c-state:#98CA4D; --c-local:#BA5B53; --c-private:#E4CB3F; --c-fare:#54746A; --c-other:#C5CCD6;
-    --c-carry:#8A93A3; --c-cost:#044554; --c-plan:#044554; --c-pos:#044554; --c-neg:#BA5B53; --c-unalloc:#807223;
-    --c-commit-formula:#044554; --c-commit-agreement:#2B94D1; --c-commit-budget:#54746A; --c-commit-earned:#C5CCD6;
-    --c-commit-onetime:#E4CB3F; --c-commit-none:#BA5B53; --c-commit-proposed:#8A93A3;
+    --c-carry:#8A93A3; --c-cost:#044554; --c-plan:#044554; --c-pos:#044554; --c-neg:#9C3E27; --c-unalloc:#807223;
+    /* commitment basis: its own scale, firm (teal and sage) to at risk (reds), so it never reuses the funding level colors */
+    --c-commit-formula:#044554; --c-commit-agreement:#54746A; --c-commit-budget:#82A2AA; --c-commit-earned:#C5CCD6;   /* budget: derived, deep teal at 50 percent on white */
+    --c-commit-onetime:#BA5B53; --c-commit-none:#82403A; --c-commit-proposed:#DCADA9;  /* none and proposed: derived, darker and lighter steps of red */
     --c-grid:#E8EDF3; --c-axis:#E2E6EC; --c-node:#8A93A3;
 
     /* semantic tokens */
@@ -428,7 +429,7 @@
         </div>
         <div class="card">
           <h3>Revenue by funding level</h3>
-          <p class="note">FY 25-26 amounts budgeted for operations in the fact sheets, against the FY 26-27 budgets.</p>
+          <p class="note">FY 25-26 amounts budgeted for operations in the fact sheets, against the FY 26-27 budgets. Lighter bars show FY 25-26 fact sheet amounts. Solid bars show FY 26-27 budgets.</p>
           <div id="chExLevels" class="chart" role="img" aria-label="Grouped bars of revenue by funding level for FY 25-26 and FY 26-27"></div>
           <p class="source">FY 25-26 from the fact sheets<sup class="cn"><a data-src="5" title="Federal Funds – FINAL.pdf">5</a>,<a data-src="6" title="State Funds – FINAL.pdf">6</a>,<a data-src="7" title="Local Funds 1 of 2 – FINAL.pdf">7</a>,<a data-src="8" title="Local Funds 2 of 2 – FINAL.pdf">8</a></sup>. FY 26-27 from the financial plan<sup class="cn"><a data-src="1" title="Financial PlanG.xlsx">1</a></sup>. Sources without a fact sheet amount count as zero in FY 25-26.</p>
         </div>
@@ -1469,9 +1470,9 @@ function renderExisting() {
   const prior = zeroLevels(); DEF.lines.filter(l => l.enabled && l.status !== 'capital' && !l.matchOnly && l.prior).forEach(l => { prior[l.level] += +l.prior || 0; });
   const lv = LEVEL_ORDER.filter(k => prior[k] || T.rev[k]);
   Plotly.react('chExLevels', [
-    { type: 'bar', name: 'FY 25-26 (fact sheets)', x: lv.map(k => LEVELS[k].label), y: lv.map(k => prior[k]), marker: { color: TOK('--gray-muted') }, hovertemplate: '%{y:$,.0f}' },
-    { type: 'bar', name: 'FY 26-27 (budget)', x: lv.map(k => LEVELS[k].label), y: lv.map(k => T.rev[k]), marker: { color: lv.map(k => LEVELS[k].color) }, hovertemplate: '%{y:$,.0f}' }
-  ], layout({ barmode: 'group', height: 330, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s' }, bargap: 0.25, bargroupgap: 0.06, showlegend: true }), PCFG);
+    { type: 'bar', name: 'FY 25-26 (fact sheets)', x: lv.map(k => LEVELS[k].label), y: lv.map(k => prior[k]), marker: { color: lv.map(k => hexA(LEVELS[k].color, 0.4)), line: { color: lv.map(k => LEVELS[k].color), width: 1.5 } }, hovertemplate: '%{y:$,.0f}' },
+    { type: 'bar', name: 'FY 26-27 (budget)', x: lv.map(k => LEVELS[k].label), y: lv.map(k => T.rev[k]), marker: { color: lv.map(k => LEVELS[k].color), line: { color: lv.map(k => LEVELS[k].color), width: 1.5 } }, hovertemplate: '%{y:$,.0f}' }
+  ], layout({ barmode: 'group', height: 330, hovermode: 'x unified', xaxis: { type: 'category' }, yaxis: { tickprefix: '$', tickformat: '~s' }, bargap: 0.25, bargroupgap: 0.06, showlegend: false }), PCFG);
   chartSankey('chSankey', R0);
   // cost by service, grouped by operator (largest total first), all bars deep teal
   const svs = Object.values(R0.svc).filter(s => s.cost > 0);

@@ -25,6 +25,7 @@ Older working papers in `docs/` are dated records. Don't update them to match la
 | `model/transit-funding-model.html` | The current model page. Built by the pipeline; never edit it by hand |
 | `model/archive/` | Earlier versions of the page |
 | `pipeline/` | Build: `etl/build_model_data.py`, `etl/config.yaml`, `etl/seed/*.yaml`, and the page template |
+| `pipeline/editions/` | Builds the public page (Existing funding conditions only) and the full page from `model/` |
 | `source-data/workbooks/` | Copies of the four source workbooks. The live copies are in the TRPA SharePoint folder "4. Funding Implementation Memo" |
 | `source-data/fact-sheets/` | Federal, State, and Local Funds fact sheets (FINAL) |
 | `docs/` | Context, decisions, and working papers |
@@ -45,7 +46,7 @@ Older working papers in `docs/` are dated records. Don't update them to match la
 
 - **Style:** Microsoft Writing Style Guide. Plain language for committee, board, and leadership audiences, including elected officials.
 - **Sentences:** one idea per sentence. No em dashes. Oxford commas. No filler or hype. Don't tack a justifying clause onto a sentence after a comma.
-- **Citations:** cite TRPA decisions as TRPA direction (Oct. 23, 2026). Never cite a staff member by name. In the page, sources are numbered on the Assumptions and notes tab and cited with superscripts. Don't repeat file names in the page.
+- **Citations:** cite TRPA decisions as TRPA direction (Oct. 23, 2026). Never cite a staff member by name. In the page, sources are numbered on the Sources and notes tab and cited with superscripts. Don't repeat file names in the page.
 - **Figures:** every figure traces to a workbook tab and cell. That detail lives in the seed and in each source's Details dialog.
 - **Confidence tags** in analysis and handoff notes: [Certain] means checked against a source; [Likely] means strong evidence; [Guessing] means a gap was filled.
 - **Palette:** the page uses the Connecting Tahoe palette (token block in the template head). For other TRPA work, use the trpa-claude-skills repo (github.com/trpa-agency/trpa-claude-skills): `trpa-brand`, `trpa-dashboard-stack`, and `trpa-dashboard-qa`. The page follows the dashboard stack: Plotly, Calcite, and AG Grid.
