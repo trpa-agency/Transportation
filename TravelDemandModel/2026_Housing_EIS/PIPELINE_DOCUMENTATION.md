@@ -195,7 +195,8 @@ python run_scenarios.py ../configs_final_test
     │   └── processed_data/
     │       ├── base_data/                     ← Phase 2 outputs (shared across scenarios)
     │       │   ├── base_parcel_data.parquet   ← 3.3 MB attributed parcel data
-    │       │   ├── attributed_parcels.geoparquet ← 2.8 MB with geometry
+    │       │   ├── attributed_parcels.geoparquet ← 2.8 MB (attributes only — no geometry despite the name)
+    │       │   ├── parcel_geometry.gdb        ← Static APN + polygon snapshot for scenario layers
     │       │   ├── persons_per_occ_unit_2035.csv
     │       │   └── persons_per_occ_unit_2050.csv
     │       │
@@ -203,7 +204,7 @@ python run_scenarios.py ../configs_final_test
     │           ├── {scenario_name}/2035/
     │           ├── {scenario_name}/2050/
     │           ├── all_scenarios_parcels.parquet
-    │           ├── all_scenarios_parcels.shp
+    │           ├── parcels.gdb/               ← {scenario_name}_parcels feature class per scenario
     │           └── configs/
     │
     ├── Alternative_1/                         ← Scenario working directories
@@ -315,7 +316,8 @@ This notebook reads the base year parcel GDB, attaches forecast-relevant attribu
 | File | Location | Description |
 |------|----------|-------------|
 | `base_parcel_data.parquet` | `Forecast/data/processed_data/base_data/` | 3.3 MB — all parcel attributes in columnar format |
-| `attributed_parcels.geoparquet` | `Forecast/data/processed_data/base_data/` | 2.8 MB — same with geometry |
+| `attributed_parcels.geoparquet` | `Forecast/data/processed_data/base_data/` | 2.8 MB — same attributes; despite the name it has no geometry |
+| `parcel_geometry.gdb/parcel_geometry` | `Forecast/data/processed_data/base_data/` | Static APN + polygon snapshot (one per APN) built once by `scripts/make_parcel_geometry_snapshot.py` from `Base/.../parcels_base_year.gdb`; joined by APN to export scenario parcel layers |
 | `persons_per_occ_unit_2035.csv` | `Forecast/data/processed_data/base_data/` | Initial PPU lookup by TAZ, 2035 |
 | `persons_per_occ_unit_2050.csv` | `Forecast/data/processed_data/base_data/` | Initial PPU lookup by TAZ, 2050 |
 
@@ -378,7 +380,7 @@ flowchart TD
 
     LOOP --> CONCAT
     CONCAT["Concatenate all scenario parcel DataFrames\nSCENARIO column added"] --> WRITE
-    WRITE["Write batch outputs\nall_scenarios_parcels.parquet\nall_scenarios_parcels.shp\nconfigs/ (JSON copies)"]
+    WRITE["Write batch outputs\nall_scenarios_parcels.parquet\nparcels.gdb (one FC per scenario)\nconfigs/ (JSON copies)"]
 ```
 
 ### Per-Scenario Output Files
@@ -397,7 +399,7 @@ For each scenario and each horizon year (2035 and 2050):
 | File | Description |
 |------|-------------|
 | `all_scenarios_parcels.parquet` | All scenarios concatenated at parcel level; includes `SCENARIO` column |
-| `all_scenarios_parcels.shp` | Shapefile version of the above for GIS use |
+| `parcels.gdb/{scenario_name}_parcels` | One fully attributed parcel feature class per scenario (same fields as the parquet, full field names), geometry joined by APN from `parcel_geometry.gdb`. `Development_Year` marks 2035 vs 2050 development |
 | `persons_per_occ_unit/` (if pop. adj.) | Updated PPU tables used in the run |
 | `configs/` | Copies of all JSON configs for run provenance |
 
@@ -591,7 +593,7 @@ Forecast/data/processed_data/run_2026-04-28_153116/
 │   └── alternative_4_04282026__config.json
 │
 ├── all_scenarios_parcels.parquet                    ← All scenarios, parcel level, concatenated
-└── all_scenarios_parcels.shp  (+ .dbf, .shx, .prj) ← GIS-ready parcel output
+└── parcels.gdb/                                     ← GIS-ready parcel output, one FC per scenario
 ```
 
 ### `SocioEcon_Summer.csv` — Field Reference
