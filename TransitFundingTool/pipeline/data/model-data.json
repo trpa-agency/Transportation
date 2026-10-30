@@ -21,6 +21,38 @@
   "loc1": "Local funding fact sheet, part 1.",
   "loc2": "Local funding fact sheet, part 2 (Lake Link partners)."
  },
+ "references": {
+  "tartPlan": {
+   "name": "TART 2025 Systems Plan Update, Board presentation, Item 04A, Placer County Board of Supervisors, November 18, 2025",
+   "note": "Preferred service scenario and the cost of 30-minute peak service on TART fixed routes (slides 30 and 31).",
+   "url": "https://www.placer.ca.gov/DocumentCenter/View/99365/2025-111825-PowerPoint-Item-04A-DPW---Tahoe-Truckee-Area-Regional-Transit-2025-Systems-Plan-Update"
+  },
+  "tartMemo": {
+   "name": "TART 2025 Systems Plan Update, staff report, Placer County Public Works, November 18, 2025",
+   "note": "Current 60-minute frequency on all TART fixed routes, and the peak-season and year-round 30-minute options.",
+   "url": "https://www.placer.ca.gov/DocumentCenter/View/99284/04A"
+  }
+ },
+ "scenarios": {
+  "peak30": {
+   "cost": 2683400,
+   "hours": 16100,
+   "miles": 318200,
+   "riders": 153000,
+   "routes": [
+    "TART-WS",
+    "TART-NS",
+    "TART-NV",
+    "89",
+    "267"
+   ],
+   "split": "Placeholder. The plan gives a systemwide total. The model splits it across routes by each route's annual service hours.",
+   "cite": [
+    "tartPlan",
+    "tartMemo"
+   ]
+  }
+ },
  "agencies": [
   {
    "id": "TTD",
@@ -4783,8 +4815,8 @@
   }
  ],
  "build": {
-  "id": "20261029a",
-  "builtAt": "2026-10-29T21:34:37",
+  "id": "20261030a",
+  "builtAt": "2026-10-30T19:55:15",
   "workbooks": {
    "scen": {
     "file": "Example Transit Financial Scenario Workbook.xlsx",

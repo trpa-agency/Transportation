@@ -1,6 +1,6 @@
 # Tahoe Transit Funding Model: Project Context Handoff
 
-As of October 29, 2026. Prepared from the project files, the project chats (October 20 to 29), and the project memory. New readers: start with `CLAUDE.md` at the top of this folder.
+As of October 30, 2026. Prepared from the project files, the project chats (October 20 to 30), and the project memory. New readers: start with `CLAUDE.md` at the top of this folder.
 
 Confidence tags: [Certain] means checked against a source cell or file. [Likely] means strong evidence. [Guessing] means a gap was filled.
 
@@ -129,6 +129,17 @@ The project changed hands on October 27. These changes followed:
 - **Public page.** `pipeline/editions/` builds two pages from `model/`. The public page shows only Existing funding conditions, retitled and marked DRAFT, with a link to the full model. The full page is a copy of the model page. Password protection is not set up. The repo is public, so both pages and the workbooks can be downloaded from GitHub. [Certain]
 - **Cost per rider.** Left off. Same-year route costs exist only for six TTD services. See next steps 12 and 13. [Certain]
 
+### October 30: Coworker review applied
+
+- **One amount per source.** Revenue by funding level and the source cards show FY 26-27 budgets only. The FY 25-26 fact sheet amount is gone from the funding source inputs. It stays in the data for the Agreements and risk history.
+- **Jurisdiction miles.** Jurisdiction shares are now entered as annual service miles by jurisdiction, with California and Nevada percent columns. Placeholders split each service's total service miles evenly. Revenue miles by jurisdiction are still needed from partners.
+- **Rule levels.** Errors are now flags and warnings are now notes, everywhere in the page and the Excel export.
+- **Presets.** The California-only and Lake Link federalized presets are removed. New presets: the Meyers paratransit and microtransit pilot, and all TART fixed routes at 30-minute peak frequency. TTD absorbs Lake Link now compares flags and notes separate versus consolidated: 12 flags separate, 13 consolidated, from one new local match flag on Route 55. [Certain]
+- **TTD absorbs Lake Link rebuilt.** Applying it now moves Lake Link and its sources to TTD, federalizes Lake Link, and reallocates TTD's sources by rules. Compared with both agencies separate under the same rules: flags stay at 3 and notes at 9. TTD federal funds above the share cap fall from $1.14 million to $1.08 million. The combined FY 26-27 balance rises from $803,442 to $857,045. FY 30-31 is unchanged at −$3.20 million. The stranded money is NDOT 5311, which only rural routes 19X and 22 can use. Admin savings, partner funds kept, and compliance cost are inputs on the card with no-change defaults. [Certain]
+- **Meyers in route lists.** Included service plan elements now show in the allocation columns and the route results even in years when their cost is $0.
+- **Carryover off.** Surpluses no longer carry into the next year by default. TART and TNT/TMA surpluses had built to $14.7 million and $6.1 million by FY 30-31, likely because their modeled costs are understated. [Likely]
+- **30-minute peak preset.** Uses the TART 2025 Systems Plan (Nov. 18, 2025): $2,683,400 a year and 16,100 added service hours for 30-minute winter and summer service on the Main Line, Hwy 89, and Hwy 267, up from 60 minutes. The model applies the cost to FY 26-27 and grows it at TART's 4 percent escalator. It splits the total by route service hours as a placeholder. The plan's two documents are sources 10 and 11. Applied, the preset turns TART's FY 30-31 balance from a $2.62 million surplus to a $519,016 deficit. [Certain]
+
 ## Status against the RFP
 
 | Item | Status | Evidence |
@@ -200,6 +211,7 @@ Still open for partners: actual agreements (Task 4c), revenue miles by route spl
 11. Ask TTD or the consultant whether Table A1's 35,680 TTD service hours include Route 30, which is also added as its own line. [Guessing]
 12. Get FY 25-26 route operating costs from TART, SSTMA, and TNT/TMA, plus ridership for the TNT/TMA services, so cost per rider can be shown with cost and ridership from the same year. The workbooks have same-year route costs only for six TTD services (FY 24-25, Per Route Model row 1). The TART and Lake Link columns in that row repeat the TTD values. Cost per rider is left off the model until this data arrives (TRPA direction, Oct. 29, 2026). [Certain]
 13. Ask TTD or the consultant to reconcile TTD's FY 24-25 route costs with its hourly rate. The Per Route Model FY 24-25 costs imply $191 to $214 per service hour. The VRH Rates tab says the FY 26-27 rate of $214.66 is the FY 24-25 actual plus 4 percent a year, which implies about $198. [Certain]
+14. Ask TART for the route breakdown of the Systems Plan's 30-minute peak cost and hours, and the fiscal year its $2,683,400 is priced in. Also resolve the plan's two TART Connect fare figures: $1,190,400 in the presentation and $758,000 in the staff report. [Certain]
 
 ## Links
 

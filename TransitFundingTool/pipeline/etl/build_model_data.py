@@ -497,6 +497,7 @@ class Build:
         data = {
             "schema": m["schema"], "modelVersion": m["modelVersion"],
             "sourceFiles": m["sourceFiles"], "sourceFileNotes": m["sourceFileNotes"],
+            "references": m.get("references", {}), "scenarios": m.get("scenarios", {}),
             "agencies": m["agencies"], "jurisdictions": m["jurisdictions"],
             "services": services, "operators": operators, "lines": lines, "fta": fta,
             "dataNotes": self.seed["notes"]["dataNotes"], "agreements": self.seed["notes"]["agreements"],

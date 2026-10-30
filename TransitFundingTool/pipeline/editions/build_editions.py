@@ -92,7 +92,7 @@ def make_public(s: str, cfg: dict, full_file: str) -> str:
     # Script: open on Existing funding conditions, controls removed above resolve to a no-op,
     # and nothing is read from or saved to browser storage.
     s = swap(s, "let CURRENT_TAB = 'overview';", "let CURRENT_TAB = 'existing';", "start tab")
-    s = swap(s, "  renderTab('overview');\n}", "  renderTab('existing');\n}", "start tab")
+    s = swap(s, "  renderTab('overview');\n", "  renderTab('existing');\n", "start tab")
     s = swap(s, "const $ = id => document.getElementById(id);",
              "/* Public edition: controls removed from this page resolve to a no-op object. */\n"
              "const NOOP = new Proxy(function () {}, { get: (t, k) => k === Symbol.toPrimitive ? () => '' : k === Symbol.iterator ? function* () {} : NOOP, set: () => true, apply: () => NOOP });\n"

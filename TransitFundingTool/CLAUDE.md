@@ -61,7 +61,7 @@ Older working papers in `docs/` are dated records. Don't update them to match la
 - **TART 5307:** $2,660,000 from TART's plan.
 - **Private partners:** Lake Link partners, NTCA, and Martis are held steady at FY 25-26 amounts.
 - **JPA and service status:** the South Tahoe Transit JPA is not an operator. Lake Link, My Ride to Work, and vanpools are non-federalized.
-- **Federal funds and surpluses:** federal funds above the share cap are left out of balances. Agency surpluses carry into the next year.
+- **Federal funds and surpluses:** federal funds above the share cap are left out of balances. Agency surpluses do not carry into the next year by default (Oct. 30, 2026). Carryover is a setting.
 
 ## Open items
 
