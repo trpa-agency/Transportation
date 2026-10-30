@@ -1,0 +1,329 @@
+/* TRPA design tokens
+   One file, four brands. The agency palette is the default (:root). Put
+   data-brand="eip", data-brand="connecting-tahoe", or data-brand="tahoe-living"
+   on <html>, <body>, or any wrapper to switch everything inside it: colors,
+   font, corner radius, and the Calcite component variables.
+
+   Layers:
+     1. Raw palette      --trpa-*, --eip-*, --ct-*, --tl-*   (never changes, use for data colors)
+     2. Semantic tokens  --brand-*, --gray-*, --status-* (what components read)
+     3. Calcite mapping  --calcite-*                 (so Calcite components follow the brand)
+
+   Reference page: /qa/data/design-system.html
+   Skill counterparts: trpa-brand, trpa-eip-brand, tahoe-living-brand, trpa-dashboard-stack */
+
+:root {
+  /* ── 1. Raw palette: TRPA agency (Pantone conversions) ── */
+  --trpa-blue:    #0072CE;   /* PMS 285C */
+  --trpa-navy:    #003B71;   /* PMS 541  */
+  --trpa-earth:   #B47E00;   /* PMS 1395 */
+  --trpa-forest:  #4A6118;   /* PMS 378  */
+  --trpa-brick:   #9C3E27;   /* PMS 484  */
+  --trpa-olive:   #B5A64C;   /* PMS 618  */
+  --trpa-orange:  #E87722;   /* PMS 138  */
+  --trpa-purple:  #7B6A8A;   /* PMS 667  */
+  --trpa-ice:     #B4CBE8;   /* PMS 2708 */
+
+  /* ── 1. Raw palette: EIP ── */
+  --eip-green:  #6EBE44;   /* P 802 C  */
+  --eip-blue:   #007DC3;   /* P 285 C  */
+  --eip-orange: #F16022;   /* P 1505 C */
+  --eip-navy:   #0B1F41;   /* P 282 C  */
+  --eip-green-light:  #E8F5E0;
+  --eip-blue-light:   #E0F0FA;
+  --eip-orange-light: #FDE8DC;
+  --eip-blue-text:    #0068A8;   /* EIP Blue is 4.45:1 on white; text-sized blue uses this step */
+  --eip-alert-text:   #B5430E;   /* EIP Orange is 3.1:1; text-sized orange uses this step */
+
+  /* ── 1. Raw palette: Connecting Tahoe (contrast ratios are against white) ── */
+  --ct-red:    #BA5B53;   /* 4.46:1, just under AA; text uses --ct-red-text */
+  --ct-teal:   #044554;   /* 10.6:1 */
+  --ct-sage:   #54746A;   /* 5.1:1  */
+  --ct-blue:   #2B94D1;   /* 3.35:1; text and white-on-blue buttons use --ct-blue-text */
+  --ct-green:  #98CA4D;   /* 1.9:1, fill only */
+  --ct-gold:   #E4CB3F;   /* 1.6:1, fill only */
+  --ct-blue-light:  #E6F2F9;
+  --ct-red-light:   #F7EBEA;
+  --ct-green-light: #F3F9EA;
+  --ct-gold-light:  #FCF9E8;
+  /* Text steps: each passes 4.5:1 on white and on its own light tint */
+  --ct-blue-text:   #2273A3;
+  --ct-red-text:    #A7524B;
+  --ct-green-text:  #5D7B2F;
+  --ct-gold-text:   #807223;
+
+  /* ── 1. Raw palette: Tahoe Living ── */
+  --tl-sage:       #5B7B6B;
+  --tl-forest:     #2D5A3D;
+  --tl-cream:      #F7F3ED;
+  --tl-terracotta: #C4704B;
+  --tl-gold:       #D4A843;
+  --tl-sky:        #6BA3BE;
+  --tl-pine:       #3D6B4E;
+  --tl-text:       #2C2C2C;
+  --tl-text-2:     #5A5A5A;
+  --tl-border:     #E0DDD7;
+  --tl-bg-section: #EDE9E1;
+
+  /* ── 2. Neutrals shared by every brand (blue-tinted grays, never pure #ccc) ── */
+  --white:        #FFFFFF;
+  --gray-bg:      #F5F7FA;   /* page background, inset wells */
+  --gray-border:  #E2E6EC;   /* hairlines, control borders */
+  --gray-text:    #6B7688;   /* help text, labels: 4.6:1 on white, AA */
+  --gray-muted:   #8A93A3;   /* icons and decoration only: 3.3:1, fails AA for text */
+
+  /* ── 2. Semantic brand tokens: agency defaults ── */
+  --brand-primary:        var(--trpa-blue);     /* links, active states, primary buttons */
+  --brand-primary-text:   var(--trpa-blue);     /* text-sized primary (AA on white) */
+  --brand-primary-hover:  var(--trpa-navy);
+  --brand-primary-light:  #E8F1F8;              /* selected rows, info wells */
+  --brand-dark:           var(--trpa-navy);     /* body text, dark headers and footers */
+  --brand-accent:         var(--trpa-orange);   /* subject features, beta chips, highlights */
+  --brand-accent-text:    #B55A10;              /* text-sized accent (orange itself is 3.0:1) */
+  --brand-accent-light:   #FDF3EA;
+  --brand-text:           var(--trpa-navy);
+  --brand-surface:        var(--white);
+  --brand-page:           var(--gray-bg);
+  --brand-border:         var(--gray-border);
+
+  --brand-font:           'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --brand-font-heading:   var(--brand-font);
+  --brand-radius:         8px;      /* cards, dialogs, popups */
+  --brand-radius-control: 7px;      /* inputs, segmented controls */
+  --brand-radius-pill:    999px;    /* chips, tags, filter pills */
+  --brand-shadow:         0 2px 10px rgba(0, 59, 113, 0.16);
+  --brand-shadow-sm:      0 1px 4px rgba(0, 59, 113, 0.06);
+
+  /* ── 2. Status colors (drawn from the agency palette so they stay on brand) ── */
+  --status-success:       var(--trpa-forest);
+  --status-success-light: #EEF3E4;
+  --status-warning:       var(--trpa-orange);
+  --status-warning-text:  #B55A10;
+  --status-warning-light: #FDF3EA;
+  --status-danger:        var(--trpa-brick);
+  --status-danger-light:  #FBE9E4;
+  --status-info:          var(--trpa-blue);
+  --status-info-light:    #E8F1F8;
+
+  /* ── 2. Chart colorway (Plotly colorway, map renderers) ── */
+  --chart-1: #0072CE; --chart-2: #003B71; --chart-3: #E87722; --chart-4: #4A6118;
+  --chart-5: #9C3E27; --chart-6: #B5A64C; --chart-7: #7B6A8A; --chart-8: #B4CBE8;
+
+  /* ── 3. Calcite follows the brand ── */
+  --calcite-color-brand:        var(--brand-primary);
+  --calcite-color-brand-hover:  var(--brand-primary-hover);
+  --calcite-color-brand-press:  var(--brand-primary-hover);
+  --calcite-font-family:        var(--brand-font);
+  --calcite-color-text-1:       var(--brand-text);
+  --calcite-color-text-2:       var(--brand-text);
+  --calcite-color-text-3:       var(--gray-text);
+  --calcite-color-border-1:     var(--gray-border);
+  --calcite-color-border-input: #C9D2DE;
+}
+
+/* ── EIP: Environmental Improvement Program, Forest Health, AIS, Stormwater ── */
+[data-brand="eip"] {
+  --brand-primary:        var(--eip-blue);
+  --brand-primary-text:   var(--eip-blue-text);
+  --brand-primary-hover:  var(--eip-navy);
+  --brand-primary-light:  var(--eip-blue-light);
+  --brand-dark:           var(--eip-navy);
+  --brand-accent:         var(--eip-orange);
+  --brand-accent-text:    var(--eip-alert-text);
+  --brand-accent-light:   var(--eip-orange-light);
+  --brand-text:           var(--eip-navy);
+  --brand-shadow:         0 2px 10px rgba(11, 31, 65, 0.16);
+  --brand-shadow-sm:      0 1px 4px rgba(11, 31, 65, 0.06);
+
+  --brand-font:           'Lexend Deca', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --brand-font-heading:   var(--brand-font);
+  --brand-radius:         10px;
+  --brand-radius-control: 999px;   /* EIP controls are pill-rounded */
+  --brand-radius-pill:    999px;
+
+  --status-success:       #2F6B13;   /* darkened EIP green, 4.5:1 */
+  --status-success-light: var(--eip-green-light);
+  --status-warning:       var(--eip-orange);
+  --status-warning-text:  var(--eip-alert-text);
+  --status-warning-light: var(--eip-orange-light);
+  --status-danger:        #B3261E;
+  --status-danger-light:  #FBE9E4;
+  --status-info:          var(--eip-blue);
+  --status-info-light:    var(--eip-blue-light);
+
+  --chart-1: #007DC3; --chart-2: #6EBE44; --chart-3: #F16022; --chart-4: #0B1F41;
+  --chart-5: #2F6B13; --chart-6: #735A00; --chart-7: #7B6A8A; --chart-8: #B4CBE8;
+
+  --calcite-color-brand:        var(--brand-primary-text);
+  --calcite-color-brand-hover:  var(--brand-primary-hover);
+  --calcite-color-brand-press:  var(--brand-primary-hover);
+  --calcite-font-family:        var(--brand-font);
+  --calcite-color-text-1:       var(--brand-text);
+  --calcite-color-text-2:       var(--brand-text);
+  --calcite-button-corner-radius: 999px;
+  --calcite-corner-radius-round:  999px;
+}
+
+/* ── Connecting Tahoe: the EIP brand system (Lexend Deca, pill controls,
+   10px cards, uppercase letter-spaced section labels) with its own palette.
+   Roles mirror EIP: blue primary, deep teal dark, red accent, green success. ── */
+[data-brand="connecting-tahoe"] {
+  --brand-primary:        var(--ct-blue);
+  --brand-primary-text:   var(--ct-blue-text);
+  --brand-primary-hover:  var(--ct-teal);
+  --brand-primary-light:  var(--ct-blue-light);
+  --brand-dark:           var(--ct-teal);
+  --brand-accent:         var(--ct-red);
+  --brand-accent-text:    var(--ct-red-text);
+  --brand-accent-light:   var(--ct-red-light);
+  --brand-text:           var(--ct-teal);
+  --brand-shadow:         0 2px 10px rgba(4, 69, 84, 0.16);
+  --brand-shadow-sm:      0 1px 4px rgba(4, 69, 84, 0.06);
+
+  --brand-font:           'Lexend Deca', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --brand-font-heading:   var(--brand-font);
+  --brand-radius:         10px;
+  --brand-radius-control: 999px;   /* pill-rounded controls, as in EIP */
+  --brand-radius-pill:    999px;
+
+  --status-success:       var(--ct-green-text);
+  --status-success-light: var(--ct-green-light);
+  --status-warning:       var(--ct-gold);
+  --status-warning-text:  var(--ct-gold-text);
+  --status-warning-light: var(--ct-gold-light);
+  --status-danger:        var(--ct-red-text);
+  --status-danger-light:  var(--ct-red-light);
+  --status-info:          var(--ct-blue-text);
+  --status-info-light:    var(--ct-blue-light);
+
+  /* The six brand colors first, then the two darker text steps */
+  --chart-1: #2B94D1; --chart-2: #98CA4D; --chart-3: #BA5B53; --chart-4: #044554;
+  --chart-5: #54746A; --chart-6: #E4CB3F; --chart-7: #5D7B2F; --chart-8: #807223;
+
+  --calcite-color-brand:        var(--brand-primary-text);   /* white on #2B94D1 is only 3.35:1 */
+  --calcite-color-brand-hover:  var(--brand-primary-hover);
+  --calcite-color-brand-press:  var(--brand-primary-hover);
+  --calcite-font-family:        var(--brand-font);
+  --calcite-color-text-1:       var(--brand-text);
+  --calcite-color-text-2:       var(--brand-text);
+  --calcite-button-corner-radius: 999px;
+  --calcite-corner-radius-round:  999px;
+}
+
+/* ── Tahoe Living: Cultivating Community, Conserving the Basin (housing) ── */
+[data-brand="tahoe-living"] {
+  --brand-primary:        var(--tl-sage);
+  --brand-primary-text:   var(--tl-sage);       /* 4.6:1 on white */
+  --brand-primary-hover:  var(--tl-forest);
+  --brand-primary-light:  #EAF0EC;
+  --brand-dark:           var(--tl-forest);
+  --brand-accent:         var(--tl-terracotta);
+  --brand-accent-text:    #A85D3D;              /* terracotta is 3.9:1; text uses the hover step */
+  --brand-accent-light:   #F8ECE5;
+  --brand-text:           var(--tl-text);
+  --brand-surface:        var(--white);
+  --brand-page:           var(--tl-cream);
+  --brand-border:         var(--tl-border);
+  --brand-shadow:         0 2px 8px rgba(44, 44, 44, 0.06);
+  --brand-shadow-sm:      0 1px 3px rgba(44, 44, 44, 0.05);
+
+  /* warm neutrals replace the blue-tinted grays */
+  --gray-bg:      var(--tl-cream);
+  --gray-border:  var(--tl-border);
+  --gray-text:    var(--tl-text-2);
+  --gray-muted:   #8A8A8A;
+
+  --brand-font:           'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --brand-font-heading:   var(--brand-font);
+  --brand-radius:         12px;
+  --brand-radius-control: 8px;
+  --brand-radius-pill:    999px;
+
+  --status-success:       var(--tl-pine);
+  --status-success-light: #E9F0EB;
+  --status-warning:       var(--tl-gold);
+  --status-warning-text:  #7A5A0E;
+  --status-warning-light: #FBF4E1;
+  --status-danger:        #A85D3D;
+  --status-danger-light:  #F8ECE5;
+  --status-info:          var(--tl-sky);
+  --status-info-light:    #E8F1F5;
+
+  --chart-1: #5B7B6B; --chart-2: #C4704B; --chart-3: #6BA3BE; --chart-4: #D4A843;
+  --chart-5: #3D6B4E; --chart-6: #8B6F5E; --chart-7: #7B8E9A; --chart-8: #2D5A3D;
+
+  --calcite-color-brand:        var(--brand-primary);
+  --calcite-color-brand-hover:  var(--brand-primary-hover);
+  --calcite-color-brand-press:  var(--brand-primary-hover);
+  --calcite-font-family:        var(--brand-font);
+  --calcite-color-text-1:       var(--brand-text);
+  --calcite-color-text-2:       var(--brand-text);
+  --calcite-color-border-1:     var(--tl-border);
+  --calcite-button-corner-radius: 8px;
+}
+
+/* ── Lake Tahoe Info embeds: charts, maps, and dashboards that laketahoeinfo.org
+   pulls in by URL. Not a TRPA brand: these values are the platform's own
+   tokens, sampled from the live site on Oct. 13, 2026 (see the ltinfo-platform
+   skill). An embed has no shell; the host card supplies it. ── */
+[data-brand="ltinfo"] {
+  --lti-primary:   #3e72b0;   /* --primary on the host */
+  --lti-navy:      #2f3f56;   /* header and footer */
+  --lti-green:     #89bf40;
+  --lti-orange:    #e49937;
+  --lti-teal:      #5a9cb0;
+  --lti-olive:     #646820;
+  --lti-card-body: #f7f7f7;   /* card body; a monitoring dashboard's page background */
+  --lti-border:    #efefef;
+  --lti-header-thresholds:     #6c91a4;   /* card header color per dashboard */
+  --lti-header-monitoring:     #789440;
+  --lti-header-transportation: #2c5282;
+
+  --brand-primary:        var(--lti-primary);
+  --brand-primary-text:   var(--lti-primary);
+  --brand-primary-hover:  var(--lti-navy);
+  --brand-primary-light:  #e7eff1;
+  --brand-dark:           var(--lti-navy);
+  --brand-accent:         var(--lti-orange);
+  --brand-accent-text:    #c47b17;
+  --brand-accent-light:   #fff6ea;
+  --brand-text:           #333333;
+  --brand-surface:        #ffffff;
+  --brand-page:           var(--lti-card-body);
+  --brand-border:         var(--lti-border);
+  --brand-shadow:         0 4px 6px 0 rgba(0, 0, 0, 0.10);
+  --brand-shadow-sm:      0 1px 3px rgba(0, 0, 0, 0.06);
+
+  --gray-bg:      var(--lti-card-body);
+  --gray-border:  var(--lti-border);
+  --gray-text:    #4b4b4b;
+  --gray-muted:   #8a8a8a;
+
+  --brand-font:           'Lexend Deca', sans-serif;
+  --brand-font-heading:   var(--brand-font);
+  --brand-radius:         4px;
+  --brand-radius-control: 4px;
+  --brand-radius-pill:    999px;
+
+  --status-success:       #188c16;
+  --status-success-light: #eaf8ea;
+  --status-warning:       var(--lti-orange);
+  --status-warning-text:  #c47b17;
+  --status-warning-light: #fff6ea;
+  --status-danger:        #be4c4c;
+  --status-danger-light:  #fdf0f0;
+  --status-info:          var(--lti-primary);
+  --status-info-light:    #e7eff1;
+
+  --chart-1: #3e72b0; --chart-2: #e49937; --chart-3: #89bf40; --chart-4: #5a9cb0;
+  --chart-5: #be4c4c; --chart-6: #646820; --chart-7: #89cad7; --chart-8: #2c5f72;
+
+  --calcite-color-brand:        var(--lti-primary);
+  --calcite-color-brand-hover:  var(--lti-navy);
+  --calcite-color-brand-press:  var(--lti-navy);
+  --calcite-font-family:        var(--brand-font);
+  --calcite-color-text-1:       var(--brand-text);
+  --calcite-color-text-2:       var(--brand-text);
+  --calcite-color-border-1:     var(--lti-border);
+  --calcite-button-corner-radius: 4px;
+}
