@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transportation Plan Projects - TRPA Tools</title>
+<meta name="description" content="Search the project lists from the Connections 2050 Regional Transportation Plan, the 2024 Active Transportation Plan, and the Lake Tahoe Region Vision Zero Strategy in one place, see which projects appear in more than one plan, and download lists to Excel." />
+<link rel="icon" href="data:image/x-icon;base64,__FAVICON__" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<!-- Calcite Design System 5.0 (buttons). 5.0 has no separate stylesheet. -->
+<script type="module" src="https://js.arcgis.com/calcite-components/5.0"></script>
+<!-- AG Grid Community (tables) and SheetJS (Excel export). No map on this page, so no ArcGIS SDK. -->
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@33.3.2/dist/ag-grid-community.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+/* ── TRPA design tokens: agency layer (header shell) and Connecting Tahoe layer (content), from trpa-tokens.css ── */
+__TOKENS__
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; }
+[data-brand] { font-family: var(--brand-font); color: var(--brand-text); }
+/* Multi-plan highlight uses Connecting Tahoe gold; red is the Vision Zero plan color */
+[data-brand="connecting-tahoe"] { --hl: var(--ct-gold); --hl-light: var(--ct-gold-light); --hl-text: var(--ct-gold-text); --hl-border: #EEDD8A; --hl-hover: #F7EFC6; }
+body { font-family: var(--brand-font); font-size: 14px; line-height: 1.5; color: var(--brand-text); background: var(--gray-bg); }
+a { color: var(--brand-primary-text); }
+:focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; }
+h1, h2, h3 { line-height: 1.25; margin: 0; }
+button { font-family: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ── App header (shared TRPA tool shell) ── */
+#appHeader { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.45rem 1rem; background: #fff; border-bottom: 1px solid var(--gray-border); box-shadow: var(--brand-shadow-sm); }
+.hdr-brand { display: flex; align-items: center; gap: 0.7rem; min-width: 0; }
+.hdr-brand img { height: 36px; width: auto; display: block; }
+.htitle { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.hagency { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--brand-primary-text); }
+.hname { font-size: 1rem; font-weight: 700; color: var(--brand-dark); }
+.hdr-back { font-size: 0.74rem; font-weight: 600; color: var(--gray-text); text-decoration: none; border-left: 1px solid var(--gray-border); padding-left: 0.7rem; white-space: nowrap; }
+.hdr-back:hover { color: var(--brand-primary-text); }
+.hdr-links { display: flex; align-items: center; gap: 0.6rem; }
+.hdr-links a.about { font-size: 0.78rem; font-weight: 600; color: var(--brand-primary-text); text-decoration: none; }
+.beta-chip { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brand-accent-text);
+  border: 1px solid var(--brand-accent-text); border-radius: 999px; padding: 0.1rem 0.5rem; }
+
+/* ── Layout ── */
+.app { display: grid; grid-template-columns: clamp(300px, 25vw, 360px) minmax(0, 1fr); align-items: start; gap: 18px; padding: 18px; max-width: 1680px; margin: 0 auto; }
+#panel { position: sticky; top: 66px; max-height: calc(100vh - 84px); overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 2px; }
+main { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+
+/* ── Panel sections ── */
+.panel-sec { display: flex; flex-direction: column; gap: 0.55rem; background: #fff; border: 1px solid var(--gray-border); border-radius: var(--brand-radius); padding: 0.9rem 1rem; }
+.sec-title { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.sec-title h2 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--brand-dark); display: flex; align-items: center; gap: 0.45rem; }
+.sec-title h2 .num { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--brand-primary-light); color: var(--brand-primary-text); font-size: 0.66rem; }
+.help { font-size: 0.74rem; color: var(--gray-text); line-height: 1.4; margin: 0; }
+.linkbtn { border: none; background: none; padding: 0.15rem 0.2rem; color: var(--brand-primary-text); font-size: 0.74rem; font-weight: 600; cursor: pointer; border-radius: 4px; }
+.linkbtn:hover { text-decoration: underline; }
+
+.search { position: relative; }
+.search input { width: 100%; font-family: var(--brand-font); font-size: 0.88rem; color: var(--brand-text); border: 1.5px solid var(--gray-border);
+  border-radius: var(--brand-radius-control); padding: 0.5rem 0.6rem 0.5rem 2rem; background: #fff; min-height: 36px; }
+.search input:focus { outline: none; border-color: var(--brand-primary); box-shadow: 0 0 0 2px var(--brand-primary-light); }
+.search svg { position: absolute; left: 0.6rem; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--gray-text); pointer-events: none; }
+
+.seg { display: flex; border-radius: var(--brand-radius-control); overflow: hidden; border: 1px solid var(--gray-border); }
+.seg button { flex: 1; border: none; background: #fff; cursor: pointer; min-height: 32px; font-size: 0.78rem; font-weight: 600; color: var(--gray-text); padding: 0.35rem 0.7rem; transition: background 120ms, color 120ms; }
+.seg button + button { border-left: 1px solid var(--gray-border); }
+.seg button:hover { color: var(--brand-dark); }
+.seg button[aria-checked="true"] { background: var(--brand-primary-text); color: #fff; font-weight: 700; }
+
+.pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pill { display: inline-flex; align-items: center; gap: 0.45rem; border: 1.5px solid #C9D2DE; background: #fff; color: var(--brand-text); border-radius: var(--brand-radius-pill);
+  padding: 0.25rem 0.75rem; font-size: 0.78rem; font-weight: 600; cursor: pointer; min-height: 30px; text-align: left; transition: border-color 0.12s, background 0.12s; }
+.pill:hover { border-color: var(--brand-primary); }
+.pill .n { font-size: 0.68rem; font-weight: 700; background: var(--gray-bg); border-radius: 999px; padding: 0 0.45rem; color: var(--gray-text); }
+.pill[aria-pressed="true"] { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
+.pill[aria-pressed="true"] .n { background: rgba(255,255,255,0.18); color: #fff; }
+.pill i.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: 0 0 auto; }
+.pill[aria-pressed="true"] i.dot { outline: 2px solid #fff; }
+.pill.multi i.dot { background: var(--hl); }
+.pill.zero { opacity: 0.55; }
+
+.field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.72rem; font-weight: 600; color: var(--gray-text); }
+.field select { font-family: var(--brand-font); font-size: 0.82rem; color: var(--brand-text); background: #fff; border: 1.5px solid var(--gray-border); border-radius: var(--brand-radius-control); padding: 0.35rem 0.5rem; width: 100%; min-height: 32px; }
+.field select:focus { outline: none; border-color: var(--brand-primary); }
+.export-btns { display: flex; flex-direction: column; gap: 0.45rem; }
+
+/* ── Main: KPIs, legend, summary ── */
+.intro { background: var(--ct-blue-text); color: #fff; border-radius: var(--brand-radius); padding: 1.1rem 1.3rem 1.2rem; position: relative; overflow: hidden; }
+.intro .over { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; }
+.intro h1 { font-size: 1.35rem; margin: 0.15rem 0 0.35rem; color: #fff; }
+.intro p { margin: 0; max-width: 78ch; color: #fff; font-size: 0.88rem; }
+.intro .stripe { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; display: flex; }
+.intro .stripe i { flex: 1; }
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+.kpi { background: #fff; border: 1px solid var(--gray-border); border-radius: var(--brand-radius); padding: 0.65rem 0.8rem; border-top: 3px solid var(--brand-primary); }
+.kpi .v { font-size: 1.45rem; font-weight: 700; color: var(--brand-dark); line-height: 1.2; font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 0.72rem; color: var(--gray-text); margin-top: 0.1rem; }
+.kpi.accent { border-top-color: var(--hl); }
+.kpi.forest { border-top-color: var(--ct-red); }
+.kpi.navy { border-top-color: var(--brand-dark); }
+
+.card { background: #fff; border: 1px solid var(--gray-border); border-radius: var(--brand-radius); }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 0.85rem 1rem 0.6rem; flex-wrap: wrap; }
+.card-head h2 { font-size: 1rem; color: var(--brand-dark); }
+.card-head .sub { font-size: 0.76rem; color: var(--gray-text); margin-top: 0.15rem; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; font-size: 0.76rem; color: var(--gray-text); }
+.legend .sw { display: inline-block; width: 26px; height: 14px; border-radius: 3px; background: var(--hl-light); box-shadow: inset 3px 0 0 var(--hl); vertical-align: -2px; margin-right: 0.35rem; }
+
+/* ── Group sections ── */
+.grp { overflow: hidden; }
+.grp-head { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1rem; border-bottom: 1px solid var(--gray-border); flex-wrap: wrap; }
+.grp-toggle { display: flex; align-items: center; gap: 0.6rem; flex: 1 1 320px; min-width: 0; border: none; background: none; cursor: pointer; text-align: left; padding: 0.15rem; border-radius: 6px; color: inherit; }
+.grp-toggle svg { width: 16px; height: 16px; flex: 0 0 auto; color: var(--gray-text); transition: transform 120ms; }
+.grp-toggle[aria-expanded="false"] svg { transform: rotate(-90deg); }
+.grp-bar { width: 5px; align-self: stretch; border-radius: 3px; background: var(--c); flex: 0 0 auto; }
+.grp-name { font-size: 1rem; font-weight: 700; color: var(--brand-dark); display: block; }
+.grp-meta { font-size: 0.76rem; color: var(--gray-text); display: block; }
+.grp-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+.grp.collapsed .grp-body { display: none; }
+.grp.collapsed .grp-head { border-bottom: none; }
+
+/* ── Chips and badges ── */
+.chip { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.68rem; font-weight: 700; color: var(--brand-dark); background: #fff;
+  border: 1.5px solid var(--c); border-radius: 999px; padding: 0 0.45rem; line-height: 1.55; white-space: nowrap; }
+.chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+.badge { display: inline-block; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; padding: 0 0.5rem; line-height: 1.6; white-space: nowrap; }
+.badge.multi { background: var(--hl-light); color: var(--hl-text); border: 1px solid var(--hl-border); }
+.badge.neutral { background: var(--gray-bg); color: var(--gray-text); border: 1px solid var(--gray-border); }
+.badge.info { background: var(--status-info-light); color: var(--brand-dark); }
+.badge.danger { background: var(--status-danger-light); color: var(--status-danger); }
+.badge.warn { background: #FBF3DC; color: #7A5600; border: 1px solid #E8D29A; }
+.badge.success { background: var(--status-success-light); color: var(--status-success); }
+
+/* ── Grid cells ── */
+.ag-row.row-multi { background: var(--hl-light); box-shadow: inset 4px 0 0 var(--hl); }
+.ag-row.row-multi.ag-row-hover::before, .ag-row.row-multi:hover { background: var(--hl-hover); }
+.cell-title { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.35rem 0; line-height: 1.35; white-space: normal; }
+.cell-title button { border: none; background: none; padding: 0; text-align: left; cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--brand-dark); }
+.cell-title button:hover { color: var(--brand-primary-text); text-decoration: underline; }
+.cell-title .lbl { font-size: 0.72rem; color: var(--gray-text); }
+.cell-title .tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.cell-wrap { white-space: normal; line-height: 1.35; padding: 0.35rem 0; }
+.cell-chips { display: flex; gap: 0.25rem; flex-wrap: wrap; padding: 0.35rem 0; }
+.muted { color: var(--gray-text); }
+
+.empty { font-size: 0.88rem; line-height: 1.55; color: var(--gray-text); background: #fff; border: 1px dashed var(--gray-border); border-radius: var(--brand-radius); padding: 1rem 1.1rem; }
+.empty strong { color: var(--brand-text); }
+
+/* ── Detail drawer ── */
+#scrim { position: fixed; inset: 0; background: rgba(0, 59, 113, 0.18); z-index: 60; }
+#drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(460px, 100vw); background: #fff; z-index: 61; box-shadow: var(--brand-shadow);
+  display: flex; flex-direction: column; border-left: 1px solid var(--gray-border); }
+.dr-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; padding: 1rem 1.1rem 0.8rem; border-bottom: 1px solid var(--gray-border); }
+.dr-head h2 { font-size: 1.08rem; color: var(--brand-dark); outline: none; }
+.dr-head .tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+.dr-close { border: none; background: none; cursor: pointer; width: 34px; height: 34px; border-radius: 6px; color: var(--gray-text); flex: 0 0 auto; display: grid; place-items: center; }
+.dr-close:hover { background: var(--gray-bg); color: var(--brand-dark); }
+.dr-body { padding: 1rem 1.1rem 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.1rem; }
+.dr-body h3 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-text); margin-bottom: 0.4rem; }
+.dr-body p { margin: 0; font-size: 0.86rem; }
+dl.facts { display: grid; grid-template-columns: 130px 1fr; gap: 0.35rem 0.8rem; margin: 0; font-size: 0.84rem; }
+dl.facts dt { color: var(--gray-text); font-weight: 600; font-size: 0.76rem; padding-top: 0.1rem; }
+dl.facts dd { margin: 0; }
+.mini { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
+.mini td, .mini th { padding: 0.3rem 0.4rem; border-bottom: 1px solid var(--gray-border); text-align: left; }
+.mini th { font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gray-text); font-weight: 700; }
+.mini td.num, .mini th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.rel { display: flex; flex-direction: column; gap: 0.45rem; }
+.rel button { display: flex; flex-direction: column; gap: 0.2rem; text-align: left; border: 1px solid var(--gray-border); border-left: 4px solid var(--c); border-radius: 6px; background: #fff; padding: 0.5rem 0.65rem; cursor: pointer; color: inherit; }
+.rel button:hover { border-color: var(--brand-primary); border-left-color: var(--c); background: var(--gray-bg); }
+.rel .t { font-size: 0.84rem; font-weight: 600; color: var(--brand-dark); }
+.rel .m { font-size: 0.72rem; color: var(--gray-text); }
+.well { font-size: 0.8rem; line-height: 1.45; background: var(--hl-light); border-radius: 6px; padding: 0.5rem 0.65rem; color: var(--brand-text); }
+
+/* ── About ── */
+#about .body { padding: 0 1.2rem 1.2rem; font-size: 0.86rem; max-width: 92ch; }
+#about h3 { font-size: 0.86rem; margin: 1rem 0 0.3rem; color: var(--brand-dark); }
+#about ul, #about ol { margin: 0.3rem 0; padding-left: 1.2rem; }
+#about li { margin: 0.2rem 0; }
+#about p { margin: 0.35rem 0; }
+footer { text-align: center; font-size: 0.74rem; color: var(--gray-text); padding: 0.5rem 1rem 1.5rem; }
+
+#toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 80; background: var(--brand-dark); color: #fff; padding: 0.55rem 1rem;
+  border-radius: var(--brand-radius); font-size: 0.84rem; box-shadow: var(--brand-shadow); max-width: calc(100vw - 32px); }
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+  #panel { position: static; max-height: none; overflow: visible; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hdr-back, .beta-chip { display: none; }
+}
+@media (max-width: 480px) {
+  .hdr-brand img { height: 30px; }
+  .hname { font-size: 0.9rem; }
+  .intro h1 { font-size: 1.15rem; }
+  dl.facts { grid-template-columns: 1fr; gap: 0.1rem; }
+  dl.facts dd { margin-bottom: 0.4rem; }
+}
+@media print {
+  #panel, #appHeader, .grp-head calcite-button, #drawer, #scrim { display: none !important; }
+  .app { display: block; }
+}
+</style>
+</head>
+<body>
+
+<header id="appHeader">
+  <div class="hdr-brand">
+    <a href="https://www.trpa.gov" target="_blank" rel="noopener noreferrer"><img src="data:image/png;base64,__LOGO__" alt="Tahoe Regional Planning Agency home" width="121" height="36" /></a>
+    <div class="htitle">
+      <span class="hagency">Tahoe Regional Planning Agency</span>
+      <span class="hname">Transportation Plan Projects</span>
+    </div>
+    <a class="hdr-back" href="https://trpa-agency.github.io/tools/">&larr; All maps, apps, and tools</a>
+  </div>
+  <div class="hdr-links">
+    <span class="beta-chip">Beta</span>
+    <a class="about" href="#about">About</a>
+  </div>
+</header>
+
+<div class="app" data-brand="connecting-tahoe">
+  <aside id="panel" aria-label="Search and filters">
+    <section class="panel-sec">
+      <div class="sec-title"><h2><span class="num">1</span>Search</h2></div>
+      <div class="search">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+        <label for="q" class="sr-only">Search projects</label>
+        <input id="q" type="search" placeholder="Name, number, place, or agency" autocomplete="off" />
+      </div>
+      <p class="help">Searches project names, numbers, descriptions, implementers, and jurisdictions.</p>
+    </section>
+
+    <section class="panel-sec">
+      <div class="sec-title"><h2><span class="num">2</span>Organize by</h2></div>
+      <div class="seg" role="radiogroup" aria-label="Organize projects by">
+        <button type="button" role="radio" data-mode="plan" aria-checked="true">Plan</button>
+        <button type="button" role="radio" data-mode="jur" aria-checked="false">Jurisdiction</button>
+      </div>
+      <p class="help">Groups the project tables by plan or by jurisdiction.</p>
+    </section>
+
+    <section class="panel-sec">
+      <div class="sec-title"><h2><span class="num">3</span>Filter</h2><button type="button" class="linkbtn" id="clearAll">Clear filters</button></div>
+      <div>
+        <div class="field" id="planLbl" style="margin-bottom:0.3rem">Plans</div>
+        <div class="pills" id="planPills" role="group" aria-labelledby="planLbl"></div>
+      </div>
+      <div>
+        <div class="field" id="jurLbl" style="margin-bottom:0.3rem">Jurisdictions</div>
+        <div class="pills" id="jurPills" role="group" aria-labelledby="jurLbl"></div>
+      </div>
+      <div>
+        <div class="field" id="multiLbl" style="margin-bottom:0.3rem">Overlap</div>
+        <div class="pills" role="group" aria-labelledby="multiLbl">
+          <button type="button" class="pill multi" id="multiPill" aria-pressed="false"><i class="dot"></i>In more than one plan <span class="n" id="multiN">0</span></button>
+        </div>
+      </div>
+      <label class="field">Lead implementer
+        <select id="fLead"><option value="">All implementers</option></select>
+      </label>
+      <p class="help">Plan and jurisdiction pills combine: pick several to see any of them.</p>
+    </section>
+
+    <section class="panel-sec">
+      <div class="sec-title"><h2><span class="num">4</span>Download</h2></div>
+      <div class="export-btns">
+        <calcite-button id="dlView" width="full" scale="s" icon-start="download">Download this list (Excel)</calcite-button>
+        <calcite-button id="dlAll" width="full" scale="s" appearance="outline" icon-start="file-report">Download all projects (Excel)</calcite-button>
+      </div>
+      <p class="help">One worksheet per group in the list, plus a sheet of projects that appear in more than one plan.</p>
+    </section>
+  </aside>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="pageTitle">
+      <div class="over">Transportation planning</div>
+      <h1 id="pageTitle">Projects across TRPA transportation plans</h1>
+      <p>Every project from the Connections 2050 Regional Transportation Plan (RTP), the 2024 Active Transportation Plan (ATP), and the Lake Tahoe Region Vision Zero Strategy, in one searchable list. Select <strong>In more than one plan</strong> to see and highlight projects that appear in more than one plan.</p>
+      <div class="stripe" aria-hidden="true"><i style="background:#044554"></i><i style="background:#98CA4D"></i><i style="background:#BA5B53"></i><i style="background:#E4CB3F"></i><i style="background:#54746A"></i></div>
+    </section>
+
+    <div class="kpis" aria-live="polite">
+      <div class="kpi"><div class="v" id="kRows">0</div><div class="l">Plan entries shown</div></div>
+      <div class="kpi accent"><div class="v" id="kMulti">0</div><div class="l">Projects in more than one plan</div></div>
+    </div>
+
+
+    <div class="legend" role="note" id="legend">
+      <span id="legendHl" hidden><span class="sw"></span>Highlighted rows appear in more than one plan.</span>
+      <span>Select a project name for details, other plans it appears in, and why they match.</span>
+    </div>
+
+    <div id="groups"></div>
+    <div id="emptyAll" class="empty" hidden>
+      <strong>No projects match.</strong> Try fewer search words, or <button type="button" class="linkbtn" id="emptyClear">clear filters</button>.
+    </div>
+
+    <section class="card" id="about" aria-labelledby="aboutTitle">
+      <div class="card-head"><h2 id="aboutTitle">About this tool</h2></div>
+      <div class="body">
+        <p>This tool brings together the project lists from three TRPA plans so you can search them in one place, see where they overlap, and take a list with you in Excel. Each row is a plan entry: a project as it appears in one plan. A project that appears in two plans shows up as two linked rows.</p>
+        <h3>Plans and sources</h3>
+        <ul>
+          <li><strong>Connections 2050 Regional Transportation Plan (RTP)</strong>, Appendix B project list: 135 entries on the foreseeable (constrained) and illustrative (unconstrained) lists, in five categories. Costs are shown as the plan lists them for 2025 to 2030, 2031 to 2040, and 2041 to 2050.</li>
+          <li><strong>2024 Active Transportation Plan (ATP)</strong>, Chapter 4 corridor project tables 4-1 to 4-6: 124 projects with priority tiers. Each one is checked against the <a href="https://trpa.maps.arcgis.com/apps/instant/basic/index.html?appid=cbd9ae4b1b5b417d9a35cbe97406e423" target="_blank" rel="noopener noreferrer">2024 ATP Proposed Projects map</a>, which adds descriptions, facility types, and locations. Two projects in the tables are complete and are marked Complete.</li>
+          <li><strong>Lake Tahoe Region Vision Zero Strategy</strong>, candidate project locations (pages 47 to 49): 30 locations, eight of them priority projects.</li>
+        </ul>
+        <p>Data in this file is a snapshot taken __BUILT__. The tool doesn't update itself when the plans or the map change.</p>
+        <h3>How projects are matched across plans</h3>
+        <ol>
+          <li><strong>Same EIP project number.</strong> The RTP entry and the ATP facility carry the same Environmental Improvement Program (EIP) number.</li>
+          <li><strong>Same project, matched by name and limits.</strong> The entries have no shared number but describe the same project and termini.</li>
+          <li><strong>Same location and limits.</strong> A Vision Zero location covers the same corridor and limits as an RTP project.</li>
+          <li><strong>Listed as a connection.</strong> The Vision Zero Strategy names the RTP project under connections to existing plans and projects.</li>
+        </ol>
+        <p>Each project's detail panel shows which of these applies. Matches 2 through 4 were made by hand and are worth a second look before you rely on them.</p>
+      </div>
+    </section>
+    <footer>Tahoe Regional Planning Agency &middot; Transportation Plan Projects &middot; Data snapshot __BUILT__</footer>
+  </main>
+</div>
+
+<div id="scrim" hidden></div>
+<aside id="drawer" data-brand="connecting-tahoe" role="dialog" aria-modal="true" aria-labelledby="drTitle" hidden>
+  <div class="dr-head">
+    <div>
+      <div class="tags" id="drTags"></div>
+      <h2 id="drTitle" tabindex="-1"></h2>
+    </div>
+    <button type="button" class="dr-close" id="drClose" aria-label="Close project details">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+    </button>
+  </div>
+  <div class="dr-body" id="drBody"></div>
+</aside>
+<div id="toast" data-brand="connecting-tahoe" role="status" hidden></div>
+
+<noscript><div class="empty" style="margin:18px">This tool needs JavaScript to show the project lists.</div></noscript>
+
+<script>
+"use strict";
+const DATA = __DATA__;
+const BUILT = "__BUILT__";
+
+/* ── Reference lists ── */
+const PLANS = {
+  RTP: { short: "RTP", name: "Connections 2050 Regional Transportation Plan", sheet: "RTP projects", meta: "Appendix B project list, constrained and illustrative", color: "#2B94D1" },
+  ATP: { short: "ATP", name: "2024 Active Transportation Plan", sheet: "ATP facilities", meta: "Chapter 4 corridor project tables, checked against the 2024 ATP map", color: "#98CA4D" },
+  VZ:  { short: "Vision Zero", name: "Lake Tahoe Region Vision Zero Strategy", sheet: "Vision Zero locations", meta: "Candidate project locations", color: "#BA5B53" },
+};
+const PLAN_ORDER = ["RTP", "ATP", "VZ"];
+const JURS = ["City of South Lake Tahoe", "El Dorado County", "Placer County", "Douglas County", "Washoe County", "Carson City", "Regional"];
+const JUR_META = { "Regional": "Basin-wide programs and projects" };
+const JUR_COLORS = ["#2B94D1", "#98CA4D", "#54746A", "#BA5B53", "#E4CB3F", "#044554", "#6B7688"];
+
+/* ── Prepare records ── */
+const byId = new Map(DATA.map(r => [r.id, r]));
+const groupMembers = {};
+DATA.forEach(r => { if (r.group) (groupMembers[r.group] = groupMembers[r.group] || []).push(r); });
+// Number the cross-plan matches M1, M2, ... in title order
+let mi = 0;
+Object.values(groupMembers)
+  .filter(g => new Set(g.map(r => r.plan)).size > 1)
+  .sort((a, b) => a[0].title.localeCompare(b[0].title))
+  .forEach(g => { mi++; g.forEach(r => r.match = "M" + mi); });
+DATA.forEach(r => {
+  r.multi = r.plans.length > 1;
+  r.others = r.plans.filter(p => p !== r.plan);
+  r.mates = r.group ? groupMembers[r.group].filter(m => m.id !== r.id) : [];
+  r.hay = [r.title, r.label, r.no, r.desc, r.lead, r.jur.join(" "), r.type, r.status, r.when, PLANS[r.plan].name, PLANS[r.plan].short, r.conn, r.phase, r.corridor, r.mapName]
+    .filter(Boolean).join(" ").toLowerCase();
+});
+
+/* ── Formatting ── */
+const fmtMoney = v => (v === null || v === undefined) ? "—" : "$" + Math.round(v).toLocaleString("en-US");
+const fmtShort = v => v >= 1e9 ? "$" + (v / 1e9).toFixed(2) + "B" : v >= 1e6 ? "$" + (v / 1e6).toFixed(1) + "M" : "$" + Math.round(v).toLocaleString("en-US");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const chip = p => `<span class="chip" style="--c:${PLANS[p].color}"><i></i>${esc(PLANS[p].short)}</span>`;
+const plural = (n, one, many) => `${n.toLocaleString("en-US")} ${n === 1 ? one : many}`;
+
+/* ── State (kept in the address bar so a filtered view can be shared) ── */
+const state = { q: "", mode: "plan", plans: new Set(), jurs: new Set(), multi: false, lead: "" };
+function readHash() {
+  try {
+    const p = new URLSearchParams(location.hash.slice(1));
+    state.q = p.get("q") || "";
+    state.mode = p.get("by") === "jur" ? "jur" : "plan";
+    state.plans = new Set((p.get("plans") || "").split(",").filter(x => PLANS[x]));
+    state.jurs = new Set((p.get("jur") || "").split("|").filter(x => JURS.includes(x)));
+    state.multi = p.get("multi") === "1";
+    state.lead = p.get("lead") || "";
+  } catch (e) { /* ignore a malformed address */ }
+}
+function writeHash() {
+  const p = new URLSearchParams();
+  if (state.q) p.set("q", state.q);
+  if (state.mode === "jur") p.set("by", "jur");
+  if (state.plans.size) p.set("plans", [...state.plans].join(","));
+  if (state.jurs.size) p.set("jur", [...state.jurs].join("|"));
+  if (state.multi) p.set("multi", "1");
+  if (state.lead) p.set("lead", state.lead);
+  const h = p.toString();
+  try { history.replaceState(null, "", h ? "#" + h : location.pathname + location.search); } catch (e) { /* preview frames can block this */ }
+}
+
+/* ── Filtering ── */
+function matches(r, skip) {
+  if (state.q) {
+    const words = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!words.every(w => r.hay.includes(w))) return false;
+  }
+  if (skip !== "plan" && state.plans.size && !state.plans.has(r.plan)) return false;
+  if (skip !== "jur" && state.jurs.size && !r.jur.some(j => state.jurs.has(j))) return false;
+  if (skip !== "multi" && state.multi && !r.multi) return false;
+  if (skip !== "lead" && state.lead && r.lead !== state.lead) return false;
+  return true;
+}
+const filtered = skip => DATA.filter(r => matches(r, skip));
+
+/* ── AG Grid setup ── */
+const gridTheme = agGrid.themeQuartz.withParams({
+  accentColor: "#2273A3", fontFamily: "Lexend Deca, system-ui, sans-serif", fontSize: 12,
+  headerFontSize: 11, headerTextColor: "#6B7688", headerBackgroundColor: "#F3F6FA",
+  rowHeight: 34, headerHeight: 34, spacing: 5, borderColor: "#E2E6EC", foregroundColor: "#044554",
+  wrapperBorderRadius: 0, wrapperBorder: false,
+});
+
+function titleCell(p) {
+  const r = p.data, div = document.createElement("div");
+  div.className = "cell-title";
+  const tags = [];
+  if (r.multi) tags.push(`<span class="badge multi">In ${r.plans.length} plans</span>`);
+  if (r.sig) tags.push(`<span class="badge info">Regionally significant</span>`);
+  if (r.status === "Complete") tags.push(`<span class="badge success">Complete</span>`);
+  div.innerHTML = `<button type="button" data-open="${r.id}">${esc(r.title)}</button>` +
+    (r.label ? `<span class="lbl">On map: ${esc(r.label)}</span>` : "") +
+    (tags.length ? `<span class="tags">${tags.join("")}</span>` : "");
+  return div;
+}
+function columns(mode, key) {
+  return [
+    { headerName: "Plan", field: "plan", width: 116, hide: mode === "plan",
+      cellRenderer: p => chip(p.value), valueFormatter: p => PLANS[p.value].short, comparator: (a, b) => PLAN_ORDER.indexOf(a) - PLAN_ORDER.indexOf(b) },
+    { headerName: "Project number", field: "no", width: 132, valueFormatter: p => p.value || "—", cellClass: p => p.value ? "" : "muted" },
+    { headerName: "Project", field: "title", flex: 2, minWidth: 260, wrapText: true, autoHeight: true, cellRenderer: titleCell },
+    { headerName: "Also in", colId: "also", width: 130, valueGetter: p => p.data.others.map(o => PLANS[o].short).join(", "),
+      cellRenderer: p => p.data.others.length ? `<div class="cell-chips">${p.data.others.map(chip).join("")}</div>` : `<span class="muted">—</span>`,
+      autoHeight: true },
+    { headerName: "Lead implementer", field: "lead", flex: 1, minWidth: 170, wrapText: true, autoHeight: true, cellClass: "cell-wrap" },
+    { headerName: "Jurisdiction", colId: "jur", flex: 1, minWidth: 160, valueGetter: p => p.data.jur.join("; "), wrapText: true, autoHeight: true, cellClass: "cell-wrap" },
+    { headerName: "Type", field: "type", width: 168, wrapText: true, autoHeight: true, cellClass: "cell-wrap" },
+    { headerName: mode === "plan" && (key === "ATP" || key === "VZ") ? "Priority tier" : "Status", field: "status", width: 136, wrapText: true, autoHeight: true, cellClass: "cell-wrap" },
+    { headerName: "Timeframe", field: "when", width: 150, wrapText: true, autoHeight: true, cellClass: "cell-wrap" },
+    { headerName: "Cost", field: "cost", width: 128, type: "rightAligned", valueFormatter: p => fmtMoney(p.value),
+      comparator: (a, b) => (a ?? -1) - (b ?? -1) },
+  ];
+}
+function makeGrid(el, mode, rows, key) {
+  return agGrid.createGrid(el, {
+    theme: gridTheme,
+    columnDefs: columns(mode, key),
+    rowData: rows,
+    // Working surface for scanning and comparing: no pagination, the whole group shows.
+    domLayout: "autoHeight",
+    defaultColDef: { sortable: true, resizable: true, filter: true, minWidth: 80 },
+    suppressCellFocus: true,
+    // Highlight only while the "In more than one plan" filter is on
+    rowClassRules: { "row-multi": p => !!(state.multi && p.data && p.data.multi) },
+    getRowId: p => p.data.id,
+    onRowClicked: e => { if (!(e.event && e.event.target.closest("button"))) openDetail(e.data.id, e.event && e.event.target); },
+    overlayNoRowsTemplate: '<span class="muted">No projects in this group match.</span>',
+  });
+}
+
+/* ── Panel controls ── */
+const $ = id => document.getElementById(id);
+function buildSelect(sel, values, key) {
+  values.forEach(v => { const o = document.createElement("option"); o.value = v; o.textContent = v; sel.appendChild(o); });
+  sel.addEventListener("change", () => { state[key] = sel.value; render(); });
+}
+buildSelect($("fLead"), [...new Set(DATA.map(r => r.lead))].sort((a, b) => a.localeCompare(b)), "lead");
+
+function pill(container, key, label, color, setName) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "pill"; b.dataset.key = key;
+  b.setAttribute("aria-pressed", "false");
+  b.innerHTML = `<i class="dot" style="--c:${color}"></i>${esc(label)} <span class="n">0</span>`;
+  b.addEventListener("click", () => {
+    const s = state[setName];
+    s.has(key) ? s.delete(key) : s.add(key);
+    render();
+  });
+  container.appendChild(b);
+}
+PLAN_ORDER.forEach(p => pill($("planPills"), p, PLANS[p].short, PLANS[p].color, "plans"));
+JURS.forEach((j, i) => pill($("jurPills"), j, j, JUR_COLORS[i], "jurs"));
+$("planPills").querySelectorAll(".pill").forEach(b => b.title = PLANS[b.dataset.key].name);
+
+$("multiPill").addEventListener("click", () => { state.multi = !state.multi; render(); });
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => { state.mode = b.dataset.mode; render(); }));
+document.querySelector(".seg").addEventListener("keydown", e => {
+  if (!["ArrowLeft", "ArrowRight"].includes(e.key)) return;
+  state.mode = state.mode === "plan" ? "jur" : "plan"; render();
+  document.querySelector(`.seg button[data-mode="${state.mode}"]`).focus();
+});
+let qTimer;
+$("q").addEventListener("input", e => { clearTimeout(qTimer); qTimer = setTimeout(() => { state.q = e.target.value.trim(); render(); }, 150); });
+function clearFilters() {
+  Object.assign(state, { q: "", multi: false, lead: "" });
+  state.plans.clear(); state.jurs.clear();
+  $("q").value = ""; render();
+}
+$("clearAll").addEventListener("click", clearFilters);
+$("emptyClear").addEventListener("click", clearFilters);
+
+/* ── Group sections ── */
+const sections = new Map(); // key -> { el, api, rows }
+const collapsed = new Set();
+let builtMode = null;
+const chevron = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>';
+
+function groupDefs() {
+  if (state.mode === "plan") return PLAN_ORDER.map(p => ({ key: p, name: PLANS[p].name, sheet: PLANS[p].sheet, meta: PLANS[p].meta, color: PLANS[p].color, test: r => r.plan === p }));
+  return JURS.map((j, i) => ({ key: j, name: j, sheet: j, meta: JUR_META[j] || "", color: JUR_COLORS[i], test: r => r.jur.includes(j) }));
+}
+function buildSections() {
+  sections.forEach(s => s.api.destroy());
+  sections.clear();
+  const host = $("groups");
+  host.innerHTML = "";
+  host.style.display = "flex"; host.style.flexDirection = "column"; host.style.gap = "18px";
+  groupDefs().forEach((g, i) => {
+    const el = document.createElement("section");
+    el.className = "card grp"; el.setAttribute("aria-labelledby", `gh${i}`);
+    el.innerHTML = `
+      <div class="grp-head">
+        <button type="button" class="grp-toggle" aria-expanded="true" aria-controls="gb${i}">
+          ${chevron}<span class="grp-bar" style="--c:${g.color}"></span>
+          <span><span class="grp-name" id="gh${i}">${esc(g.name)}</span><span class="grp-meta"></span></span>
+        </button>
+        <div class="grp-stats"></div>
+        <calcite-button appearance="outline" scale="s" icon-start="download" label="Download ${esc(g.name)} (Excel)">Excel</calcite-button>
+      </div>
+      <div class="grp-body" id="gb${i}"><div class="grid"></div></div>`;
+    host.appendChild(el);
+    const s = { el, g, rows: [] };
+    s.api = makeGrid(el.querySelector(".grid"), state.mode, [], g.key);
+    el.querySelector(".grp-toggle").addEventListener("click", e => {
+      const open = el.classList.toggle("collapsed") === false;
+      e.currentTarget.setAttribute("aria-expanded", String(open));
+      open ? collapsed.delete(g.key) : collapsed.add(g.key);
+    });
+    el.querySelector("calcite-button").addEventListener("click", () => exportWorkbook([{ name: g.sheet, rows: s.rows }], g.sheet));
+    if (collapsed.has(g.key)) { el.classList.add("collapsed"); el.querySelector(".grp-toggle").setAttribute("aria-expanded", "false"); }
+    sections.set(g.key, s);
+  });
+  builtMode = state.mode;
+}
+function updateSections(rows) {
+  if (builtMode !== state.mode) buildSections();
+  let shown = 0;
+  sections.forEach(s => {
+    const visibleGroup = state.mode === "plan" ? (!state.plans.size || state.plans.has(s.g.key)) : (!state.jurs.size || state.jurs.has(s.g.key));
+    s.rows = rows.filter(s.g.test);
+    s.el.hidden = !visibleGroup || !s.rows.length;
+    if (s.el.hidden) return;
+    shown++;
+    s.api.setGridOption("rowData", s.rows);
+    s.api.redrawRows();
+    const multi = s.rows.filter(r => r.multi).length;
+    s.el.querySelector(".grp-meta").textContent = [s.g.meta, plural(s.rows.length, "entry", "entries")].filter(Boolean).join(" · ");
+    s.el.querySelector(".grp-stats").innerHTML =
+      (multi ? `<span class="badge multi">${plural(multi, "in more than one plan", "in more than one plan")}</span>` : "");
+  });
+  $("emptyAll").hidden = shown > 0;
+}
+
+/* ── Render ── */
+function render() {
+  const rows = filtered();
+  // panel state
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-checked", String(b.dataset.mode === state.mode)));
+  const rp = filtered("plan"), rj = filtered("jur"), rm = filtered("multi");
+  $("planPills").querySelectorAll(".pill").forEach(b => {
+    const n = rp.filter(r => r.plan === b.dataset.key).length;
+    b.setAttribute("aria-pressed", String(state.plans.has(b.dataset.key)));
+    b.querySelector(".n").textContent = n; b.classList.toggle("zero", !n);
+  });
+  $("jurPills").querySelectorAll(".pill").forEach(b => {
+    const n = rj.filter(r => r.jur.includes(b.dataset.key)).length;
+    b.setAttribute("aria-pressed", String(state.jurs.has(b.dataset.key)));
+    b.querySelector(".n").textContent = n; b.classList.toggle("zero", !n);
+  });
+  $("multiPill").setAttribute("aria-pressed", String(state.multi));
+  $("legendHl").hidden = !state.multi;
+  $("multiN").textContent = rm.filter(r => r.multi).length;
+  $("fLead").value = state.lead;
+  if ($("q").value.trim() !== state.q) $("q").value = state.q;
+  // KPIs
+  $("kRows").textContent = rows.length.toLocaleString("en-US");
+  $("kMulti").textContent = new Set(rows.filter(r => r.multi).map(r => r.match)).size.toLocaleString("en-US");
+  updateSections(rows);
+  writeHash();
+}
+
+/* ── Detail drawer ── */
+let lastFocus = null;
+function factRow(k, v) { return v ? `<dt>${esc(k)}</dt><dd>${v}</dd>` : ""; }
+function openDetail(id, trigger) {
+  const r = byId.get(id); if (!r) return;
+  lastFocus = trigger && trigger.focus ? trigger : document.activeElement;
+  const P = PLANS[r.plan];
+  const tags = [chip(r.plan), `<span class="badge ${r.status === "Priority project" ? "danger" : "neutral"}">${esc(r.status)}</span>`];
+  if (r.multi) tags.push(`<span class="badge multi">In ${r.plans.length} plans</span>`);
+  if (r.sig) tags.push(`<span class="badge info">Regionally significant</span>`);
+  $("drTags").innerHTML = tags.join("");
+  $("drTitle").textContent = r.title;
+  let h = "";
+
+  if (r.multi) {
+    const plansTxt = r.plans.map(p => PLANS[p].short).join(", ");
+    h += `<div class="well">This project appears in ${r.plans.length} plans: ${esc(plansTxt)}.</div>`;
+  }
+  const numTxt = r.no ? (r.link ? `<a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.no)}</a>` : esc(r.no)) : "";
+  h += `<section><h3>Details</h3><dl class="facts">
+    ${factRow("Plan", esc(P.name))}
+    ${factRow("Project number", numTxt || '<span class="muted">Not listed</span>')}
+    ${factRow("Lead implementer", esc(r.lead))}
+    ${factRow("Jurisdiction", esc(r.jur.join("; ")))}
+    ${factRow(r.plan === "RTP" ? "Category" : "Type", esc(r.type))}
+    ${factRow(r.plan === "RTP" ? "Project list" : r.plan === "ATP" ? "Priority tier" : "Status", esc(r.plan === "ATP" ? r.tier : r.status))}
+    ${r.status === "Complete" ? factRow("Status", '<span class="badge success">Complete</span>') : ""}
+    ${factRow(r.plan === "RTP" ? "Funded period" : r.plan === "ATP" ? "Estimated completion" : "Timeframe", esc(r.plan === "ATP" ? r.when.replace("Complete by ", "") : r.when))}
+    ${r.plan === "ATP" ? factRow("Corridor", esc(r.corridor)) + factRow("Phase", esc(r.phase)) + factRow("Length", r.miles ? esc(r.miles.toFixed(2)) + " miles" : "") : ""}
+    ${r.plan === "RTP" ? factRow("County (as listed)", esc(r.county)) : ""}
+    ${r.plan !== "VZ" ? factRow(r.plan === "ATP" ? "Estimated cost" : "Total cost", fmtMoney(r.cost)) : ""}
+  </dl></section>`;
+  if (r.plan === "ATP") {
+    let m = r.onmap
+      ? `<dl class="facts">${factRow("On the map", "Yes")}${factRow("Project on map", esc(r.mapName))}${r.label ? factRow("Facility on map", esc(r.label)) : ""}${factRow("Financial status", esc(r.funding))}</dl>`
+      : r.status === "Complete" ? `<p>This project is complete, so it isn't shown on the 2024 ATP map.</p>` : `<p>This project isn't shown on the 2024 ATP map.</p>`;
+    h += `<section><h3>On the 2024 ATP map</h3>${m}</section>`;
+  }
+  if (r.plan === "RTP" && r.cost !== null) {
+    h += `<section><h3>Cost by period</h3><table class="mini"><thead><tr><th>Period</th><th class="num">Cost</th></tr></thead><tbody>
+      <tr><td>2025 to 2030</td><td class="num">${r.c2030 ? fmtMoney(r.c2030) : "—"}</td></tr>
+      <tr><td>2031 to 2040</td><td class="num">${r.c2040 ? fmtMoney(r.c2040) : "—"}</td></tr>
+      <tr><td>2041 to 2050</td><td class="num">${r.c2050 ? fmtMoney(r.c2050) : "—"}</td></tr>
+      <tr><th>Total</th><th class="num">${fmtMoney(r.cost)}</th></tr></tbody></table></section>`;
+  }
+  if (r.plan === "VZ") {
+    if (r.conn) h += `<section><h3>Connections to existing plans and projects</h3><p>${esc(r.conn).replace(/; /g, "<br>")}</p></section>`;
+  } else if (r.desc) {
+    h += `<section><h3>Description</h3><p>${esc(r.desc)}</p></section>`;
+  }
+  if (r.mates.length) {
+    const sorted = [...r.mates].sort((a, b) => PLAN_ORDER.indexOf(a.plan) - PLAN_ORDER.indexOf(b.plan));
+    h += `<section><h3>${r.multi ? "Same project in other plans" : "Related entries"}</h3><div class="rel">` + sorted.map(m => {
+      const why = r.why[m.id] || m.why[r.id] || "Linked through another entry in this group";
+      return `<button type="button" data-open="${m.id}" style="--c:${PLANS[m.plan].color}">
+        <span class="m">${esc(PLANS[m.plan].name)}${m.no ? " · " + esc(m.no) : ""}</span>
+        <span class="t">${esc(m.title)}${m.label ? " (" + esc(m.label) + ")" : ""}</span>
+        <span class="m">Match: ${esc(why)}</span></button>`;
+    }).join("") + `</div></section>`;
+  }
+  $("drBody").innerHTML = h;
+  $("drBody").scrollTop = 0;
+  $("drawer").hidden = false; $("scrim").hidden = false;
+  $("drTitle").focus();
+}
+function closeDetail() {
+  if ($("drawer").hidden) return;
+  $("drawer").hidden = true; $("scrim").hidden = true;
+  if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
+}
+$("drClose").addEventListener("click", closeDetail);
+$("scrim").addEventListener("click", closeDetail);
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeDetail();
+  if (e.key === "Tab" && !$("drawer").hidden) { // keep focus in the open drawer
+    const f = [...$("drawer").querySelectorAll("button, a[href], [tabindex='-1']")].filter(x => !x.hidden);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-open]");
+  if (b) openDetail(b.dataset.open, b);
+});
+
+/* ── Excel export ── */
+const XCOLS = ["Plan", "Project number", "Project", "Corridor (ATP)", "Name on ATP map", "Description", "Lead implementer", "Jurisdiction",
+  "Type or category", "Status in plan", "Timeframe", "Total or estimated cost", "Cost 2025-2030 (RTP)", "Cost 2031-2040 (RTP)", "Cost 2041-2050 (RTP)",
+  "Regionally significant (RTP)", "Miles (ATP)", "Phase (ATP)",
+  "Connections to existing plans (VZ)", "On ATP map", "Financial status on map (ATP)", "Number of plans", "Cross-plan match", "Also listed as", "Match basis", "Link"];
+const XWIDTH = [30, 16, 48, 34, 40, 70, 30, 26, 22, 18, 16, 16, 15, 15, 15, 12, 10, 14, 36, 10, 14, 10, 10, 60, 40, 46];
+const MONEY_COLS = [11, 12, 13, 14];
+const yn = v => v === undefined ? "" : v ? "Yes" : "No";
+function xRow(r) {
+  return [PLANS[r.plan].name, r.no || "", r.title, r.corridor || "", r.plan === "ATP" ? [r.mapName !== r.title ? r.mapName : "", r.label].filter(Boolean).join(" / ") : "", r.plan === "VZ" ? "" : r.desc, r.lead, r.jur.join("; "),
+    r.type, r.status, r.when, r.cost ?? "", r.plan === "RTP" ? (r.c2030 ?? "") : "", r.plan === "RTP" ? (r.c2040 ?? "") : "",
+    r.plan === "RTP" ? (r.c2050 ?? "") : "", r.plan === "RTP" ? yn(!!r.sig) : "", r.miles ?? "", r.phase || "",
+    r.conn || "",
+    r.plan === "ATP" ? yn(r.onmap) : "", r.funding || "",
+    r.plans.length, r.match || "",
+    r.mates.map(m => `${PLANS[m.plan].short}: ${m.title}${m.no ? " (" + m.no + ")" : ""}`).join("; "),
+    [...new Set(Object.values(r.why))].join("; "), r.link || ""];
+}
+function sheetFrom(aoa, widths, moneyCols) {
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws["!cols"] = widths.map(w => ({ wch: w }));
+  if (aoa.length > 1) ws["!autofilter"] = { ref: XLSX.utils.encode_range({ s: { r: 0, c: 0 }, e: { r: aoa.length - 1, c: aoa[0].length - 1 } }) };
+  ws["!freeze"] = { xSplit: 0, ySplit: 1 };
+  (moneyCols || []).forEach(c => { for (let i = 1; i < aoa.length; i++) { const cell = ws[XLSX.utils.encode_cell({ r: i, c })]; if (cell && cell.t === "n") cell.z = "$#,##0"; } });
+  return ws;
+}
+function safeSheetName(n, used) {
+  let s = n.replace(/[\\\/\?\*\[\]:]/g, "-").slice(0, 31), k = 2;
+  while (used.has(s)) s = n.slice(0, 28) + " " + k++;
+  used.add(s); return s;
+}
+function describeFilters() {
+  const f = [];
+  if (state.q) f.push(`search "${state.q}"`);
+  if (state.plans.size) f.push("plans: " + [...state.plans].map(p => PLANS[p].short).join(", "));
+  if (state.jurs.size) f.push("jurisdictions: " + [...state.jurs].join(", "));
+  if (state.multi) f.push("only projects in more than one plan");
+  if (state.lead) f.push("lead implementer: " + state.lead);
+  return f.length ? f.join("; ") : "none (all projects)";
+}
+function exportWorkbook(groups, label) {
+  const total = groups.reduce((t, g) => t + g.rows.length, 0);
+  if (!total) { toast("There's nothing in this list to download."); return; }
+  const stamp = new Date().toISOString().slice(0, 10);
+  const fname = `TRPA-transportation-projects-${label.replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "")}-${stamp}`;
+  if (typeof XLSX === "undefined") { exportCsv(groups.flatMap(g => g.rows), fname); return; }
+  const wb = XLSX.utils.book_new(), used = new Set();
+  groups.forEach(g => {
+    if (!g.rows.length) return;
+    XLSX.utils.book_append_sheet(wb, sheetFrom([XCOLS, ...g.rows.map(xRow)], XWIDTH, MONEY_COLS), safeSheetName(g.name, used));
+  });
+  const all = [...new Map(groups.flatMap(g => g.rows).map(r => [r.id, r])).values()];
+  const matchIds = [...new Set(all.filter(r => r.multi).map(r => r.match))];
+  if (matchIds.length) {
+    const mrows = DATA.filter(r => matchIds.includes(r.match))
+      .sort((a, b) => Number(a.match.slice(1)) - Number(b.match.slice(1)) || PLAN_ORDER.indexOf(a.plan) - PLAN_ORDER.indexOf(b.plan))
+      .map(r => [r.match, PLANS[r.plan].name, r.no || "", r.title, r.mapName && r.mapName !== r.title ? r.mapName : "", r.lead, r.jur.join("; "), r.status, r.cost ?? "", [...new Set(Object.values(r.why))].join("; ")]);
+    XLSX.utils.book_append_sheet(wb, sheetFrom([["Cross-plan match", "Plan", "Project number", "Project", "Name on ATP map", "Lead implementer", "Jurisdiction", "Status in plan", "Cost", "Match basis"], ...mrows],
+      [10, 40, 16, 50, 30, 30, 26, 18, 16, 50], [8]), safeSheetName("In more than one plan", used));
+  }
+  const about = [["Transportation Plan Projects - Tahoe Regional Planning Agency"], [],
+    ["Downloaded", stamp], ["List", label], ["Filters", describeFilters()], ["Plan entries", total], ["Data snapshot", BUILT], [],
+    ["Sources"], ["RTP", "Connections 2050 Regional Transportation Plan, Appendix B project list (constrained and illustrative)"],
+    ["ATP", "2024 Active Transportation Plan, Chapter 4 corridor project tables 4-1 to 4-6, cross-referenced to the 2024 ATP Proposed Projects map"],
+    ["Vision Zero", "Lake Tahoe Region Vision Zero Strategy, candidate project locations, pages 47-49"], [],
+    ["Notes"], ["", "Each row is a plan entry. A project in two plans appears once on each plan's sheet; the 'Cross-plan match' column links them."],
+    ["", "Cross-plan matches by name, location, or listed connection were made by hand. Check them before relying on them."],
+    ["", "ATP values come from the plan's project tables. Projects marked Complete aren't shown on the 2024 ATP map."],
+    ["", "Not every entry lists a cost. Blank cost cells mean the plan doesn't list one."]];
+  const ws = XLSX.utils.aoa_to_sheet(about); ws["!cols"] = [{ wch: 16 }, { wch: 110 }];
+  XLSX.utils.book_append_sheet(wb, ws, safeSheetName("About", used));
+  try { XLSX.writeFile(wb, fname + ".xlsx", { compression: true }); toast(`Downloaded ${plural(total, "entry", "entries")} to Excel.`); }
+  catch (e) { exportCsv(all, fname); }
+}
+function exportCsv(rows, fname) {
+  const q = v => { const s = String(v ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  const csv = [XCOLS, ...rows.map(xRow)].map(r => r.map(q).join(",")).join("\r\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" }));
+  a.download = fname + ".csv"; document.body.appendChild(a); a.click(); a.remove();
+  toast("Excel export didn't load, so the list downloaded as a CSV file that opens in Excel.");
+}
+let toastTimer;
+function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 3500); }
+
+$("dlView").addEventListener("click", () => {
+  const groups = [...sections.values()].filter(s => !s.el.hidden).map(s => ({ name: s.g.sheet, rows: s.rows }));
+  exportWorkbook(groups, state.mode === "plan" ? "by-plan" : "by-jurisdiction");
+});
+$("dlAll").addEventListener("click", () => exportWorkbook(PLAN_ORDER.map(p => ({ name: PLANS[p].sheet, rows: DATA.filter(r => r.plan === p) })), "all-plans"));
+
+/* ── Start ── */
+readHash();
+render();
+window.addEventListener("hashchange", () => { readHash(); render(); });
+</script>
+</body>
+</html>
