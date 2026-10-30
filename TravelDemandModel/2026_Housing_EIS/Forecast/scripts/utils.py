@@ -365,7 +365,7 @@ def get_parcel_conditions():
     adu_criteria           = "(df['ADU_ALLOWED'] == 'Yes') & (df['Residential_Units']>0)"
     towncenter_condition   = "(df['TOWN_CENTER'].fillna('').str.strip() != '')"
     top_10_condition       = "(df['TOP_TEN_POTENTIAL_UNITS'] == 'Yes')"
-    condo_size_condition   = "(df['PARCEL_ACRES'] >= 0.15)&(~df['EXISTING_LANDUSE'].isin(['Condominium', 'Condomunium Common Area']))"
+    condo_size_condition   = "(df['PARCEL_ACRES'] >= 0.15)&(~df['EXISTING_LANDUSE'].isin(['Condominium', 'Condominium Common Area']))"
     ready_to_forecast      = "(df['FORECAST_REASON'].isna())&(df['OWNERSHIP_TYPE'] == 'Private')"
 
     # setup f string to change jurisdiction in bonus condition
@@ -412,7 +412,7 @@ def get_parcel_conditions():
     adu_criteria           = "(df['ADU_ALLOWED'] == 'Yes') & (df['Residential_Units']>0)"
     towncenter_condition   = "(df['TOWN_CENTER'].fillna('').str.strip() != '')"
     top_10_condition       = "(df['TOP_TEN_POTENTIAL_UNITS'] == 'Yes')"
-    condo_size_condition   = "(df['PARCEL_ACRES'] >= 0.15)&(~df['EXISTING_LANDUSE'].isin(['Condominium', 'Condomunium Common Area']))"
+    condo_size_condition   = "(df['PARCEL_ACRES'] >= 0.15)&(~df['EXISTING_LANDUSE'].isin(['Condominium', 'Condominium Common Area']))"
     ready_to_forecast      = "(df['FORECAST_REASON'].isna())&(df['OWNERSHIP_TYPE'] == 'Private')"
 
     ##------------------------------------------------- Jurisdiction Specific Conditions ---------------------------------------------------- ##

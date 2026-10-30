@@ -247,12 +247,14 @@ def assign_occupancy_rate(sdfParcels, occupancy_rates, res_assigned_lookup_path=
         mask = sdfParcels['FORECAST_REASON'].fillna('').str.contains(reason_keyword)
         sdfParcels.loc[mask, 'FORECASTED_RES_OCCUPANCY_RATE'] = rate
 
-    # Parcels with a FORECAST_REASON that matched no keyword default to 1
+    # Parcels with a FORECAST_REASON that matched no keyword and have no known-project
+    # rate default to 1 (Assigned parcels keep their rate from the lookup)
     has_reason = sdfParcels['FORECAST_REASON'].notna() & (sdfParcels['FORECAST_REASON'] != '')
     no_keyword_match = ~sdfParcels['FORECAST_REASON'].fillna('').apply(
         lambda r: any(kw in r for kw in occupancy_rates)
     )
-    sdfParcels.loc[has_reason & no_keyword_match, 'FORECASTED_RES_OCCUPANCY_RATE'] = 1
+    no_lookup_rate = sdfParcels['FORECASTED_RES_OCCUPANCY_RATE'].isna()
+    sdfParcels.loc[has_reason & no_keyword_match & no_lookup_rate, 'FORECASTED_RES_OCCUPANCY_RATE'] = 1
 
     return sdfParcels, dfResAssigned
 
