@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Built with the trpa-project-site pattern (from trpa-storymap-to-webpage).
+       Brand: Connecting Tahoe colors on the EIP system (Lexend Deca, pill controls, 10px cards).
+       Every link, file, embed ID, and meeting date comes from config/site-config.js. -->
+  <title>Tahoe Transit Study | TRPA</title>
+  <meta name="description" content="The Tahoe Regional Planning Agency (TRPA) is leading a regional effort to create a more coordinated, efficient, and sustainable transit system throughout the Lake Tahoe Basin." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tahoe Transit Study" />
+  <meta property="og:description" content="A regional effort to create a more coordinated, efficient, and sustainable transit system throughout the Lake Tahoe Basin." />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Montserrat:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <script src="config/site-config.js"></script>
+  <script src="data/project-timeline.js"></script>
+
+  <style>
+    /* ---------- tokens: trpa-tokens.css, Connecting Tahoe layer, inlined ---------- */
+    :root {
+      --ct-blue:#2B94D1; --ct-teal:#044554; --ct-red:#BA5B53; --ct-sage:#54746A; --ct-green:#98CA4D; --ct-gold:#E4CB3F;
+      --ct-blue-light:#E6F2F9; --ct-red-light:#F7EBEA; --ct-green-light:#F3F9EA; --ct-gold-light:#FCF9E8;
+      --ct-blue-text:#2273A3; --ct-red-text:#A7524B; --ct-green-text:#5D7B2F; --ct-gold-text:#807223;
+      --white:#FFFFFF; --gray-bg:#F5F7FA; --gray-border:#E2E6EC; --gray-text:#6B7688; --gray-muted:#8A93A3;
+
+      --brand-primary:var(--ct-blue); --brand-primary-text:var(--ct-blue-text); --brand-primary-hover:var(--ct-teal);
+      --brand-primary-light:var(--ct-blue-light); --brand-dark:var(--ct-teal); --brand-accent:var(--ct-red);
+      --brand-accent-text:var(--ct-red-text); --brand-accent-light:var(--ct-red-light); --brand-text:var(--ct-teal);
+      --brand-font:'Lexend Deca',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+      --label-font:'Montserrat','Lexend Deca',sans-serif;   /* EIP secondary: Calder Dark substitute */
+      --brand-radius:10px; --brand-radius-pill:999px;
+      --brand-shadow:0 2px 10px rgba(4,69,84,.16); --brand-shadow-sm:0 1px 4px rgba(4,69,84,.06);
+      /* Page shell (header, tabs, footer) stays TRPA agency per the design system */
+      --shell-blue:#0072CE; --shell-navy:#003B71; --shell-font:'Open Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+      --deep:#03323D;                     /* darker teal for image overlays */
+      --bar-h:60px; --tabs-h:48px; --wrap:1180px;
+    }
+
+    /* ---------- base ---------- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--brand-font);color:var(--brand-text);background:var(--white);line-height:1.6;font-size:16px;}
+    img{display:block;max-width:100%;}
+    a{color:var(--brand-primary-text);}
+    a:hover{color:var(--brand-dark);}
+    :focus-visible{outline:2px solid var(--brand-primary);outline-offset:2px;}
+    [id]{scroll-margin-top:calc(var(--bar-h) + var(--tabs-h) + 12px);}
+    .skip{position:absolute;left:-999px;top:.5rem;background:#fff;color:var(--brand-text);padding:.5rem .8rem;border-radius:6px;z-index:2000;}
+    .skip:focus{left:.5rem;}
+    .wrap{max-width:var(--wrap);margin:0 auto;padding:0 2rem;}
+    .band{padding:4.5rem 0;}
+    .band.tint{background:var(--gray-bg);}
+    .kicker{font-family:var(--label-font);font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-primary-text);margin-bottom:.4rem;}
+    h1,h2,h3{font-weight:700;line-height:1.2;}
+    h2{font-size:clamp(1.55rem,3vw,2.1rem);margin-bottom:.9rem;}
+    h3{font-size:1.1rem;line-height:1.3;}
+    .center{text-align:center;}
+    .lede{font-size:1.08rem;}
+    .center.lede{max-width:46rem;margin:0 auto;}
+    .prose{max-width:46rem;}
+    .prose.mid{margin:0 auto;}
+    .prose p{margin:0 0 1rem;}
+    .muted{color:var(--gray-text);}
+    .credit{font-size:.72rem;color:var(--gray-text);}
+    .credit:empty{display:none;}
+    .btn{display:inline-flex;align-items:center;gap:.45rem;font:600 .95rem var(--brand-font);text-decoration:none;padding:.7rem 1.3rem;border-radius:var(--brand-radius-pill);border:2px solid transparent;cursor:pointer;min-height:44px;}
+    .btn.primary{background:var(--ct-blue-text);color:#fff;}            /* white on #2B94D1 fails contrast */
+    .btn.primary:hover,.btn.primary:active{background:var(--brand-dark);color:#fff;}
+    .btn.ghost{color:#fff;border-color:rgba(255,255,255,.8);background:rgba(3,50,61,.3);}
+    .btn.ghost:hover,.btn.ghost:active{background:rgba(255,255,255,.15);border-color:#fff;color:#fff;}
+    .btn.outline{color:var(--brand-primary-text);border-color:var(--brand-primary);background:#fff;}
+    .btn.outline:hover,.btn.outline:active{background:var(--brand-primary-light);color:var(--brand-dark);}
+    .btn svg{width:16px;height:16px;flex-shrink:0;}
+
+    /* ---------- topbar and tabs (agency shell) ---------- */
+    header.site{position:sticky;top:0;z-index:1000;background:#fff;color:var(--shell-navy);font-family:var(--shell-font);box-shadow:0 1px 4px rgba(0,59,113,.06);}
+    .bar{max-width:var(--wrap);margin:0 auto;height:var(--bar-h);padding:0 2rem;display:flex;align-items:center;gap:1rem;}
+    .bar .logo{flex-shrink:0;line-height:0;}
+    .bar .logo img{height:38px;width:auto;}
+    .bar .brand{display:flex;flex-direction:column;text-decoration:none;color:var(--shell-navy);line-height:1.15;min-width:0;}
+    .bar .brand .agency{color:var(--gray-text);font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+    .bar .brand .name{font-size:1.08rem;font-weight:700;white-space:nowrap;}
+    .bar .cta{margin-left:auto;background:var(--shell-blue);color:#fff;text-decoration:none;font-size:.84rem;font-weight:600;padding:.45rem 1rem;border-radius:7px;white-space:nowrap;flex-shrink:0;}
+    .bar .cta:hover,.bar .cta:active{background:var(--shell-navy);color:#fff;}
+    nav.tabs{background:#fff;border-bottom:1px solid var(--gray-border);}
+    nav.tabs .inner{max-width:var(--wrap);margin:0 auto;padding:0 2rem;display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;height:var(--tabs-h);align-items:stretch;}
+    nav.tabs .inner::-webkit-scrollbar{display:none;}
+    nav.tabs a{display:flex;align-items:center;padding:0 .9rem;font-size:.9rem;font-weight:600;color:var(--shell-navy);text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;}
+    nav.tabs a:hover,nav.tabs a:active{color:var(--shell-blue);background:var(--gray-bg);}
+    nav.tabs a[aria-current="page"]{border-bottom-color:var(--shell-blue);color:var(--shell-navy);}
+    header.site :focus-visible,footer.site :focus-visible{outline-color:var(--shell-blue);}
+
+    main [data-panel][hidden]{display:none;}
+
+    /* ---------- hero ---------- */
+    .hero{position:relative;min-height:min(78vh,720px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--deep);}
+    .hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,50,61,.1) 0%,rgba(3,50,61,.15) 30%,rgba(3,50,61,.65) 62%,rgba(3,50,61,.92) 100%);}
+    .hero-text{position:relative;z-index:1;max-width:var(--wrap);width:100%;margin:0 auto;padding:0 2rem 3.75rem;}
+    .hero .eyebrow{font-family:var(--label-font);font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#BFE0F2;}
+    .hero h1{font-size:clamp(2.5rem,6.5vw,4.6rem);line-height:1.04;margin:.35rem 0 .7rem;}
+    .hero .lede{max-width:42rem;font-size:1.12rem;margin-bottom:1.6rem;color:#EEF6FA;text-shadow:0 1px 10px rgba(0,30,40,.4);}
+    .hero .credit{position:absolute;right:.7rem;bottom:.55rem;z-index:1;color:#fff;background:rgba(3,50,61,.55);padding:.1rem .45rem;border-radius:4px;}
+    .actions{display:flex;gap:.75rem;flex-wrap:wrap;}
+
+    /* ---------- tiles (project objectives) ---------- */
+    .obj-head{margin-top:1.4rem;font-size:1.15rem;}
+    ol.objectives{max-width:40rem;margin:.8rem auto 0;padding-left:1.4rem;font-size:1.05rem;}
+    ol.objectives li{margin-bottom:.55rem;padding-left:.3rem;}
+    ol.objectives li::marker{font-weight:700;color:var(--brand-primary-text);}
+    .tiles b{display:block;font-size:1.05rem;margin-bottom:.2rem;}
+    .tiles.three{grid-template-columns:repeat(3,minmax(0,1fr));}
+    ul.tiles,ol.tiles{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2rem;}
+    .tiles li{background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);padding:1.3rem 1.4rem;font-size:1rem;line-height:1.45;display:flex;gap:1rem;align-items:flex-start;}
+    .tiles svg{flex-shrink:0;width:44px;height:44px;padding:9px;border-radius:50%;background:var(--brand-primary-light);stroke:var(--ct-blue-text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .tiles li:nth-child(2) svg{background:var(--ct-green-light);stroke:var(--ct-green-text);}
+    .tiles li:nth-child(3) svg{background:var(--ct-red-light);stroke:var(--ct-red-text);}
+    .tiles li:nth-child(4) svg{background:#EDF2F0;stroke:var(--ct-sage);}
+
+    /* ---------- link cards (reports, funding tables) ---------- */
+    .link-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.8rem;}
+    a.doc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-border);border-top:4px solid var(--brand-primary);border-radius:var(--brand-radius);padding:1.2rem 1.3rem;text-decoration:none;color:var(--brand-text);transition:border-color .12s,box-shadow .12s;}
+    a.doc:nth-child(4n+2){border-top-color:var(--ct-green);}
+    a.doc:nth-child(4n+3){border-top-color:var(--ct-red);}
+    a.doc:nth-child(4n+4){border-top-color:var(--ct-sage);}
+    a.doc:hover,a.doc:active{border-color:var(--brand-primary);box-shadow:var(--brand-shadow);color:var(--brand-text);}
+    a.doc .head{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.4rem;}
+    a.doc h3{flex:1;font-size:1.02rem;}
+    a.doc .chip{font-family:var(--label-font);font-size:.62rem;font-weight:700;letter-spacing:.06em;padding:.14rem .55rem;border-radius:var(--brand-radius-pill);background:var(--brand-accent-light);color:var(--brand-accent-text);white-space:nowrap;}
+    a.doc p{font-size:.9rem;color:var(--gray-text);margin-bottom:.8rem;}
+    a.doc .open{margin-top:auto;font-size:.86rem;font-weight:600;color:var(--brand-primary-text);}
+
+    /* ---------- document list (reports) ---------- */
+    ul.doc-list{list-style:none;margin:1.4rem auto 0;max-width:40rem;background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);}
+    ul.doc-list li{display:flex;align-items:center;gap:.75rem;padding:.8rem 1.2rem;border-top:1px solid var(--gray-border);}
+    ul.doc-list li:first-child{border-top:0;}
+    ul.doc-list a{font-weight:600;flex:1;min-height:28px;display:flex;align-items:center;}
+    ul.doc-list .fmt{font-family:var(--label-font);font-size:.62rem;font-weight:700;letter-spacing:.06em;padding:.14rem .55rem;border-radius:var(--brand-radius-pill);background:var(--brand-accent-light);color:var(--brand-accent-text);}
+
+    /* ---------- project timeline (data/project-timeline.js) ---------- */
+    .ptl-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.2rem;margin:1.4rem 0 1rem;font-size:.82rem;color:var(--gray-text);}
+    .ptl-legend .k{display:inline-flex;align-items:center;gap:.4rem;}
+    .ptl-legend .k::before{content:"";width:14px;height:14px;border-radius:4px;border:2px solid var(--c);background:var(--bg);}
+    .ptl-legend .k.now::before{width:3px;height:16px;border:0;border-radius:2px;background:rgba(186,91,83,.45);}
+    .study{--c:var(--ct-blue);--bg:var(--ct-blue-light);}
+    .stakeholder{--c:var(--ct-green);--bg:var(--ct-green-light);}
+    .public{--c:#C9579A;--bg:#FBEAF3;}  /* pink: outside the Connecting Tahoe palette, chosen to stand apart from the red Today line */
+    .board{--c:var(--ct-gold);--bg:var(--ct-gold-light);}
+    .ptl-scroll{overflow-x:auto;background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);}
+    .ptl{--lw:165px;position:relative;display:grid;grid-template-columns:var(--lw) repeat(var(--n),minmax(62px,1fr));min-width:calc(var(--lw) + var(--n) * 62px);padding-bottom:1.9rem;}  /* room under the last row for the Today label */
+    .ptl .mo{grid-row:1;text-align:center;font-size:.72rem;font-weight:600;color:var(--gray-text);padding:.7rem .2rem .55rem;border-bottom:1px solid var(--gray-border);border-left:1px solid #EEF1F5;line-height:1.25;}
+    .ptl .corner{grid-row:1;grid-column:1;border-bottom:1px solid var(--gray-border);position:sticky;left:0;background:#fff;z-index:2;}
+    .ptl .mo b{display:block;color:var(--brand-text);font-size:.78rem;}
+    .ptl .mo.cur{color:var(--ct-red-text);}
+    .ptl .lane{grid-column:1;display:flex;align-items:center;font-family:var(--label-font);font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;line-height:1.35;color:var(--gray-text);padding:.6rem .8rem;position:sticky;left:0;background:#fff;z-index:2;border-right:1px solid var(--gray-border);}
+    /* lane labels take their category color, using the darker text step so small type passes 4.5:1 */
+    .ptl .lane.study{color:var(--ct-blue-text);} .ptl .lane.stakeholder{color:var(--ct-green-text);} .ptl .lane.public{color:#A8407D;} .ptl .lane.board{color:var(--ct-gold-text);}
+    .ptl .lanebg{grid-column:1 / -1;border-top:1px solid var(--gray-border);}
+    .ptl .lanebg.first{border-top:0;}
+    .ptl .it{position:relative;z-index:1;margin:.35rem .2rem;padding:.4rem .5rem;border-radius:8px;border:1.5px solid var(--c);background:var(--bg);font-size:.72rem;font-weight:600;line-height:1.3;color:var(--brand-text);align-self:stretch;}
+    .ptl .it.pt{justify-self:start;align-self:center;max-width:100%;padding:.35rem .5rem;}  /* one-month items: a box only as wide as its label */
+    .ptl .it.done{background:#fff;font-weight:400;}
+    .ptl .now{position:absolute;top:0;bottom:0;margin-left:-1px;width:2px;background:rgba(186,91,83,.45);pointer-events:none;z-index:1;}
+    .ptl .now span{position:absolute;bottom:.45rem;left:4px;font-size:.62rem;font-weight:700;color:var(--ct-red-text);background:#fff;padding:0 .2rem;white-space:nowrap;}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+    /* ---------- figure (governance chart, maps) ---------- */
+    figure.chart{margin:2rem auto 0;max-width:68rem;}
+    figure.chart a.img{display:block;line-height:0;}
+    figure.chart img{width:100%;height:auto;border:1px solid var(--gray-border);border-radius:var(--brand-radius);background:#fff;}
+    figure.chart.map{max-width:44rem;}
+    figure.chart figcaption{margin-top:.6rem;font-size:.85rem;color:var(--gray-text);text-align:center;}
+    figure.chart .full{display:none;font-weight:600;}
+
+    /* ---------- FAQ ---------- */
+    .faq{max-width:52rem;margin:2rem auto 0;display:flex;flex-direction:column;gap:.6rem;}
+    .faq details{background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);}
+    .faq summary{cursor:pointer;list-style:none;padding:1rem 3rem 1rem 1.25rem;font-weight:600;position:relative;min-height:44px;}
+    .faq summary::-webkit-details-marker{display:none;}
+    .faq summary::after{content:"";position:absolute;right:1.25rem;top:1.35rem;width:9px;height:9px;border-right:2px solid var(--brand-primary-text);border-bottom:2px solid var(--brand-primary-text);transform:rotate(45deg);transition:transform .12s;}
+    .faq details[open] summary::after{transform:rotate(-135deg);top:1.6rem;}
+    .faq summary:hover{color:var(--brand-primary-text);}
+    .faq .a{padding:0 1.25rem 1.2rem;}
+    .faq .a p{margin-bottom:.7rem;}
+    .faq .a ul{margin:0 0 .7rem 1.2rem;}
+    .faq .a li{margin-bottom:.35rem;}
+
+    /* ---------- contact ---------- */
+    .contact{display:inline-block;background:#fff;border:1px solid var(--gray-border);border-left:5px solid var(--brand-primary);border-radius:var(--brand-radius);padding:1rem 1.4rem;font-size:.98rem;text-align:left;}
+    .contact b{display:block;font-family:var(--label-font);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-text);margin-bottom:.15rem;}
+    .contact .who{font-weight:600;}
+    .role{color:var(--gray-text);font-size:.92em;}
+    .contact-text{font-size:1.05rem;line-height:1.7;}
+    .contact-text .who{font-weight:600;}
+
+    /* ---------- get involved: cards, survey, meetings ---------- */
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:2rem;}
+    .card{background:#fff;border:1px solid var(--gray-border);border-top:5px solid var(--brand-primary);border-radius:var(--brand-radius);padding:1.5rem 1.6rem;display:flex;flex-direction:column;}
+    .card:nth-child(2){border-top-color:var(--ct-green);}
+    .card:nth-child(3){border-top-color:var(--ct-red);}
+    .card .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--brand-dark);color:#fff;font-weight:700;margin-bottom:.8rem;}
+    .card h3{margin-bottom:.45rem;}
+    .card p{margin-bottom:.8rem;}
+    .card .btn{margin-top:auto;align-self:flex-start;}
+
+    .survey{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:3rem;align-items:start;}
+    .survey-intro p{margin-bottom:1rem;}
+    .survey-intro ul{margin:0 0 1rem 1.2rem;}
+    .survey-frame{position:relative;border-radius:var(--brand-radius);overflow:hidden;background:var(--deep);aspect-ratio:4/3;border:1px solid var(--gray-border);}
+    .survey-frame > img{width:100%;height:100%;object-fit:cover;opacity:.75;}
+    .survey-frame .btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 8px 24px rgba(0,0,0,.35);font-size:1.05rem;padding:.9rem 1.6rem;}
+    .survey-frame .credit{position:absolute;right:.6rem;bottom:.5rem;color:#fff;background:rgba(3,50,61,.6);padding:.1rem .45rem;border-radius:4px;}
+    .survey-frame.loaded{aspect-ratio:auto;height:min(85vh,900px);background:#fff;}
+    .survey-frame iframe{width:100%;height:100%;border:0;display:block;}
+
+    .meetings{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.5rem;margin-top:2rem;}
+    .meetings h3{font-family:var(--label-font);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-text);margin-bottom:.8rem;}
+    ol.mtg{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+    ol.mtg li{background:#fff;border:1px solid var(--gray-border);border-left:4px solid var(--brand-primary);border-radius:var(--brand-radius);padding:.85rem 1.1rem;}
+    #mtg-past li{border-left-color:var(--gray-border);}
+    ol.mtg .when{font-weight:700;}
+    ol.mtg .body{display:block;font-weight:600;}
+    ol.mtg .where{display:block;font-size:.88rem;color:var(--gray-text);}
+    ol.mtg a{font-size:.88rem;font-weight:600;}
+    .empty{color:var(--gray-text);font-size:.95rem;}
+
+    /* ---------- notices and embeds ---------- */
+    .notice{display:flex;gap:.7rem;align-items:flex-start;background:var(--ct-gold-light);border:1px solid #EFE2A0;border-left:4px solid var(--ct-gold);border-radius:var(--brand-radius);padding:.85rem 1.1rem;font-size:.93rem;margin:1.4rem 0 0;}
+    .notice b{color:var(--ct-gold-text);}
+    .embed-head{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end;justify-content:space-between;}
+    .embed-frame{margin-top:1.6rem;background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);overflow:hidden;}
+    .embed-frame iframe{display:block;width:100%;border:0;}
+    /* ---------- responsibility matrix (AG Grid) ---------- */
+    .mx-card{margin-top:1.6rem;background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);padding:1rem;}
+    .mx-tools{display:flex;gap:.75rem 1.25rem;align-items:center;flex-wrap:wrap;margin-bottom:.5rem;font-size:.86rem;}
+    .mx-tools .spacer{flex:1;}
+    .legend{display:flex;flex-wrap:wrap;gap:.4rem 1rem;align-items:center;color:var(--gray-text);}
+    .legend > span{display:inline-flex;gap:.4rem;align-items:center;}
+    .switch{display:inline-flex;gap:.5rem;align-items:center;cursor:pointer;min-height:28px;}
+    .switch input{width:16px;height:16px;accent-color:var(--ct-blue-text);}
+    .filter-note{display:inline-flex;gap:.4rem;align-items:center;background:var(--brand-primary-light);border-radius:var(--brand-radius-pill);padding:.15rem .3rem .15rem .8rem;font-weight:600;}
+    .filter-note[hidden]{display:none;}
+    .filter-note button{border:0;background:transparent;color:var(--brand-text);font-size:1.15rem;line-height:1;width:28px;height:28px;border-radius:50%;cursor:pointer;}
+    .filter-note button:hover{background:#fff;}
+    .btn.sm{min-height:34px;padding:.35rem .9rem;font-size:.84rem;}
+    .mx-help,.mx-src{font-size:.8rem;color:var(--gray-text);margin:0 0 .6rem;}
+    .mx-src{margin:.7rem 0 0;}
+    #mxGrid{width:100%;}
+    .badge{display:inline-flex;align-items:center;font-family:var(--label-font);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.1rem .5rem;border-radius:var(--brand-radius-pill);white-space:nowrap;line-height:1.6;}
+    .b-service,.b-governance,.b-funding{background:var(--ct-blue-light);color:var(--ct-blue-text);}
+    .cellL,.cellP{display:inline-flex;width:22px;height:22px;border-radius:50%;font-size:11px;font-weight:700;align-items:center;justify-content:center;}
+    .cellL{background:var(--brand-dark);color:#fff;}
+    .cellP{background:#fff;border:2px solid var(--brand-dark);color:var(--brand-dark);}
+    .mx-title{display:block;font-weight:600;line-height:1.35;}
+    .tdot{display:block;width:14px;height:14px;border-radius:50%;background:var(--tf);border:1px solid var(--tfo);}
+    /* timeframe colors from the Executive Summary tables (Office theme accents 3, 4, and 5 at 40 percent tint); the outline is the untinted accent */
+    .tdot.short{--tf:#47D45A;--tfo:#196B24;} .tdot.medium{--tf:#61CBF4;--tfo:#0F9ED5;} .tdot.long{--tf:#D86ECC;--tfo:#A02B93;}
+    .legend .tdot{display:inline-block;}
+    #mxGrid .ag-header-cell.term,#mxGrid .ag-cell.term{background:#F3F6F4;}
+    #mxGrid .ag-header-cell.term{cursor:default;}
+    #mxGrid .ag-header-cell.term:hover .ag-header-cell-text{color:var(--brand-text);text-decoration:none;}
+    #mxGrid .ag-cell.term-last,#mxGrid .ag-header-cell.term:nth-last-child(1){border-right:2px solid var(--gray-border);}
+    #mxGrid .ag-header-cell.vh .ag-header-cell-label{writing-mode:vertical-rl;transform:rotate(180deg);justify-content:flex-start;align-items:center;}
+    #mxGrid .ag-header-cell.vh{padding:4px 2px;cursor:pointer;}
+    #mxGrid .ag-header-cell.vh:hover .ag-header-cell-text{color:var(--brand-primary-text);text-decoration:underline;}
+    #mxGrid .ag-header-cell.vh.active{background:var(--brand-primary-light);}
+    #mxGrid .ag-header-cell.vh .ag-header-cell-text{white-space:nowrap;overflow:visible;text-overflow:clip;font-size:12px;font-weight:600;color:var(--brand-text);text-transform:none;letter-spacing:0;}
+    #mxGrid .ag-cell.mxc{display:flex;align-items:center;justify-content:center;padding:0;}
+    #funding-frame iframe{height:640px;}
+    #history-frame iframe{height:600px;}
+    .loading{padding:3rem 1rem;text-align:center;color:var(--gray-text);}
+
+    /* ---------- updates sign-up ---------- */
+    p.updates{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;margin-top:1rem;}
+    p.updates .muted{font-size:.88rem;}
+
+    /* ---------- partner logos ---------- */
+    ul.logos{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1.6rem;}
+    ul.logos li > *{display:flex;flex-direction:column;align-items:center;gap:.8rem;height:100%;background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);padding:1.2rem 1rem;text-align:center;text-decoration:none;color:var(--brand-text);font-weight:600;font-size:.92rem;line-height:1.35;}
+    ul.logos li > a:hover,ul.logos li > a:active{border-color:var(--brand-primary);box-shadow:var(--brand-shadow);color:var(--brand-text);}
+    ul.logos .mark{height:80px;width:100%;display:flex;align-items:center;justify-content:center;}
+    ul.logos img{max-height:80px;max-width:150px;width:auto;height:auto;object-fit:contain;}
+
+    /* ---------- footer ---------- */
+    footer.site{background:var(--shell-navy);color:#D6E4F2;font-family:var(--shell-font);font-size:.86rem;padding:2rem 0;}
+    footer.site .wrap{display:flex;gap:1.2rem 2.5rem;flex-wrap:wrap;justify-content:space-between;align-items:center;}
+    footer.site a{color:#fff;font-weight:600;}
+    footer.site img{height:44px;width:auto;}
+    footer.site address{font-style:normal;}
+
+    /* ---------- responsive ---------- */
+    @media (max-width:900px){
+      .band{padding:3.25rem 0;}
+      .cards,.survey,.meetings,.tiles.three{grid-template-columns:1fr;}
+      .survey{gap:1.5rem;}
+      figure.chart .full{display:inline;}
+    }
+    @media (max-width:640px){
+      ul.tiles,.tiles.three{grid-template-columns:1fr;}
+      .wrap,.hero-text,.bar,nav.tabs .inner{padding-left:1rem;padding-right:1rem;}
+      .bar{gap:.7rem;}
+      .bar .brand .agency{display:none;}
+      .bar .logo img{height:32px;}
+      .bar .cta{padding:.4rem .75rem;font-size:.78rem;}
+      nav.tabs a{padding:0 .6rem;font-size:.86rem;}
+      .hero{min-height:560px;}
+      .mx-card{padding:.6rem;}
+      .ptl{--lw:104px;}
+      #funding-frame iframe{height:560px;}
+    }
+    @media (max-width:380px){
+      .bar .brand .name{font-size:.92rem;}
+    }
+    @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} *{transition:none !important;} }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site">
+    <div class="bar">
+      <a class="logo" href="https://www.trpa.gov" target="_blank" rel="noopener"><img src="assets/img/trpa-logo-color.png" alt="Tahoe Regional Planning Agency" /></a>
+      <a class="brand" href="#home"><span class="agency">Tahoe Regional Planning Agency</span><span class="name">Tahoe Transit Study</span></a>
+      <a class="cta" href="#survey">Take the survey</a>
+    </div>
+    <nav class="tabs" aria-label="Pages">
+      <div class="inner">
+        <a href="#home" data-tab="home">Home</a>
+        <a href="#recommendations" data-tab="recommendations">Draft recommendations</a>
+        <a href="#existing-conditions" data-tab="existing-conditions">Existing conditions</a>
+        <a href="#get-involved" data-tab="get-involved">Get involved</a>
+        <a href="#partners" data-tab="partners">Project partners</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- =================================================================== HOME -->
+    <div data-panel="home" id="home">
+      <section class="hero">
+        <img id="hero-img" alt="An electric Tahoe Transportation District bus on Route 55 at the charging station outside Lake Tahoe Community College" fetchpriority="high" />
+        <div class="hero-text">
+          <p class="eyebrow">Lake Tahoe Basin</p>
+          <h1>Tahoe Transit Study</h1>
+          <p class="lede">The Tahoe Regional Planning Agency (TRPA) is leading a regional effort to create a more coordinated, efficient, and sustainable transit system throughout the Lake Tahoe Basin.</p>
+          <div class="actions">
+            <a class="btn primary" href="#reports">Read the reports</a>
+            <a class="btn ghost" href="#survey">Take the survey</a>
+          </div>
+        </div>
+        <span class="credit" id="hero-credit"></span>
+      </section>
+
+      <section class="band" id="objectives">
+        <div class="wrap">
+          <div class="prose mid center">
+            <h2>What is the Tahoe Transit Study?</h2>
+            <p class="lede">The multi-stage project will consist of a transit governance study, regional comprehensive operational analysis (COA), and optimized transit funding model.</p>
+            <h3 class="obj-head">Project objectives:</h3>
+          </div>
+          <ol class="objectives">
+            <li><b>Optimize service:</b> Develop short- and long-term service plans with a focus on connectivity.</li>
+            <li><b>Strengthen governance:</b> Clarify roles and responsibilities and learn from other areas.</li>
+            <li><b>Leverage funding:</b> Assess funding structures and agreements and stretch dollars.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="band tint" id="reports">
+        <div class="wrap">
+          <div class="prose mid center">
+            <p class="kicker">Reports</p>
+            <h2>Read the study documents</h2>
+          </div>
+          <ul class="doc-list" id="report-list"></ul>
+        </div>
+      </section>
+
+      <section class="band" id="timeline">
+        <div class="wrap">
+          <div class="prose mid center">
+            <p class="kicker">Schedule</p>
+            <h2>Project timeline</h2>
+          </div>
+          <div class="ptl-legend" aria-hidden="true"><span class="k study">Study documents</span><span class="k stakeholder">Stakeholder engagement</span><span class="k public">Public outreach</span><span class="k board">Board meetings</span><span class="k now">Today</span></div>
+          <div class="ptl-scroll" tabindex="0" role="region" aria-label="Project timeline, February 2026 to April 2027">
+            <div class="ptl" id="ptl"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band tint" id="faq">
+        <div class="wrap">
+          <div class="prose mid center">
+            <p class="kicker">Questions</p>
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>What are the project goals?</summary>
+              <div class="a">
+                <p>The goals of the comprehensive operational analysis are to:</p>
+                <ul>
+                  <li>Develop a comprehensive service plan to connect and integrate regional transit in the Tahoe Basin.</li>
+                  <li>Create a governance roadmap to clarify operator roles and coordination.</li>
+                  <li>Establish a regional funding model to identify gaps and pursue long-term funding sustainability.</li>
+                  <li>Improve operator coordination for funding and performance tracking.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>What transportation services are already operated in the Tahoe Basin?</summary>
+              <div class="a">
+                <p>The study takes into consideration:</p>
+                <ul>
+                  <li>Tahoe Truckee Area Regional Transit (TART)</li>
+                  <li>TART Connect</li>
+                  <li>Tahoe Transportation District (TTD)</li>
+                  <li>Lake Link</li>
+                  <li>Airport services</li>
+                  <li>Seasonal shuttle services</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>What is TRPA's role?</summary>
+              <div class="a">
+                <p>TRPA, acting as the metropolitan planning organization (MPO) and the regional transportation planning agency (RTPA) for the Lake Tahoe Basin, is responsible for maintaining the Regional Transportation Plan and coordinating with transit operators to update short- and long-range transit plans. TRPA is also responsible for administering and allocating a large majority of state and federal transit funding, including the California Transportation Development Act and dedicated formula Federal Transit Administration funds.</p>
+              </div>
+            </details>
+            <details>
+              <summary>What are the final outcomes?</summary>
+              <div class="a">
+                <p>By the end of the project, the COA will produce:</p>
+                <ul>
+                  <li>A Regional Transit Service Plan with a short- and medium-term service plan that fits with realistic funding levels, and a long-term vision (financially unconstrained) for a service plan that fully connects the region.</li>
+                  <li>A Transit Governance Roadmap that outlines clear roles and responsibilities for regional transit operators and partners, and recommendations for how agencies can collaborate to improve service.</li>
+                  <li>A Regional Funding and Implementation Strategy that considers funding gaps and potential funding tools to help sustain and expand services.</li>
+                  <li>A Framework for Better Transit Data and Reporting with ways to better collect consistent transit data and tools to track performance to support future funding applications and budgeting.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>How is this project different from the operators' Short Range Transit Plans and System Plan Updates or TRPA's Regional Transportation Plan?</summary>
+              <div class="a">
+                <p>TTD's Short Range Transit Plan and TART's System Plan Update evaluated each of their respective operations specifically. This planning effort will consider both public and private operators for the entire Tahoe Basin at a higher level, building upon the analyses already conducted by TTD and TART.</p>
+                <p>TRPA's Regional Transportation Plan includes a long-term vision for transit services over the next 25 years, outlining a layered build-out of transit services and the funding gap. The Regional Transportation Plan does not define who will operate which services or how the expanded services will be funded, issues that the COA will help address.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="band center" id="contact">
+        <div class="wrap">
+          <h2>Questions or comments?</h2>
+          <p class="contact-text"><span class="who" data-contact-name></span><br /><span class="role" data-contact-title></span><a data-contact-email></a></p>
+        </div>
+      </section>
+    </div>
+
+    <!-- =================================================================== DRAFT RECOMMENDATIONS -->
+    <div data-panel="recommendations" id="recommendations" hidden>
+      <section class="band" id="responsibility">
+        <div class="wrap">
+          <div class="prose">
+            <p class="kicker">Draft recommendations</p>
+            <h2>Who is responsible for each recommendation</h2>
+            <p>The draft study makes recommendations on transit service, governance, and funding. This matrix shows the lead agency and the implementation partners for each one.</p>
+          </div>
+          <div class="mx-card">
+            <div class="mx-tools">
+              <div class="legend"><span><span class="tdot short"></span> Short term</span><span><span class="tdot medium"></span> Medium term</span><span><span class="tdot long"></span> Long term</span><span><span class="cellL">L</span> Lead</span><span><span class="cellP">P</span> Partner</span></div>
+              <label class="switch"><input type="checkbox" id="mxAll" /> Show agencies named in only one recommendation</label>
+              <span class="filter-note" id="filterNote" hidden><span id="filterText"></span><button type="button" id="btnClear" aria-label="Show all recommendations">&times;</button></span>
+              <span class="spacer"></span>
+              <button type="button" class="btn outline sm" id="mxCsv"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10"/></svg>Download CSV</button>
+            </div>
+            <p class="mx-help">The first three columns show when each recommendation is planned. Funding recommendations have no timeframe. Select an agency name to show only the recommendations it's part of.</p>
+            <div id="mxGrid"><p class="loading">Loading the matrix</p></div>
+            <p class="mx-src" id="mxSrc"></p>
+          </div>
+        </div>
+      </section>
+      <section class="band tint" id="service-map">
+        <div class="wrap">
+          <div class="prose">
+            <p class="kicker">Service</p>
+            <h2>Recommended service strategies</h2>
+          </div>
+          <figure class="chart">
+            <a class="img" href="assets/img/recommended-service-map.png" target="_blank" rel="noopener"><img src="assets/img/recommended-service-map.png" width="2269" height="2377" loading="lazy" alt="Map of the nine recommended service strategies in the Lake Tahoe Basin. 1: Discontinue Route 19X and reimplement 21X service via US 50. 2: Expand seasonal service of Route 28 to the Spooner Mobility Hub. 3: Continue summer service from the South Lake Tahoe Y to Sugar Pine. 4: Discontinue the LTCC deviation on Route 50 during the summer. 5: Expand the microtransit zone to Meyers and commingle with TTD's extended paratransit zone. 6: Reimplement TART Connect service in Incline Village. 7: Increase vanpools between Reno and Truckee/North Lake Tahoe. 8: Increase frequency on all TART fixed routes to 30 minutes in peak summer and winter months. 9: Expand TART service span on all fixed routes to 8 p.m." /></a>
+            <figcaption>Recommended service strategies. Map: TRPA. <a class="full" href="assets/img/recommended-service-map.png" target="_blank" rel="noopener">Open full size</a></figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <!-- =================================================================== EXISTING CONDITIONS (governance, history, funding) -->
+    <div data-panel="existing-conditions" id="existing-conditions" hidden>
+      <section class="band" id="services">
+        <div class="wrap">
+          <div class="prose">
+            <p class="kicker">Existing conditions</p>
+            <h2>Existing services</h2>
+          </div>
+          <figure class="chart map">
+            <a class="img" href="assets/img/existing-transit-map.png" target="_blank" rel="noopener"><img src="assets/img/existing-transit-map.png" width="1260" height="1631" loading="lazy" alt="Map of the existing transit system in the Lake Tahoe Basin. North Shore fixed routes (TART Mainline, 89, 267, and TTD Route 28) connect Truckee, Olympic Valley, Tahoma, Kings Beach, and Incline Village, with TART Connect zones along the north and west shores and the North Lake Tahoe Express to the airport. South Shore fixed routes (TTD 50/51, 55, 10 and 12, 207 and 14, 22, and 19X) serve South Lake Tahoe, Stateline, Carson City, and Gardnerville, with Lake Link zones in South Lake Tahoe. Seasonal routes include the Emerald Bay Shuttle and the East Shore service on Route 28. El Dorado Transit runs from Meyers to Sacramento, and the South Tahoe Airporter runs to Reno." /></a>
+            <figcaption>Existing transit system. Map: TRPA. <a class="full" href="assets/img/existing-transit-map.png" target="_blank" rel="noopener">Open full size</a></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="band tint" id="governance">
+        <div class="wrap">
+          <div class="prose">
+            <p class="kicker">Existing governance</p>
+            <h2>Who oversees transit in the basin today</h2>
+            <p>Five public boards direct and oversee transit operations in the Tahoe Basin. Their members represent local jurisdictions, state and regional agencies, community members, and the nonprofit and private sectors. Private operators run their own services.</p>
+          </div>
+          <figure class="chart">
+            <a class="img" id="gov-link" target="_blank" rel="noopener"><img id="gov-img" loading="lazy" alt="Chart of the governing bodies that oversee transit operations in the Tahoe Basin. The Tahoe Transportation District board has 12 members: six from local jurisdictions, three state or regional, and three nonprofit or private sector. It oversees Tahoe Transportation District service. The Placer County Board of Supervisors has five local members and oversees TART and TART Connect. The SSTMA board has up to 15 members: five community representatives and the rest nonprofit or private sector. It oversees Lake Link and vanpools. The TNT/TMA board has 15 members: three local, two community representatives, one state or regional, and nine nonprofit or private sector. It oversees park and ride shuttles, vanpools, and the North Lake Tahoe Express. The El Dorado County Transit Authority board has five local members and oversees the Sacramento to South Lake Tahoe connecting bus run by El Dorado Transit. Private operators include Heavenly, Diamond Peak, and South Tahoe Airporter." /></a>
+            <figcaption>Overseeing governing bodies of transit operations in the Tahoe Basin. <a class="full" id="gov-full" target="_blank" rel="noopener">Open full size</a></figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="band" id="history">
+        <div class="wrap">
+          <div class="prose">
+            <p class="kicker">History</p>
+            <h2>Historic timeline</h2>
+            <p>Key events in the history of transit and its governance in the Tahoe Basin.</p>
+          </div>
+          <div class="embed-frame" id="history-frame"><p class="loading">Loading the timeline</p></div>
+        </div>
+      </section>
+      <section class="band tint" id="funding">
+        <div class="wrap">
+          <div class="prose">
+            <p class="kicker">Funding</p>
+            <h2>How transit operations are funded</h2>
+            <p>This chart traces federal, state, and local funding to the transit operations it supports in the Tahoe Basin. Hover over a flow to see its amount.</p>
+          </div>
+          <div class="embed-frame" id="funding-frame"><p class="loading">Loading the funding chart</p></div>
+        </div>
+      </section>
+      <section class="band">
+        <div class="wrap">
+          <p class="kicker">Funding tables</p>
+          <h2>Funding sources in detail</h2>
+          <p class="prose">Each table opens as a PDF in a new tab.</p>
+          <div class="link-grid" id="funding-list"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =================================================================== GET INVOLVED -->
+    <div data-panel="get-involved" id="get-involved" hidden>
+      <section class="band">
+        <div class="wrap">
+          <div class="prose mid center">
+            <p class="kicker">Get involved</p>
+            <h2>How do I get involved?</h2>
+            <p class="lede">We want to hear from you. Your input is critical to crafting a realistic plan that meets the needs of riders. We encourage you to:</p>
+          </div>
+          <div class="cards">
+            <article class="card"><h3>Join public workshops and community meetings</h3><p>TRPA and our partners will host workshops throughout the process, giving you opportunities to share your ideas, react to findings, and get insight into recommendations.</p><a class="btn outline" href="#meetings">See meeting dates</a></article>
+            <article class="card"><h3>Take our community surveys</h3><p>We'll launch online surveys at key points to understand how you get around, the challenges you face, and the improvements that would make the biggest difference. Survey links will appear here as they become available.</p><a class="btn primary" href="#survey">Take the survey</a></article>
+            <article class="card"><h3>Share your comments</h3><p>Send your comments to:</p><p><span class="who" data-contact-name style="font-weight:600"></span><br /><span class="role" data-contact-title></span><a data-contact-email></a></p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band tint" id="survey">
+        <div class="wrap survey">
+          <div class="survey-intro">
+            <p class="kicker">Public survey</p>
+            <h2>Tell us how you use transit</h2>
+            <p>The Tahoe Transit Study Survey asks how you use the transit system and what you think of the proposed changes.</p>
+            <p><a id="survey-newtab" target="_blank" rel="noopener">Open the survey in a new tab</a></p>
+          </div>
+          <div class="survey-frame" id="survey-frame">
+            <img id="survey-img" alt="" loading="lazy" />
+            <button class="btn primary" id="survey-start" type="button">Start the survey</button>
+            <span class="credit" id="survey-credit"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="band" id="meetings">
+        <div class="wrap">
+          <p class="kicker">Follow updates here</p>
+          <h2>Meetings and presentations</h2>
+          <p class="prose">As the COA moves forward, we'll post reports, draft findings, public meeting dates, and project updates.</p>
+          <p class="updates"><a class="btn outline" id="updates-link"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4h12v8H2z"/><path d="M2 4l6 5 6-5"/></svg><span id="updates-label">Get project updates</span></a><span class="muted">We respect your privacy. Your email will only be used for project updates.</span></p>
+          <div class="meetings">
+            <div><h3>Upcoming</h3><ol class="mtg" id="mtg-upcoming"></ol></div>
+            <div><h3>Past</h3><ol class="mtg" id="mtg-past"></ol></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- =================================================================== PROJECT PARTNERS -->
+    <div data-panel="partners" id="partners" hidden>
+      <section class="band">
+        <div class="wrap">
+          <div class="prose">
+            <p class="kicker">Steering committee</p>
+            <h2>Lake Tahoe Transit Working Group</h2>
+            <p>The Lake Tahoe Transit Working Group is an informal collaborative body dedicated to addressing local and regional transit issues within the Lake Tahoe Basin. The Transit Working Group meets monthly and includes staff-level representatives from each of the local jurisdictions, the Tahoe Transportation District, Tahoe Regional Planning Agency, and the transportation management associations.</p>
+          </div>
+          <ul class="logos" id="stakeholder-list"></ul>
+        </div>
+      </section>
+      <section class="band tint">
+        <div class="wrap">
+          <p class="kicker">Project partners</p>
+          <h2>Project team</h2>
+          <ul class="logos" id="team-list"></ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <a href="https://www.trpa.gov" target="_blank" rel="noopener"><img src="assets/img/trpa-logo-white.png" alt="Tahoe Regional Planning Agency" loading="lazy" /></a>
+      <address>Tahoe Regional Planning Agency<br />128 Market Street, Stateline, NV 89449<br />Mailing address: PO Box 5310, Stateline, NV 89449</address>
+      <span><a href="https://www.trpa.gov" target="_blank" rel="noopener">trpa.gov</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const CFG = window.SITE_CONFIG || {};
+
+    // ---------- helpers ----------
+    const $ = s => document.querySelector(s);
+    const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+    const fileUrl = href => /^https?:/.test(href) ? href : (CFG.squarespace || "") + href;
+    const imgUrl = (key, width) => {
+      const im = (CFG.images || {})[key]; if (!im) return "";
+      if (/^(https?:|\.\/)/.test(im.src)) return im.src;
+      return (CFG.imageBase || "") + im.src + (width ? "?format=" + width + "w" : "");
+    };
+    const MONTHS = ["Jan.","Feb.","March","April","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
+    const fmtDate = iso => { const [y, m, d] = iso.split("-").map(Number); return `${MONTHS[m - 1]} ${d}, ${y}`; };
+    const docCard = (d, chip) => `<a class="doc" href="${esc(fileUrl(d.href))}" target="_blank" rel="noopener">
+      <div class="head"><h3>${esc(d.title)}</h3><span class="chip">${chip}</span></div>
+      ${d.desc ? `<p>${esc(d.desc)}</p>` : ""}<span class="open">Open the PDF &rarr;</span></a>`;
+
+    // ---------- content from config ----------
+    (function fill(){
+      const hero = $("#hero-img"); hero.src = imgUrl("hero", 2500);
+      $("#hero-credit").textContent = (CFG.images?.hero?.credit) || "";
+      const gov = imgUrl("governance", 2500);
+      $("#gov-img").src = gov; $("#gov-link").href = gov; $("#gov-full").href = gov;
+      $("#survey-img").src = imgUrl("involved", 1500);
+      $("#survey-credit").textContent = (CFG.images?.involved?.credit) || "";
+
+      $("#report-list").innerHTML = (CFG.reports || []).map(r =>
+        `<li><a href="${esc(fileUrl(r.href))}" target="_blank" rel="noopener">${esc(r.title)}</a><span class="fmt">PDF</span></li>`).join("");
+      $("#funding-list").innerHTML = (CFG.fundingTables || []).map(r => docCard(r, "PDF")).join("");
+
+      const c = CFG.contact || {};
+      document.querySelectorAll("[data-contact-name]").forEach(e => e.textContent = c.name || "Tahoe Regional Planning Agency");
+      document.querySelectorAll("[data-contact-title]").forEach(e => { if (c.title) e.innerHTML = esc(c.title) + "<br />"; else e.remove(); });
+      document.querySelectorAll("[data-contact-email]").forEach(a => { a.textContent = c.email || "trpa.gov/contact"; a.href = c.email ? "mailto:" + c.email : "https://www.trpa.gov/contact/"; });
+
+
+      const up0 = CFG.updates || {};
+      $("#updates-link").href = up0.href || (c.email ? "mailto:" + c.email : "#");
+      if (up0.label) $("#updates-label").textContent = up0.label;
+
+      const logo = p => {
+        const src = /^(https?:|\.\/)/.test(p.logo) ? p.logo : (CFG.imageBase || "") + p.logo + "?format=300w";
+        const inner = `<span class="mark"><img src="${esc(src)}" alt="" loading="lazy" /></span><span>${esc(p.name)}</span>`;
+        return `<li>${p.href ? `<a href="${esc(p.href)}" target="_blank" rel="noopener">${inner}</a>` : `<div>${inner}</div>`}</li>`;
+      };
+      $("#team-list").innerHTML = (CFG.partners?.team || []).map(logo).join("");
+      $("#stakeholder-list").innerHTML = (CFG.partners?.stakeholders || []).map(logo).join("");
+      $("#survey-newtab").href = CFG.survey ? `https://survey123.arcgis.com/share/${CFG.survey.itemId}` : "#";
+
+      // meetings: today and later are upcoming, soonest first; past is newest first
+      const today = new Date(); const ymd = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+      const m = [...(CFG.meetings || [])];
+      const li = x => `<li><span class="when">${fmtDate(x.date)}</span><span class="body">${esc(x.body)}</span>
+        <span class="where">${esc(x.time)}, ${esc(x.place)}</span>${x.link ? `<a href="${esc(x.link.href)}" target="_blank" rel="noopener">${esc(x.link.label)}</a>` : ""}</li>`;
+      const up = m.filter(x => x.date >= ymd).sort((a, b) => a.date.localeCompare(b.date));
+      const past = m.filter(x => x.date < ymd).sort((a, b) => b.date.localeCompare(a.date));
+      $("#mtg-upcoming").innerHTML = up.length ? up.map(li).join("") : '<li class="empty">No meetings are scheduled yet. Check back soon.</li>';
+      $("#mtg-past").innerHTML = past.map(li).join("");
+    })();
+
+    // ---------- project timeline: one column per month, items placed by start and end, a line at today ----------
+    (function timeline(){
+      const T = window.PROJECT_TIMELINE, box = $("#ptl"); if (!T || !box) return;
+      const ym = s => { const [y, m] = s.split("-").map(Number); return y * 12 + m - 1; };
+      const MON = ["Jan.","Feb.","March","April","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
+      const first = ym(T.from), n = ym(T.to) - first + 1;
+      const now = new Date(), cur = now.getFullYear() * 12 + now.getMonth();
+      box.style.setProperty("--n", n);
+      let h = '<div class="corner" aria-hidden="true"></div>', row = 2;
+      for (let i = 0; i < n; i++) {
+        const v = first + i, y = Math.floor(v / 12), m = v % 12;
+        h += `<div class="mo${v === cur ? " cur" : ""}" style="grid-column:${i + 2}" aria-hidden="true">${(i === 0 || m === 0) ? `<b>${y}</b>` : ""}${MON[m]}</div>`;
+      }
+      T.lanes.forEach((l, li) => {
+        // one-month items are flags whose label may run into the next month; pack them into sub-rows so labels never overlap
+        const rows = [];
+        const placed = l.items.map(it => {
+          const a = ym(it.start) - first, b = ym(it.end || it.start) - first;
+          const pt = !it.end || it.end === it.start, vb = pt ? Math.min(a + 1, n - 1) : b;
+          let r = rows.findIndex(end => end < a); if (r < 0) { r = rows.length; rows.push(-1); }
+          rows[r] = vb;
+          return { it, a, b, vb, pt, r };
+        });
+        const k = Math.max(1, rows.length);
+        h += `<div class="lanebg${li === 0 ? " first" : ""}" style="grid-row:${row} / span ${k}" aria-hidden="true"></div><div class="lane ${l.kind}" style="grid-row:${row} / span ${k}">${esc(l.name)}</div>`;
+        placed.forEach(({ it, a, b, vb, pt, r }) => {
+          const when = it.end && it.end !== it.start ? `${MON[ym(it.start) % 12]} ${Math.floor(ym(it.start) / 12)} to ${MON[ym(it.end) % 12]} ${Math.floor(ym(it.end) / 12)}` : `${MON[ym(it.start) % 12]} ${Math.floor(ym(it.start) / 12)}`;
+          const done = ym(it.end || it.start) < cur;
+          h += `<div class="it ${l.kind}${pt ? " pt" : ""}${done ? " done" : ""}" style="grid-column:${a + 2} / ${vb + 3};grid-row:${row + r}">${esc(it.label)}<span class="sr-only">, ${when}${done ? ", complete" : ""}</span></div>`;
+        });
+        row += k;
+      });
+      if (cur >= first && cur < first + n) {
+        const dim = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+        const pct = ((cur - first) + (now.getDate() - 1) / dim) / n * 100;
+        h += `<div class="now" style="left:calc(var(--lw) + (100% - var(--lw)) * ${(pct / 100).toFixed(4)})" aria-hidden="true"><span>Today</span></div>`;
+      }
+      box.innerHTML = h;
+    })();
+
+    // ---------- survey: click to load (Survey123 share URL with embed=fullscreen) ----------
+    $("#survey-start").addEventListener("click", () => {
+      const frame = $("#survey-frame");
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://survey123.arcgis.com/share/${CFG.survey.itemId}?embed=fullscreen&hide=footer,theme`;
+      iframe.title = CFG.survey.title || "Survey";
+      iframe.allow = "geolocation";
+      frame.replaceChildren(iframe);
+      frame.classList.add("loaded");
+    });
+
+    // ---------- embeds load the first time their tab opens ----------
+    function flourish(sel, id, title){
+      if (!id) return;
+      const f = document.createElement("iframe");
+      f.src = `https://flo.uri.sh/visualisation/${id}/embed`;
+      f.title = title;
+      f.setAttribute("scrolling", "no");
+      f.setAttribute("sandbox", "allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation");
+      $(sel).replaceChildren(f);
+    }
+    const loaders = {
+      recommendations(){ loadMatrix(); },
+      "existing-conditions"(){
+        flourish("#history-frame", CFG.flourish.historicTimeline, "Historic timeline of transit in the Tahoe Basin");
+        flourish("#funding-frame", CFG.flourish.funding, "Transit operations funding in the Tahoe Basin");
+      }
+    };
+
+    // ---------- responsibility matrix: AG Grid and the data file load the first time the tab opens ----------
+    const loadScript = src => new Promise((ok, fail) => { const t = document.createElement("script"); t.src = src; t.onload = ok; t.onerror = fail; document.head.append(t); });
+    function loadMatrix(){
+      Promise.all([loadScript(CFG.agGrid), loadScript(CFG.recommendationsData)])
+        .then(() => { $("#mxGrid").replaceChildren(); $("#mxSrc").textContent = window.REC_MATRIX.source; buildMatrix(); })
+        .catch(() => { $("#mxGrid").innerHTML = '<p class="loading">The matrix could not load. Check your connection, then reload the page.</p>'; });
+    }
+    const TYPES = { service:"Service", governance:"Governance", funding:"Funding" };
+    // Timeframe columns: Executive Summary Tables 3 and 4 (short 1 to 2 years, medium 2 to 3, long 3 or more)
+    const TERMS = [["short", "Short term (1 to 2 years)"], ["medium", "Medium term (2 to 3 years)"], ["long", "Long term (3 or more years)"]];
+    const termsOf = t => { if (!t) return []; const p = t.toLowerCase().split(" to "); const i = TERMS.findIndex(x => x[0] === p[0]), j = TERMS.findIndex(x => x[0] === p[p.length - 1]); return TERMS.slice(i, j + 1).map(x => x[0]); };
+    let mxGrid, activeAgency = "";
+    function buildMatrix(){
+      const { AG, groups, recs } = window.REC_MATRIX;
+      const narrow = matchMedia("(max-width: 640px)").matches;
+      const showAll = $("#mxAll").checked;
+      const who = r => [...r.lead, ...r.partners];
+      const count = {}; recs.forEach(r => who(r).forEach(a => count[a] = (count[a] || 0) + 1));
+      const cols = [];
+      groups.forEach(g => Object.keys(AG).filter(k => AG[k].g === g && count[k] && (showAll || count[k] > 1 || k === activeAgency))
+        .sort((a, b) => count[b] - count[a]).forEach(k => cols.push(k)));
+      const list = activeAgency ? recs.filter(r => who(r).includes(activeAgency)) : recs;
+      const rows = list.map(r => {
+        const o = { type:r.type, typeLabel:TYPES[r.type], title:r.title };
+        const ts = termsOf(r.term); TERMS.forEach(([k]) => o["t_" + k] = ts.includes(k));
+        cols.forEach(k => o[k] = r.lead.includes(k) ? "L" : r.partners.includes(k) ? "P" : "");
+        return o;
+      });
+      const colDefs = [
+        { field:"typeLabel", headerName:"Type", width:narrow ? 96 : 118, pinned:narrow ? null : "left",
+          cellRenderer:p => p.data._foot ? "" : `<span class="badge b-${p.data.type}">${p.value}</span>` },
+        { field:"title", headerName:"Recommendation", width:narrow ? 210 : 340, pinned:narrow ? null : "left", wrapText:true, autoHeight:true, filter:"agTextColumnFilter",
+          cellStyle:{ lineHeight:"1.35", paddingTop:"6px", paddingBottom:"6px" },
+          cellRenderer:p => `<span class="mx-title">${esc(p.value)}</span>` },
+        ...TERMS.map(([k, label], i) => ({
+          field:"t_" + k, headerName:label, width:38, minWidth:38, maxWidth:38, sortable:false, filter:false, resizable:false,
+          headerClass:["vh", "term"], cellClass:i === TERMS.length - 1 ? ["mxc", "term", "term-last"] : ["mxc", "term"], suppressHeaderMenuButton:true,
+          cellRenderer:p => p.value ? `<span class="tdot ${k}" title="${esc(label)}"></span><span class="sr-only">${esc(label)}</span>` : ""
+        })),
+        ...cols.map(k => ({
+          field:k, headerName:AG[k].s, headerTooltip:`${AG[k].n}: ${count[k]} recommendation${count[k] > 1 ? "s" : ""}`,
+          width:38, minWidth:38, maxWidth:38, sortable:false, filter:false, resizable:false,
+          headerClass:k === activeAgency ? ["vh", "active"] : ["vh"], cellClass:"mxc", suppressHeaderMenuButton:true,
+          cellRenderer:p => p.data._foot ? `<b>${p.value}</b>`
+            : p.value === "L" ? `<span class="cellL" title="${esc(AG[k].s)}: lead">L</span>`
+            : p.value === "P" ? `<span class="cellP" title="${esc(AG[k].s)}: partner">P</span>` : ""
+        }))
+      ];
+      if (mxGrid){
+        mxGrid.setGridOption("columnDefs", colDefs);
+        mxGrid.setGridOption("rowData", rows);
+      } else {
+        mxGrid = agGrid.createGrid($("#mxGrid"), {
+          theme:agGrid.themeQuartz.withParams({
+            accentColor:"#2B94D1", fontFamily:"Lexend Deca, system-ui, sans-serif", fontSize:12,
+            headerFontSize:11, headerTextColor:"#6B7688", headerBackgroundColor:"#F3F6FA",
+            rowHeight:30, headerHeight:190, spacing:5, borderColor:"#E2E6EC", foregroundColor:"#044554"
+          }),
+          domLayout:"autoHeight", suppressCellFocus:true, suppressMovableColumns:true,
+          defaultColDef:{ sortable:true, resizable:true, filter:true, minWidth:38 },
+          columnDefs:colDefs, rowData:rows,
+          onColumnHeaderClicked:e => { const k = e.column.getColId(); if (AG[k]) setAgency(k === activeAgency ? "" : k); }
+        });
+      }
+      $("#filterNote").hidden = !activeAgency;
+      $("#filterText").textContent = activeAgency ? `Showing ${list.length} recommendation${list.length > 1 ? "s" : ""} for ${AG[activeAgency].s}` : "";
+    }
+    function setAgency(k){ activeAgency = k; buildMatrix(); }
+    $("#mxAll").addEventListener("change", () => { if (mxGrid) buildMatrix(); });
+    $("#btnClear").addEventListener("click", () => setAgency(""));
+    $("#mxCsv").addEventListener("click", () => mxGrid && mxGrid.exportDataAsCsv({
+      fileName:"tahoe-transit-responsibility-matrix.csv",
+      columnKeys:mxGrid.getColumns().map(c => c.getColId()),
+      processCellCallback:p => p.column.getColId().startsWith("t_") ? (p.value ? "X" : "") : p.value
+    }));
+
+    // ---------- tabs: the hash picks the panel; an id inside a panel opens that panel and scrolls to it ----------
+    const panels = [...document.querySelectorAll("[data-panel]")];
+    const tabLinks = [...document.querySelectorAll("nav.tabs a")];
+    function route(){
+      const id = decodeURIComponent(location.hash.slice(1)) || "home";
+      const target = document.getElementById(id);
+      const panel = (target && target.closest("[data-panel]")) || panels[0];
+      const name = panel.dataset.panel;
+      panels.forEach(p => p.hidden = p !== panel);
+      tabLinks.forEach(a => a.dataset.tab === name ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+      const active = tabLinks.find(a => a.dataset.tab === name);
+      if (active) active.scrollIntoView({ block: "nearest", inline: "nearest" });
+      if (loaders[name]) { loaders[name](); delete loaders[name]; }
+      const title = { home:"Tahoe Transit Study", recommendations:"Draft recommendations", "existing-conditions":"Existing conditions", "get-involved":"Get involved", partners:"Project partners" }[name];
+      document.title = (name === "home" ? "" : title + ": ") + "Tahoe Transit Study | TRPA";
+      if (target && target !== panel) requestAnimationFrame(() => target.scrollIntoView());
+      else window.scrollTo(0, 0);
+    }
+    addEventListener("hashchange", route);
+    route();
+  </script>
+</body>
+</html>
