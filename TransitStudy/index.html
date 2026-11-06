@@ -11,6 +11,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Tahoe Transit Study" />
   <meta property="og:description" content="A regional effort to create a more coordinated, efficient, and sustainable transit system throughout the Lake Tahoe Basin." />
+  <meta property="og:url" content="https://trpa-agency.github.io/Transportation/TransitStudy/" />
+  <meta property="og:image" content="https://trpa-agency.github.io/Transportation/TransitStudy/assets/img/hero-tart-bus-boarding.jpg" />
   <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -344,7 +346,7 @@
     <!-- =================================================================== HOME -->
     <div data-panel="home" id="home">
       <section class="hero">
-        <img id="hero-img" alt="An electric Tahoe Transportation District bus on Route 55 at the charging station outside Lake Tahoe Community College" fetchpriority="high" />
+        <img id="hero-img" alt="Riders boarding a Tahoe Truckee Area Regional Transit (TART) bus at a transit center surrounded by pine trees" fetchpriority="high" />
         <div class="hero-text">
           <p class="eyebrow">Lake Tahoe Basin</p>
           <h1>Tahoe Transit Study</h1>
@@ -477,14 +479,12 @@
           <div class="mx-card">
             <div class="mx-tools">
               <div class="legend"><span><span class="tdot short"></span> Short term</span><span><span class="tdot medium"></span> Medium term</span><span><span class="tdot long"></span> Long term</span><span><span class="cellL">L</span> Lead</span><span><span class="cellP">P</span> Partner</span></div>
-              <label class="switch"><input type="checkbox" id="mxAll" /> Show agencies named in only one recommendation</label>
               <span class="filter-note" id="filterNote" hidden><span id="filterText"></span><button type="button" id="btnClear" aria-label="Show all recommendations">&times;</button></span>
               <span class="spacer"></span>
               <button type="button" class="btn outline sm" id="mxCsv"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10"/></svg>Download CSV</button>
             </div>
-            <p class="mx-help">The first three columns show when each recommendation is planned. Funding recommendations have no timeframe. Select an agency name to show only the recommendations it's part of.</p>
+            <p class="mx-help">Select an agency name to show only the recommendations it's part of.</p>
             <div id="mxGrid"><p class="loading">Loading the matrix</p></div>
-            <p class="mx-src" id="mxSrc"></p>
           </div>
         </div>
       </section>
@@ -769,7 +769,7 @@
     const loadScript = src => new Promise((ok, fail) => { const t = document.createElement("script"); t.src = src; t.onload = ok; t.onerror = fail; document.head.append(t); });
     function loadMatrix(){
       Promise.all([loadScript(CFG.agGrid), loadScript(CFG.recommendationsData)])
-        .then(() => { $("#mxGrid").replaceChildren(); $("#mxSrc").textContent = window.REC_MATRIX.source; buildMatrix(); })
+        .then(() => { $("#mxGrid").replaceChildren(); buildMatrix(); })
         .catch(() => { $("#mxGrid").innerHTML = '<p class="loading">The matrix could not load. Check your connection, then reload the page.</p>'; });
     }
     const TYPES = { service:"Service", governance:"Governance", funding:"Funding" };
@@ -780,11 +780,10 @@
     function buildMatrix(){
       const { AG, groups, recs } = window.REC_MATRIX;
       const narrow = matchMedia("(max-width: 640px)").matches;
-      const showAll = $("#mxAll").checked;
       const who = r => [...r.lead, ...r.partners];
       const count = {}; recs.forEach(r => who(r).forEach(a => count[a] = (count[a] || 0) + 1));
       const cols = [];
-      groups.forEach(g => Object.keys(AG).filter(k => AG[k].g === g && count[k] && (showAll || count[k] > 1 || k === activeAgency))
+      groups.forEach(g => Object.keys(AG).filter(k => AG[k].g === g && count[k])
         .sort((a, b) => count[b] - count[a]).forEach(k => cols.push(k)));
       const list = activeAgency ? recs.filter(r => who(r).includes(activeAgency)) : recs;
       const rows = list.map(r => {
@@ -796,7 +795,7 @@
       const colDefs = [
         { field:"typeLabel", headerName:"Type", width:narrow ? 96 : 118, pinned:narrow ? null : "left",
           cellRenderer:p => p.data._foot ? "" : `<span class="badge b-${p.data.type}">${p.value}</span>` },
-        { field:"title", headerName:"Recommendation", width:narrow ? 210 : 340, pinned:narrow ? null : "left", wrapText:true, autoHeight:true, filter:"agTextColumnFilter",
+        { field:"title", headerName:"Recommendation", width:narrow ? 190 : 270, pinned:narrow ? null : "left", wrapText:true, autoHeight:true, filter:"agTextColumnFilter",
           cellStyle:{ lineHeight:"1.35", paddingTop:"6px", paddingBottom:"6px" },
           cellRenderer:p => `<span class="mx-title">${esc(p.value)}</span>` },
         ...TERMS.map(([k, label], i) => ({
@@ -833,7 +832,6 @@
       $("#filterText").textContent = activeAgency ? `Showing ${list.length} recommendation${list.length > 1 ? "s" : ""} for ${AG[activeAgency].s}` : "";
     }
     function setAgency(k){ activeAgency = k; buildMatrix(); }
-    $("#mxAll").addEventListener("change", () => { if (mxGrid) buildMatrix(); });
     $("#btnClear").addEventListener("click", () => setAgency(""));
     $("#mxCsv").addEventListener("click", () => mxGrid && mxGrid.exportDataAsCsv({
       fileName:"tahoe-transit-responsibility-matrix.csv",
