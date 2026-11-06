@@ -47,8 +47,8 @@ window.SITE_CONFIG = {
 
   // Images. Paths are relative to imageBase unless they start with http or ./
   images: {
-    hero:       { src: "./assets/img/hero-ttd-bus-ltcc.jpg", credit: "Photo: TRPA" },
-    involved:   { src: "./assets/img/survey-ttd-bus-stop.jpg", credit: "" },
+    hero:       { src: "./assets/img/hero-tart-bus-boarding.jpg", credit: "Photo: Generikal" },
+    involved:   { src: "./assets/img/survey-ttd-bus-stop.jpg", credit: "Photo: Drone Promotions, courtesy of TTD" },
     governance: { src: "./assets/img/governance-chart.jpg" }
   },
 
