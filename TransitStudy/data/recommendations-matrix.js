@@ -13,6 +13,7 @@ window.REC_MATRIX = {
   AG: {
     TTD:    { n: "Tahoe Transportation District (TTD)", s: "TTD", g: "Transit operators" },
     PC:     { n: "Placer County (operates TART)", s: "Placer County", g: "Transit operators" },
+    EDT:    { n: "El Dorado Transit", s: "El Dorado Transit", g: "Transit operators" },
     TRPA:   { n: "Tahoe Regional Planning Agency (TRPA)", s: "TRPA", g: "Regional and planning" },
     SSTMA:  { n: "South Shore Transportation Management Association (SSTMA)", s: "SSTMA", g: "Regional and planning" },
     TNT:    { n: "Truckee North Tahoe Transportation Management Association (TNT/TMA)", s: "TNT/TMA", g: "Regional and planning" },
@@ -35,7 +36,6 @@ window.REC_MATRIX = {
     IVCBVB: { n: "Incline Village Crystal Bay Visitors Bureau (IVCBVB)", s: "IVCBVB", g: "Private, nonprofit, and other" },
     HEAV:   { n: "Heavenly", s: "Heavenly", g: "Private, nonprofit, and other" },
     TBEC:   { n: "Tahoe Blue Event Center", s: "Tahoe Blue Event Center", g: "Private, nonprofit, and other" },
-    PRIV:   { n: "Private and nonprofit funders", s: "Private funders", g: "Private, nonprofit, and other" },
     LJ:     { n: "Local jurisdictions", s: "Local jurisdictions", g: "General groups" },
     TMAS:   { n: "Transportation management associations (TMAs)", s: "TMAs", g: "General groups" },
     RES:    { n: "Resorts", s: "Resorts", g: "General groups" },
@@ -71,8 +71,11 @@ window.REC_MATRIX = {
 
     /* ---------- Funding: draft Funding Memo v2 (unchanged) ---------- */
     { type: "funding", term: "", title: "Pursue a Transit Business Improvement District in South Lake Tahoe", lead: ["SSTMA", "TTD"], partners: ["CSLT", "STTJPA"] },
-    { type: "funding", term: "", title: "Pursue a basin-wide transit sales tax", lead: ["TTD"], partners: [] },
-    { type: "funding", term: "", title: "Reach a funding agreement between TTD and Vail/Heavenly", lead: ["TTD"], partners: ["HEAV"] },
-    { type: "funding", term: "", title: "Extend and escalate Lake Link funding agreements", lead: ["TTD", "SSTMA"], partners: ["CSLT", "DC", "PRIV"] }
+    { type: "funding", term: "", title: "Increase transient occupancy tax (TOT) contributions to South Shore transit", lead: ["SSTMA", "TTD"], partners: ["CSLT", "EDC", "DC"] },
+    { type: "funding", term: "", title: "Consider regional sales tax initiative", lead: ["TTD"], partners: [] },
+    { type: "funding", term: "", title: "Establish sublease agreements between TTD and facility users", lead: ["TTD"], partners: ["HEAV", "EDT"] },
+    { type: "funding", term: "", title: "Pursue funding agreement with El Dorado County", lead: ["TTD"], partners: ["SSTMA", "EDC", "STTJPA"] },
+    { type: "funding", term: "", title: "Implement transit zone of benefit programs in additional jurisdictions", lead: ["EDC", "DC", "WC"], partners: ["TRPA"] },  // leads from the study text: El Dorado County could codify one; Douglas and Washoe need legal research
+    { type: "funding", term: "", title: "Continue escalating funding agreements with local jurisdictions and private entities for Lake Link", lead: ["SSTMA"], partners: ["DC", "CSLT"] }
   ]
 };

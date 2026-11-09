@@ -52,12 +52,6 @@ window.SITE_CONFIG = {
     governance: { src: "./assets/img/governance-chart.jpg" }
   },
 
-  // Email updates. The page shows a sign-up link and the privacy line.
-  updates: {
-    label: "Email us to get project updates",
-    href: "mailto:krichardson@trpa.gov?subject=Tahoe%20Transit%20Study%20updates"
-  },
-
   // Project Partners tab. logo paths are relative to imageBase (SQUARESPACE). href is optional.
   partners: {
     team: [
