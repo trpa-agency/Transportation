@@ -260,8 +260,8 @@
     .cellP{background:#fff;border:2px solid var(--brand-dark);color:var(--brand-dark);}
     .mx-title{display:block;font-weight:600;line-height:1.35;}
     .tdot{display:block;width:14px;height:14px;border-radius:50%;background:var(--tf);border:1px solid var(--tfo);}
-    /* timeframe colors from the Executive Summary tables (Office theme accents 3, 4, and 5 at 40 percent tint); the outline is the untinted accent */
-    .tdot.short{--tf:#47D45A;--tfo:#196B24;} .tdot.medium{--tf:#61CBF4;--tfo:#0F9ED5;} .tdot.long{--tf:#D86ECC;--tfo:#A02B93;}
+    /* timeframe colors: short and medium use Connecting Tahoe green and blue; long keeps the Executive Summary magenta (Office accent 5 at 40 percent tint). Outlines are the darker shade of each. */
+    .tdot.short{--tf:var(--ct-green);--tfo:var(--ct-green-text);} .tdot.medium{--tf:var(--ct-blue);--tfo:var(--ct-blue-text);} .tdot.long{--tf:#D86ECC;--tfo:#A02B93;}
     .legend .tdot{display:inline-block;}
     #mxGrid .ag-header-cell.term,#mxGrid .ag-cell.term{background:#F3F6F4;}
     #mxGrid .ag-header-cell.term{cursor:default;}
