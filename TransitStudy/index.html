@@ -21,6 +21,7 @@
 
   <script src="config/site-config.js"></script>
   <script src="data/project-timeline.js"></script>
+  <script src="data/historic-timeline.js"></script>
 
   <style>
     /* ---------- tokens: trpa-tokens.css, Connecting Tahoe layer, inlined ---------- */
@@ -144,6 +145,30 @@
     ul.doc-list a{font-weight:600;flex:1;min-height:28px;display:flex;align-items:center;}
     ul.doc-list .fmt{font-family:var(--label-font);font-size:.62rem;font-weight:700;letter-spacing:.06em;padding:.14rem .55rem;border-radius:var(--brand-radius-pill);background:var(--brand-accent-light);color:var(--brand-accent-text);}
 
+    /* ---------- historic timeline (data/historic-timeline.js) ---------- */
+    .htl-head{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:.4rem 1rem;margin:1.2rem 0 .7rem;}
+    .htl-hint{font-size:.8rem;color:var(--gray-text);}
+    .htl-scroll{position:relative;max-height:560px;overflow-y:auto;overscroll-behavior:contain;background:var(--gray-bg);border:1px solid var(--gray-border);border-radius:var(--brand-radius);padding:1.1rem 1rem 0;}
+    .htl-scroll::after{content:"";position:sticky;display:block;bottom:0;height:48px;margin:-48px -1rem 0;background:linear-gradient(rgba(245,247,250,0),var(--gray-bg));pointer-events:none;}  /* fade hints there is more below */
+    ol.htl{list-style:none;position:relative;margin:0;padding:0 0 0 5.2rem;}
+    ol.htl::before{content:"";position:absolute;left:4.15rem;top:.4rem;bottom:.4rem;width:2px;background:var(--gray-border);}
+    ol.htl > li{position:relative;margin-bottom:1.1rem;}
+    ol.htl li.yr h3{position:absolute;left:-5.2rem;top:.15rem;width:3.6rem;text-align:right;font-size:1rem;font-weight:700;color:var(--brand-text);}
+    ol.htl > li.yr::before{content:"";position:absolute;left:-1.32rem;top:.45rem;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--brand-dark);}
+    ul.htl-ev{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.6rem;}
+    /* one neutral style; the tag names the type and organization so color carries no meaning here */
+    ul.htl-ev .tag{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .45rem;margin-bottom:.25rem;}
+    ul.htl-ev .tag svg{width:18px;height:18px;flex-shrink:0;fill:none;stroke:var(--brand-dark);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+    /* decade markers: a pill on the rail with a rule across, landmarks for the long scroll */
+    ol.htl > li.dec{position:relative;margin:.4rem 0 1rem;height:1.6rem;}
+    ol.htl > li.dec:first-child{margin-top:0;}
+    ol.htl li.dec h3{position:absolute;left:-5.2rem;top:0;display:inline-flex;align-items:center;height:1.6rem;padding:0 .7rem;border-radius:var(--brand-radius-pill);background:var(--brand-dark);color:#fff;font-family:var(--label-font);font-size:.72rem;font-weight:700;letter-spacing:.08em;z-index:1;}
+    ol.htl > li.dec::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px solid var(--gray-border);}
+    ul.htl-ev .ty{font-family:var(--label-font);font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gray-text);}
+    ul.htl-ev .org{font-size:.78rem;font-weight:600;color:var(--gray-text);}
+    ul.htl-ev .org::before{content:"";display:inline-block;width:3px;height:3px;border-radius:50%;background:var(--gray-muted);vertical-align:middle;margin:0 .5rem .15rem 0;}
+    ul.htl-ev li{background:#fff;border:1px solid var(--gray-border);border-left:4px solid var(--brand-dark);border-radius:var(--brand-radius);padding:.65rem .9rem;font-size:.9rem;line-height:1.45;}
+
     /* ---------- project timeline (data/project-timeline.js) ---------- */
     .ptl-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.2rem;margin:1.4rem 0 1rem;font-size:.82rem;color:var(--gray-text);}
     .ptl-legend .k{display:inline-flex;align-items:center;gap:.4rem;}
@@ -229,7 +254,6 @@
     ol.mtg .body{display:block;font-weight:600;}
     ol.mtg .where{display:block;font-size:.88rem;color:var(--gray-text);}
     ol.mtg a{font-size:.88rem;font-weight:600;}
-    ol.mtg .hybrid{display:block;font-size:.84rem;color:var(--brand-text);margin:.15rem 0 .1rem;}
     .empty{color:var(--gray-text);font-size:.95rem;}
 
     /* ---------- notices and embeds ---------- */
@@ -275,7 +299,6 @@
     #mxGrid .ag-header-cell.vh .ag-header-cell-text{white-space:nowrap;overflow:visible;text-overflow:clip;font-size:12px;font-weight:600;color:var(--brand-text);text-transform:none;letter-spacing:0;}
     #mxGrid .ag-cell.mxc{display:flex;align-items:center;justify-content:center;padding:0;}
     #funding-frame iframe{height:640px;}
-    #history-frame iframe{height:600px;}
     .loading{padding:3rem 1rem;text-align:center;color:var(--gray-text);}
 
     /* ---------- partner logos ---------- */
@@ -309,6 +332,7 @@
       nav.tabs a{padding:0 .6rem;font-size:.86rem;}
       .hero{min-height:560px;}
       .mx-card{padding:.6rem;}
+      .htl-scroll{max-height:70vh;padding:.9rem .6rem 0;} ol.htl{padding-left:3.9rem;} ol.htl::before{left:3.1rem;} ol.htl li.yr h3{left:-3.9rem;width:2.3rem;font-size:.85rem;} ol.htl > li.yr::before{left:-1.12rem;} ol.htl li.dec h3{left:-3.9rem;padding:0 .5rem;font-size:.66rem;} ul.htl-ev{grid-template-columns:1fr;}
       .ptl{--lw:104px;}
       #funding-frame iframe{height:560px;}
     }
@@ -515,7 +539,10 @@
             <h2>Historic timeline</h2>
             <p>Key events in the history of transit and its governance in the Tahoe Basin.</p>
           </div>
-          <div class="embed-frame" id="history-frame"><p class="loading">Loading the timeline</p></div>
+          <div class="htl-head"><span class="htl-hint">Scroll the timeline for more events</span></div>
+          <div class="htl-scroll" tabindex="0" role="region" aria-label="Historic timeline, 1975 to 2026">
+            <ol class="htl" id="htl"></ol>
+          </div>
         </div>
       </section>
       <section class="band tint" id="funding">
@@ -664,7 +691,7 @@
       const today = new Date(); const ymd = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
       const m = [...(CFG.meetings || [])];
       const li = x => `<li><span class="when">${fmtDate(x.date)}</span><span class="body">${esc(x.body)}</span>
-        <span class="where">${esc(x.time)}, ${esc(x.place)}</span>${x.hybrid ? '<span class="hybrid">Hybrid meeting: join in person or online</span>' : ""}${x.link ? `<a href="${esc(x.link.href)}" target="_blank" rel="noopener">${esc(x.link.label)}</a>` : ""}</li>`;
+        <span class="where">${esc(x.time)}, ${esc(x.place)}</span>${x.link ? `<a href="${esc(x.link.href)}" target="_blank" rel="noopener">${esc(x.link.label)}</a>` : ""}</li>`;
       const up = m.filter(x => x.date >= ymd).sort((a, b) => a.date.localeCompare(b.date));
       const past = m.filter(x => x.date < ymd).sort((a, b) => b.date.localeCompare(a.date));
       $("#mtg-upcoming").innerHTML = up.length ? up.map(li).join("") : '<li class="empty">No meetings are scheduled yet. Check back soon.</li>';
@@ -711,6 +738,30 @@
       box.innerHTML = h;
     })();
 
+    // ---------- historic timeline: events grouped by year, color-coded by type, collapsed until opened ----------
+    (function history(){
+      const E = window.HISTORIC_TIMELINE, list = $("#htl"); if (!E || !list) return;
+      const TYPES = [["service","Service"],["governance","Governance"],["planning","Planning"],["funding","Funding"]];
+      const label = k => TYPES.find(t => t[0] === k)[1];
+      // one-color line icons: the shape, not the color, tells the types apart
+      const ICON = {
+        service:'<rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16M8 17v3M16 17v3"/><circle cx="8" cy="14" r=".6"/><circle cx="16" cy="14" r=".6"/>',
+        governance:'<path d="M3 10l9-6 9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
+        planning:'<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3h6v1M9 10l1.5 1.5L13 9M9 15h6"/>',
+        funding:'<circle cx="12" cy="12" r="9"/><path d="M15 9.5c0-1.4-1.3-2-3-2s-3 .8-3 2 1.3 1.7 3 2 3 .8 3 2-1.3 2-3 2-3-.6-3-2M12 6v1.5M12 16.5V18"/>'
+      };
+      const years = [...new Set(E.map(e => e.year))].sort((a, b) => a - b);
+      let decade = null, h = "";
+      years.forEach(y => {
+        const d = Math.floor(y / 10) * 10;
+        if (d !== decade) { decade = d; h += `<li class="dec"><h3>${d}s</h3></li>`; }
+        h += `<li class="yr"><h3>${y}</h3><ul class="htl-ev">${
+          E.filter(e => e.year === y).map(e => `<li><span class="tag"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[e.type]}</svg><span class="ty">${label(e.type)}</span><span class="org">${esc(e.org)}</span></span><span class="sr-only">: </span>${esc(e.text)}</li>`).join("")
+        }</ul></li>`;
+      });
+      list.innerHTML = h;
+    })();
+
     // ---------- survey: click to load (Survey123 share URL with embed=fullscreen) ----------
     $("#survey-start").addEventListener("click", () => {
       const frame = $("#survey-frame");
@@ -735,7 +786,6 @@
     const loaders = {
       recommendations(){ loadMatrix(); },
       "existing-conditions"(){
-        flourish("#history-frame", CFG.flourish.historicTimeline, "Historic timeline of transit in the Tahoe Basin");
         flourish("#funding-frame", CFG.flourish.funding, "Transit operations funding in the Tahoe Basin");
       }
     };

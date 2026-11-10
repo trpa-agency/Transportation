@@ -36,8 +36,7 @@ window.SITE_CONFIG = {
 
   // Flourish visualizations (public)
   flourish: {
-    funding: "27797632",          // transit operations funding (Sankey), Funding tab
-    historicTimeline: "28013213"  // historic timeline, Governance tab
+    funding: "27797632"   // transit operations funding (Sankey), Existing conditions tab
   },
 
   // Images. Paths are in this repo.
@@ -75,12 +74,13 @@ window.SITE_CONFIG = {
   agGrid: "https://cdn.jsdelivr.net/npm/ag-grid-community@33.3.2/dist/ag-grid-community.min.js",
 
   // Meetings. The page sorts these into Upcoming and Past by today's date.
-  // date is YYYY-MM-DD. link is optional. hybrid: true shows "Join in person or online."
+  // date is YYYY-MM-DD. link is optional.
   meetings: [
-    { date: "2027-01-07", body: "Truckee North Tahoe Transportation Management Association", time: "8 a.m.", place: "Town of Truckee Building, Prosser Room, 10183 Truckee Airport Rd., Truckee, CA 96161", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://tnttma.com/tma-board-agenda/" } },
-    { date: "2026-12-18", body: "South Shore Transportation Management Association", time: "8:30 a.m.", place: "Lisa Maloff University Center, Lake Tahoe Community College, 1 College Drive, South Lake Tahoe, CA 96150", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://ss-tma.org/board-meetings/" } },
-    { date: "2026-12-02", body: "Tahoe Transportation District Board", time: "3 p.m.", place: "128 Market Street, Stateline, NV 89449", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://tahoetransportation.org/meetings-and-agendas/?1583860264=171" } },
-    { date: "2026-11-18", body: "TRPA Transportation Committee", time: "9 a.m.", place: "128 Market Street, Stateline, NV 89449", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://www.trpa.gov/meeting-materials/" } },
+    { date: "2027-01-21", body: "Douglas County Board of County Commissioners", time: "10 a.m.", place: "1616 Eighth Street, Minden, NV 89423", link: { label: "Meeting materials and online meeting link", href: "https://www.douglascountynv.gov/GOVERNMENT/board-of-county-commissioners/bocc-agenda-and-minutes" } },
+    { date: "2027-01-07", body: "Truckee North Tahoe Transportation Management Association", time: "8 a.m.", place: "Town of Truckee Building, Prosser Room, 10183 Truckee Airport Rd., Truckee, CA 96161", link: { label: "Meeting materials and online meeting link", href: "https://tnttma.com/tma-board-agenda/" } },
+    { date: "2026-12-18", body: "South Shore Transportation Management Association", time: "8:30 a.m.", place: "Lisa Maloff University Center, Lake Tahoe Community College, 1 College Drive, South Lake Tahoe, CA 96150", link: { label: "Meeting materials and online meeting link", href: "https://ss-tma.org/board-meetings/" } },
+    { date: "2026-12-02", body: "Tahoe Transportation District Board", time: "3 p.m.", place: "128 Market Street, Stateline, NV 89449", link: { label: "Meeting materials and online meeting link", href: "https://tahoetransportation.org/meetings-and-agendas/?1583860264=171" } },
+    { date: "2026-11-18", body: "TRPA Transportation Committee", time: "9 a.m.", place: "128 Market Street, Stateline, NV 89449", link: { label: "Meeting materials and online meeting link", href: "https://www.trpa.gov/meeting-materials/" } },
     { date: "2026-10-29", body: "South Tahoe Transit Joint Powers Authority", time: "9:30 a.m.", place: "1901 Lisa Maloff Way, South Lake Tahoe, CA 96150", link: { label: "Agenda", href: "https://slt.granicus.com/AgendaViewer.php?view_id=6&event_id=1530" } },
     { date: "2026-08-21", body: "South Shore Transportation Management Association", time: "8:30 a.m.", place: "Lisa Maloff University Center, Lake Tahoe Community College, 1 College Drive, South Lake Tahoe, CA 96150", link: { label: "Agenda", href: "https://ss-tma.org/board-meetings/" } },
     { date: "2026-08-05", body: "Tahoe Transportation District Board", time: "3 p.m.", place: "128 Market Street, Stateline, NV 89449", link: { label: "Agenda", href: "https://tahoetransportation.org/wp-content/uploads/2026/07/2026-8-5-TTD-C-Board-Agenda-Packet.pdf" } },
