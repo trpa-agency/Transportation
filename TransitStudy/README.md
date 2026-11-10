@@ -29,3 +29,5 @@ The header, tabs, and footer use the TRPA agency shell (Open Sans, TRPA blue and
 ## Preview
 
 Serve the folder with any static server, for example `python -m http.server` from this folder, then open http://localhost:8000/. The config and matrix data files load best from a server.
+
+Last updated Nov. 10, 2026.
