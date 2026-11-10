@@ -1,14 +1,9 @@
 /* Tahoe Transit Study site configuration.
    Every link, file path, embed ID, and meeting date the page uses lives here.
    Edit this file to swap a link or add a meeting. The page itself holds only copy.
-
-   Files still hosted on the old Squarespace site are marked SQUARESPACE.
-   Replace those URLs before the Squarespace site is shut off. */
+   Every image and file is in this repo or on trpa.gov. Nothing loads from the old Squarespace site. */
 
 window.SITE_CONFIG = {
-  squarespace: "https://tahoetransitstudy.squarespace.com",  // SQUARESPACE base for /s/ file links
-  imageBase: "https://images.squarespace-cdn.com/content/v1/694198d352bdfd71e737b141/",  // SQUARESPACE
-
   contact: {
     name: "Kira Richardson",
     title: "Senior Transportation Planner",
@@ -22,7 +17,7 @@ window.SITE_CONFIG = {
     // share URL and iframe URL are built from itemId in the page
   },
 
-  // Home page report links (hosted on trpa.gov). Paths starting with /s/ resolve against `squarespace`.
+  // Home page report links (hosted on trpa.gov)
   reports: [
     { title: "Transit Study Executive Summary", href: "https://www.trpa.gov/wp-content/uploads/Tahoe-Transit-Study-Draft-Executive-Summary.pdf" },
     { title: "Draft Transit Study", href: "https://www.trpa.gov/wp-content/uploads/TahoeTransitStudy-Draft102826.pdf" },
@@ -34,9 +29,9 @@ window.SITE_CONFIG = {
   fundingTables: [
     { title: "Federal funds", href: "https://www.trpa.gov/wp-content/uploads/FederalFunds-10.28.2026.pdf" },
     { title: "State funds", href: "https://www.trpa.gov/wp-content/uploads/StateFunds-10.28.2026.pdf" },
-    { title: "Local funds, part 1 of 3", href: "https://www.trpa.gov/wp-content/uploads/LocalFunds1of3-7columns-10.28.2026.pdf" },
-    { title: "Local funds, part 2 of 3", href: "https://www.trpa.gov/wp-content/uploads/LocalFunds2of3-7columns-10.28.2026.pdf" },
-    { title: "Local funds, part 3 of 3", href: "https://www.trpa.gov/wp-content/uploads/LocalFunds3of3-6columns-10.28.2026.pdf" }
+    { title: "Local funds, part 1 of 3", href: "https://www.trpa.gov/wp-content/uploads/LocalFunds1of3-7columns-10.28.2026.pdf", accent: "#F6633B" },
+    { title: "Local funds, part 2 of 3", href: "https://www.trpa.gov/wp-content/uploads/LocalFunds2of3-7columns-10.28.2026.pdf", accent: "#F6633B" },
+    { title: "Local funds, part 3 of 3", href: "https://www.trpa.gov/wp-content/uploads/LocalFunds3of3-6columns-10.28.2026.pdf", accent: "#F6633B" }
   ],
 
   // Flourish visualizations (public)
@@ -45,33 +40,33 @@ window.SITE_CONFIG = {
     historicTimeline: "28013213"  // historic timeline, Governance tab
   },
 
-  // Images. Paths are relative to imageBase unless they start with http or ./
+  // Images. Paths are in this repo.
   images: {
     hero:       { src: "./assets/img/hero-tart-bus-boarding.jpg", credit: "Photo: Generikal" },
     involved:   { src: "./assets/img/survey-ttd-bus-stop.jpg", credit: "Photo: Drone Promotions, courtesy of TTD" },
     governance: { src: "./assets/img/governance-chart.jpg" }
   },
 
-  // Project Partners tab. logo paths are relative to imageBase (SQUARESPACE). href is optional.
+  // Project Partners tab. logo is a path in this repo. href is optional.
   partners: {
     team: [
       { name: "Tahoe Regional Planning Agency", logo: "./assets/img/trpa-logo-color.png", href: "https://www.trpa.gov/" },
-      { name: "LSC Transportation Consultants", logo: "a965d0ce-a5bd-44ff-a31f-df224f5b0f19/lsc-triangle-logo2%2Bno%2Btext.gif" },
-      { name: "TY Lin", logo: "01b105e2-c8aa-47ae-b619-d070f1ca957e/TYLin_Logo_Black.png", href: "https://www.tylin.com/" }
+      { name: "LSC Transportation Consultants", logo: "./assets/img/partners/lsc.png" },
+      { name: "TY Lin", logo: "./assets/img/partners/tylin.png", href: "https://www.tylin.com/" }
     ],
     stakeholders: [
       { name: "Tahoe Regional Planning Agency (TRPA)", logo: "./assets/img/trpa-logo-color.png", href: "https://www.trpa.gov/" },
-      { name: "City of South Lake Tahoe", logo: "d90bc80c-24c2-40cb-8ab2-4853a874d2fa/City+of+south+lake+tahoe.png", href: "https://www.cityofslt.gov/" },
-      { name: "Tahoe Truckee Area Regional Transit (TART)", logo: "6a277b19-9748-4744-bcac-dd38442a304c/TART_Logo_Square.png", href: "https://tahoetruckeetransit.com/" },
-      { name: "Douglas County", logo: "ac3ea4db-a947-4721-b121-1bd0fca54f69/Douglas+County+Logo.png", href: "https://www.douglascountynv.gov/" },
-      { name: "Tahoe Transportation District (TTD)", logo: "a9029d24-f928-40b2-a9f2-100d993268ed/TTD.png", href: "https://www.tahoetransportation.org/" },
-      { name: "El Dorado County", logo: "21ccc1e9-16d4-4613-b75f-c42e4b450fc1/Seal_of_El_Dorado_County_CA.png", href: "https://www.eldoradocounty.ca.gov/Home" },
-      { name: "Truckee/North Tahoe Transportation Management Association (TNTTMA)", logo: "956f9554-fb8e-4cbe-a220-bcbe66594cd6/TMA_2025_Logog_Color_Blk_5415_Outlined-resize_whtbk.png", href: "https://tnttma.com/" },
-      { name: "Placer County", logo: "282f6de0-0697-40ef-8513-13d1e6fb03b5/Placer+County+Logo.jpg", href: "https://www.placer.ca.gov/" },
-      { name: "Town of Truckee", logo: "e6758626-3e4f-4d1b-a90d-c0b799b216ce/Town+of+Truckee.png", href: "https://www.townoftruckee.gov/" },
-      { name: "RTC Washoe", logo: "9102ba36-99fb-41cf-be59-6d9602ab5543/logo-rtc.webp", href: "https://rtcwashoe.com/" },
-      { name: "Washoe County", logo: "1d824962-15b6-4e06-9a47-223733ef59cb/wc_logo_stoked_blue-3.png", href: "https://www.washoecounty.gov/" },
-      { name: "South Shore Transportation Management Association (SSTMA)", logo: "d74733fb-13d0-4c9e-9f60-3c573f75d0b8/sstma-logo.png", href: "https://ss-tma.org/" }
+      { name: "City of South Lake Tahoe", logo: "./assets/img/partners/cslt.png", href: "https://www.cityofslt.gov/" },
+      { name: "Tahoe Truckee Area Regional Transit (TART)", logo: "./assets/img/partners/tart.png", href: "https://tahoetruckeetransit.com/" },
+      { name: "Douglas County", logo: "./assets/img/partners/douglas-county.png", href: "https://www.douglascountynv.gov/" },
+      { name: "Tahoe Transportation District (TTD)", logo: "./assets/img/partners/ttd.png", href: "https://www.tahoetransportation.org/" },
+      { name: "El Dorado County", logo: "./assets/img/partners/el-dorado-county.png", href: "https://www.eldoradocounty.ca.gov/Home" },
+      { name: "Truckee/North Tahoe Transportation Management Association (TNTTMA)", logo: "./assets/img/partners/tnt-tma.png", href: "https://tnttma.com/" },
+      { name: "Placer County", logo: "./assets/img/partners/placer-county.png", href: "https://www.placer.ca.gov/" },
+      { name: "Carson Area Metropolitan Planning Organization (CAMPO)", logo: "./assets/img/partners/campo.png", href: "https://www.carsoncity.gov/government/departments-g-z/public-works/transportation/campo-carson-area-metropolitan-planning-organization" },
+      { name: "RTC Washoe", logo: "./assets/img/partners/washoe-rtc.png", href: "https://rtcwashoe.com/" },
+      { name: "Washoe County", logo: "./assets/img/partners/washoe-county.png", href: "https://www.washoecounty.gov/" },
+      { name: "South Shore Transportation Management Association (SSTMA)", logo: "./assets/img/partners/sstma.png", href: "https://ss-tma.org/" }
     ]
   },
 
@@ -80,12 +75,12 @@ window.SITE_CONFIG = {
   agGrid: "https://cdn.jsdelivr.net/npm/ag-grid-community@33.3.2/dist/ag-grid-community.min.js",
 
   // Meetings. The page sorts these into Upcoming and Past by today's date.
-  // date is YYYY-MM-DD. link is optional.
+  // date is YYYY-MM-DD. link is optional. hybrid: true shows "Join in person or online."
   meetings: [
-    { date: "2027-01-07", body: "Truckee North Tahoe Transportation Management Association", time: "8 a.m.", place: "Town of Truckee Building, Prosser Room, 10183 Truckee Airport Rd., Truckee, CA 96161" },
-    { date: "2026-12-18", body: "South Shore Transportation Management Association", time: "8:30 a.m.", place: "Lisa Maloff University Center, Lake Tahoe Community College, 1 College Drive, South Lake Tahoe, CA 96150" },
-    { date: "2026-12-02", body: "Tahoe Transportation District Board", time: "Time to be determined", place: "128 Market Street, Stateline, NV 89449" },
-    { date: "2026-11-18", body: "TRPA Transportation Committee", time: "Time to be determined", place: "128 Market Street, Stateline, NV 89449" },
+    { date: "2027-01-07", body: "Truckee North Tahoe Transportation Management Association", time: "8 a.m.", place: "Town of Truckee Building, Prosser Room, 10183 Truckee Airport Rd., Truckee, CA 96161", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://tnttma.com/tma-board-agenda/" } },
+    { date: "2026-12-18", body: "South Shore Transportation Management Association", time: "8:30 a.m.", place: "Lisa Maloff University Center, Lake Tahoe Community College, 1 College Drive, South Lake Tahoe, CA 96150", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://ss-tma.org/board-meetings/" } },
+    { date: "2026-12-02", body: "Tahoe Transportation District Board", time: "3 p.m.", place: "128 Market Street, Stateline, NV 89449", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://tahoetransportation.org/meetings-and-agendas/?1583860264=171" } },
+    { date: "2026-11-18", body: "TRPA Transportation Committee", time: "9 a.m.", place: "128 Market Street, Stateline, NV 89449", hybrid: true, link: { label: "Meeting materials and online meeting link", href: "https://www.trpa.gov/meeting-materials/" } },
     { date: "2026-10-29", body: "South Tahoe Transit Joint Powers Authority", time: "9:30 a.m.", place: "1901 Lisa Maloff Way, South Lake Tahoe, CA 96150", link: { label: "Agenda", href: "https://slt.granicus.com/AgendaViewer.php?view_id=6&event_id=1530" } },
     { date: "2026-08-21", body: "South Shore Transportation Management Association", time: "8:30 a.m.", place: "Lisa Maloff University Center, Lake Tahoe Community College, 1 College Drive, South Lake Tahoe, CA 96150", link: { label: "Agenda", href: "https://ss-tma.org/board-meetings/" } },
     { date: "2026-08-05", body: "Tahoe Transportation District Board", time: "3 p.m.", place: "128 Market Street, Stateline, NV 89449", link: { label: "Agenda", href: "https://tahoetransportation.org/wp-content/uploads/2026/07/2026-8-5-TTD-C-Board-Agenda-Packet.pdf" } },

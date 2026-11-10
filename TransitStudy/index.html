@@ -229,6 +229,7 @@
     ol.mtg .body{display:block;font-weight:600;}
     ol.mtg .where{display:block;font-size:.88rem;color:var(--gray-text);}
     ol.mtg a{font-size:.88rem;font-weight:600;}
+    ol.mtg .hybrid{display:block;font-size:.84rem;color:var(--brand-text);margin:.15rem 0 .1rem;}
     .empty{color:var(--gray-text);font-size:.95rem;}
 
     /* ---------- notices and embeds ---------- */
@@ -282,7 +283,7 @@
     ul.logos li > *{display:flex;flex-direction:column;align-items:center;gap:.8rem;height:100%;background:#fff;border:1px solid var(--gray-border);border-radius:var(--brand-radius);padding:1.2rem 1rem;text-align:center;text-decoration:none;color:var(--brand-text);font-weight:600;font-size:.92rem;line-height:1.35;}
     ul.logos li > a:hover,ul.logos li > a:active{border-color:var(--brand-primary);box-shadow:var(--brand-shadow);color:var(--brand-text);}
     ul.logos .mark{height:80px;width:100%;display:flex;align-items:center;justify-content:center;}
-    ul.logos img{max-height:80px;max-width:150px;width:auto;height:auto;object-fit:contain;}
+    ul.logos img{max-height:80px;max-width:100%;width:auto;height:auto;object-fit:contain;}
 
     /* ---------- footer ---------- */
     footer.site{background:var(--shell-navy);color:#D6E4F2;font-family:var(--shell-font);font-size:.86rem;padding:2rem 0;}
@@ -531,7 +532,7 @@
         <div class="wrap">
           <p class="kicker">Funding tables</p>
           <h2>Funding sources in detail</h2>
-          <p class="prose">Each table opens as a PDF in a new tab.</p>
+          <p class="prose">Fact sheets with more information on each funding source, match requirements, uses, and restrictions.</p>
           <div class="link-grid" id="funding-list"></div>
         </div>
       </section>
@@ -618,7 +619,7 @@
     // ---------- helpers ----------
     const $ = s => document.querySelector(s);
     const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
-    const fileUrl = href => /^https?:/.test(href) ? href : (CFG.squarespace || "") + href;
+    const fileUrl = href => href;
     const imgUrl = (key, width) => {
       const im = (CFG.images || {})[key]; if (!im) return "";
       if (/^(https?:|\.\/)/.test(im.src)) return im.src;
@@ -626,7 +627,7 @@
     };
     const MONTHS = ["Jan.","Feb.","March","April","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."];
     const fmtDate = iso => { const [y, m, d] = iso.split("-").map(Number); return `${MONTHS[m - 1]} ${d}, ${y}`; };
-    const docCard = (d, chip) => `<a class="doc" href="${esc(fileUrl(d.href))}" target="_blank" rel="noopener">
+    const docCard = (d, chip) => `<a class="doc" href="${esc(fileUrl(d.href))}" target="_blank" rel="noopener"${d.accent ? ` style="border-top-color:${esc(d.accent)}"` : ""}>
       <div class="head"><h3>${esc(d.title)}</h3><span class="chip">${chip}</span></div>
       ${d.desc ? `<p>${esc(d.desc)}</p>` : ""}<span class="open">Open the PDF &rarr;</span></a>`;
 
@@ -663,7 +664,7 @@
       const today = new Date(); const ymd = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
       const m = [...(CFG.meetings || [])];
       const li = x => `<li><span class="when">${fmtDate(x.date)}</span><span class="body">${esc(x.body)}</span>
-        <span class="where">${esc(x.time)}, ${esc(x.place)}</span>${x.link ? `<a href="${esc(x.link.href)}" target="_blank" rel="noopener">${esc(x.link.label)}</a>` : ""}</li>`;
+        <span class="where">${esc(x.time)}, ${esc(x.place)}</span>${x.hybrid ? '<span class="hybrid">Hybrid meeting: join in person or online</span>' : ""}${x.link ? `<a href="${esc(x.link.href)}" target="_blank" rel="noopener">${esc(x.link.label)}</a>` : ""}</li>`;
       const up = m.filter(x => x.date >= ymd).sort((a, b) => a.date.localeCompare(b.date));
       const past = m.filter(x => x.date < ymd).sort((a, b) => b.date.localeCompare(a.date));
       $("#mtg-upcoming").innerHTML = up.length ? up.map(li).join("") : '<li class="empty">No meetings are scheduled yet. Check back soon.</li>';

@@ -22,8 +22,8 @@ The header, tabs, and footer use the TRPA agency shell (Open Sans, TRPA blue and
 ## Updating
 
 - **Meetings:** add or edit entries in `meetings` in `config/site-config.js`. The page sorts them into Upcoming and Past by today's date.
-- **Reports and funding tables:** edit `reports` and `fundingTables`. Paths that start with `/s/` still point at the Squarespace site. Replace them with full URLs before that site is shut off.
-- **Images:** edit `images`. A path that starts with `./` is a file in this folder. Anything else is a Squarespace image.
+- **Reports and funding tables:** edit `reports` and `fundingTables`. The PDFs are hosted on trpa.gov. An optional `accent` sets a card's top color.
+- **Images and logos:** edit `images` and `partners`. Every path is a file in `assets/img/`. Partner logos are in `assets/img/partners/`, trimmed and sized to 320 by 160 pixels or smaller.
 - **Responsibility matrix:** edit `data/recommendations-matrix.js`. Each recommendation lists `lead` and `partners` as keys from `AG`. Add a new agency to `AG` first.
 
 ## Preview
